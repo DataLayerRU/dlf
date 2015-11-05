@@ -1,0 +1,32 @@
+{
+  "name": "datalayerru/dlf",
+  "version": "0.1",
+  "description": "DataLayer framework",
+  "homepage": "http://datalayer.ru/",
+  "keywords": [
+    "dlf",
+    "datalayer",
+    "datalayer.ru",
+    "mvc",
+    "composer"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Zinchenko Sergey",
+      "email": "s.zinchenko@rassvet.ru"
+    }
+  ],
+  "require": {
+    "php": ">=5.4.0"
+  },
+  "config": {
+    "process-timeout": 1800
+  },
+  "autoload": {
+    "psr-4": {
+      "dlf\\": ""
+    }
+  }
+}
