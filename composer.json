@@ -27,11 +27,5 @@
     "psr-4": {
       "dlf\\": ""
     }
-  },
-  "extra": {
-    "branch-alias": {
-      "dev-master": "master",
-      "dev-dev": "dev"
-    }
   }
 }
