@@ -10,7 +10,7 @@ class Application implements \dlf\basic\interfaces\Application
     /**
      * Current application
      *
-     * @var Application 
+     * @var Application
      */
     public static $instance;
 
@@ -73,7 +73,7 @@ class Application implements \dlf\basic\interfaces\Application
 
     /**
      * Set configuration
-     * 
+     *
      * @param array $config
      */
     public function setConfiguration($config = [])
@@ -89,6 +89,16 @@ class Application implements \dlf\basic\interfaces\Application
     public function getConfiguration()
     {
         return $this->configuration;
+    }
+
+    /**
+     * Append configuration
+     *
+     * @param array $config
+     */
+    public function appendConfiguration($config)
+    {
+        $this->setConfiguration(array_merge($this->getConfiguration(), $config));
     }
 
     /**
@@ -152,7 +162,7 @@ class Application implements \dlf\basic\interfaces\Application
                 $result->loadConfiguration($config);
             } else {
                 throw new \Exception('Component have to implement \'Component\' interface',
-                500);
+                    500);
             }
         }
 
