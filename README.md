@@ -1,5 +1,5 @@
 DLF
-=====================
+====
 
 
 Project structure
@@ -12,14 +12,121 @@ basic/               basic classes
 components/          modules
     authorization/   authorization/identity module
     dbconnection/    database connection module
+exception/           exception classes
 web/                 web/net objects
 ```
 
 
 Requirements
 ------------
-    - PHP 5.4+
-    - MySQL 5.5+
+ - PHP 5.4+
+
+Installation
+------------
+DLF is available through [composer](https://getcomposer.org/)
+
+composer require datalayerru/dlf "dev-master"
+
+Alternatively you can add the following to the `require` section in your `composer.json` manually:
+
+```json
+"datalayerru/dlf": "dev-master"
+```
+Run `composer update` afterwards.
+
+
+Initialization
+--------------
+##index.php
+    ```php
+require_once("../vendor/autoload.php");
+require_once("../vendor/datalayerru/dlf/autoloader/Autoloader.php");
+
+\dlf\autoloader\Autoloader::Register(new \dlf\autoloader\Basic());
+
+
+$app = new \project\Application();
+$app->run();
+```
+##Application.php
+    ```php
+namespace project;
+
+use dlf\basic\RouteHandler;
+use Symfony\Component\Yaml\Yaml;
+
+class Application extends \dlf\basic\Application
+{
+
+    public function __construct()
+    {
+        parent::__construct(Yaml::parse(file_get_contents('../project/config/config.yaml')));
+
+        RouteHandler::registerHandler('/',
+            '\project\controllers\MainController::index');
+
+        $this->getResponse()->setHeaders([
+            "Access-Control-Allow-Headers: Content-Type",
+            "Content-Type:text/html; charset=utf-8"
+        ]);
+    }
+}
+```
+
+Controllers
+-----------
+```php
+<?php
+
+namespace project\controllers;
+
+class MainController extends \dlf\basic\Controller
+{
+
+    public function index()
+    {
+        $this->title = 'Main page';
+
+        return $this->render('project/views/main/index.php',
+            [
+                'name' => 'World!'
+            ]);
+    }
+}
+```
+
+
+Views
+-----
+```html
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title><?= $title ?></title>
+    <meta name="keywords" content=""/>
+    <meta name="description" content=""/>
+</head>
+<body>
+<div id="wrapper">
+    <div id="page">
+        <div id="content">
+            Hello, <?= $name ?>!
+        </div>
+    </div>
+</div>
+</body>
+</html>
+```
+
+Models
+------
+You can use everything you want:
+
+ - [cakephp/orm](https://github.com/cakephp/orm)
+ - [doctrine/doctrine2](https://github.com/doctrine/doctrine2)
+ - [propelorm/Propel2](https://github.com/propelorm/Propel2)
+
 
 
 The MIT License (MIT)
@@ -42,5 +149,5 @@ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.

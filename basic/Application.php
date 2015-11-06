@@ -122,9 +122,16 @@ class Application implements \dlf\basic\interfaces\Application
      */
     public function run()
     {
-        $this->response->setBody(RouteHandler::evalHandler($this->request->getPath()));
+        try {
+            $this->response->setBody(RouteHandler::evalHandler($this->request->getPath()));
 
-        $this->response->send();
+            $this->response->send();
+        } catch (\Exception $ex) {
+            echo '<h2>Handled exception</h2>';
+            echo '<pre>';
+            echo $ex->getTraceAsString();
+            echo '</pre>';
+        }
     }
 
     /**
@@ -161,7 +168,7 @@ class Application implements \dlf\basic\interfaces\Application
             if ($result instanceof \dlf\basic\interfaces\Component) {
                 $result->loadConfiguration($config);
             } else {
-                throw new \Exception('Component have to implement \'Component\' interface',
+                throw new \Exception('Component must implement \'Component\' interface',
                     500);
             }
         }
