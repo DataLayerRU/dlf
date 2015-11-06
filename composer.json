@@ -14,7 +14,7 @@
   "authors": [
     {
       "name": "Zinchenko Sergey",
-      "email": "s.zinchenko@rassvet.ru"
+      "email": "zinchenko@datalayer.ru"
     }
   ],
   "require": {
@@ -30,7 +30,8 @@
   },
   "extra": {
     "branch-alias": {
-      "dev-master": "master"
+      "dev-master": "master",
+      "dev-dev": "dev"
     }
   }
 }
