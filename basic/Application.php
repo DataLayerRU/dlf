@@ -10,7 +10,7 @@ class Application implements \dlf\basic\interfaces\Application
     /**
      * Current application
      *
-     * @var Application 
+     * @var Application
      */
     public static $instance;
 
@@ -73,7 +73,7 @@ class Application implements \dlf\basic\interfaces\Application
 
     /**
      * Set configuration
-     * 
+     *
      * @param array $config
      */
     public function setConfiguration($config = [])
@@ -89,6 +89,16 @@ class Application implements \dlf\basic\interfaces\Application
     public function getConfiguration()
     {
         return $this->configuration;
+    }
+
+    /**
+     * Append configuration
+     *
+     * @param array $config
+     */
+    public function appendConfiguration($config)
+    {
+        $this->setConfiguration(array_merge($this->getConfiguration(), $config));
     }
 
     /**
@@ -112,9 +122,16 @@ class Application implements \dlf\basic\interfaces\Application
      */
     public function run()
     {
-        $this->response->setBody(RouteHandler::evalHandler($this->request->getPath()));
+        try {
+            $this->response->setBody(RouteHandler::evalHandler($this->request->getPath()));
 
-        $this->response->send();
+            $this->response->send();
+        } catch (\Exception $ex) {
+            echo '<h2>Handled exception</h2>';
+            echo '<pre>';
+            echo $ex->getTraceAsString();
+            echo '</pre>';
+        }
     }
 
     /**
@@ -151,8 +168,8 @@ class Application implements \dlf\basic\interfaces\Application
             if ($result instanceof \dlf\basic\interfaces\Component) {
                 $result->loadConfiguration($config);
             } else {
-                throw new \Exception('Component have to implement \'Component\' interface',
-                500);
+                throw new \Exception('Component must implement \'Component\' interface',
+                    500);
             }
         }
 

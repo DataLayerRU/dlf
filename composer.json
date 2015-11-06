@@ -1,5 +1,6 @@
 {
   "name": "datalayerru/dlf",
+  "version": "0.1",
   "description": "DataLayer framework",
   "homepage": "http://datalayer.ru/",
   "keywords": [
@@ -14,7 +15,7 @@
   "authors": [
     {
       "name": "Zinchenko Sergey",
-      "email": "s.zinchenko@rassvet.ru"
+      "email": "zinchenko@datalayer.ru"
     }
   ],
   "require": {
@@ -26,11 +27,6 @@
   "autoload": {
     "psr-4": {
       "dlf\\": ""
-    }
-  },
-  "extra": {
-    "branch-alias": {
-      "dev-master": "master"
     }
   }
 }
