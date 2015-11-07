@@ -5,7 +5,6 @@ DLF
 Project structure
 -------------------
 ```
-
 autoloader/          autoloader
 basic/               basic classes
     interfaces/      basic interfaces
@@ -38,7 +37,7 @@ Run `composer update` afterwards.
 Initialization
 --------------
 ##index.php
-    ```php
+```php
 require_once("../vendor/autoload.php");
 require_once("../vendor/datalayerru/dlf/autoloader/Autoloader.php");
 
@@ -49,7 +48,7 @@ $app = new \project\Application();
 $app->run();
 ```
 ##Application.php
-    ```php
+```php
 namespace project;
 
 use dlf\basic\RouteHandler;
