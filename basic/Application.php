@@ -4,6 +4,7 @@ namespace dlf\basic;
 
 use dlf\web\Request;
 use dlf\web\Response;
+use dlf\exception\interfaces\HttpException;
 
 class Application implements \dlf\basic\interfaces\Application
 {
@@ -126,11 +127,25 @@ class Application implements \dlf\basic\interfaces\Application
             $this->response->setBody(RouteHandler::evalHandler($this->request->getPath()));
 
             $this->response->send();
+        } catch (HttpException $ex) {
+            $this->sendHeaders($ex->getHeaders());
         } catch (\Exception $ex) {
             echo '<h2>Handled exception</h2>';
             echo '<pre>';
             echo $ex->getTraceAsString();
             echo '</pre>';
+        }
+    }
+
+    /**
+     * Send headers
+     *
+     * @param array $headers
+     */
+    protected function sendHeaders($headers)
+    {
+        foreach ($headers as $header) {
+            header($header);
         }
     }
 
@@ -169,7 +184,7 @@ class Application implements \dlf\basic\interfaces\Application
                 $result->loadConfiguration($config);
             } else {
                 throw new \Exception('Component must implement \'Component\' interface',
-                    500);
+                500);
             }
         }
 
