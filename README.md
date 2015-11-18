@@ -5,7 +5,6 @@ DLF
 Project structure
 -------------------
 ```
-
 autoloader/          autoloader
 basic/               basic classes
     interfaces/      basic interfaces
@@ -38,7 +37,7 @@ Run `composer update` afterwards.
 Initialization
 --------------
 ##index.php
-    ```php
+```php
 require_once("../vendor/autoload.php");
 require_once("../vendor/datalayerru/dlf/autoloader/Autoloader.php");
 
@@ -49,7 +48,7 @@ $app = new \project\Application();
 $app->run();
 ```
 ##Application.php
-    ```php
+```php
 namespace project;
 
 use dlf\basic\RouteHandler;
@@ -121,11 +120,55 @@ Views
 
 Models
 ------
-You can use everything you want:
+```php
+class PostModel extends \dlf\basic\DBModel
+{
 
- - [cakephp/orm](https://github.com/cakephp/orm)
- - [doctrine/doctrine2](https://github.com/doctrine/doctrine2)
- - [propelorm/Propel2](https://github.com/propelorm/Propel2)
+    /**
+     * @inheritdoc
+     */
+    public function getOne($primaryKeyValue)
+    {
+        $this->setAttrubutes($this->getDB()->query('SELECT * FROM post WHERE id=:id',
+                [
+                'id' => $primaryKeyValue
+            ])->fetch(PDO::FETCH_ASSOC));
+
+        return $this;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function save()
+    {
+
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public static function getAll(\dlf\components\dbconnection\interfaces\Connection $db)
+    {
+        $result = [];
+
+        $rows = $db->query('SELECT * FROM post')->fetchAll();
+
+        foreach ($rows as $value) {
+            $o        = new PostModel($db);
+            $o->setAttrubutes($value);
+            $result[] = $o;
+        }
+
+        return $result;
+    }
+
+    public function validate($attributes = array())
+    {
+        return true;
+    }
+}
+```
 
 
 
