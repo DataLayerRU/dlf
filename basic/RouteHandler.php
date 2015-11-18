@@ -69,7 +69,7 @@ class RouteHandler
         } elseif ($handler instanceof \Closure) {
             $result = $handler();
         } else {
-            throw new \Exception('Not ');
+            throw new HttpNotFoundException();
         }
 
         return $result;

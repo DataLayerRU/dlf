@@ -2,12 +2,20 @@
 
 namespace dlf\exception;
 
-use Exception;
+use dlf\exception\interfaces\HttpExceptionAbstract;
 
-class HttpNotFoundException extends Exception
+class HttpNotFoundException extends HttpExceptionAbstract
 {
+
     public function __construct(Exception $previous = null)
     {
         parent::__construct('Not found', 404, $previous);
+
+        $this->addHeader('HTTP/1.0 404 Not Found');
+    }
+
+    public function getContent()
+    {
+        return '404. Not found.';
     }
 }
