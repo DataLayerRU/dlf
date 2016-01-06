@@ -1,6 +1,6 @@
 <?php
 
-namespace dlf\exception\interfaces;
+namespace dlf\exception\abstraction;
 
 use dlf\traits\HeadersTrait;
 use dlf\exception\interfaces\HttpException;

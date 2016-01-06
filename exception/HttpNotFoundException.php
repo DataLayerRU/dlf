@@ -2,7 +2,7 @@
 
 namespace dlf\exception;
 
-use dlf\exception\interfaces\HttpExceptionAbstract;
+use dlf\exception\abstraction\HttpExceptionAbstract;
 
 class HttpNotFoundException extends HttpExceptionAbstract
 {
