@@ -22,6 +22,7 @@ class WebController extends Controller
 
     public function __construct()
     {
+        parent::__construct();
         $this->setView(new View());
     }
 
