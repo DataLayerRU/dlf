@@ -19,12 +19,14 @@ class Authorization implements Component
      * Set current user
      *
      * @param Identity $user
+     * @return Authorization
      */
     public function setIdentity(Identity $user)
     {
         $this->identity = $user;
 
         Application::$instance->getResponse()->addCookie('auth-token', $user->getAuthToken());
+        return $this;
     }
 
     /**
@@ -39,11 +41,14 @@ class Authorization implements Component
 
     /**
      * Remove identity / logout
+     *
+     * @return Authorization
      */
     public function clearIdentity()
     {
         $this->identity = null;
         Application::$instance->getResponse()->removeCookie('auth-token');
+        return $this;
     }
 
     public function isAuthorized()

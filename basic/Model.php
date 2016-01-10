@@ -28,20 +28,24 @@ abstract class Model implements \dlf\basic\interfaces\Model
      * Set all attributes
      *
      * @param array $attributes
+     * @return Model
      */
     public function setAttributes($attributes = [])
     {
         $this->attributes = $attributes;
+        return $this;
     }
 
     /**
      * Append attributes
      *
      * @param array $attributes
+     * @return Model
      */
     public function appendAttributes($attributes = [])
     {
         $this->setAttributes(array_merge($this->attributes, $attributes));
+        return $this;
     }
 
     /**
@@ -59,10 +63,12 @@ abstract class Model implements \dlf\basic\interfaces\Model
      *
      * @param string $name
      * @param string $value
+     * @return Model
      */
     public function setAttribute($name, $value)
     {
         $this->attributes[$name] = $value;
+        return $this;
     }
 
     /**
@@ -98,10 +104,12 @@ abstract class Model implements \dlf\basic\interfaces\Model
      *
      * @param string $attribute
      * @param string $message
+     * @return Model
      */
     public function addError($attribute, $message)
     {
         $this->errors[$attribute] = $message;
+        return $this;
     }
 
     /**

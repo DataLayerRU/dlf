@@ -29,10 +29,12 @@ class WebController extends Controller
      * Set view
      *
      * @param dlf\basic\View $view
+     * @return WebController
      */
     public function setView(View $view)
     {
         $this->view = $view;
+        return $this;
     }
 
     /**

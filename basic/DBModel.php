@@ -23,10 +23,12 @@ abstract class DBModel extends Model
      * Set connection
      *
      * @param \dlf\basic\interfaces\Component $connection
+     * @return DBModel
      */
     public function setDB(\dlf\basic\interfaces\Component $connection)
     {
         $this->connection = $connection;
+        return $this;
     }
 
     /**
