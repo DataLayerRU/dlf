@@ -1,10 +1,10 @@
 <?php
 
-namespace dlf\basic;
+namespace dlf\basic\controller;
 
 use dlf\basic\View;
 
-class Controller
+class WebController extends Controller
 {
     /**
      * Title
@@ -47,7 +47,7 @@ class Controller
 
     /**
      * Render view
-     * 
+     *
      * @param string $viewPath
      * @param array $params
      * @return string
