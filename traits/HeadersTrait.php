@@ -10,10 +10,12 @@ trait HeadersTrait
      * Set header list
      *
      * @param array $headers
+     * @return $this
      */
     public function setHeaders($headers)
     {
         $this->headers = $headers;
+        return $this;
     }
 
     /**
@@ -30,17 +32,22 @@ trait HeadersTrait
      * Add single header
      *
      * @param string $header
+     * @return $this
      */
     public function addHeader($header)
     {
         $this->headers[] = $header;
+        return $this;
     }
 
     /**
      * Clear headers
+     *
+     * @return $this
      */
     public function clearHeaders()
     {
         $this->setHeaders([]);
+        return $this;
     }
 }

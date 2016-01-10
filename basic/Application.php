@@ -76,10 +76,12 @@ class Application implements \dlf\basic\interfaces\Application
      * Set configuration
      *
      * @param array $config
+     * @return Application
      */
     public function setConfiguration($config = [])
     {
         $this->configuration = $config;
+        return $this;
     }
 
     /**
@@ -96,10 +98,12 @@ class Application implements \dlf\basic\interfaces\Application
      * Append configuration
      *
      * @param array $config
+     * @return Application
      */
     public function appendConfiguration($config)
     {
         $this->setConfiguration(array_merge($this->getConfiguration(), $config));
+        return $this;
     }
 
     /**
@@ -141,12 +145,14 @@ class Application implements \dlf\basic\interfaces\Application
      * Send headers
      *
      * @param array $headers
+     * @return Application
      */
     protected function sendHeaders($headers)
     {
         foreach ($headers as $header) {
             header($header);
         }
+        return $this;
     }
 
     /**

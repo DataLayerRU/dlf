@@ -1,6 +1,7 @@
 <?php
 
 namespace dlf\basic;
+
 use dlf\exception\HttpNotFoundException;
 
 /**
@@ -38,10 +39,10 @@ class RouteHandler
     {
         $result = null;
 
-        $path = '/' . rtrim($path, " /");
+        $path = '/'.rtrim($path, " /");
 
         foreach (static::$routes as $key => $handler) {
-            if (preg_match('#' . addslashes($key) . '$#i', $path)) {
+            if (preg_match('#'.addslashes($key).'$#i', $path)) {
                 $result = $handler;
                 break;
             }

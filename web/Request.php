@@ -20,10 +20,12 @@ class Request
      * Set params
      *
      * @param array $params
+     * @return Request
      */
     public function setRequestParams($params)
     {
         $this->requestParams = $params;
+        return $this;
     }
 
     /**

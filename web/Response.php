@@ -59,10 +59,12 @@ class Response
      * Set headers
      *
      * @param array $headers
+     * @return Response
      */
     public function setHeaders($headers)
     {
         $this->headers = $headers;
+        return $this;
     }
 
     /**
@@ -79,10 +81,12 @@ class Response
      * Set cookies
      *
      * @param array $cookies
+     * @return Response
      */
     public function setCookies($cookies)
     {
         $this->cookies = $cookies;
+        return $this;
     }
 
     /**
@@ -92,6 +96,7 @@ class Response
      * @param string $value
      * @param intetger $expire
      * @param string $path
+     * @return Response
      */
     public function addCookie($name, $value, $expire = null, $path = null)
     {
@@ -100,6 +105,7 @@ class Response
             'expire' => $expire,
             'path' => $path
         ];
+        return $this;
     }
 
     /**
@@ -116,20 +122,24 @@ class Response
      * Add single header
      *
      * @param string $header
+     * @return Response
      */
     public function addHeader($header)
     {
         $this->headers[] = $header;
+        return $this;
     }
 
     /**
      * Set body
      *
      * @param mixed $body
+     * @return Response
      */
     public function setBody($body)
     {
         $this->body = $body;
+        return $this;
     }
 
     /**
@@ -144,10 +154,13 @@ class Response
 
     /**
      * Clear header list
+     *
+     * @return Response
      */
     public function clear()
     {
         $this->headers = [];
+        return $this;
     }
 
     /**
@@ -174,10 +187,12 @@ class Response
      * Set response type
      *
      * @param integer $type
+     * @return Response
      */
     public function setResponseType($type)
     {
         $this->responseType = $type;
+        return $this;
     }
 
     /**
@@ -211,6 +226,8 @@ class Response
 
     /**
      * Send headers
+     *
+     * @return Response
      */
     protected function sendHeaders()
     {
@@ -219,10 +236,13 @@ class Response
         foreach ($headers as $header) {
             header($header);
         }
+        return $this;
     }
 
     /**
      * Send cookies
+     *
+     * @return Response
      */
     protected function sendCookies()
     {
@@ -231,25 +251,32 @@ class Response
         foreach ($cookies as $name => $cookie) {
             setcookie($name, $cookie['value'], $cookie['expire'], $cookie['path']);
         }
+
+        return $this;
     }
 
     /**
      * Remove cookie
      *
      * @param string $name
+     * @return Response
      */
     public function removeCookie($name)
     {
         $this->addCookie($name, null, -1);
+
+        return $this;
     }
 
     /**
      * Redirect
      *
      * @param string $path
+     * @return Response
      */
     public function redirect($path)
     {
         $this->addHeader('Location: ' . $path);
+        return $this;
     }
 }
