@@ -6,12 +6,16 @@ Project structure
 -------------------
 ```
 autoloader/          autoloader
-basic/               basic classes
-    interfaces/      basic interfaces
+basic/               base classes
+    controller/      base controllers
+    interfaces/      base interfaces
 components/          modules
     authorization/   authorization/identity module
     dbconnection/    database connection module
 exception/           exception classes
+    abstraction/     abstract classes
+    interfaces/      exception interfaces
+traits/              base traits
 web/                 web/net objects
 ```
 
