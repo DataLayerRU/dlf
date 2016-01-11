@@ -196,4 +196,14 @@ class Application implements \dlf\basic\interfaces\Application
 
         return $result;
     }
+
+    /**
+     * Is handler available
+     *
+     * @return boolean
+     */
+    protected function checkHandlerAccess()
+    {
+        return true;
+    }
 }

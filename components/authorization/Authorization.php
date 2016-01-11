@@ -5,8 +5,9 @@ namespace dlf\components\authorization;
 use project\Application;
 use dlf\basic\interfaces\Component;
 use dlf\components\authorization\interfaces\Identity;
+use dlf\components\authorization\interfaces\AuthorizationComponent;
 
-class Authorization implements Component
+class Authorization implements Component, AuthorizationComponent
 {
     /**
      * Current user
@@ -59,6 +60,11 @@ class Authorization implements Component
     public function loadConfiguration($config = [])
     {
 
+    }
+
+    public function isAvailable($name)
+    {
+        return true;
     }
 
     public function init()
