@@ -55,7 +55,7 @@ class RouteHandler
      * Evaluate handler
      *
      * @param string $path
-     * @return mixed
+     * @return \Closure
      */
     public static function evalHandler($path)
     {
@@ -66,9 +66,9 @@ class RouteHandler
         if (is_string($handler)) {
             $ca         = static::parseHandler($handler);
             $controller = new $ca['controller'];
-            $result     = $controller->$ca['action']();
+            $result     = [$controller, $ca['action']];
         } elseif ($handler instanceof \Closure) {
-            $result = $handler();
+            $result = $handler;
         } else {
             throw new HttpNotFoundException();
         }

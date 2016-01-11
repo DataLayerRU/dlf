@@ -128,7 +128,18 @@ class Application implements \dlf\basic\interfaces\Application
     public function run()
     {
         try {
-            $this->response->setBody(RouteHandler::evalHandler($this->request->getPath()));
+            $this->response->setBody(\dlf\Helpers::call(RouteHandler::evalHandler($this->request->getPath()),
+                    function($paramName) {
+                    if (($component = $this->getComponent($paramName)) !== null) {
+                        return $component;
+                    }
+                    if (filter_has_var(INPUT_GET, $paramName)) {
+                        return filter_input(INPUT_GET, $paramName);
+                    }
+                    if (filter_has_var(INPUT_POST, $paramName)) {
+                        return filter_input(INPUT_POST, $paramName);
+                    }
+                }));
 
             $this->response->send();
         } catch (HttpException $ex) {
@@ -163,8 +174,8 @@ class Application implements \dlf\basic\interfaces\Application
      */
     public function getComponent($name)
     {
-        if (!isset($this->componentCache[$name])) {
-            $this->componentCache[$name] = $this->createComponent($name);
+        if (!isset($this->componentCache[$name]) && ($this->componentCache[$name]
+            = $this->createComponent($name)) !== null) {
             $this->componentCache[$name]->init();
         }
 
