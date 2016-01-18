@@ -1,4 +1,4 @@
-DLF
+dlf
 ====
 [http://dlf.datalayer.ru](http://dlf.datalayer.ru)
 
@@ -6,16 +6,12 @@ Project structure
 -------------------
 ```
 autoloader/          autoloader
-basic/               base classes
-    controller/      base controllers
-    interfaces/      base interfaces
+basic/               basic classes
+    interfaces/      basic interfaces
 components/          modules
     authorization/   authorization/identity module
     dbconnection/    database connection module
 exception/           exception classes
-    abstraction/     abstract classes
-    interfaces/      exception interfaces
-traits/              base traits
 web/                 web/net objects
 ```
 
@@ -26,7 +22,7 @@ Requirements
 
 Installation
 ------------
-DLF is available through [composer](https://getcomposer.org/)
+dlf is available through [composer](https://getcomposer.org/)
 
 composer require datalayerru/dlf "dev-master"
 
