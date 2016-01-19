@@ -78,4 +78,50 @@ abstract class Model implements \dlf\components\datamapper\interfaces\Model
     {
         return isset($this->attributes[$name]);
     }
+
+    /**
+     * Overload
+     *
+     * @param string $name
+     * @return mixed
+     */
+    public function __get($name)
+    {
+        if ($this->attributeExists($name)) {
+            return $this->getAttribute($name);
+        }
+        return parent::__get($name);
+    }
+
+    /**
+     * Overload
+     * 
+     * @param string $name
+     * @param mixed $value
+     */
+    public function __set($name, $value)
+    {
+        $this->setAttribute($name, $value);
+    }
+
+    /**
+     * Overload
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function __isset($name)
+    {
+        return $this->attributeExists($name);
+    }
+
+    /**
+     * Unset attribute
+     *
+     * @param string $name
+     */
+    public function __unset($name)
+    {
+        $this->setAttribute($name, null);
+    }
 }
