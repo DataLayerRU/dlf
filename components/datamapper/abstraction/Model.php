@@ -2,7 +2,7 @@
 
 namespace dlf\components\datamapper\abstraction;
 
-abstract class Model implements \dlf\components\datamapper\interfaces\Model
+abstract class Model implements \dlf\components\activerecord\interfaces\Model
 {
     /**
      * Model attributes

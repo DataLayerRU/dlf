@@ -11,6 +11,13 @@ abstract class Model extends \dlf\components\datamapper\abstraction\Model
      */
     private $connection;
 
+    public function __construct($connection, array $attributes = array())
+    {
+        parent::__construct($attributes);
+
+        $this->setConnection($connection);
+    }
+
     /**
      * Set connection
      *
