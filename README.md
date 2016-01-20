@@ -1,4 +1,4 @@
-DLF
+dlf
 ====
 [http://dlf.datalayer.ru](http://dlf.datalayer.ru)
 
@@ -7,11 +7,17 @@ Project structure
 ```
 autoloader/          autoloader
 basic/               basic classes
+    controller/      basic controllers
     interfaces/      basic interfaces
 components/          modules
+    activerecord/    AR pattern
     authorization/   authorization/identity module
+    datamapper/      data mapper pattern
     dbconnection/    database connection module
 exception/           exception classes
+    abstraction/     abstract classes
+    interfaces/      interfaces
+traits/              traits
 web/                 web/net objects
 ```
 
@@ -22,7 +28,7 @@ Requirements
 
 Installation
 ------------
-DLF is available through [composer](https://getcomposer.org/)
+dlf is available through [composer](https://getcomposer.org/)
 
 composer require datalayerru/dlf "dev-master"
 
@@ -175,7 +181,7 @@ class PostModel extends \dlf\basic\DBModel
 The MIT License (MIT)
 ---------------------
 
-Copyright (c) 2015 Sergey Zinchenko, [DataLayer.ru](http://datalayer.ru/)
+Copyright (c) 2016 Sergey Zinchenko, [DataLayer.ru](http://datalayer.ru/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

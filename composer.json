@@ -1,8 +1,8 @@
 {
   "name": "datalayerru/dlf",
-  "version": "0.1",
+  "version": "0.2",
   "description": "DataLayer framework",
-  "homepage": "http://datalayer.ru/",
+  "homepage": "http://dlf.datalayer.ru/",
   "keywords": [
     "dlf",
     "datalayer",
