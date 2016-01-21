@@ -180,7 +180,7 @@ class PostModel extends \pwf\basic\DBModel
 The MIT License (MIT)
 ---------------------
 
-Copyright (c) 2016 Sergey Zinchenko, [Web-development.pw](http://web-development.pw/)
+Copyright (c) 2016 Sergey Zinchenko, [Professional web](http://web-developmwnt.pw)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
