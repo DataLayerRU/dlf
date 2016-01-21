@@ -1,7 +1,7 @@
 <?php
 
-namespace dlf\basic;
-use dlf\exception\HttpNotFoundException;
+namespace pwf\basic;
+use pwf\exception\HttpNotFoundException;
 
 /**
  * Route handler

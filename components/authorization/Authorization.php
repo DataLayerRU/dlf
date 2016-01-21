@@ -1,10 +1,10 @@
 <?php
 
-namespace dlf\components\authorization;
+namespace pwf\components\authorization;
 
 use project\Application;
-use dlf\basic\interfaces\Component;
-use dlf\components\authorization\interfaces\Identity;
+use pwf\basic\interfaces\Component;
+use pwf\components\authorization\interfaces\Identity;
 
 class Authorization implements Component
 {

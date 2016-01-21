@@ -1,10 +1,10 @@
 <?php
 
-namespace dlf\components\dbconnection;
+namespace pwf\components\dbconnection;
 
 use PDO;
 
-class PDOConnection extends \dlf\components\dbconnection\abstraction\Connection implements \dlf\basic\interfaces\Component
+class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection implements \pwf\basic\interfaces\Component
 {
     private $PDO;
 

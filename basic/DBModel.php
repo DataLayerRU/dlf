@@ -1,17 +1,17 @@
 <?php
 
-namespace dlf\basic;
+namespace pwf\basic;
 
 abstract class DBModel extends Model
 {
     /**
      * Connection
      *
-     * @var \dlf\basic\interfaces\Component
+     * @var \pwf\basic\interfaces\Component
      */
     private $connection;
 
-    public function __construct(\dlf\basic\interfaces\Component $connection,
+    public function __construct(\pwf\basic\interfaces\Component $connection,
                                 $attributes = [])
     {
         parent::__construct($attributes);
@@ -22,9 +22,9 @@ abstract class DBModel extends Model
     /**
      * Set connection
      *
-     * @param \dlf\basic\interfaces\Component $connection
+     * @param \pwf\basic\interfaces\Component $connection
      */
-    public function setDB(\dlf\basic\interfaces\Component $connection)
+    public function setDB(\pwf\basic\interfaces\Component $connection)
     {
         $this->connection = $connection;
     }
@@ -32,7 +32,7 @@ abstract class DBModel extends Model
     /**
      * Get connection
      *
-     * @return \dlf\basic\interfaces\Component
+     * @return \pwf\basic\interfaces\Component
      */
     public function getDB()
     {

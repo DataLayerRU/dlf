@@ -1,8 +1,8 @@
 <?php
 
-namespace dlf\basic;
+namespace pwf\basic;
 
-class View implements \dlf\basic\interfaces\View
+class View implements \pwf\basic\interfaces\View
 {
 
     /**

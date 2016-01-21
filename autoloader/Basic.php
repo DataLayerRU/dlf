@@ -1,6 +1,6 @@
 <?php
 
-namespace dlf\autoloader;
+namespace pwf\autoloader;
 
 class Basic extends Handler
 {

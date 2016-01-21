@@ -1,6 +1,6 @@
 <?php
 
-namespace dlf\components\dbconnection\interfaces;
+namespace pwf\components\dbconnection\interfaces;
 
 interface Connection
 {

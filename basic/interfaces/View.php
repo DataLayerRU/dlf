@@ -1,6 +1,6 @@
 <?php
 
-namespace dlf\basic\interfaces;
+namespace pwf\basic\interfaces;
 
 interface View
 {

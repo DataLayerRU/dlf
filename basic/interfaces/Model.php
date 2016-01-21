@@ -1,6 +1,6 @@
 <?php
 
-namespace dlf\basic\interfaces;
+namespace pwf\basic\interfaces;
 
 interface Model
 {
@@ -15,10 +15,10 @@ interface Model
     /**
      * Get all rows
      *
-     * @param \dlf\components\dbconnection\interfaces\Connection $db
+     * @param \pwf\components\dbconnection\interfaces\Connection $db
      * @return \project\models\UserModel[]
      */
-    public static function getAll(\dlf\components\dbconnection\interfaces\Connection $db);
+    public static function getAll(\pwf\components\dbconnection\interfaces\Connection $db);
 
     /**
      * Save model

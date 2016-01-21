@@ -1,8 +1,8 @@
 <?php
 
-namespace dlf\basic;
+namespace pwf\basic;
 
-use dlf\basic\View;
+use pwf\basic\View;
 
 class Controller
 {
@@ -16,7 +16,7 @@ class Controller
     /**
      * Current View
      *
-     * @var dlf\basic\View
+     * @var pwf\basic\View
      */
     private $view;
 
@@ -28,7 +28,7 @@ class Controller
     /**
      * Set view
      *
-     * @param dlf\basic\View $view
+     * @param pwf\basic\View $view
      */
     public function setView(View $view)
     {
@@ -38,7 +38,7 @@ class Controller
     /**
      * Get view object
      *
-     * @return dlf\basic\View
+     * @return pwf\basic\View
      */
     public function getView()
     {

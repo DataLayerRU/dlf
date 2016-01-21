@@ -1,6 +1,6 @@
 <?php
 
-namespace dlf\exception;
+namespace pwf\exception;
 
 use Exception;
 

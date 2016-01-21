@@ -1,6 +1,6 @@
 <?php
 
-namespace dlf\web;
+namespace pwf\web;
 
 class Request
 {

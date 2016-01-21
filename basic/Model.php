@@ -1,8 +1,8 @@
 <?php
 
-namespace dlf\basic;
+namespace pwf\basic;
 
-abstract class Model implements \dlf\basic\interfaces\Model
+abstract class Model implements \pwf\basic\interfaces\Model
 {
     /**
      * Attributes
