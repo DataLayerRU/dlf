@@ -1,8 +1,8 @@
 <?php
 
-namespace dlf\basic\controller;
+namespace pwf\basic\controller;
 
-use dlf\web\Request;
+use pwf\web\Request;
 
 class Controller
 {

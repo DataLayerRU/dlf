@@ -1,8 +1,8 @@
 <?php
 
-namespace dlf\basic\controller;
+namespace pwf\basic\controller;
 
-use dlf\basic\View;
+use pwf\basic\View;
 
 class WebController extends Controller
 {
@@ -16,7 +16,7 @@ class WebController extends Controller
     /**
      * Current View
      *
-     * @var dlf\basic\View
+     * @var pwf\basic\View
      */
     private $view;
 
@@ -29,7 +29,7 @@ class WebController extends Controller
     /**
      * Set view
      *
-     * @param dlf\basic\View $view
+     * @param pwf\basic\View $view
      * @return WebController
      */
     public function setView(View $view)
@@ -41,7 +41,7 @@ class WebController extends Controller
     /**
      * Get view object
      *
-     * @return dlf\basic\View
+     * @return pwf\basic\View
      */
     public function getView()
     {

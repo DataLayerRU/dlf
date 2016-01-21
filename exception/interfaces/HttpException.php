@@ -1,6 +1,6 @@
 <?php
 
-namespace dlf\exception\interfaces;
+namespace pwf\exception\interfaces;
 
 interface HttpException
 {

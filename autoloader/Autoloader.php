@@ -1,6 +1,6 @@
 <?php
 
-namespace dlf\autoloader;
+namespace pwf\autoloader;
 
 require_once(dirname(__FILE__).'/Handler.php');
 require_once(dirname(__FILE__).'/Basic.php');

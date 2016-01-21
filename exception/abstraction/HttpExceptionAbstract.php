@@ -1,9 +1,9 @@
 <?php
 
-namespace dlf\exception\abstraction;
+namespace pwf\exception\abstraction;
 
-use dlf\traits\HeadersTrait;
-use dlf\exception\interfaces\HttpException;
+use pwf\traits\HeadersTrait;
+use pwf\exception\interfaces\HttpException;
 
 abstract class HttpExceptionAbstract extends \Exception implements HttpException
 {

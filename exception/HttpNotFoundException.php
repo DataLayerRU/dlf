@@ -1,8 +1,8 @@
 <?php
 
-namespace dlf\exception;
+namespace pwf\exception;
 
-use dlf\exception\abstraction\HttpExceptionAbstract;
+use pwf\exception\abstraction\HttpExceptionAbstract;
 
 class HttpNotFoundException extends HttpExceptionAbstract
 {

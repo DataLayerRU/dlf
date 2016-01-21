@@ -1,8 +1,8 @@
 <?php
 
-namespace dlf\components\datamapper;
+namespace pwf\components\datamapper;
 
-abstract class Model extends \dlf\components\datamapper\abstraction\Model
+abstract class Model extends \pwf\components\datamapper\abstraction\Model
 {
     /**
      * Add error

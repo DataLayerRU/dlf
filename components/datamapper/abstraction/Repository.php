@@ -1,8 +1,8 @@
 <?php
 
-namespace dlf\components\datamapper\abstraction;
+namespace pwf\components\datamapper\abstraction;
 
-abstract class Repository implements \dlf\components\datamapper\interfaces\Repository
+abstract class Repository implements \pwf\components\datamapper\interfaces\Repository
 {
     private $connection;
 
@@ -10,7 +10,7 @@ abstract class Repository implements \dlf\components\datamapper\interfaces\Repos
      * Set connection object
      *
      * @param mixed $connection
-     * @return \dlf\components\datamapper\abstraction\Repository
+     * @return \pwf\components\datamapper\abstraction\Repository
      */
     public function setConnection($connection)
     {

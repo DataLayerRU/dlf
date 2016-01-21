@@ -1,12 +1,12 @@
 <?php
 
-namespace dlf\components\datamapper;
+namespace pwf\components\datamapper;
 
 /**
- * @method \dlf\basic\Repository setConnection(\dlf\components\dbconnection\interfaces\Connection $paramName) Set connection
- * @method \dlf\components\dbconnection\interfaces\Connection getConnection() Get connection
+ * @method \pwf\basic\Repository setConnection(\pwf\components\dbconnection\interfaces\Connection $paramName) Set connection
+ * @method \pwf\components\dbconnection\interfaces\Connection getConnection() Get connection
  */
-abstract class Repository extends \dlf\components\datamapper\abstraction\Repository
+abstract class Repository extends \pwf\components\datamapper\abstraction\Repository
 {
 
 }
