@@ -2,6 +2,9 @@
 
 namespace pwf\basic\interfaces;
 
+use pwf\web\Request;
+use pwf\web\Response;
+
 interface Controller
 {
 
