@@ -2,7 +2,7 @@
   "name": "professionalweb/pwf",
   "version": "0.2",
   "description": "PW framework",
-  "homepage": "http://dlf.web-development.pw/",
+  "homepage": "http://pwf.web-development.pw/",
   "keywords": [
     "pwf",
     "professional web",
@@ -14,7 +14,8 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "Zinchenko Sergey"
+      "name": "Zinchenko Sergey",
+      "email": "zinchenko@web-development.pw"
     }
   ],
   "require": {
