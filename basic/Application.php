@@ -128,7 +128,13 @@ class Application implements \pwf\basic\interfaces\Application
     public function run()
     {
         try {
-            $this->response->setBody(\pwf\Helpers::call(RouteHandler::evalHandler($this->request->getPath()),
+            $callback = RouteHandler::evalHandler($this->request->getPath());
+
+            if (is_array($callback) && $callback[0] instanceof \pwf\basic\interfaces\Controller) {
+                $callback[0]->setRequest($this->getRequest())->setResponse($this->getResponse());
+            }
+
+            $this->response->setBody(\pwf\Helpers::call($callback,
                     function($paramName) {
                     if (($component = $this->getComponent($paramName)) !== null) {
                         return $component;
