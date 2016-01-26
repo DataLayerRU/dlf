@@ -8,23 +8,23 @@ interface Subject
     /**
      * Attach observer
      *
-     * @param mixed $type
      * @param \pwf\components\observer\interfaces\Observer $observer
+     * @param mixed $type
      */
-    public function attach($type, Observer $observer);
+    public function attach(Observer $observer, $type = 'default');
 
     /**
      * Detach observer
      *
-     * @param mixed $type
      * @param \pwf\components\observer\interfaces\Observer $observer
+     * @param mixed $type
      */
-    public function detach($type, Observer $observer);
+    public function detach(Observer $observer, $type = 'default');
 
     /**
      * Notify observers by type
      *
      * @param mixed $type
      */
-    public function notify($type);
+    public function notify($type = 'default');
 }

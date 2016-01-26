@@ -10,7 +10,7 @@ trait ErrorTrait
      *
      * @param string $attribute
      * @param string $message
-     * @return Model
+     * @return $this
      */
     public function addError($attribute, $message)
     {

@@ -14,11 +14,11 @@ trait Subject
     /**
      * Attach observer
      *
-     * @param mixed $type
      * @param \pwf\components\observer\interfaces\Observer $observer
+     * @param mixed $type
      * @return $this
      */
-    public function attach($type, Observer $observer)
+    public function attach(Observer $observer, $type = 'default')
     {
         if (!isset($this->observers[$type])) {
             $this->observers[$type] = [];
@@ -30,11 +30,11 @@ trait Subject
     /**
      * Detach observer
      *
-     * @param mixed $type
      * @param \pwf\components\observer\interfaces\Observer $observer
+     * @param mixed $type
      * @return $this
      */
-    public function detach($type, Observer $observer)
+    public function detach(Observer $observer, $type = 'default')
     {
         if (isset($this->observers[$type])) {
             foreach ($this->observers[$type] as $key => $obs) {
@@ -51,11 +51,11 @@ trait Subject
      *
      * @param mixed $type
      */
-    public function notify($type)
+    public function notify($type = 'default')
     {
         if (isset($this->observers[$type])) {
             foreach ($this->observers[$type] as $obs) {
-                $this->observers[$type]->update($this);
+                $obs->update($this);
             }
         }
         return $this;
