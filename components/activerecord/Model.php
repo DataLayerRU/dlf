@@ -9,4 +9,5 @@ namespace pwf\components\activerecord;
 abstract class Model extends \pwf\components\activerecord\abstraction\Model
 {
 
+    use \pwf\components\datamapper\traits\ErrorTrait;
 }

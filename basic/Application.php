@@ -152,6 +152,7 @@ class Application implements \pwf\basic\interfaces\Application
             $this->sendHeaders($ex->getHeaders());
         } catch (\Exception $ex) {
             echo '<h2>Handled exception</h2>';
+            echo '<h3>'.$ex->getMessage().'</h3>';
             echo '<pre>';
             echo $ex->getTraceAsString();
             echo '</pre>';

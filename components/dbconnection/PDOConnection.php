@@ -106,8 +106,7 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
     public function exec($query, $params = [])
     {
         $this->lastStatement = $this->getPDO()->prepare($query);
-        $this->lastStatement->execute($params);
-        return $this->lastStatement;
+        return $this->lastStatement->execute($params);
     }
 
     /**
