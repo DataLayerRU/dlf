@@ -32,7 +32,7 @@ Requirements
 
 Installation
 ------------
-pwf is available through [composer](https://getcomposer.org/)
+PWF is available through [composer](https://getcomposer.org/)
 
 composer require professionalweb/pwf "dev-master"
 
