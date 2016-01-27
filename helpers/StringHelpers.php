@@ -1,6 +1,6 @@
 <?php
 
-namespace pwf\helpers\StringHelpers;
+namespace pwf\helpers;
 
 class StringHelpers
 {

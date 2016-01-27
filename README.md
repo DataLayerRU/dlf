@@ -13,9 +13,12 @@ components/          modules
     authorization/   authorization/identity module
     datamapper/      data mapper pattern
     dbconnection/    database connection module
+    eventhandler/    event handler
+    observer/        obserber pattern
 exception/           exception classes
     abstraction/     abstract classes
     interfaces/      interfaces
+helpers/             helpers
 traits/              traits
 web/                 web/net objects
 ```
