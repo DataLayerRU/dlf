@@ -2,8 +2,6 @@
 
 namespace pwf\basic;
 
-use pwf\exception\HttpNotFoundException;
-
 /**
  * Route handler
  */
