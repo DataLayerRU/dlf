@@ -50,47 +50,4 @@ class RouteHandler
 
         return $result;
     }
-
-    /**
-     * Evaluate handler
-     *
-     * @param string $path
-     * @return \Closure
-     */
-    public static function evalHandler($path)
-    {
-        $result = null;
-
-        $handler = static::getHandler($path);
-
-        if (is_string($handler)) {
-            $ca         = static::parseHandler($handler);
-            $controller = new $ca['controller'];
-            $result     = [$controller, $ca['action']];
-        } elseif ($handler instanceof \Closure) {
-            $result = $handler;
-        } else {
-            throw new HttpNotFoundException();
-        }
-
-        return $result;
-    }
-
-    /**
-     * Parse handler
-     *
-     * @param string $handler
-     * @return arrat
-     */
-    public static function parseHandler($handler)
-    {
-        $result = [];
-
-        $parts = explode('::', $handler);
-
-        $result['controller'] = isset($parts[0]) ? $parts[0] : null;
-        $result['action']     = isset($parts[1]) ? $parts[1] : null;
-
-        return $result;
-    }
 }
