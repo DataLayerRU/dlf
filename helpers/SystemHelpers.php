@@ -1,27 +1,9 @@
 <?php
 
-namespace pwf;
+namespace pwf\helpers;
 
-class Helpers
+class SystemHelpers
 {
-
-    /**
-     * Hast string
-     *
-     * @param string $string
-     * @param int $iteration
-     * @return string
-     */
-    public static function hashString($string, $iteration = 5)
-    {
-        $result = $string;
-
-        for ($i = 0; $i < $iteration; $i++) {
-            $result = md5($result);
-        }
-
-        return $result;
-    }
 
     /**
      * Call function with dependency injection
