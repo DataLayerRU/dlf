@@ -130,6 +130,8 @@ class Application implements \pwf\basic\interfaces\Application
     public function run()
     {
         try {
+            $this->forceComponentLoading();
+
             $callback = $this->prepareCallback(RouteHandler::getHandler($this->request->getPath()));
 
             if (is_array($callback) && $callback[0] instanceof \pwf\basic\interfaces\Controller) {
@@ -159,6 +161,22 @@ class Application implements \pwf\basic\interfaces\Application
             echo $ex->getTraceAsString();
             echo '</pre>';
         }
+    }
+
+    /**
+     * Force component loading
+     *
+     * @return \pwf\basic\Application
+     */
+    protected function forceComponentLoading()
+    {
+        $config = $this->getConfiguration();
+        foreach ($config as $key => $params) {
+            if (isset($params['class']) && isset($params['force'])) {
+                $this->getComponent($key);
+            }
+        }
+        return $this;
     }
 
     /**
