@@ -1,10 +1,10 @@
 <?php
 
-namespace pwf\basic;
+namespace pwf\basic\controller;
 
 use pwf\basic\View;
 
-class Controller
+class WebController extends Controller
 {
     /**
      * Title
@@ -22,6 +22,7 @@ class Controller
 
     public function __construct()
     {
+        parent::__construct();
         $this->setView(new View());
     }
 
@@ -29,10 +30,12 @@ class Controller
      * Set view
      *
      * @param pwf\basic\View $view
+     * @return WebController
      */
     public function setView(View $view)
     {
         $this->view = $view;
+        return $this;
     }
 
     /**
@@ -47,7 +50,7 @@ class Controller
 
     /**
      * Render view
-     * 
+     *
      * @param string $viewPath
      * @param array $params
      * @return string

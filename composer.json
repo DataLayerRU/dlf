@@ -1,31 +1,32 @@
 {
-  "name": "professionalweb/pwf",
-  "version": "0.1",
-  "description": "PW framework",
-  "homepage": "http://web-development.pw/",
-  "keywords": [
-    "pwf",
-    "professional web",
-    "web-development.pw",
-    "mvc",
-    "composer"
-  ],
-  "type": "library",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Zinchenko Sergey"
+    "name": "professionalweb/pwf",
+    "version": "0.2",
+    "description": "PW framework",
+    "homepage": "http://pwf.web-development.pw/",
+    "keywords": [
+        "pwf",
+        "professional web",
+        "web-development.pw",
+        "mvc",
+        "composer"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Zinchenko Sergey",
+            "email": "zinchenko@web-development.pw"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "config": {
+        "process-timeout": 1800
+    },
+    "autoload": {
+        "psr-4": {
+            "pwf\\": ""
+        }
     }
-  ],
-  "require": {
-    "php": ">=5.4.0"
-  },
-  "config": {
-    "process-timeout": 1800
-  },
-  "autoload": {
-    "psr-4": {
-      "pwf\\": ""
-    }
-  }
 }

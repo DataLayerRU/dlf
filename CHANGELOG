@@ -1,6 +1,17 @@
 PWF
 ====
 
+## v0.3 In dev
+
+## v0.2 27.01.2016
+
+ - Active record
+ - Data mapper
+ - DI
+ - Observer
+ - Event handler
+ - Routing refactoring
+
 ## v0.1 06.11.2015
 
  - MVC

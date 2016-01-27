@@ -1,17 +1,25 @@
-PWF
+pwf
 ====
-
 
 Project structure
 -------------------
 ```
 autoloader/          autoloader
 basic/               basic classes
+    controller/      basic controllers
     interfaces/      basic interfaces
 components/          modules
+    activerecord/    AR pattern
     authorization/   authorization/identity module
+    datamapper/      data mapper pattern
     dbconnection/    database connection module
+    eventhandler/    event handler
+    observer/        obserber pattern
 exception/           exception classes
+    abstraction/     abstract classes
+    interfaces/      interfaces
+helpers/             helpers
+traits/              traits
 web/                 web/net objects
 ```
 
@@ -22,14 +30,14 @@ Requirements
 
 Installation
 ------------
-PWF is available through [composer](https://getcomposer.org/)
+pwf is available through [composer](https://getcomposer.org/)
 
-composer require professional-web/pwf "dev-master"
+composer require professionalweb/pwf "dev-master"
 
 Alternatively you can add the following to the `require` section in your `composer.json` manually:
 
 ```json
-"professional-web/pwf": "dev-master"
+"professionalweb/pwf": "dev-master"
 ```
 Run `composer update` afterwards.
 
@@ -175,7 +183,7 @@ class PostModel extends \pwf\basic\DBModel
 The MIT License (MIT)
 ---------------------
 
-Copyright (c) 2016 Sergey Zinchenko, [Professional web](http://web-development.pw)
+Copyright (c) 2016 Sergey Zinchenko, [Professional web](http://web-developmwnt.pw)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

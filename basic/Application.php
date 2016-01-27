@@ -4,9 +4,12 @@ namespace pwf\basic;
 
 use pwf\web\Request;
 use pwf\web\Response;
+use pwf\exception\interfaces\HttpException;
 
 class Application implements \pwf\basic\interfaces\Application
 {
+
+    use \pwf\components\eventhandler\traits\CallbackTrait;
     /**
      * Current application
      *
@@ -75,10 +78,12 @@ class Application implements \pwf\basic\interfaces\Application
      * Set configuration
      *
      * @param array $config
+     * @return Application
      */
     public function setConfiguration($config = [])
     {
         $this->configuration = $config;
+        return $this;
     }
 
     /**
@@ -95,10 +100,12 @@ class Application implements \pwf\basic\interfaces\Application
      * Append configuration
      *
      * @param array $config
+     * @return Application
      */
     public function appendConfiguration($config)
     {
         $this->setConfiguration(array_merge($this->getConfiguration(), $config));
+        return $this;
     }
 
     /**
@@ -123,15 +130,49 @@ class Application implements \pwf\basic\interfaces\Application
     public function run()
     {
         try {
-            $this->response->setBody(RouteHandler::evalHandler($this->request->getPath()));
+            $callback = $this->prepareCallback(RouteHandler::getHandler($this->request->getPath()));
+
+            if (is_array($callback) && $callback[0] instanceof \pwf\basic\interfaces\Controller) {
+                $callback[0]->setRequest($this->getRequest())->setResponse($this->getResponse());
+            }
+
+            $this->response->setBody(\pwf\helpers\SystemHelpers::call($callback,
+                    function($paramName) {
+                    if (($component = $this->getComponent($paramName)) !== null) {
+                        return $component;
+                    }
+                    if (filter_has_var(INPUT_GET, $paramName)) {
+                        return filter_input(INPUT_GET, $paramName);
+                    }
+                    if (filter_has_var(INPUT_POST, $paramName)) {
+                        return filter_input(INPUT_POST, $paramName);
+                    }
+                }));
 
             $this->response->send();
+        } catch (HttpException $ex) {
+            $this->sendHeaders($ex->getHeaders());
         } catch (\Exception $ex) {
             echo '<h2>Handled exception</h2>';
+            echo '<h3>'.$ex->getMessage().'</h3>';
             echo '<pre>';
             echo $ex->getTraceAsString();
             echo '</pre>';
         }
+    }
+
+    /**
+     * Send headers
+     *
+     * @param array $headers
+     * @return Application
+     */
+    protected function sendHeaders($headers)
+    {
+        foreach ($headers as $header) {
+            header($header);
+        }
+        return $this;
     }
 
     /**
@@ -142,8 +183,8 @@ class Application implements \pwf\basic\interfaces\Application
      */
     public function getComponent($name)
     {
-        if (!isset($this->componentCache[$name])) {
-            $this->componentCache[$name] = $this->createComponent($name);
+        if (!isset($this->componentCache[$name]) && ($this->componentCache[$name]
+            = $this->createComponent($name)) !== null) {
             $this->componentCache[$name]->init();
         }
 
@@ -169,7 +210,7 @@ class Application implements \pwf\basic\interfaces\Application
                 $result->loadConfiguration($config);
             } else {
                 throw new \Exception('Component must implement \'Component\' interface',
-                    500);
+                500);
             }
         }
 

@@ -6,23 +6,51 @@ use PDO;
 
 class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection implements \pwf\basic\interfaces\Component
 {
+    /**
+     * PDO object
+     *
+     * @var \PDO
+     */
     private $PDO;
 
+    /**
+     * Last PDO statement
+     *
+     * @var PdoStatement
+     */
     private $lastStatement;
 
+    /**
+     * Set PDO object
+     *
+     * @param \PDO $pdo
+     * @return \pwf\components\dbconnection\PDOConnection
+     */
     public function setPDO($pdo)
     {
         $this->PDO = $pdo;
+        return $this;
     }
 
+    /**
+     * Get PDO object
+     *
+     * @return \PDO
+     */
     public function getPDO()
     {
         return $this->PDO;
     }
 
+    /**
+     * Init connection
+     *
+     * @return \pwf\components\dbconnection\PDOConnection
+     */
     public function init()
     {
         $this->connect();
+        return $this;
     }
 
     /**
@@ -38,17 +66,21 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
 
     /**
      * Disconnect from DB server
+     *
+     * @return \pwf\components\dbconnection\PDOConnection
      */
     public function disconnect()
     {
         unset($this->PDO);
         $this->PDO = null;
+        return $this;
     }
 
     /**
      * Load configuration
      *
      * @param array $config
+     * @return \pwf\components\dbconnection\PDOConnection
      */
     public function loadConfiguration($config = array())
     {
@@ -61,6 +93,7 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
         if (isset($config['dsn'])) {
             $this->setDSN($config['dsn']);
         }
+        return $this;
     }
 
     /**
@@ -73,8 +106,7 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
     public function exec($query, $params = [])
     {
         $this->lastStatement = $this->getPDO()->prepare($query);
-        $this->lastStatement->execute($params);
-        return $this->lastStatement;
+        return $this->lastStatement->execute($params);
     }
 
     /**
