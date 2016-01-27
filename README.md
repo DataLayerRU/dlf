@@ -1,5 +1,7 @@
-pwf
+PWF - framework for proffessional web development
 ====
+
+[http://pwf.web-development.pw/](http://pwf.web-development.pw/)
 
 Project structure
 -------------------
@@ -137,7 +139,7 @@ class PostModel extends \pwf\basic\DBModel
      */
     public function getOne($primaryKeyValue)
     {
-        $this->setAttrubutes($this->getDB()->query('SELECT * FROM post WHERE id=:id',
+        $this->setAttrubutes($this->getConnection()->query('SELECT * FROM post WHERE id=:id',
                 [
                 'id' => $primaryKeyValue
             ])->fetch(PDO::FETCH_ASSOC));
@@ -151,24 +153,6 @@ class PostModel extends \pwf\basic\DBModel
     public function save()
     {
 
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public static function getAll(\pwf\components\dbconnection\interfaces\Connection $db)
-    {
-        $result = [];
-
-        $rows = $db->query('SELECT * FROM post')->fetchAll();
-
-        foreach ($rows as $value) {
-            $o        = new PostModel($db);
-            $o->setAttrubutes($value);
-            $result[] = $o;
-        }
-
-        return $result;
     }
 
     public function validate($attributes = array())
