@@ -2,11 +2,11 @@
 
 namespace pwf\components\authorization;
 
+use pwf\basic\Component;
 use project\Application;
-use pwf\basic\interfaces\Component;
 use pwf\components\authorization\interfaces\Identity;
 
-class Authorization implements Component
+class Authorization extends Component
 {
     /**
      * Current user
@@ -83,7 +83,7 @@ class Authorization implements Component
     {
         $this->identity = $user;
 
-        Application::$instance->getResponse()->addCookie('auth-token',
+        Application::$instance->getResponse()->addCookie('accessToken',
             $user->getAuthToken());
         return $this;
     }
@@ -106,7 +106,7 @@ class Authorization implements Component
     public function clearIdentity()
     {
         $this->identity = null;
-        Application::$instance->getResponse()->removeCookie('auth-token');
+        Application::$instance->getResponse()->removeCookie('accessToken');
         return $this;
     }
 
@@ -127,8 +127,12 @@ class Authorization implements Component
      */
     public function loadConfiguration($config = [])
     {
+        parent::loadConfiguration($config);
         if (isset($config['auto'])) {
             $this->setAutoLogin((bool) $config['auto']);
+        }
+        if (isset($config['identityClass'])) {
+            $this->setIdentityClass($config['identityClass']);
         }
     }
 
@@ -147,7 +151,7 @@ class Authorization implements Component
      */
     protected function autoLogin()
     {
-        if (($token = Application::$instance->getResponse()->getCookie('auth-token'))
+        if (($token = Application::$instance->getRequest()->getCookie('accessToken'))
             !== null) {
             $className = $this->getIdentityClass();
             $user      = new $className;
