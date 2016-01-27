@@ -2,12 +2,11 @@
 
 namespace pwf\components\authorization;
 
+use pwf\basic\Component;
 use project\Application;
-use dlf\basic\interfaces\Component;
-use dlf\components\authorization\interfaces\Identity;
-use dlf\components\authorization\interfaces\AuthorizationComponent;
+use pwf\components\authorization\interfaces\Identity;
 
-class Authorization implements Component, AuthorizationComponent
+class Authorization extends Component
 {
     /**
      * Current user
@@ -15,6 +14,64 @@ class Authorization implements Component, AuthorizationComponent
      * @var Identity
      */
     private $identity;
+
+    /**
+     * Use auto login
+     *
+     * @var bool
+     */
+    private $autoLogin;
+
+    /**
+     * Identity class name
+     *
+     * @var string
+     */
+    private $identityClass;
+
+    /**
+     * Set identity class name
+     *
+     * @param string $className
+     * @return \pwf\components\authorization\Authorization
+     */
+    public function setIdentityClass($className)
+    {
+        $this->identityClass = $className;
+        return $this;
+    }
+
+    /**
+     * Get identity class name
+     *
+     * @return string
+     */
+    public function getIdentityClass()
+    {
+        return $this->identityClass;
+    }
+
+    /**
+     * Set auto login
+     * 
+     * @param bool $autoLogin
+     * @return \pwf\components\authorization\Authorization
+     */
+    public function setAutoLogin($autoLogin)
+    {
+        $this->autoLogin = $autoLogin;
+        return $this;
+    }
+
+    /**
+     * Is auto login
+     *
+     * @return bool
+     */
+    public function isAutoLogin()
+    {
+        return $this->autoLogin;
+    }
 
     /**
      * Set current user
@@ -26,7 +83,7 @@ class Authorization implements Component, AuthorizationComponent
     {
         $this->identity = $user;
 
-        Application::$instance->getResponse()->addCookie('auth-token',
+        Application::$instance->getResponse()->addCookie('accessToken',
             $user->getAuthToken());
         return $this;
     }
@@ -49,27 +106,56 @@ class Authorization implements Component, AuthorizationComponent
     public function clearIdentity()
     {
         $this->identity = null;
-        Application::$instance->getResponse()->removeCookie('auth-token');
+        Application::$instance->getResponse()->removeCookie('accessToken');
         return $this;
     }
 
+    /**
+     * Check is authorixed
+     *
+     * @return bool
+     */
     public function isAuthorized()
     {
         return $this->identity !== null && $this->identity->getId() > 0;
     }
 
+    /**
+     * Load configuration
+     *
+     * @param array $config
+     */
     public function loadConfiguration($config = [])
     {
-
+        parent::loadConfiguration($config);
+        if (isset($config['auto'])) {
+            $this->setAutoLogin((bool) $config['auto']);
+        }
+        if (isset($config['identityClass'])) {
+            $this->setIdentityClass($config['identityClass']);
+        }
     }
 
-    public function isAvailable($name)
-    {
-        return true;
-    }
-
+    /**
+     * Component initialization
+     */
     public function init()
     {
-        // TODO: autologin
+        if ($this->isAutoLogin()) {
+            $this->autoLogin();
+        }
+    }
+
+    /**
+     * Auto login
+     */
+    protected function autoLogin()
+    {
+        if (($token = Application::$instance->getRequest()->getCookie('accessToken'))
+            !== null) {
+            $className = $this->getIdentityClass();
+            $user      = new $className;
+            $this->setIdentity($user->getByAuthToken($token));
+        }
     }
 }
