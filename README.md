@@ -1,6 +1,5 @@
-dlf
+pwf
 ====
-[http://dlf.datalayer.ru](http://dlf.datalayer.ru)
 
 Project structure
 -------------------
@@ -14,9 +13,12 @@ components/          modules
     authorization/   authorization/identity module
     datamapper/      data mapper pattern
     dbconnection/    database connection module
+    eventhandler/    event handler
+    observer/        obserber pattern
 exception/           exception classes
     abstraction/     abstract classes
     interfaces/      interfaces
+helpers/             helpers
 traits/              traits
 web/                 web/net objects
 ```
@@ -28,14 +30,14 @@ Requirements
 
 Installation
 ------------
-dlf is available through [composer](https://getcomposer.org/)
+pwf is available through [composer](https://getcomposer.org/)
 
-composer require datalayerru/dlf "dev-master"
+composer require professionalweb/pwf "dev-master"
 
 Alternatively you can add the following to the `require` section in your `composer.json` manually:
 
 ```json
-"datalayerru/dlf": "dev-master"
+"professionalweb/pwf": "dev-master"
 ```
 Run `composer update` afterwards.
 
@@ -45,9 +47,9 @@ Initialization
 ##index.php
 ```php
 require_once("../vendor/autoload.php");
-require_once("../vendor/datalayerru/dlf/autoloader/Autoloader.php");
+require_once("../vendor/professionalweb/pwf/autoloader/Autoloader.php");
 
-\dlf\autoloader\Autoloader::Register(new \dlf\autoloader\Basic());
+\pwf\autoloader\Autoloader::Register(new \pwf\autoloader\Basic());
 
 
 $app = new \project\Application();
@@ -57,10 +59,10 @@ $app->run();
 ```php
 namespace project;
 
-use dlf\basic\RouteHandler;
+use pwf\basic\RouteHandler;
 use Symfony\Component\Yaml\Yaml;
 
-class Application extends \dlf\basic\Application
+class Application extends \pwf\basic\Application
 {
 
     public function __construct()
@@ -85,7 +87,7 @@ Controllers
 
 namespace project\controllers;
 
-class MainController extends \dlf\basic\Controller
+class MainController extends \pwf\basic\Controller
 {
 
     public function index()
@@ -127,7 +129,7 @@ Views
 Models
 ------
 ```php
-class PostModel extends \dlf\basic\DBModel
+class PostModel extends \pwf\basic\DBModel
 {
 
     /**
@@ -154,7 +156,7 @@ class PostModel extends \dlf\basic\DBModel
     /**
      * @inheritdoc
      */
-    public static function getAll(\dlf\components\dbconnection\interfaces\Connection $db)
+    public static function getAll(\pwf\components\dbconnection\interfaces\Connection $db)
     {
         $result = [];
 
@@ -181,7 +183,7 @@ class PostModel extends \dlf\basic\DBModel
 The MIT License (MIT)
 ---------------------
 
-Copyright (c) 2016 Sergey Zinchenko, [DataLayer.ru](http://datalayer.ru/)
+Copyright (c) 2016 Sergey Zinchenko, [Professional web](http://web-developmwnt.pw)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

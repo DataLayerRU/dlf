@@ -1,13 +1,15 @@
 <?php
 
-namespace dlf\basic;
+namespace pwf\basic;
 
-use dlf\web\Request;
-use dlf\web\Response;
-use dlf\exception\interfaces\HttpException;
+use pwf\web\Request;
+use pwf\web\Response;
+use pwf\exception\interfaces\HttpException;
 
-class Application implements \dlf\basic\interfaces\Application
+class Application implements \pwf\basic\interfaces\Application
 {
+
+    use \pwf\components\eventhandler\traits\CallbackTrait;
     /**
      * Current application
      *
@@ -32,14 +34,14 @@ class Application implements \dlf\basic\interfaces\Application
     /**
      * Request object
      *
-     * @var dlf\web\Request
+     * @var pwf\web\Request
      */
     private $request;
 
     /**
      * Response
      *
-     * @var dlf\web\Response
+     * @var pwf\web\Response
      */
     private $response;
 
@@ -55,7 +57,7 @@ class Application implements \dlf\basic\interfaces\Application
     /**
      * Get current request
      *
-     * @return dlf\web\Request
+     * @return pwf\web\Request
      */
     public function getRequest()
     {
@@ -65,7 +67,7 @@ class Application implements \dlf\basic\interfaces\Application
     /**
      * Get current response
      *
-     * @return dlf\web\Response
+     * @return pwf\web\Response
      */
     public function getResponse()
     {
@@ -128,7 +130,13 @@ class Application implements \dlf\basic\interfaces\Application
     public function run()
     {
         try {
-            $this->response->setBody(\dlf\Helpers::call(RouteHandler::evalHandler($this->request->getPath()),
+            $callback = $this->prepareCallback(RouteHandler::getHandler($this->request->getPath()));
+
+            if (is_array($callback) && $callback[0] instanceof \pwf\basic\interfaces\Controller) {
+                $callback[0]->setRequest($this->getRequest())->setResponse($this->getResponse());
+            }
+
+            $this->response->setBody(\pwf\helpers\SystemHelpers::call($callback,
                     function($paramName) {
                     if (($component = $this->getComponent($paramName)) !== null) {
                         return $component;
@@ -146,6 +154,7 @@ class Application implements \dlf\basic\interfaces\Application
             $this->sendHeaders($ex->getHeaders());
         } catch (\Exception $ex) {
             echo '<h2>Handled exception</h2>';
+            echo '<h3>'.$ex->getMessage().'</h3>';
             echo '<pre>';
             echo $ex->getTraceAsString();
             echo '</pre>';
@@ -197,7 +206,7 @@ class Application implements \dlf\basic\interfaces\Application
 
         if ($config !== null && isset($config['class'])) {
             $result = new $config['class'];
-            if ($result instanceof \dlf\basic\interfaces\Component) {
+            if ($result instanceof \pwf\basic\interfaces\Component) {
                 $result->loadConfiguration($config);
             } else {
                 throw new \Exception('Component must implement \'Component\' interface',

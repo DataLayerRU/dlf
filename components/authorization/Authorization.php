@@ -1,6 +1,6 @@
 <?php
 
-namespace dlf\components\authorization;
+namespace pwf\components\authorization;
 
 use project\Application;
 use dlf\basic\interfaces\Component;
@@ -26,7 +26,8 @@ class Authorization implements Component, AuthorizationComponent
     {
         $this->identity = $user;
 
-        Application::$instance->getResponse()->addCookie('auth-token', $user->getAuthToken());
+        Application::$instance->getResponse()->addCookie('auth-token',
+            $user->getAuthToken());
         return $this;
     }
 

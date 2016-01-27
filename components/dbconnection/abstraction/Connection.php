@@ -1,8 +1,8 @@
 <?php
 
-namespace dlf\components\dbconnection\abstraction;
+namespace pwf\components\dbconnection\abstraction;
 
-abstract class Connection implements \dlf\components\dbconnection\interfaces\Connection
+abstract class Connection implements \pwf\components\dbconnection\interfaces\Connection
 {
     /**
      * Connection string

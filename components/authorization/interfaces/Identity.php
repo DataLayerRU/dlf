@@ -1,6 +1,6 @@
 <?php
 
-namespace dlf\components\authorization\interfaces;
+namespace pwf\components\authorization\interfaces;
 
 interface Identity
 {

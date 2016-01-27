@@ -1,8 +1,8 @@
 <?php
 
-namespace dlf\components\datamapper\abstraction;
+namespace pwf\components\datamapper\abstraction;
 
-abstract class Model implements \dlf\components\activerecord\interfaces\Model
+abstract class Model implements \pwf\components\datamapper\interfaces\Model
 {
     /**
      * Model attributes
@@ -20,7 +20,7 @@ abstract class Model implements \dlf\components\activerecord\interfaces\Model
      * Set attributes
      *
      * @param array $attributes
-     * @return \dlf\components\datamapper\abstraction\Model
+     * @return \pwf\components\datamapper\abstraction\Model
      */
     public function setAttributes(array $attributes)
     {
@@ -43,7 +43,7 @@ abstract class Model implements \dlf\components\activerecord\interfaces\Model
      *
      * @param string $name
      * @param mixed $value
-     * @return \dlf\components\datamapper\abstraction\Model
+     * @return \pwf\components\datamapper\abstraction\Model
      */
     public function setAttribute($name, $value)
     {
@@ -90,7 +90,7 @@ abstract class Model implements \dlf\components\activerecord\interfaces\Model
         if ($this->attributeExists($name)) {
             return $this->getAttribute($name);
         }
-        return parent::__get($name);
+        return null;
     }
 
     /**

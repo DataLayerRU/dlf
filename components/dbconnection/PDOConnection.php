@@ -1,10 +1,10 @@
 <?php
 
-namespace dlf\components\dbconnection;
+namespace pwf\components\dbconnection;
 
 use PDO;
 
-class PDOConnection extends \dlf\components\dbconnection\abstraction\Connection implements \dlf\basic\interfaces\Component
+class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection implements \pwf\basic\interfaces\Component
 {
     /**
      * PDO object
@@ -24,7 +24,7 @@ class PDOConnection extends \dlf\components\dbconnection\abstraction\Connection 
      * Set PDO object
      *
      * @param \PDO $pdo
-     * @return \dlf\components\dbconnection\PDOConnection
+     * @return \pwf\components\dbconnection\PDOConnection
      */
     public function setPDO($pdo)
     {
@@ -45,7 +45,7 @@ class PDOConnection extends \dlf\components\dbconnection\abstraction\Connection 
     /**
      * Init connection
      *
-     * @return \dlf\components\dbconnection\PDOConnection
+     * @return \pwf\components\dbconnection\PDOConnection
      */
     public function init()
     {
@@ -67,7 +67,7 @@ class PDOConnection extends \dlf\components\dbconnection\abstraction\Connection 
     /**
      * Disconnect from DB server
      *
-     * @return \dlf\components\dbconnection\PDOConnection
+     * @return \pwf\components\dbconnection\PDOConnection
      */
     public function disconnect()
     {
@@ -80,7 +80,7 @@ class PDOConnection extends \dlf\components\dbconnection\abstraction\Connection 
      * Load configuration
      *
      * @param array $config
-     * @return \dlf\components\dbconnection\PDOConnection
+     * @return \pwf\components\dbconnection\PDOConnection
      */
     public function loadConfiguration($config = array())
     {
@@ -106,8 +106,7 @@ class PDOConnection extends \dlf\components\dbconnection\abstraction\Connection 
     public function exec($query, $params = [])
     {
         $this->lastStatement = $this->getPDO()->prepare($query);
-        $this->lastStatement->execute($params);
-        return $this->lastStatement;
+        return $this->lastStatement->execute($params);
     }
 
     /**

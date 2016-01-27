@@ -1,8 +1,8 @@
 <?php
 
-namespace dlf\components\activerecord\abstraction;
+namespace pwf\components\activerecord\abstraction;
 
-abstract class Model extends \dlf\components\datamapper\abstraction\Model
+abstract class Model extends \pwf\components\datamapper\abstraction\Model
 {
     /**
      * Connection
@@ -22,7 +22,7 @@ abstract class Model extends \dlf\components\datamapper\abstraction\Model
      * Set connection
      *
      * @param mixed $connection
-     * @return \dlf\components\activerecord\abstraction\Model
+     * @return \pwf\components\activerecord\abstraction\Model
      */
     public function setConnection($connection)
     {

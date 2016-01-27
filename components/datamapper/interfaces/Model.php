@@ -1,6 +1,6 @@
 <?php
 
-namespace dlf\components\datamapper\interfaces;
+namespace pwf\components\datamapper\interfaces;
 
 interface Model
 {
