@@ -151,8 +151,11 @@ class Authorization extends Component
      */
     protected function autoLogin()
     {
-        if (($token = Application::$instance->getRequest()->getCookie('accessToken'))
-            !== null) {
+        $token = Application::$instance->getRequest()->get('access-token');
+        if ($token === null) {
+            $token = Application::$instance->getRequest()->getCookie('accessToken');
+        }
+        if ($token !== null) {
             $className = $this->getIdentityClass();
             $user      = new $className;
             $this->setIdentity($user->getByAuthToken($token));
