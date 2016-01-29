@@ -143,11 +143,11 @@ class Application implements \pwf\basic\interfaces\Application
                     if (($component = $this->getComponent($paramName)) !== null) {
                         return $component;
                     }
-                    if (filter_has_var(INPUT_GET, $paramName)) {
-                        return filter_input(INPUT_GET, $paramName);
+                    if (isset($_GET[$paramName])) {
+                        return $_GET[$paramName];
                     }
-                    if (filter_has_var(INPUT_POST, $paramName)) {
-                        return filter_input(INPUT_POST, $paramName);
+                    if (isset($_POST[$paramName])) {
+                        return $_POST[$paramName];
                     }
                 }));
 
@@ -155,6 +155,9 @@ class Application implements \pwf\basic\interfaces\Application
         } catch (HttpException $ex) {
             $this->sendHeaders($ex->getHeaders());
         } catch (\Exception $ex) {
+            $this->sendHeaders([
+                'HTTP/1.1 500 Internal Server Error'
+            ]);
             echo '<h2>Handled exception</h2>';
             echo '<h3>'.$ex->getMessage().'</h3>';
             echo '<pre>';

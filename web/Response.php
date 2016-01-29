@@ -207,7 +207,7 @@ class Response
         $result = $body;
 
         if ($this->isJson() && (is_array($body) || is_object($body))) {
-            $result = json_encode($body);
+            $result = json_encode(\pwf\helpers\ArrayHelper::toArray($body));
         }
 
         return $result;
@@ -249,7 +249,8 @@ class Response
         $cookies = $this->getCookies();
 
         foreach ($cookies as $name => $cookie) {
-            setcookie($name, $cookie['value'], $cookie['expire'], $cookie['path']);
+            setcookie($name, $cookie['value'], $cookie['expire'],
+                $cookie['path']);
         }
 
         return $this;
@@ -276,7 +277,7 @@ class Response
      */
     public function redirect($path)
     {
-        $this->addHeader('Location: ' . $path);
+        $this->addHeader('Location: '.$path);
         return $this;
     }
 }

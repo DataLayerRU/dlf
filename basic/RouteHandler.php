@@ -40,7 +40,13 @@ class RouteHandler
         $path = '/'.rtrim($path, " /");
 
         foreach (static::$routes as $key => $handler) {
-            if (preg_match('#'.addslashes($key).'$#i', $path)) {
+            $matches = [];
+            if (preg_match('#'.$key.'$#i', $path, $matches)) {
+                foreach ($matches as $key => $val) {
+                    if (!is_numeric($key)) {
+                        $_GET[$key] = $val;
+                    }
+                }
                 $result = $handler;
                 break;
             }

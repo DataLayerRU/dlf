@@ -38,7 +38,7 @@ trait CallbackTrait
      *
      * @param \Closure|string|array $callback
      * @return \Closure
-     * @throws Exception
+     * @throws \pwf\exception\HttpNotFoundException
      */
     public function prepareCallback($callback)
     {
@@ -48,7 +48,7 @@ trait CallbackTrait
             $class        = new $callbackInfo['class'];
             $result       = [$class, $callbackInfo['method']];
         } elseif (!is_callable($callback)) {
-            throw new \Exception('Can\'t invoke callback');
+            throw new \pwf\exception\HttpNotFoundException();
         }
         return $result;
     }

@@ -2,7 +2,7 @@
 
 namespace pwf\components\activerecord\abstraction;
 
-abstract class Model extends \pwf\components\datamapper\abstraction\Model
+abstract class Model extends \pwf\components\datamapper\abstraction\Model implements \pwf\components\activerecord\interfaces\Model
 {
     /**
      * Connection
