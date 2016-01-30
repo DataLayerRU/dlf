@@ -52,6 +52,34 @@ class RouteHandler
             }
         }
 
+        if ($result === null) {
+            $result = self::parseRoute($path);
+        }
+
+        return $result;
+    }
+
+    /**
+     * Parse url to callable
+     *
+     * @param string $url
+     * @return string
+     */
+    public static function parseRoute($url)
+    {
+        $result = null;
+
+        $parts = explode('/', $url);
+
+        $action                   = array_pop($parts);
+        $parts[count($parts) - 1] = ucfirst($parts[count($parts) - 1]).'Controller';
+        $controller               = '\\project\\controllers'.implode('\\',
+                $parts);
+
+        if ($action != '' && $controller != '') {
+            $result = $controller.'::'.$action;
+        }
+
         return $result;
     }
 }
