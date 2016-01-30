@@ -8,6 +8,8 @@ use pwf\exception\interfaces\HttpException;
 
 class Application implements \pwf\basic\interfaces\Application
 {
+
+    use \pwf\components\eventhandler\traits\CallbackTrait;
     /**
      * Current application
      *
@@ -128,22 +130,24 @@ class Application implements \pwf\basic\interfaces\Application
     public function run()
     {
         try {
-            $callback = RouteHandler::evalHandler($this->request->getPath());
+            $this->forceComponentLoading();
+
+            $callback = $this->prepareCallback(RouteHandler::getHandler($this->request->getPath()));
 
             if (is_array($callback) && $callback[0] instanceof \pwf\basic\interfaces\Controller) {
                 $callback[0]->setRequest($this->getRequest())->setResponse($this->getResponse());
             }
 
-            $this->response->setBody(\pwf\Helpers::call($callback,
+            $this->response->setBody(\pwf\helpers\SystemHelpers::call($callback,
                     function($paramName) {
                     if (($component = $this->getComponent($paramName)) !== null) {
                         return $component;
                     }
-                    if (filter_has_var(INPUT_GET, $paramName)) {
-                        return filter_input(INPUT_GET, $paramName);
+                    if (isset($_GET[$paramName])) {
+                        return $_GET[$paramName];
                     }
-                    if (filter_has_var(INPUT_POST, $paramName)) {
-                        return filter_input(INPUT_POST, $paramName);
+                    if (isset($_POST[$paramName])) {
+                        return $_POST[$paramName];
                     }
                 }));
 
@@ -151,11 +155,31 @@ class Application implements \pwf\basic\interfaces\Application
         } catch (HttpException $ex) {
             $this->sendHeaders($ex->getHeaders());
         } catch (\Exception $ex) {
+            $this->sendHeaders([
+                'HTTP/1.1 500 Internal Server Error'
+            ]);
             echo '<h2>Handled exception</h2>';
+            echo '<h3>'.$ex->getMessage().'</h3>';
             echo '<pre>';
             echo $ex->getTraceAsString();
             echo '</pre>';
         }
+    }
+
+    /**
+     * Force component loading
+     *
+     * @return \pwf\basic\Application
+     */
+    protected function forceComponentLoading()
+    {
+        $config = $this->getConfiguration();
+        foreach ($config as $key => $params) {
+            if (isset($params['class']) && isset($params['force'])) {
+                $this->getComponent($key);
+            }
+        }
+        return $this;
     }
 
     /**

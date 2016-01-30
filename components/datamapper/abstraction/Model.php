@@ -2,7 +2,7 @@
 
 namespace pwf\components\datamapper\abstraction;
 
-abstract class Model implements \pwf\components\activerecord\interfaces\Model
+abstract class Model implements \pwf\components\datamapper\interfaces\Model
 {
     /**
      * Model attributes
@@ -90,7 +90,7 @@ abstract class Model implements \pwf\components\activerecord\interfaces\Model
         if ($this->attributeExists($name)) {
             return $this->getAttribute($name);
         }
-        return parent::__get($name);
+        return null;
     }
 
     /**

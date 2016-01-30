@@ -2,11 +2,11 @@
 
 namespace pwf\components\authorization;
 
+use pwf\basic\Component;
 use project\Application;
-use pwf\basic\interfaces\Component;
 use pwf\components\authorization\interfaces\Identity;
 
-class Authorization implements Component
+class Authorization extends Component
 {
     /**
      * Current user
@@ -14,6 +14,64 @@ class Authorization implements Component
      * @var Identity
      */
     private $identity;
+
+    /**
+     * Use auto login
+     *
+     * @var bool
+     */
+    private $autoLogin;
+
+    /**
+     * Identity class name
+     *
+     * @var string
+     */
+    private $identityClass;
+
+    /**
+     * Set identity class name
+     *
+     * @param string $className
+     * @return \pwf\components\authorization\Authorization
+     */
+    public function setIdentityClass($className)
+    {
+        $this->identityClass = $className;
+        return $this;
+    }
+
+    /**
+     * Get identity class name
+     *
+     * @return string
+     */
+    public function getIdentityClass()
+    {
+        return $this->identityClass;
+    }
+
+    /**
+     * Set auto login
+     * 
+     * @param bool $autoLogin
+     * @return \pwf\components\authorization\Authorization
+     */
+    public function setAutoLogin($autoLogin)
+    {
+        $this->autoLogin = $autoLogin;
+        return $this;
+    }
+
+    /**
+     * Is auto login
+     *
+     * @return bool
+     */
+    public function isAutoLogin()
+    {
+        return $this->autoLogin;
+    }
 
     /**
      * Set current user
@@ -25,7 +83,8 @@ class Authorization implements Component
     {
         $this->identity = $user;
 
-        Application::$instance->getResponse()->addCookie('auth-token', $user->getAuthToken());
+        Application::$instance->getResponse()->addCookie('accessToken',
+            $user->getAuthToken());
         return $this;
     }
 
@@ -47,22 +106,59 @@ class Authorization implements Component
     public function clearIdentity()
     {
         $this->identity = null;
-        Application::$instance->getResponse()->removeCookie('auth-token');
+        Application::$instance->getResponse()->removeCookie('accessToken');
         return $this;
     }
 
+    /**
+     * Check is authorixed
+     *
+     * @return bool
+     */
     public function isAuthorized()
     {
         return $this->identity !== null && $this->identity->getId() > 0;
     }
 
+    /**
+     * Load configuration
+     *
+     * @param array $config
+     */
     public function loadConfiguration($config = [])
     {
-
+        parent::loadConfiguration($config);
+        if (isset($config['auto'])) {
+            $this->setAutoLogin((bool) $config['auto']);
+        }
+        if (isset($config['identityClass'])) {
+            $this->setIdentityClass($config['identityClass']);
+        }
     }
 
+    /**
+     * Component initialization
+     */
     public function init()
     {
-        // TODO: autologin
+        if ($this->isAutoLogin()) {
+            $this->autoLogin();
+        }
+    }
+
+    /**
+     * Auto login
+     */
+    protected function autoLogin()
+    {
+        $token = Application::$instance->getRequest()->get('access-token');
+        if ($token === null) {
+            $token = Application::$instance->getRequest()->getCookie('accessToken');
+        }
+        if ($token !== null) {
+            $className = $this->getIdentityClass();
+            $user      = new $className;
+            $this->setIdentity($user->getByAuthToken($token));
+        }
     }
 }
