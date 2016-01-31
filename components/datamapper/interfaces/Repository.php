@@ -2,26 +2,8 @@
 
 namespace pwf\components\datamapper\interfaces;
 
-interface Repository
+interface Repository extends Getter
 {
-
-    /**
-     * Get single model
-     * 
-     * @param mixed $condition
-     * @return \pwf\components\datamapper\interfaces\Model
-     */
-    public function getOne($condition);
-
-    /**
-     * Get all models
-     *
-     * @param mixed $condition
-     * @param int $limit
-     * @param int $offset
-     * @return \pwf\components\datamapper\interfaces\Model[]
-     */
-    public function getAll($condition, $limit = null, $offset = null);
 
     /**
      * Set model

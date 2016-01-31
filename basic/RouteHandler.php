@@ -72,7 +72,8 @@ class RouteHandler
         $parts = explode('/', $url);
 
         $action                   = array_pop($parts);
-        $parts[count($parts) - 1] = ucfirst($parts[count($parts) - 1]).'Controller';
+        $parts[count($parts) - 1] = str_replace(' ', '',
+                ucwords(str_replace('-', ' ', $parts[count($parts) - 1]))).'Controller';
         $controller               = '\\project\\controllers'.implode('\\',
                 $parts);
 
