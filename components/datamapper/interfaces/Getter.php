@@ -4,6 +4,7 @@ namespace pwf\components\datamapper\interfaces;
 
 interface Getter
 {
+
     /**
      * Get single model
      *
@@ -21,4 +22,12 @@ interface Getter
      * @return \pwf\components\datamapper\interfaces\Getter[]
      */
     public function getAll($condition, $limit = null, $offset = null);
+
+    /**
+     * Count objects
+     * 
+     * @param mixed $condition
+     * @return int
+     */
+    public function count($condition);
 }
