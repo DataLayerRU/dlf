@@ -19,6 +19,13 @@ abstract class Paginator implements \pwf\components\datapaginator\interfaces\Pag
     private $limit;
 
     /**
+     * Get param name
+     *
+     * @var string
+     */
+    private $pageGetParam = 'page';
+
+    /**
      * Set current page number
      *
      * @param int $page
@@ -26,7 +33,7 @@ abstract class Paginator implements \pwf\components\datapaginator\interfaces\Pag
      */
     public function setPage($page)
     {
-        $this->page = $page;
+        $this->page = (int) $page;
         return $this;
     }
 
@@ -37,6 +44,10 @@ abstract class Paginator implements \pwf\components\datapaginator\interfaces\Pag
      */
     public function getPage()
     {
+        if (empty($this->page) && ($paramName = $this->getParamName()) != '') {
+            $this->setPage(\pwf\basic\Application::$instance->getRequest()->get($paramName));
+        }
+
         return $this->page;
     }
 
@@ -60,5 +71,27 @@ abstract class Paginator implements \pwf\components\datapaginator\interfaces\Pag
     public function getLimit()
     {
         return $this->limit;
+    }
+
+    /**
+     * Set param name
+     *
+     * @param string $paramName
+     * @return \pwf\components\datapaginator\abstraction\Paginator
+     */
+    public function setParamName($paramName)
+    {
+        $this->pageGetParam = $paramName;
+        return $this;
+    }
+
+    /**
+     * Get param name
+     *
+     * @return string
+     */
+    public function getParamName()
+    {
+        return $this->pageGetParam;
     }
 }
