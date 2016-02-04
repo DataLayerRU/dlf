@@ -70,8 +70,12 @@ class Paginator extends \pwf\components\datapaginator\abstraction\Paginator
     {
         $limit = $this->getLimit();
         $this->setHeaders();
+        $page  = $this->getPage();
+        if ($page > 0) {
+            $page-=1;
+        }
         return $this->getDataSource()->getAll($this->getCondition(), $limit,
-                $limit * $this->getPage());
+                $limit * $page);
     }
 
     /**
@@ -90,9 +94,9 @@ class Paginator extends \pwf\components\datapaginator\abstraction\Paginator
             ->getResponse()
             ->setHeaders([
                 'x-pagination-current-page: '.$this->getPage(),
-                'x-pagination-page-count'.ceil($cnt / $limit),
-                'x-pagination-per-page'.$limit,
-                'x-pagination-total-count'.$cnt
+                'x-pagination-page-count: '.ceil($cnt / $limit),
+                'x-pagination-per-page: '.$limit,
+                'x-pagination-total-count: '.$cnt
         ]);
         return $this;
     }
