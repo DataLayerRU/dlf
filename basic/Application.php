@@ -57,7 +57,7 @@ class Application implements \pwf\basic\interfaces\Application
     /**
      * Get current request
      *
-     * @return pwf\web\Request
+     * @return \pwf\web\Request
      */
     public function getRequest()
     {
@@ -67,7 +67,7 @@ class Application implements \pwf\basic\interfaces\Application
     /**
      * Get current response
      *
-     * @return pwf\web\Response
+     * @return \pwf\web\Response
      */
     public function getResponse()
     {
