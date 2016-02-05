@@ -6,7 +6,7 @@ php:
   - '7.0'
   - hhvm
   - nightly
-before_script: composer install
+before_script: composer self-update && composer install
 script: vendor/bin/codecept build && vendor/bin/codecept run
 #branches:
 #  only:
