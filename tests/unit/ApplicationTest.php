@@ -24,7 +24,7 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetRequest()
     {
-        $this->assertFalse(empty(self::$stubApplication->getRequest()));
+        $this->assertNotEmpty(self::$stubApplication->getRequest());
     }
 
     /**
@@ -32,7 +32,7 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetResponse()
     {
-        $this->assertFalse(empty(self::$stubApplication->getResponse()));
+        $this->assertNotEmpty(self::$stubApplication->getResponse());
     }
 
     /**
