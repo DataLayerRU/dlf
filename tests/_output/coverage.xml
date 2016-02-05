@@ -1,0 +1,992 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1454713390">
+  <project timestamp="1454713390">
+    <package name="pwf\basic">
+      <file name="P:\Programming\PHP\dlf\framework/basic/Application.php">
+        <class name="Application" namespace="pwf\basic">
+          <metrics methods="12" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="54" coveredstatements="27" elements="66" coveredelements="33"/>
+        </class>
+        <line num="48" type="method" name="__construct" crap="2" count="0"/>
+        <line num="50" type="stmt" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <line num="52" type="stmt" count="0"/>
+        <line num="54" type="stmt" count="0"/>
+        <line num="55" type="stmt" count="0"/>
+        <line num="62" type="method" name="getRequest" crap="1" count="1"/>
+        <line num="64" type="stmt" count="1"/>
+        <line num="72" type="method" name="getResponse" crap="1" count="1"/>
+        <line num="74" type="stmt" count="1"/>
+        <line num="83" type="method" name="setConfiguration" crap="1" count="1"/>
+        <line num="85" type="stmt" count="1"/>
+        <line num="86" type="stmt" count="1"/>
+        <line num="94" type="method" name="getConfiguration" crap="1" count="1"/>
+        <line num="96" type="stmt" count="1"/>
+        <line num="105" type="method" name="appendConfiguration" crap="1" count="1"/>
+        <line num="107" type="stmt" count="1"/>
+        <line num="108" type="stmt" count="1"/>
+        <line num="117" type="method" name="getComponentConfig" crap="6" count="0"/>
+        <line num="119" type="stmt" count="0"/>
+        <line num="120" type="stmt" count="0"/>
+        <line num="121" type="stmt" count="0"/>
+        <line num="122" type="stmt" count="0"/>
+        <line num="123" type="stmt" count="0"/>
+        <line num="124" type="stmt" count="0"/>
+        <line num="130" type="method" name="run" crap="26.96" count="1"/>
+        <line num="133" type="stmt" count="1"/>
+        <line num="135" type="stmt" count="1"/>
+        <line num="137" type="stmt" count="0"/>
+        <line num="138" type="stmt" count="0"/>
+        <line num="139" type="stmt" count="0"/>
+        <line num="141" type="stmt" count="0"/>
+        <line num="142" type="method" name="anonymous function" crap="20" count="0"/>
+        <line num="143" type="stmt" count="0"/>
+        <line num="144" type="stmt" count="0"/>
+        <line num="146" type="stmt" count="0"/>
+        <line num="147" type="stmt" count="0"/>
+        <line num="149" type="stmt" count="0"/>
+        <line num="150" type="stmt" count="0"/>
+        <line num="152" type="stmt" count="0"/>
+        <line num="153" type="stmt" count="1"/>
+        <line num="154" type="stmt" count="1"/>
+        <line num="155" type="stmt" count="1"/>
+        <line num="156" type="stmt" count="0"/>
+        <line num="158" type="stmt" count="0"/>
+        <line num="159" type="stmt" count="0"/>
+        <line num="160" type="stmt" count="0"/>
+        <line num="161" type="stmt" count="0"/>
+        <line num="162" type="stmt" count="0"/>
+        <line num="163" type="stmt" count="0"/>
+        <line num="165" type="stmt" count="1"/>
+        <line num="166" type="stmt" count="1"/>
+        <line num="173" type="method" name="forceComponentLoading" crap="5.26" count="1"/>
+        <line num="175" type="stmt" count="1"/>
+        <line num="176" type="stmt" count="1"/>
+        <line num="177" type="stmt" count="0"/>
+        <line num="178" type="stmt" count="0"/>
+        <line num="179" type="stmt" count="0"/>
+        <line num="180" type="stmt" count="1"/>
+        <line num="181" type="stmt" count="1"/>
+        <line num="190" type="method" name="getComponent" crap="3" count="1"/>
+        <line num="192" type="stmt" count="1"/>
+        <line num="193" type="stmt" count="1"/>
+        <line num="194" type="stmt" count="1"/>
+        <line num="195" type="stmt" count="1"/>
+        <line num="197" type="stmt" count="1"/>
+        <line num="207" type="method" name="createComponent" crap="4.10" count="1"/>
+        <line num="209" type="stmt" count="1"/>
+        <line num="211" type="stmt" count="1"/>
+        <line num="213" type="stmt" count="1"/>
+        <line num="214" type="stmt" count="1"/>
+        <line num="215" type="stmt" count="1"/>
+        <line num="216" type="stmt" count="1"/>
+        <line num="217" type="stmt" count="1"/>
+        <line num="218" type="stmt" count="0"/>
+        <line num="219" type="stmt" count="0"/>
+        <line num="221" type="stmt" count="1"/>
+        <line num="223" type="stmt" count="1"/>
+        <metrics loc="224" ncloc="145" classes="1" methods="12" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="66" coveredstatements="32" elements="78" coveredelements="38"/>
+      </file>
+      <file name="P:\Programming\PHP\dlf\framework/basic/Component.php">
+        <class name="Component" namespace="pwf\basic">
+          <metrics methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="10" coveredelements="10"/>
+        </class>
+        <line num="20" type="method" name="isForceInitialization" crap="2" count="1"/>
+        <line num="22" type="stmt" count="1"/>
+        <line num="23" type="stmt" count="1"/>
+        <line num="25" type="stmt" count="1"/>
+        <line num="26" type="stmt" count="1"/>
+        <line num="35" type="method" name="loadConfiguration" crap="2" count="1"/>
+        <line num="37" type="stmt" count="1"/>
+        <line num="38" type="stmt" count="1"/>
+        <line num="39" type="stmt" count="1"/>
+        <line num="40" type="stmt" count="1"/>
+        <metrics loc="41" ncloc="24" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="10" coveredelements="10"/>
+      </file>
+      <file name="P:\Programming\PHP\dlf\framework/basic/RouteHandler.php">
+        <class name="RouteHandler" namespace="pwf\basic">
+          <metrics methods="4" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="34" coveredstatements="32" elements="38" coveredelements="35"/>
+        </class>
+        <line num="25" type="method" name="registerHandler" crap="1" count="1"/>
+        <line num="27" type="stmt" count="1"/>
+        <line num="28" type="stmt" count="1"/>
+        <line num="36" type="method" name="getHandler" crap="6.06" count="2"/>
+        <line num="38" type="stmt" count="2"/>
+        <line num="40" type="stmt" count="2"/>
+        <line num="42" type="stmt" count="2"/>
+        <line num="43" type="stmt" count="1"/>
+        <line num="44" type="stmt" count="1"/>
+        <line num="45" type="stmt" count="1"/>
+        <line num="46" type="stmt" count="1"/>
+        <line num="47" type="stmt" count="0"/>
+        <line num="48" type="stmt" count="0"/>
+        <line num="49" type="stmt" count="1"/>
+        <line num="50" type="stmt" count="1"/>
+        <line num="51" type="stmt" count="1"/>
+        <line num="53" type="stmt" count="2"/>
+        <line num="55" type="stmt" count="2"/>
+        <line num="56" type="stmt" count="1"/>
+        <line num="57" type="stmt" count="1"/>
+        <line num="59" type="stmt" count="2"/>
+        <line num="68" type="method" name="parseRoute" crap="3" count="2"/>
+        <line num="70" type="stmt" count="2"/>
+        <line num="72" type="stmt" count="2"/>
+        <line num="74" type="stmt" count="2"/>
+        <line num="75" type="stmt" count="2"/>
+        <line num="76" type="stmt" count="2"/>
+        <line num="77" type="stmt" count="2"/>
+        <line num="79" type="stmt" count="2"/>
+        <line num="80" type="stmt" count="2"/>
+        <line num="81" type="stmt" count="2"/>
+        <line num="83" type="stmt" count="2"/>
+        <line num="92" type="method" name="preparePart" crap="3" count="2"/>
+        <line num="94" type="stmt" count="2"/>
+        <line num="95" type="stmt" count="2"/>
+        <line num="96" type="stmt" count="2"/>
+        <line num="97" type="stmt" count="2"/>
+        <line num="98" type="stmt" count="2"/>
+        <metrics loc="99" ncloc="65" classes="1" methods="4" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="34" coveredstatements="32" elements="38" coveredelements="35"/>
+      </file>
+      <file name="P:\Programming\PHP\dlf\framework/basic/View.php">
+        <class name="View" namespace="pwf\basic">
+          <metrics methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+        </class>
+        <line num="15" type="method" name="render" crap="2" count="1"/>
+        <line num="17" type="stmt" count="1"/>
+        <line num="18" type="stmt" count="1"/>
+        <line num="19" type="stmt" count="1"/>
+        <line num="20" type="stmt" count="1"/>
+        <line num="22" type="stmt" count="1"/>
+        <metrics loc="23" ncloc="16" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="6" coveredelements="6"/>
+      </file>
+    </package>
+    <package name="pwf\basic\controller">
+      <file name="P:\Programming\PHP\dlf\framework/basic/controller/Controller.php">
+        <class name="Controller" namespace="pwf\basic\controller">
+          <metrics methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="0" elements="21" coveredelements="0"/>
+        </class>
+        <line num="23" type="method" name="__construct" crap="2" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="34" type="method" name="setRequest" crap="2" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="45" type="method" name="getRequest" crap="2" count="0"/>
+        <line num="46" type="stmt" count="0"/>
+        <line num="47" type="stmt" count="0"/>
+        <line num="48" type="stmt" count="0"/>
+        <line num="56" type="method" name="setResponse" crap="2" count="0"/>
+        <line num="57" type="stmt" count="0"/>
+        <line num="58" type="stmt" count="0"/>
+        <line num="59" type="stmt" count="0"/>
+        <line num="60" type="stmt" count="0"/>
+        <line num="67" type="method" name="getResponse" crap="2" count="0"/>
+        <line num="68" type="stmt" count="0"/>
+        <line num="69" type="stmt" count="0"/>
+        <line num="70" type="stmt" count="0"/>
+        <metrics loc="70" ncloc="39" classes="1" methods="5" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="0" elements="21" coveredelements="0"/>
+      </file>
+      <file name="P:\Programming\PHP\dlf\framework/basic/controller/WebController.php">
+        <class name="WebController" namespace="pwf\basic\controller">
+          <metrics methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="0" elements="19" coveredelements="0"/>
+        </class>
+        <line num="23" type="method" name="__construct" crap="2" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="35" type="method" name="setView" crap="2" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="39" type="stmt" count="0"/>
+        <line num="46" type="method" name="getView" crap="2" count="0"/>
+        <line num="47" type="stmt" count="0"/>
+        <line num="48" type="stmt" count="0"/>
+        <line num="49" type="stmt" count="0"/>
+        <line num="58" type="method" name="render" crap="2" count="0"/>
+        <line num="59" type="stmt" count="0"/>
+        <line num="60" type="stmt" count="0"/>
+        <line num="62" type="stmt" count="0"/>
+        <line num="63" type="stmt" count="0"/>
+        <metrics loc="63" ncloc="35" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="0" elements="19" coveredelements="0"/>
+      </file>
+    </package>
+    <file name="P:\Programming\PHP\dlf\framework/basic/interfaces/Application.php">
+      <metrics loc="11" ncloc="8" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="P:\Programming\PHP\dlf\framework/basic/interfaces/Component.php">
+      <metrics loc="17" ncloc="9" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="P:\Programming\PHP\dlf\framework/basic/interfaces/Controller.php">
+      <metrics loc="39" ncloc="17" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="P:\Programming\PHP\dlf\framework/basic/interfaces/View.php">
+      <metrics loc="14" ncloc="8" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <package name="pwf\components\activerecord">
+      <file name="P:\Programming\PHP\dlf\framework/components/activerecord/Model.php">
+        <class name="Model" namespace="pwf\components\activerecord">
+          <metrics methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="12" ncloc="8" classes="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="P:\Programming\PHP\dlf\framework/components/activerecord/Paginator.php">
+        <class name="Paginator" namespace="pwf\components\activerecord">
+          <metrics methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="7" ncloc="7" classes="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="pwf\components\activerecord\abstraction">
+      <file name="P:\Programming\PHP\dlf\framework/components/activerecord/abstraction/Model.php">
+        <class name="Model" namespace="pwf\components\activerecord\abstraction">
+          <metrics methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="0" elements="14" coveredelements="0"/>
+        </class>
+        <line num="14" type="method" name="__construct" crap="2" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="27" type="method" name="setConnection" crap="2" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="30" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="38" type="method" name="getConnection" crap="2" count="0"/>
+        <line num="39" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <line num="41" type="stmt" count="0"/>
+        <metrics loc="41" ncloc="25" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="0" elements="14" coveredelements="0"/>
+      </file>
+    </package>
+    <file name="P:\Programming\PHP\dlf\framework/components/activerecord/interfaces/Model.php">
+      <metrics loc="20" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <package name="pwf\components\authorization">
+      <file name="P:\Programming\PHP\dlf\framework/components/authorization/Authorization.php">
+        <class name="Authorization" namespace="pwf\components\authorization">
+          <metrics methods="11" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="56" coveredstatements="0" elements="67" coveredelements="0"/>
+        </class>
+        <line num="38" type="method" name="setIdentityClass" crap="2" count="0"/>
+        <line num="39" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <line num="41" type="stmt" count="0"/>
+        <line num="42" type="stmt" count="0"/>
+        <line num="49" type="method" name="getIdentityClass" crap="2" count="0"/>
+        <line num="50" type="stmt" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <line num="52" type="stmt" count="0"/>
+        <line num="60" type="method" name="setAutoLogin" crap="2" count="0"/>
+        <line num="61" type="stmt" count="0"/>
+        <line num="62" type="stmt" count="0"/>
+        <line num="63" type="stmt" count="0"/>
+        <line num="64" type="stmt" count="0"/>
+        <line num="71" type="method" name="isAutoLogin" crap="2" count="0"/>
+        <line num="72" type="stmt" count="0"/>
+        <line num="73" type="stmt" count="0"/>
+        <line num="74" type="stmt" count="0"/>
+        <line num="82" type="method" name="setIdentity" crap="2" count="0"/>
+        <line num="83" type="stmt" count="0"/>
+        <line num="84" type="stmt" count="0"/>
+        <line num="86" type="stmt" count="0"/>
+        <line num="87" type="stmt" count="0"/>
+        <line num="88" type="stmt" count="0"/>
+        <line num="89" type="stmt" count="0"/>
+        <line num="96" type="method" name="getIdentity" crap="2" count="0"/>
+        <line num="97" type="stmt" count="0"/>
+        <line num="98" type="stmt" count="0"/>
+        <line num="99" type="stmt" count="0"/>
+        <line num="106" type="method" name="clearIdentity" crap="2" count="0"/>
+        <line num="107" type="stmt" count="0"/>
+        <line num="108" type="stmt" count="0"/>
+        <line num="109" type="stmt" count="0"/>
+        <line num="110" type="stmt" count="0"/>
+        <line num="111" type="stmt" count="0"/>
+        <line num="118" type="method" name="isAuthorized" crap="6" count="0"/>
+        <line num="119" type="stmt" count="0"/>
+        <line num="120" type="stmt" count="0"/>
+        <line num="121" type="stmt" count="0"/>
+        <line num="128" type="method" name="loadConfiguration" crap="12" count="0"/>
+        <line num="129" type="stmt" count="0"/>
+        <line num="130" type="stmt" count="0"/>
+        <line num="131" type="stmt" count="0"/>
+        <line num="132" type="stmt" count="0"/>
+        <line num="133" type="stmt" count="0"/>
+        <line num="134" type="stmt" count="0"/>
+        <line num="135" type="stmt" count="0"/>
+        <line num="136" type="stmt" count="0"/>
+        <line num="137" type="stmt" count="0"/>
+        <line num="142" type="method" name="init" crap="6" count="0"/>
+        <line num="143" type="stmt" count="0"/>
+        <line num="144" type="stmt" count="0"/>
+        <line num="145" type="stmt" count="0"/>
+        <line num="146" type="stmt" count="0"/>
+        <line num="147" type="stmt" count="0"/>
+        <line num="152" type="method" name="autoLogin" crap="12" count="0"/>
+        <line num="153" type="stmt" count="0"/>
+        <line num="154" type="stmt" count="0"/>
+        <line num="155" type="stmt" count="0"/>
+        <line num="156" type="stmt" count="0"/>
+        <line num="157" type="stmt" count="0"/>
+        <line num="158" type="stmt" count="0"/>
+        <line num="159" type="stmt" count="0"/>
+        <line num="160" type="stmt" count="0"/>
+        <line num="161" type="stmt" count="0"/>
+        <line num="162" type="stmt" count="0"/>
+        <line num="163" type="stmt" count="0"/>
+        <metrics loc="163" ncloc="94" classes="1" methods="11" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="56" coveredstatements="0" elements="67" coveredelements="0"/>
+      </file>
+    </package>
+    <file name="P:\Programming\PHP\dlf\framework/components/authorization/interfaces/AuthorizationComponent.php">
+      <metrics loc="12" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="P:\Programming\PHP\dlf\framework/components/authorization/interfaces/Identity.php">
+      <metrics loc="28" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <package name="dlf\components\authorization\traits">
+      <file name="P:\Programming\PHP\dlf\framework/components/authorization/traits/AuthorizationCheckTrait.php">
+        <class name="AuthorizationCheckTrait" namespace="dlf\components\authorization\traits">
+          <metrics methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="8" coveredelements="0"/>
+        </class>
+        <line num="33" type="method" name="setAuthorizationComponent" crap="2" count="0"/>
+        <line num="34" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="43" type="method" name="checkHandlerAccess" crap="2" count="0"/>
+        <line num="44" type="stmt" count="0"/>
+        <line num="45" type="stmt" count="0"/>
+        <line num="46" type="stmt" count="0"/>
+        <metrics loc="46" ncloc="25" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="0" elements="8" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="pwf\components\datamapper">
+      <file name="P:\Programming\PHP\dlf\framework/components/datamapper/Model.php">
+        <class name="Model" namespace="pwf\components\datamapper">
+          <metrics methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="8" ncloc="8" classes="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="P:\Programming\PHP\dlf\framework/components/datamapper/Paginator.php">
+        <class name="Paginator" namespace="pwf\components\datamapper">
+          <metrics methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="40" coveredstatements="0" elements="46" coveredelements="0"/>
+        </class>
+        <line num="26" type="method" name="setCondition" crap="2" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="30" type="stmt" count="0"/>
+        <line num="37" type="method" name="getCondition" crap="2" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="39" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <line num="48" type="method" name="setDataSource" crap="2" count="0"/>
+        <line num="49" type="stmt" count="0"/>
+        <line num="50" type="stmt" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <line num="52" type="stmt" count="0"/>
+        <line num="59" type="method" name="getDataSource" crap="2" count="0"/>
+        <line num="60" type="stmt" count="0"/>
+        <line num="61" type="stmt" count="0"/>
+        <line num="62" type="stmt" count="0"/>
+        <line num="69" type="method" name="getData" crap="6" count="0"/>
+        <line num="70" type="stmt" count="0"/>
+        <line num="71" type="stmt" count="0"/>
+        <line num="72" type="stmt" count="0"/>
+        <line num="73" type="stmt" count="0"/>
+        <line num="74" type="stmt" count="0"/>
+        <line num="75" type="stmt" count="0"/>
+        <line num="76" type="stmt" count="0"/>
+        <line num="77" type="stmt" count="0"/>
+        <line num="78" type="stmt" count="0"/>
+        <line num="79" type="stmt" count="0"/>
+        <line num="86" type="method" name="setHeaders" crap="6" count="0"/>
+        <line num="87" type="stmt" count="0"/>
+        <line num="88" type="stmt" count="0"/>
+        <line num="89" type="stmt" count="0"/>
+        <line num="90" type="stmt" count="0"/>
+        <line num="91" type="stmt" count="0"/>
+        <line num="92" type="stmt" count="0"/>
+        <line num="93" type="stmt" count="0"/>
+        <line num="94" type="stmt" count="0"/>
+        <line num="95" type="stmt" count="0"/>
+        <line num="96" type="stmt" count="0"/>
+        <line num="97" type="stmt" count="0"/>
+        <line num="98" type="stmt" count="0"/>
+        <line num="99" type="stmt" count="0"/>
+        <line num="100" type="stmt" count="0"/>
+        <line num="101" type="stmt" count="0"/>
+        <line num="102" type="stmt" count="0"/>
+        <metrics loc="102" ncloc="61" classes="1" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="40" coveredstatements="0" elements="46" coveredelements="0"/>
+      </file>
+      <file name="P:\Programming\PHP\dlf\framework/components/datamapper/Repository.php">
+        <class name="Repository" namespace="pwf\components\datamapper">
+          <metrics methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="11" ncloc="7" classes="1" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="pwf\components\datamapper\abstraction">
+      <file name="P:\Programming\PHP\dlf\framework/components/datamapper/abstraction/Model.php">
+        <class name="Model" namespace="pwf\components\datamapper\abstraction">
+          <metrics methods="10" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="39" coveredstatements="0" elements="49" coveredelements="0"/>
+        </class>
+        <line num="14" type="method" name="__construct" crap="2" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="25" type="method" name="setAttributes" crap="2" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="36" type="method" name="getAttributes" crap="2" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="39" type="stmt" count="0"/>
+        <line num="48" type="method" name="setAttribute" crap="2" count="0"/>
+        <line num="49" type="stmt" count="0"/>
+        <line num="50" type="stmt" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <line num="52" type="stmt" count="0"/>
+        <line num="60" type="method" name="getAttribute" crap="6" count="0"/>
+        <line num="61" type="stmt" count="0"/>
+        <line num="62" type="stmt" count="0"/>
+        <line num="64" type="stmt" count="0"/>
+        <line num="65" type="stmt" count="0"/>
+        <line num="66" type="stmt" count="0"/>
+        <line num="68" type="stmt" count="0"/>
+        <line num="69" type="stmt" count="0"/>
+        <line num="77" type="method" name="attributeExists" crap="2" count="0"/>
+        <line num="78" type="stmt" count="0"/>
+        <line num="79" type="stmt" count="0"/>
+        <line num="80" type="stmt" count="0"/>
+        <line num="88" type="method" name="__get" crap="6" count="0"/>
+        <line num="89" type="stmt" count="0"/>
+        <line num="90" type="stmt" count="0"/>
+        <line num="91" type="stmt" count="0"/>
+        <line num="92" type="stmt" count="0"/>
+        <line num="93" type="stmt" count="0"/>
+        <line num="94" type="stmt" count="0"/>
+        <line num="102" type="method" name="__set" crap="2" count="0"/>
+        <line num="103" type="stmt" count="0"/>
+        <line num="104" type="stmt" count="0"/>
+        <line num="105" type="stmt" count="0"/>
+        <line num="113" type="method" name="__isset" crap="2" count="0"/>
+        <line num="114" type="stmt" count="0"/>
+        <line num="115" type="stmt" count="0"/>
+        <line num="116" type="stmt" count="0"/>
+        <line num="123" type="method" name="__unset" crap="2" count="0"/>
+        <line num="124" type="stmt" count="0"/>
+        <line num="125" type="stmt" count="0"/>
+        <line num="126" type="stmt" count="0"/>
+        <metrics loc="126" ncloc="68" classes="1" methods="10" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="39" coveredstatements="0" elements="49" coveredelements="0"/>
+      </file>
+      <file name="P:\Programming\PHP\dlf\framework/components/datamapper/abstraction/Repository.php">
+        <class name="Repository" namespace="pwf\components\datamapper\abstraction">
+          <metrics methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="9" coveredelements="0"/>
+        </class>
+        <line num="15" type="method" name="setConnection" crap="2" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="26" type="method" name="getConnection" crap="2" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <metrics loc="29" ncloc="18" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="9" coveredelements="0"/>
+      </file>
+    </package>
+    <file name="P:\Programming\PHP\dlf\framework/components/datamapper/interfaces/Getter.php">
+      <metrics loc="32" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="P:\Programming\PHP\dlf\framework/components/datamapper/interfaces/Model.php">
+      <metrics loc="34" ncloc="13" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="P:\Programming\PHP\dlf\framework/components/datamapper/interfaces/Repository.php">
+      <metrics loc="20" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <package name="pwf\components\datamapper\traits">
+      <file name="P:\Programming\PHP\dlf\framework/components/datamapper/traits/ErrorTrait.php">
+        <class name="ErrorTrait" namespace="pwf\components\datamapper\traits">
+          <metrics methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="0" elements="21" coveredelements="0"/>
+        </class>
+        <line num="15" type="method" name="addError" crap="2" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="27" type="method" name="getError" crap="6" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="29" type="stmt" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="44" type="method" name="isErrorExists" crap="2" count="0"/>
+        <line num="45" type="stmt" count="0"/>
+        <line num="46" type="stmt" count="0"/>
+        <line num="47" type="stmt" count="0"/>
+        <line num="54" type="method" name="hasErrors" crap="2" count="0"/>
+        <line num="55" type="stmt" count="0"/>
+        <line num="56" type="stmt" count="0"/>
+        <line num="57" type="stmt" count="0"/>
+        <metrics loc="57" ncloc="33" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="17" coveredstatements="0" elements="21" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="pwf\components\datapaginator\abstraction">
+      <file name="P:\Programming\PHP\dlf\framework/components/datapaginator/abstraction/Paginator.php">
+        <class name="Paginator" namespace="pwf\components\datapaginator\abstraction">
+          <metrics methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="0" elements="30" coveredelements="0"/>
+        </class>
+        <line num="34" type="method" name="setPage" crap="2" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="45" type="method" name="getPage" crap="12" count="0"/>
+        <line num="46" type="stmt" count="0"/>
+        <line num="47" type="stmt" count="0"/>
+        <line num="48" type="stmt" count="0"/>
+        <line num="49" type="stmt" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <line num="52" type="stmt" count="0"/>
+        <line num="60" type="method" name="setLimit" crap="2" count="0"/>
+        <line num="61" type="stmt" count="0"/>
+        <line num="62" type="stmt" count="0"/>
+        <line num="63" type="stmt" count="0"/>
+        <line num="64" type="stmt" count="0"/>
+        <line num="71" type="method" name="getLimit" crap="2" count="0"/>
+        <line num="72" type="stmt" count="0"/>
+        <line num="73" type="stmt" count="0"/>
+        <line num="74" type="stmt" count="0"/>
+        <line num="82" type="method" name="setParamName" crap="2" count="0"/>
+        <line num="83" type="stmt" count="0"/>
+        <line num="84" type="stmt" count="0"/>
+        <line num="85" type="stmt" count="0"/>
+        <line num="86" type="stmt" count="0"/>
+        <line num="93" type="method" name="getParamName" crap="2" count="0"/>
+        <line num="94" type="stmt" count="0"/>
+        <line num="95" type="stmt" count="0"/>
+        <line num="96" type="stmt" count="0"/>
+        <metrics loc="96" ncloc="48" classes="1" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="0" elements="30" coveredelements="0"/>
+      </file>
+    </package>
+    <file name="P:\Programming\PHP\dlf\framework/components/datapaginator/interfaces/Paginator.php">
+      <metrics loc="29" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <package name="pwf\components\dbconnection">
+      <file name="P:\Programming\PHP\dlf\framework/components/dbconnection/PDOConnection.php">
+        <class name="PDOConnection" namespace="pwf\components\dbconnection">
+          <metrics methods="9" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="29" coveredstatements="0" elements="38" coveredelements="0"/>
+        </class>
+        <line num="29" type="method" name="setPDO" crap="2" count="0"/>
+        <line num="31" type="stmt" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="40" type="method" name="getPDO" crap="6" count="0"/>
+        <line num="42" type="stmt" count="0"/>
+        <line num="43" type="stmt" count="0"/>
+        <line num="44" type="stmt" count="0"/>
+        <line num="45" type="stmt" count="0"/>
+        <line num="53" type="method" name="init" crap="2" count="0"/>
+        <line num="55" type="stmt" count="0"/>
+        <line num="63" type="method" name="connect" crap="2" count="0"/>
+        <line num="65" type="stmt" count="0"/>
+        <line num="66" type="stmt" count="0"/>
+        <line num="67" type="stmt" count="0"/>
+        <line num="74" type="method" name="disconnect" crap="2" count="0"/>
+        <line num="76" type="stmt" count="0"/>
+        <line num="77" type="stmt" count="0"/>
+        <line num="78" type="stmt" count="0"/>
+        <line num="87" type="method" name="loadConfiguration" crap="20" count="0"/>
+        <line num="89" type="stmt" count="0"/>
+        <line num="90" type="stmt" count="0"/>
+        <line num="91" type="stmt" count="0"/>
+        <line num="92" type="stmt" count="0"/>
+        <line num="93" type="stmt" count="0"/>
+        <line num="94" type="stmt" count="0"/>
+        <line num="95" type="stmt" count="0"/>
+        <line num="96" type="stmt" count="0"/>
+        <line num="97" type="stmt" count="0"/>
+        <line num="98" type="stmt" count="0"/>
+        <line num="108" type="method" name="exec" crap="2" count="0"/>
+        <line num="110" type="stmt" count="0"/>
+        <line num="111" type="stmt" count="0"/>
+        <line num="121" type="method" name="query" crap="2" count="0"/>
+        <line num="123" type="stmt" count="0"/>
+        <line num="124" type="stmt" count="0"/>
+        <line num="125" type="stmt" count="0"/>
+        <line num="133" type="method" name="insertId" crap="2" count="0"/>
+        <line num="135" type="stmt" count="0"/>
+        <metrics loc="136" ncloc="75" classes="1" methods="9" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="29" coveredstatements="0" elements="38" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="pwf\components\dbconnection\abstraction">
+      <file name="P:\Programming\PHP\dlf\framework/components/dbconnection/abstraction/Connection.php">
+        <class name="Connection" namespace="pwf\components\dbconnection\abstraction">
+          <metrics methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="15" coveredelements="0"/>
+        </class>
+        <line num="34" type="method" name="setDSN" crap="2" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="45" type="method" name="getDSN" crap="2" count="0"/>
+        <line num="47" type="stmt" count="0"/>
+        <line num="56" type="method" name="setLogin" crap="2" count="0"/>
+        <line num="58" type="stmt" count="0"/>
+        <line num="59" type="stmt" count="0"/>
+        <line num="67" type="method" name="getLogin" crap="2" count="0"/>
+        <line num="69" type="stmt" count="0"/>
+        <line num="78" type="method" name="setPassword" crap="2" count="0"/>
+        <line num="80" type="stmt" count="0"/>
+        <line num="81" type="stmt" count="0"/>
+        <line num="89" type="method" name="getPassword" crap="2" count="0"/>
+        <line num="91" type="stmt" count="0"/>
+        <metrics loc="92" ncloc="44" classes="1" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="15" coveredelements="0"/>
+      </file>
+    </package>
+    <file name="P:\Programming\PHP\dlf\framework/components/dbconnection/interfaces/Connection.php">
+      <metrics loc="14" ncloc="14" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="P:\Programming\PHP\dlf\framework/components/eventhandler/interfaces/EventHandler.php">
+      <metrics loc="21" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <package name="pwf\components\eventhandler\traits">
+      <file name="P:\Programming\PHP\dlf\framework/components/eventhandler/traits/CallbackTrait.php">
+        <class name="CallbackTrait" namespace="pwf\components\eventhandler\traits">
+          <metrics methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="4" elements="20" coveredelements="4"/>
+        </class>
+        <line num="19" type="method" name="getCallbacks" crap="2" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="30" type="method" name="setCallbacks" crap="2" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="43" type="method" name="prepareCallback" crap="4.12" count="1"/>
+        <line num="45" type="stmt" count="1"/>
+        <line num="46" type="stmt" count="1"/>
+        <line num="47" type="stmt" count="0"/>
+        <line num="48" type="stmt" count="0"/>
+        <line num="49" type="stmt" count="0"/>
+        <line num="50" type="stmt" count="1"/>
+        <line num="51" type="stmt" count="1"/>
+        <line num="53" type="stmt" count="0"/>
+        <line num="62" type="method" name="parseHandlerStr" crap="12" count="0"/>
+        <line num="64" type="stmt" count="0"/>
+        <line num="66" type="stmt" count="0"/>
+        <line num="68" type="stmt" count="0"/>
+        <line num="69" type="stmt" count="0"/>
+        <line num="71" type="stmt" count="0"/>
+        <metrics loc="72" ncloc="43" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="4" elements="20" coveredelements="4"/>
+      </file>
+      <file name="P:\Programming\PHP\dlf\framework/components/eventhandler/traits/EventTrait.php">
+        <class name="EventTrait" namespace="pwf\components\eventhandler\traits">
+          <metrics methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="0" elements="17" coveredelements="0"/>
+        </class>
+        <line num="17" type="method" name="on" crap="6" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="32" type="method" name="trigger" crap="12" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="34" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="39" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <metrics loc="40" ncloc="27" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="15" coveredstatements="0" elements="17" coveredelements="0"/>
+      </file>
+    </package>
+    <file name="P:\Programming\PHP\dlf\framework/components/observer/interfaces/Observer.php">
+      <metrics loc="13" ncloc="8" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="P:\Programming\PHP\dlf\framework/components/observer/interfaces/Subject.php">
+      <metrics loc="29" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <package name="pwf\components\observer\traits">
+      <file name="P:\Programming\PHP\dlf\framework/components/observer/traits/Subject.php">
+        <class name="Subject" namespace="pwf\components\observer\traits">
+          <metrics methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="0" elements="28" coveredelements="0"/>
+        </class>
+        <line num="21" type="method" name="attach" crap="6" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="37" type="method" name="detach" crap="20" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="39" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <line num="41" type="stmt" count="0"/>
+        <line num="42" type="stmt" count="0"/>
+        <line num="43" type="stmt" count="0"/>
+        <line num="44" type="stmt" count="0"/>
+        <line num="45" type="stmt" count="0"/>
+        <line num="46" type="stmt" count="0"/>
+        <line num="47" type="stmt" count="0"/>
+        <line num="54" type="method" name="notify" crap="12" count="0"/>
+        <line num="55" type="stmt" count="0"/>
+        <line num="56" type="stmt" count="0"/>
+        <line num="57" type="stmt" count="0"/>
+        <line num="58" type="stmt" count="0"/>
+        <line num="59" type="stmt" count="0"/>
+        <line num="60" type="stmt" count="0"/>
+        <line num="61" type="stmt" count="0"/>
+        <line num="62" type="stmt" count="0"/>
+        <metrics loc="62" ncloc="38" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="25" coveredstatements="0" elements="28" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="pwf\exception">
+      <file name="P:\Programming\PHP\dlf\framework/exception/HttpNotFoundException.php">
+        <class name="HttpNotFoundException" namespace="pwf\exception">
+          <metrics methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="6" coveredelements="0"/>
+        </class>
+        <line num="10" type="method" name="__construct" crap="2" count="0"/>
+        <line num="12" type="stmt" count="0"/>
+        <line num="14" type="stmt" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <line num="17" type="method" name="getContent" crap="2" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <metrics loc="20" ncloc="20" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="6" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="pwf\exception\abstraction">
+      <file name="P:\Programming\PHP\dlf\framework/exception/abstraction/HttpExceptionAbstract.php">
+        <class name="HttpExceptionAbstract" namespace="pwf\exception\abstraction">
+          <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
+        </class>
+        <line num="13" type="method" name="__construct" crap="2" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <metrics loc="18" ncloc="18" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
+      </file>
+    </package>
+    <file name="P:\Programming\PHP\dlf\framework/exception/interfaces/HttpException.php">
+      <metrics loc="9" ncloc="9" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <package name="pwf\helpers">
+      <file name="P:\Programming\PHP\dlf\framework/helpers/ArrayHelper.php">
+        <class name="ArrayHelper" namespace="pwf\helpers">
+          <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="0" elements="11" coveredelements="0"/>
+        </class>
+        <line num="14" type="method" name="toArray" crap="30" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <metrics loc="25" ncloc="19" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="0" elements="11" coveredelements="0"/>
+      </file>
+      <file name="P:\Programming\PHP\dlf\framework/helpers/StringHelpers.php">
+        <class name="StringHelpers" namespace="pwf\helpers">
+          <metrics methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="8" coveredelements="0"/>
+        </class>
+        <line num="15" type="method" name="hashString" crap="6" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <metrics loc="24" ncloc="17" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="8" coveredelements="0"/>
+      </file>
+      <file name="P:\Programming\PHP\dlf\framework/helpers/SystemHelpers.php">
+        <class name="SystemHelpers" namespace="pwf\helpers">
+          <metrics methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="39" coveredstatements="0" elements="42" coveredelements="0"/>
+        </class>
+        <line num="15" type="method" name="call" crap="12" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="20" type="stmt" count="0"/>
+        <line num="21" type="stmt" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="31" type="method" name="functionDI" crap="20" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <line num="33" type="stmt" count="0"/>
+        <line num="34" type="stmt" count="0"/>
+        <line num="35" type="stmt" count="0"/>
+        <line num="36" type="stmt" count="0"/>
+        <line num="37" type="stmt" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="39" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <line num="41" type="stmt" count="0"/>
+        <line num="42" type="stmt" count="0"/>
+        <line num="43" type="stmt" count="0"/>
+        <line num="44" type="stmt" count="0"/>
+        <line num="45" type="stmt" count="0"/>
+        <line num="54" type="method" name="methodDI" crap="30" count="0"/>
+        <line num="55" type="stmt" count="0"/>
+        <line num="56" type="stmt" count="0"/>
+        <line num="57" type="stmt" count="0"/>
+        <line num="58" type="stmt" count="0"/>
+        <line num="59" type="stmt" count="0"/>
+        <line num="60" type="stmt" count="0"/>
+        <line num="61" type="stmt" count="0"/>
+        <line num="62" type="stmt" count="0"/>
+        <line num="63" type="stmt" count="0"/>
+        <line num="64" type="stmt" count="0"/>
+        <line num="65" type="stmt" count="0"/>
+        <line num="66" type="stmt" count="0"/>
+        <line num="67" type="stmt" count="0"/>
+        <line num="68" type="stmt" count="0"/>
+        <line num="69" type="stmt" count="0"/>
+        <line num="70" type="stmt" count="0"/>
+        <line num="71" type="stmt" count="0"/>
+        <line num="72" type="stmt" count="0"/>
+        <metrics loc="72" ncloc="51" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="39" coveredstatements="0" elements="42" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="pwf\traits">
+      <file name="P:\Programming\PHP\dlf\framework/traits/HeadersTrait.php">
+        <class name="HeadersTrait" namespace="pwf\traits">
+          <metrics methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="11" coveredelements="0"/>
+        </class>
+        <line num="15" type="method" name="setHeaders" crap="2" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="26" type="method" name="getHeaders" crap="2" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="37" type="method" name="addHeader" crap="2" count="0"/>
+        <line num="39" type="stmt" count="0"/>
+        <line num="40" type="stmt" count="0"/>
+        <line num="48" type="method" name="clearHeaders" crap="2" count="0"/>
+        <line num="50" type="stmt" count="0"/>
+        <line num="51" type="stmt" count="0"/>
+        <metrics loc="52" ncloc="30" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="0" elements="11" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="pwf\web">
+      <file name="P:\Programming\PHP\dlf\framework/web/Request.php">
+        <class name="Request" namespace="pwf\web">
+          <metrics methods="8" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="21" coveredstatements="1" elements="29" coveredelements="2"/>
+        </class>
+        <line num="14" type="method" name="__construct" crap="2" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="25" type="method" name="setRequestParams" crap="2" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="28" type="stmt" count="0"/>
+        <line num="36" type="method" name="getRequestParams" crap="2" count="0"/>
+        <line num="38" type="stmt" count="0"/>
+        <line num="46" type="method" name="getPath" crap="1" count="1"/>
+        <line num="48" type="stmt" count="1"/>
+        <line num="58" type="method" name="get" crap="12" count="0"/>
+        <line num="60" type="stmt" count="0"/>
+        <line num="62" type="stmt" count="0"/>
+        <line num="64" type="stmt" count="0"/>
+        <line num="65" type="stmt" count="0"/>
+        <line num="66" type="stmt" count="0"/>
+        <line num="67" type="stmt" count="0"/>
+        <line num="68" type="stmt" count="0"/>
+        <line num="70" type="stmt" count="0"/>
+        <line num="78" type="method" name="isPost" crap="2" count="0"/>
+        <line num="80" type="stmt" count="0"/>
+        <line num="88" type="method" name="isGet" crap="2" count="0"/>
+        <line num="90" type="stmt" count="0"/>
+        <line num="100" type="method" name="getCookie" crap="6" count="0"/>
+        <line num="102" type="stmt" count="0"/>
+        <line num="104" type="stmt" count="0"/>
+        <line num="105" type="stmt" count="0"/>
+        <line num="106" type="stmt" count="0"/>
+        <line num="108" type="stmt" count="0"/>
+        <metrics loc="109" ncloc="64" classes="1" methods="8" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="21" coveredstatements="1" elements="29" coveredelements="2"/>
+      </file>
+      <file name="P:\Programming\PHP\dlf\framework/web/Response.php">
+        <class name="Response" namespace="pwf\web">
+          <metrics methods="19" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="50" coveredstatements="6" elements="69" coveredelements="8"/>
+        </class>
+        <line num="52" type="method" name="__construct" crap="2" count="0"/>
+        <line num="54" type="stmt" count="0"/>
+        <line num="55" type="stmt" count="0"/>
+        <line num="56" type="stmt" count="0"/>
+        <line num="64" type="method" name="setHeaders" crap="1" count="1"/>
+        <line num="66" type="stmt" count="1"/>
+        <line num="67" type="stmt" count="1"/>
+        <line num="75" type="method" name="getCookies" crap="2" count="0"/>
+        <line num="77" type="stmt" count="0"/>
+        <line num="86" type="method" name="setCookies" crap="2" count="0"/>
+        <line num="88" type="stmt" count="0"/>
+        <line num="89" type="stmt" count="0"/>
+        <line num="101" type="method" name="addCookie" crap="2" count="0"/>
+        <line num="103" type="stmt" count="0"/>
+        <line num="104" type="stmt" count="0"/>
+        <line num="105" type="stmt" count="0"/>
+        <line num="107" type="stmt" count="0"/>
+        <line num="108" type="stmt" count="0"/>
+        <line num="116" type="method" name="getHeaders" crap="2" count="0"/>
+        <line num="118" type="stmt" count="0"/>
+        <line num="127" type="method" name="addHeader" crap="2" count="0"/>
+        <line num="129" type="stmt" count="0"/>
+        <line num="130" type="stmt" count="0"/>
+        <line num="139" type="method" name="setBody" crap="2" count="0"/>
+        <line num="141" type="stmt" count="0"/>
+        <line num="142" type="stmt" count="0"/>
+        <line num="150" type="method" name="getBody" crap="2" count="0"/>
+        <line num="152" type="stmt" count="0"/>
+        <line num="160" type="method" name="clear" crap="2" count="0"/>
+        <line num="162" type="stmt" count="0"/>
+        <line num="163" type="stmt" count="0"/>
+        <line num="171" type="method" name="isRaw" crap="2" count="0"/>
+        <line num="173" type="stmt" count="0"/>
+        <line num="181" type="method" name="isJson" crap="2" count="0"/>
+        <line num="183" type="stmt" count="0"/>
+        <line num="192" type="method" name="setResponseType" crap="2" count="0"/>
+        <line num="194" type="stmt" count="0"/>
+        <line num="195" type="stmt" count="0"/>
+        <line num="203" type="method" name="prepareBody" crap="20" count="0"/>
+        <line num="205" type="stmt" count="0"/>
+        <line num="207" type="stmt" count="0"/>
+        <line num="209" type="stmt" count="0"/>
+        <line num="210" type="stmt" count="0"/>
+        <line num="211" type="stmt" count="0"/>
+        <line num="213" type="stmt" count="0"/>
+        <line num="219" type="method" name="send" crap="1" count="1"/>
+        <line num="221" type="stmt" count="1"/>
+        <line num="222" type="stmt" count="1"/>
+        <line num="224" type="stmt" count="1"/>
+        <line num="225" type="stmt" count="1"/>
+        <line num="232" type="method" name="sendHeaders" crap="6" count="0"/>
+        <line num="234" type="stmt" count="0"/>
+        <line num="236" type="stmt" count="0"/>
+        <line num="237" type="stmt" count="0"/>
+        <line num="238" type="stmt" count="0"/>
+        <line num="239" type="stmt" count="0"/>
+        <line num="247" type="method" name="sendCookies" crap="6" count="0"/>
+        <line num="249" type="stmt" count="0"/>
+        <line num="251" type="stmt" count="0"/>
+        <line num="252" type="stmt" count="0"/>
+        <line num="253" type="stmt" count="0"/>
+        <line num="254" type="stmt" count="0"/>
+        <line num="256" type="stmt" count="0"/>
+        <line num="265" type="method" name="removeCookie" crap="2" count="0"/>
+        <line num="267" type="stmt" count="0"/>
+        <line num="269" type="stmt" count="0"/>
+        <line num="278" type="method" name="redirect" crap="2" count="0"/>
+        <line num="280" type="stmt" count="0"/>
+        <line num="281" type="stmt" count="0"/>
+        <metrics loc="282" ncloc="152" classes="1" methods="19" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="50" coveredstatements="6" elements="69" coveredelements="8"/>
+      </file>
+    </package>
+    <metrics files="47" loc="2564" ncloc="1500" classes="31" methods="135" coveredmethods="15" conditionals="0" coveredconditionals="0" statements="579" coveredstatements="88" elements="714" coveredelements="103"/>
+  </project>
+</coverage>

@@ -30,11 +30,13 @@ abstract class Component implements \pwf\basic\interfaces\Component
      * Configuration loading
      *
      * @param array $config
+     * @return \pwf\basic\Comonent
      */
     public function loadConfiguration($config = [])
     {
         if (isset($config['force'])) {
             $this->isForceInitialization((bool) $config['force']);
         }
+        return $this;
     }
 }

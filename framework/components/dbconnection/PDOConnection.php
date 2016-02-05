@@ -39,6 +39,9 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
      */
     public function getPDO()
     {
+        if ($this->PDO === null) {
+            $this->connect();
+        }
         return $this->PDO;
     }
 
@@ -49,7 +52,6 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
      */
     public function init()
     {
-        $this->connect();
         return $this;
     }
 

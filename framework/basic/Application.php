@@ -150,20 +150,19 @@ class Application implements \pwf\basic\interfaces\Application
                         return $_POST[$paramName];
                     }
                 }));
-
-            $this->response->send();
         } catch (HttpException $ex) {
-            $this->sendHeaders($ex->getHeaders());
+            $this->response->setHeaders($ex->getHeaders());
         } catch (\Exception $ex) {
-            $this->sendHeaders([
+            $this->response->setHeaders([
                 'HTTP/1.1 500 Internal Server Error'
             ]);
-            echo '<h2>Handled exception</h2>';
-            echo '<h3>'.$ex->getMessage().'</h3>';
-            echo '<pre>';
-            echo $ex->getTraceAsString();
-            echo '</pre>';
+            $this->response->setBody('<h2>Handled exception</h2>'
+                .'<h3>'.$ex->getMessage().'</h3>'
+                .'<pre>'
+                .$ex->getTraceAsString()
+                .'</pre>');
         }
+        $this->response->send();
     }
 
     /**
@@ -178,20 +177,6 @@ class Application implements \pwf\basic\interfaces\Application
             if (isset($params['class']) && isset($params['force'])) {
                 $this->getComponent($key);
             }
-        }
-        return $this;
-    }
-
-    /**
-     * Send headers
-     *
-     * @param array $headers
-     * @return Application
-     */
-    protected function sendHeaders($headers)
-    {
-        foreach ($headers as $header) {
-            header($header);
         }
         return $this;
     }

@@ -17,7 +17,7 @@ class View implements \pwf\basic\interfaces\View
         ob_start();
         ob_implicit_flush(false);
         extract($params, EXTR_OVERWRITE);
-        require('../'.$viewPath);
+        require(file_exists($viewPath) ? $viewPath : '../'.$viewPath);
 
         return ob_get_clean();
     }

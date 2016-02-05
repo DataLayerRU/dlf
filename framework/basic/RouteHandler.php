@@ -71,9 +71,8 @@ class RouteHandler
 
         $parts = explode('/', $url);
 
-        $action                   = array_pop($parts);
-        $parts[count($parts) - 1] = str_replace(' ', '',
-                ucwords(str_replace('-', ' ', $parts[count($parts) - 1]))).'Controller';
+        $action                   = static::preparePart(array_pop($parts), true);
+        $parts[count($parts) - 1] = static::preparePart($parts[count($parts) - 1]).'Controller';
         $controller               = '\\project\\controllers'.implode('\\',
                 $parts);
 
@@ -81,6 +80,21 @@ class RouteHandler
             $result = $controller.'::'.$action;
         }
 
+        return $result;
+    }
+
+    /**
+     * Converts main-action to mainAction
+     *
+     * @param string $part
+     * @return string
+     */
+    public static function preparePart($part, $firstLower = false)
+    {
+        $result = str_replace(' ', '', ucwords(str_replace('-', ' ', $part)));
+        if ($firstLower && mb_strlen($result) > 0) {
+            $result[0] = mb_strtolower($result[0]);
+        }
         return $result;
     }
 }
