@@ -6,7 +6,7 @@ class ViewTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers \pwf\basic\View::render
      */
-    public function testMe()
+    public function testView()
     {
         $view = Codeception\Util\Stub::make('\pwf\basic\View');
 
