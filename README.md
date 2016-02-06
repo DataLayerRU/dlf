@@ -3,10 +3,13 @@ PWF - framework for proffessional web development
 
 [http://pwf.web-development.pw/](http://pwf.web-development.pw/)
 
+[![Latest Stable Version](https://poser.pugx.org/professionalweb/pwf/v/stable)](https://packagist.org/packages/professionalweb/pwf)
 [![Build Status](https://travis-ci.org/SergioMadness/pwf.svg?branch=dev)](https://travis-ci.org/SergioMadness/pwf)
 [![Code Climate](https://codeclimate.com/github/SergioMadness/pwf/badges/gpa.svg)](https://codeclimate.com/github/SergioMadness/pwf)
 [![Test Coverage](https://codeclimate.com/github/SergioMadness/pwf/badges/coverage.svg)](https://codeclimate.com/github/SergioMadness/pwf/coverage)
 [![Dependency Status](https://www.versioneye.com/user/projects/56b53a8e0a0ff5003b975815/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56b53a8e0a0ff5003b975815)
+[![License](https://poser.pugx.org/professionalweb/pwf/license)](https://packagist.org/packages/professionalweb/pwf)
+[![Latest Unstable Version](https://poser.pugx.org/professionalweb/pwf/v/unstable)](https://packagist.org/packages/professionalweb/pwf)
 
 Project structure
 -------------------
@@ -172,7 +175,7 @@ class PostModel extends \pwf\basic\DBModel
 The MIT License (MIT)
 ---------------------
 
-Copyright (c) 2016 Sergey Zinchenko, [Professional web](http://web-developmwnt.pw)
+Copyright (c) 2016 Sergey Zinchenko, [Professional web](http://web-development.pw)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
