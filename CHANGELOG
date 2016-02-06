@@ -1,7 +1,10 @@
 PWF
 ====
 
-## v0.3 In dev
+## v0.3 07.02.2016
+ - Auto authorization
+ - Force component initialization
+ - Tests
 
 ## v0.2 27.01.2016
 
