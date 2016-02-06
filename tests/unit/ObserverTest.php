@@ -1,6 +1,6 @@
 <?php
 
-class SubjectClass
+class SubjectClass implements \pwf\components\observer\interfaces\Subject
 {
 
     use \pwf\components\observer\traits\Subject;
