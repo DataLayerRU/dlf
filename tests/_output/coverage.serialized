@@ -1,0 +1,2963 @@
+<?php
+$coverage = new PHP_CodeCoverage;
+$coverage->setData(array (
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\authorization\\traits\\AuthorizationCheckTrait.php' => 
+  array (
+    24 => 
+    array (
+      0 => 'AuthorizationTest::testTraits',
+    ),
+    25 => 
+    array (
+      0 => 'AuthorizationTest::testTraits',
+    ),
+    26 => NULL,
+    35 => 
+    array (
+      0 => 'AuthorizationTest::testTraits',
+    ),
+    36 => NULL,
+    45 => 
+    array (
+    ),
+    46 => NULL,
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\activerecord\\Model.php' => 
+  array (
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\datamapper\\interfaces\\Model.php' => 
+  array (
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\observer\\traits\\Subject.php' => 
+  array (
+    25 => 
+    array (
+      0 => 'ObserverTest::testObserver',
+    ),
+    26 => 
+    array (
+      0 => 'ObserverTest::testObserver',
+    ),
+    27 => 
+    array (
+      0 => 'ObserverTest::testObserver',
+    ),
+    28 => 
+    array (
+      0 => 'ObserverTest::testObserver',
+    ),
+    29 => 
+    array (
+      0 => 'ObserverTest::testObserver',
+    ),
+    30 => NULL,
+    41 => 
+    array (
+      0 => 'ObserverTest::testObserver',
+    ),
+    42 => 
+    array (
+      0 => 'ObserverTest::testObserver',
+    ),
+    43 => 
+    array (
+      0 => 'ObserverTest::testObserver',
+    ),
+    44 => 
+    array (
+      0 => 'ObserverTest::testObserver',
+    ),
+    45 => 
+    array (
+      0 => 'ObserverTest::testObserver',
+    ),
+    46 => 
+    array (
+      0 => 'ObserverTest::testObserver',
+    ),
+    47 => 
+    array (
+      0 => 'ObserverTest::testObserver',
+    ),
+    48 => 
+    array (
+      0 => 'ObserverTest::testObserver',
+    ),
+    49 => NULL,
+    58 => 
+    array (
+      0 => 'ObserverTest::testObserver',
+    ),
+    59 => 
+    array (
+      0 => 'ObserverTest::testObserver',
+    ),
+    60 => 
+    array (
+      0 => 'ObserverTest::testObserver',
+    ),
+    61 => 
+    array (
+      0 => 'ObserverTest::testObserver',
+    ),
+    62 => 
+    array (
+      0 => 'ObserverTest::testObserver',
+    ),
+    63 => 
+    array (
+      0 => 'ObserverTest::testObserver',
+    ),
+    64 => NULL,
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\activerecord\\interfaces\\Model.php' => 
+  array (
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\activerecord\\abstraction\\Model.php' => 
+  array (
+    16 => 
+    array (
+      0 => 'ActiveRecordTest::testAttributes',
+      1 => 'ActiveRecordTest::testErrors',
+      2 => 'PaginatorTest::testMethods',
+    ),
+    18 => 
+    array (
+      0 => 'ActiveRecordTest::testAttributes',
+      1 => 'ActiveRecordTest::testErrors',
+      2 => 'PaginatorTest::testMethods',
+    ),
+    19 => 
+    array (
+      0 => 'ActiveRecordTest::testAttributes',
+      1 => 'ActiveRecordTest::testErrors',
+      2 => 'PaginatorTest::testMethods',
+    ),
+    29 => 
+    array (
+      0 => 'ActiveRecordTest::testAttributes',
+      1 => 'ActiveRecordTest::testErrors',
+      2 => 'PaginatorTest::testMethods',
+    ),
+    30 => 
+    array (
+      0 => 'ActiveRecordTest::testAttributes',
+      1 => 'ActiveRecordTest::testErrors',
+      2 => 'PaginatorTest::testMethods',
+    ),
+    31 => NULL,
+    40 => 
+    array (
+      0 => 'ActiveRecordTest::testAttributes',
+    ),
+    41 => NULL,
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\datamapper\\traits\\ErrorTrait.php' => 
+  array (
+    18 => 
+    array (
+      0 => 'ActiveRecordTest::testErrors',
+    ),
+    19 => 
+    array (
+      0 => 'ActiveRecordTest::testErrors',
+    ),
+    20 => NULL,
+    30 => 
+    array (
+      0 => 'ActiveRecordTest::testErrors',
+    ),
+    32 => 
+    array (
+      0 => 'ActiveRecordTest::testErrors',
+    ),
+    33 => 
+    array (
+      0 => 'ActiveRecordTest::testErrors',
+    ),
+    34 => 
+    array (
+      0 => 'ActiveRecordTest::testErrors',
+    ),
+    36 => 
+    array (
+      0 => 'ActiveRecordTest::testErrors',
+    ),
+    37 => NULL,
+    47 => 
+    array (
+      0 => 'ActiveRecordTest::testErrors',
+    ),
+    48 => NULL,
+    57 => 
+    array (
+      0 => 'ActiveRecordTest::testErrors',
+    ),
+    58 => NULL,
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\eventhandler\\traits\\CallbackTrait.php' => 
+  array (
+    21 => 
+    array (
+      0 => 'CallbackTest::testMethods',
+    ),
+    22 => NULL,
+    32 => 
+    array (
+      0 => 'CallbackTest::testMethods',
+    ),
+    33 => 
+    array (
+      0 => 'CallbackTest::testMethods',
+    ),
+    34 => NULL,
+    45 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'CallbackTest::testMethods',
+      4 => 'CallbackTest::testEvent',
+    ),
+    46 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'CallbackTest::testMethods',
+      4 => 'CallbackTest::testEvent',
+    ),
+    47 => 
+    array (
+      0 => 'CallbackTest::testMethods',
+    ),
+    48 => 
+    array (
+      0 => 'CallbackTest::testMethods',
+    ),
+    49 => 
+    array (
+      0 => 'CallbackTest::testMethods',
+    ),
+    50 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'CallbackTest::testMethods',
+      4 => 'CallbackTest::testEvent',
+    ),
+    51 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'CallbackTest::testMethods',
+    ),
+    52 => NULL,
+    53 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'CallbackTest::testMethods',
+      3 => 'CallbackTest::testEvent',
+    ),
+    54 => NULL,
+    64 => 
+    array (
+      0 => 'CallbackTest::testMethods',
+    ),
+    66 => 
+    array (
+      0 => 'CallbackTest::testMethods',
+    ),
+    68 => 
+    array (
+      0 => 'CallbackTest::testMethods',
+    ),
+    69 => 
+    array (
+      0 => 'CallbackTest::testMethods',
+    ),
+    71 => 
+    array (
+      0 => 'CallbackTest::testMethods',
+    ),
+    72 => NULL,
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\datamapper\\abstraction\\Model.php' => 
+  array (
+    16 => 
+    array (
+      0 => 'ActiveRecordTest::testAttributes',
+      1 => 'ActiveRecordTest::testErrors',
+      2 => 'PaginatorTest::testMethods',
+    ),
+    17 => 
+    array (
+      0 => 'ActiveRecordTest::testAttributes',
+      1 => 'ActiveRecordTest::testErrors',
+      2 => 'PaginatorTest::testMethods',
+    ),
+    27 => 
+    array (
+      0 => 'ActiveRecordTest::testAttributes',
+      1 => 'ActiveRecordTest::testErrors',
+      2 => 'PaginatorTest::testMethods',
+    ),
+    28 => 
+    array (
+      0 => 'ActiveRecordTest::testAttributes',
+      1 => 'ActiveRecordTest::testErrors',
+      2 => 'PaginatorTest::testMethods',
+    ),
+    29 => NULL,
+    38 => 
+    array (
+      0 => 'ActiveRecordTest::testAttributes',
+    ),
+    39 => NULL,
+    50 => 
+    array (
+      0 => 'ActiveRecordTest::testAttributes',
+    ),
+    51 => 
+    array (
+      0 => 'ActiveRecordTest::testAttributes',
+    ),
+    52 => NULL,
+    62 => 
+    array (
+      0 => 'ActiveRecordTest::testAttributes',
+    ),
+    64 => 
+    array (
+      0 => 'ActiveRecordTest::testAttributes',
+    ),
+    65 => 
+    array (
+      0 => 'ActiveRecordTest::testAttributes',
+    ),
+    66 => 
+    array (
+      0 => 'ActiveRecordTest::testAttributes',
+    ),
+    68 => 
+    array (
+      0 => 'ActiveRecordTest::testAttributes',
+    ),
+    69 => NULL,
+    79 => 
+    array (
+      0 => 'ActiveRecordTest::testAttributes',
+    ),
+    80 => NULL,
+    90 => 
+    array (
+      0 => 'ActiveRecordTest::testAttributes',
+    ),
+    91 => 
+    array (
+      0 => 'ActiveRecordTest::testAttributes',
+    ),
+    92 => NULL,
+    93 => 
+    array (
+      0 => 'ActiveRecordTest::testAttributes',
+    ),
+    94 => NULL,
+    104 => 
+    array (
+      0 => 'ActiveRecordTest::testAttributes',
+    ),
+    105 => 
+    array (
+      0 => 'ActiveRecordTest::testAttributes',
+    ),
+    115 => 
+    array (
+      0 => 'ActiveRecordTest::testAttributes',
+    ),
+    116 => NULL,
+    125 => 
+    array (
+      0 => 'ActiveRecordTest::testAttributes',
+    ),
+    126 => 
+    array (
+      0 => 'ActiveRecordTest::testAttributes',
+    ),
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\eventhandler\\traits\\EventTrait.php' => 
+  array (
+    19 => 
+    array (
+      0 => 'CallbackTest::testEvent',
+    ),
+    20 => 
+    array (
+      0 => 'CallbackTest::testEvent',
+    ),
+    21 => 
+    array (
+      0 => 'CallbackTest::testEvent',
+    ),
+    22 => 
+    array (
+      0 => 'CallbackTest::testEvent',
+    ),
+    23 => 
+    array (
+      0 => 'CallbackTest::testEvent',
+    ),
+    24 => NULL,
+    33 => 
+    array (
+      0 => 'CallbackTest::testEvent',
+    ),
+    34 => 
+    array (
+      0 => 'CallbackTest::testEvent',
+    ),
+    35 => NULL,
+    45 => 
+    array (
+      0 => 'CallbackTest::testEvent',
+    ),
+    46 => 
+    array (
+      0 => 'CallbackTest::testEvent',
+    ),
+    47 => 
+    array (
+      0 => 'CallbackTest::testEvent',
+    ),
+    48 => 
+    array (
+      0 => 'CallbackTest::testEvent',
+    ),
+    49 => 
+    array (
+      0 => 'CallbackTest::testEvent',
+    ),
+    50 => 
+    array (
+      0 => 'CallbackTest::testEvent',
+    ),
+    51 => NULL,
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\datamapper\\interfaces\\Getter.php' => 
+  array (
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\basic\\Component.php' => 
+  array (
+    22 => 
+    array (
+      0 => 'ComponentTest::testBaseComponent',
+    ),
+    23 => 
+    array (
+      0 => 'ComponentTest::testBaseComponent',
+    ),
+    24 => NULL,
+    25 => 
+    array (
+      0 => 'ComponentTest::testBaseComponent',
+    ),
+    26 => 
+    array (
+      0 => 'ComponentTest::testBaseComponent',
+    ),
+    27 => NULL,
+    37 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+      1 => 'ComponentTest::testBaseComponent',
+    ),
+    38 => 
+    array (
+      0 => 'ComponentTest::testBaseComponent',
+    ),
+    39 => 
+    array (
+      0 => 'ComponentTest::testBaseComponent',
+    ),
+    40 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+      1 => 'ComponentTest::testBaseComponent',
+    ),
+    41 => NULL,
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\basic\\interfaces\\Application.php' => 
+  array (
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\basic\\Application.php' => 
+  array (
+    50 => 
+    array (
+      0 => 'ApplicationTest::testGetRequest',
+      1 => 'ApplicationTest::testGetResponse',
+      2 => 'ApplicationTest::testSetConfiguration',
+      3 => 'ApplicationTest::testRun',
+      4 => 'ApplicationTest::testRunException',
+      5 => 'ApplicationTest::testAnonimus',
+      6 => 'ApplicationTest::testGetComponent',
+      7 => 'ApplicationTest::testComponentException',
+      8 => 'AuthorizationTest::testIt',
+      9 => 'PaginatorTest::testMethods',
+    ),
+    51 => 
+    array (
+      0 => 'ApplicationTest::testGetRequest',
+      1 => 'ApplicationTest::testGetResponse',
+      2 => 'ApplicationTest::testSetConfiguration',
+      3 => 'ApplicationTest::testRun',
+      4 => 'ApplicationTest::testRunException',
+      5 => 'ApplicationTest::testAnonimus',
+      6 => 'ApplicationTest::testGetComponent',
+      7 => 'ApplicationTest::testComponentException',
+      8 => 'AuthorizationTest::testIt',
+      9 => 'PaginatorTest::testMethods',
+    ),
+    52 => 
+    array (
+      0 => 'ApplicationTest::testGetRequest',
+      1 => 'ApplicationTest::testGetResponse',
+      2 => 'ApplicationTest::testSetConfiguration',
+      3 => 'ApplicationTest::testRun',
+      4 => 'ApplicationTest::testRunException',
+      5 => 'ApplicationTest::testAnonimus',
+      6 => 'ApplicationTest::testGetComponent',
+      7 => 'ApplicationTest::testComponentException',
+      8 => 'AuthorizationTest::testIt',
+      9 => 'PaginatorTest::testMethods',
+    ),
+    54 => 
+    array (
+      0 => 'ApplicationTest::testGetRequest',
+      1 => 'ApplicationTest::testGetResponse',
+      2 => 'ApplicationTest::testSetConfiguration',
+      3 => 'ApplicationTest::testRun',
+      4 => 'ApplicationTest::testRunException',
+      5 => 'ApplicationTest::testAnonimus',
+      6 => 'ApplicationTest::testGetComponent',
+      7 => 'ApplicationTest::testComponentException',
+      8 => 'AuthorizationTest::testIt',
+      9 => 'PaginatorTest::testMethods',
+    ),
+    55 => 
+    array (
+      0 => 'ApplicationTest::testGetRequest',
+      1 => 'ApplicationTest::testGetResponse',
+      2 => 'ApplicationTest::testSetConfiguration',
+      3 => 'ApplicationTest::testRun',
+      4 => 'ApplicationTest::testRunException',
+      5 => 'ApplicationTest::testAnonimus',
+      6 => 'ApplicationTest::testGetComponent',
+      7 => 'ApplicationTest::testComponentException',
+      8 => 'AuthorizationTest::testIt',
+      9 => 'PaginatorTest::testMethods',
+    ),
+    64 => 
+    array (
+      0 => 'ApplicationTest::testGetRequest',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'AuthorizationTest::testIt',
+      4 => 'PaginatorTest::testMethods',
+    ),
+    65 => NULL,
+    74 => 
+    array (
+      0 => 'ApplicationTest::testGetResponse',
+      1 => 'ApplicationTest::testRun',
+      2 => 'AuthorizationTest::testIt',
+      3 => 'PaginatorTest::testMethods',
+    ),
+    75 => NULL,
+    85 => 
+    array (
+      0 => 'ApplicationTest::testGetRequest',
+      1 => 'ApplicationTest::testGetResponse',
+      2 => 'ApplicationTest::testSetConfiguration',
+      3 => 'ApplicationTest::testRun',
+      4 => 'ApplicationTest::testRunException',
+      5 => 'ApplicationTest::testAnonimus',
+      6 => 'ApplicationTest::testGetComponent',
+      7 => 'ApplicationTest::testComponentException',
+      8 => 'AuthorizationTest::testIt',
+      9 => 'PaginatorTest::testMethods',
+    ),
+    86 => 
+    array (
+      0 => 'ApplicationTest::testGetRequest',
+      1 => 'ApplicationTest::testGetResponse',
+      2 => 'ApplicationTest::testSetConfiguration',
+      3 => 'ApplicationTest::testRun',
+      4 => 'ApplicationTest::testRunException',
+      5 => 'ApplicationTest::testAnonimus',
+      6 => 'ApplicationTest::testGetComponent',
+      7 => 'ApplicationTest::testComponentException',
+      8 => 'AuthorizationTest::testIt',
+      9 => 'PaginatorTest::testMethods',
+    ),
+    87 => NULL,
+    96 => 
+    array (
+      0 => 'ApplicationTest::testSetConfiguration',
+      1 => 'ApplicationTest::testRun',
+      2 => 'ApplicationTest::testRunException',
+      3 => 'ApplicationTest::testAnonimus',
+      4 => 'ApplicationTest::testGetComponent',
+      5 => 'ApplicationTest::testComponentException',
+    ),
+    97 => NULL,
+    107 => 
+    array (
+      0 => 'ApplicationTest::testSetConfiguration',
+    ),
+    108 => 
+    array (
+      0 => 'ApplicationTest::testSetConfiguration',
+    ),
+    109 => NULL,
+    119 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'ApplicationTest::testGetComponent',
+      3 => 'ApplicationTest::testComponentException',
+    ),
+    120 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'ApplicationTest::testGetComponent',
+      3 => 'ApplicationTest::testComponentException',
+    ),
+    121 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'ApplicationTest::testGetComponent',
+      3 => 'ApplicationTest::testComponentException',
+    ),
+    122 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'ApplicationTest::testGetComponent',
+      3 => 'ApplicationTest::testComponentException',
+    ),
+    123 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'ApplicationTest::testGetComponent',
+      3 => 'ApplicationTest::testComponentException',
+    ),
+    124 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'ApplicationTest::testGetComponent',
+      3 => 'ApplicationTest::testComponentException',
+    ),
+    125 => NULL,
+    133 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+    ),
+    135 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+    ),
+    137 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+    ),
+    138 => 
+    array (
+    ),
+    139 => 
+    array (
+    ),
+    141 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+    ),
+    143 => 
+    array (
+      0 => 'ApplicationTest::testAnonimus',
+    ),
+    144 => 
+    array (
+      0 => 'ApplicationTest::testAnonimus',
+    ),
+    145 => NULL,
+    146 => 
+    array (
+      0 => 'ApplicationTest::testAnonimus',
+    ),
+    147 => 
+    array (
+      0 => 'ApplicationTest::testAnonimus',
+    ),
+    148 => NULL,
+    149 => 
+    array (
+      0 => 'ApplicationTest::testAnonimus',
+    ),
+    150 => 
+    array (
+      0 => 'ApplicationTest::testAnonimus',
+    ),
+    151 => NULL,
+    152 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+    ),
+    153 => 
+    array (
+    ),
+    154 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+    ),
+    155 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+    ),
+    156 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+    ),
+    157 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+    ),
+    158 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+    ),
+    160 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+    ),
+    161 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+    ),
+    162 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+    ),
+    163 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+    ),
+    164 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+    ),
+    165 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+    ),
+    167 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+    ),
+    168 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+    ),
+    177 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+    ),
+    178 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+    ),
+    179 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testAnonimus',
+    ),
+    180 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+    ),
+    181 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+    ),
+    182 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+    ),
+    183 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+    ),
+    184 => NULL,
+    194 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'ApplicationTest::testGetComponent',
+      3 => 'ApplicationTest::testComponentException',
+    ),
+    195 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'ApplicationTest::testGetComponent',
+      3 => 'ApplicationTest::testComponentException',
+    ),
+    196 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'ApplicationTest::testGetComponent',
+    ),
+    197 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'ApplicationTest::testGetComponent',
+    ),
+    199 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'ApplicationTest::testGetComponent',
+    ),
+    200 => NULL,
+    211 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'ApplicationTest::testGetComponent',
+      3 => 'ApplicationTest::testComponentException',
+    ),
+    213 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'ApplicationTest::testGetComponent',
+      3 => 'ApplicationTest::testComponentException',
+    ),
+    215 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'ApplicationTest::testGetComponent',
+      3 => 'ApplicationTest::testComponentException',
+    ),
+    216 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'ApplicationTest::testGetComponent',
+      3 => 'ApplicationTest::testComponentException',
+    ),
+    217 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'ApplicationTest::testGetComponent',
+      3 => 'ApplicationTest::testComponentException',
+    ),
+    218 => 
+    array (
+      0 => 'ApplicationTest::testComponentException',
+    ),
+    219 => 
+    array (
+      0 => 'ApplicationTest::testComponentException',
+    ),
+    220 => NULL,
+    221 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'ApplicationTest::testGetComponent',
+    ),
+    222 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'ApplicationTest::testGetComponent',
+    ),
+    224 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'ApplicationTest::testGetComponent',
+    ),
+    225 => NULL,
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\web\\Request.php' => 
+  array (
+    16 => 
+    array (
+      0 => 'ApplicationTest::testGetRequest',
+      1 => 'ApplicationTest::testGetResponse',
+      2 => 'ApplicationTest::testSetConfiguration',
+      3 => 'ApplicationTest::testRun',
+      4 => 'ApplicationTest::testRunException',
+      5 => 'ApplicationTest::testAnonimus',
+      6 => 'ApplicationTest::testGetComponent',
+      7 => 'ApplicationTest::testComponentException',
+      8 => 'AuthorizationTest::testIt',
+      9 => 'ControllerTest::testRequest',
+      10 => 'PaginatorTest::testMethods',
+      11 => 'RequestTest::testRequestParams',
+      12 => 'RequestTest::testHttpMethods with data set #0',
+      13 => 'RequestTest::testHttpMethods with data set #1',
+      14 => 'RequestTest::testHttpMethods with data set #2',
+      15 => 'RequestTest::testCookies',
+    ),
+    17 => 
+    array (
+      0 => 'ApplicationTest::testGetRequest',
+      1 => 'ApplicationTest::testGetResponse',
+      2 => 'ApplicationTest::testSetConfiguration',
+      3 => 'ApplicationTest::testRun',
+      4 => 'ApplicationTest::testRunException',
+      5 => 'ApplicationTest::testAnonimus',
+      6 => 'ApplicationTest::testGetComponent',
+      7 => 'ApplicationTest::testComponentException',
+      8 => 'AuthorizationTest::testIt',
+      9 => 'ControllerTest::testRequest',
+      10 => 'PaginatorTest::testMethods',
+      11 => 'RequestTest::testRequestParams',
+      12 => 'RequestTest::testHttpMethods with data set #0',
+      13 => 'RequestTest::testHttpMethods with data set #1',
+      14 => 'RequestTest::testHttpMethods with data set #2',
+      15 => 'RequestTest::testCookies',
+    ),
+    27 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'RequestTest::testRequestParams',
+    ),
+    28 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'RequestTest::testRequestParams',
+    ),
+    29 => NULL,
+    38 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'AuthorizationTest::testIt',
+      4 => 'PaginatorTest::testMethods',
+      5 => 'RequestTest::testRequestParams',
+    ),
+    39 => NULL,
+    48 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'RequestTest::testRequestParams',
+    ),
+    49 => NULL,
+    60 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'AuthorizationTest::testIt',
+      4 => 'PaginatorTest::testMethods',
+      5 => 'RequestTest::testRequestParams',
+    ),
+    62 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'AuthorizationTest::testIt',
+      4 => 'PaginatorTest::testMethods',
+      5 => 'RequestTest::testRequestParams',
+    ),
+    64 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'AuthorizationTest::testIt',
+      4 => 'PaginatorTest::testMethods',
+      5 => 'RequestTest::testRequestParams',
+    ),
+    65 => 
+    array (
+      0 => 'RequestTest::testRequestParams',
+    ),
+    66 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'AuthorizationTest::testIt',
+      4 => 'PaginatorTest::testMethods',
+      5 => 'RequestTest::testRequestParams',
+    ),
+    67 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'RequestTest::testRequestParams',
+    ),
+    68 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'RequestTest::testRequestParams',
+    ),
+    70 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'AuthorizationTest::testIt',
+      4 => 'PaginatorTest::testMethods',
+      5 => 'RequestTest::testRequestParams',
+    ),
+    71 => NULL,
+    80 => 
+    array (
+      0 => 'RequestTest::testHttpMethods with data set #0',
+      1 => 'RequestTest::testHttpMethods with data set #2',
+    ),
+    81 => NULL,
+    90 => 
+    array (
+      0 => 'RequestTest::testHttpMethods with data set #1',
+    ),
+    91 => NULL,
+    102 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+      1 => 'RequestTest::testCookies',
+    ),
+    104 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+      1 => 'RequestTest::testCookies',
+    ),
+    105 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+      1 => 'RequestTest::testCookies',
+    ),
+    106 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+      1 => 'RequestTest::testCookies',
+    ),
+    108 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+      1 => 'RequestTest::testCookies',
+    ),
+    109 => NULL,
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\web\\Response.php' => 
+  array (
+    54 => 
+    array (
+      0 => 'ApplicationTest::testGetRequest',
+      1 => 'ApplicationTest::testGetResponse',
+      2 => 'ApplicationTest::testSetConfiguration',
+      3 => 'ApplicationTest::testRun',
+      4 => 'ApplicationTest::testRunException',
+      5 => 'ApplicationTest::testAnonimus',
+      6 => 'ApplicationTest::testGetComponent',
+      7 => 'ApplicationTest::testComponentException',
+      8 => 'AuthorizationTest::testIt',
+      9 => 'ControllerTest::testResponse',
+      10 => 'PaginatorTest::testMethods',
+      11 => 'ResponseTest::testCookie',
+      12 => 'ResponseTest::testResponseType',
+      13 => 'ResponseTest::testCoockieSend',
+    ),
+    55 => 
+    array (
+      0 => 'ApplicationTest::testGetRequest',
+      1 => 'ApplicationTest::testGetResponse',
+      2 => 'ApplicationTest::testSetConfiguration',
+      3 => 'ApplicationTest::testRun',
+      4 => 'ApplicationTest::testRunException',
+      5 => 'ApplicationTest::testAnonimus',
+      6 => 'ApplicationTest::testGetComponent',
+      7 => 'ApplicationTest::testComponentException',
+      8 => 'AuthorizationTest::testIt',
+      9 => 'ControllerTest::testResponse',
+      10 => 'PaginatorTest::testMethods',
+      11 => 'ResponseTest::testCookie',
+      12 => 'ResponseTest::testResponseType',
+      13 => 'ResponseTest::testCoockieSend',
+    ),
+    56 => 
+    array (
+      0 => 'ApplicationTest::testGetRequest',
+      1 => 'ApplicationTest::testGetResponse',
+      2 => 'ApplicationTest::testSetConfiguration',
+      3 => 'ApplicationTest::testRun',
+      4 => 'ApplicationTest::testRunException',
+      5 => 'ApplicationTest::testAnonimus',
+      6 => 'ApplicationTest::testGetComponent',
+      7 => 'ApplicationTest::testComponentException',
+      8 => 'AuthorizationTest::testIt',
+      9 => 'ControllerTest::testResponse',
+      10 => 'PaginatorTest::testMethods',
+      11 => 'ResponseTest::testCookie',
+      12 => 'ResponseTest::testResponseType',
+      13 => 'ResponseTest::testCoockieSend',
+    ),
+    66 => 
+    array (
+      0 => 'ApplicationTest::testGetRequest',
+      1 => 'ApplicationTest::testGetResponse',
+      2 => 'ApplicationTest::testSetConfiguration',
+      3 => 'ApplicationTest::testRun',
+      4 => 'ApplicationTest::testRunException',
+      5 => 'ApplicationTest::testAnonimus',
+      6 => 'ApplicationTest::testGetComponent',
+      7 => 'ApplicationTest::testComponentException',
+      8 => 'AuthorizationTest::testIt',
+      9 => 'ControllerTest::testResponse',
+      10 => 'PaginatorTest::testMethods',
+      11 => 'ResponseTest::testCookie',
+      12 => 'ResponseTest::testResponseType',
+      13 => 'ResponseTest::testCoockieSend',
+    ),
+    67 => 
+    array (
+      0 => 'ApplicationTest::testGetRequest',
+      1 => 'ApplicationTest::testGetResponse',
+      2 => 'ApplicationTest::testSetConfiguration',
+      3 => 'ApplicationTest::testRun',
+      4 => 'ApplicationTest::testRunException',
+      5 => 'ApplicationTest::testAnonimus',
+      6 => 'ApplicationTest::testGetComponent',
+      7 => 'ApplicationTest::testComponentException',
+      8 => 'AuthorizationTest::testIt',
+      9 => 'ControllerTest::testResponse',
+      10 => 'PaginatorTest::testMethods',
+      11 => 'ResponseTest::testCookie',
+      12 => 'ResponseTest::testResponseType',
+      13 => 'ResponseTest::testCoockieSend',
+    ),
+    68 => NULL,
+    77 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'ResponseTest::testCookie',
+      4 => 'ResponseTest::testCoockieSend',
+    ),
+    78 => NULL,
+    88 => 
+    array (
+      0 => 'ApplicationTest::testGetRequest',
+      1 => 'ApplicationTest::testGetResponse',
+      2 => 'ApplicationTest::testSetConfiguration',
+      3 => 'ApplicationTest::testRun',
+      4 => 'ApplicationTest::testRunException',
+      5 => 'ApplicationTest::testAnonimus',
+      6 => 'ApplicationTest::testGetComponent',
+      7 => 'ApplicationTest::testComponentException',
+      8 => 'AuthorizationTest::testIt',
+      9 => 'ControllerTest::testResponse',
+      10 => 'PaginatorTest::testMethods',
+      11 => 'ResponseTest::testCookie',
+      12 => 'ResponseTest::testResponseType',
+      13 => 'ResponseTest::testCoockieSend',
+    ),
+    89 => 
+    array (
+      0 => 'ApplicationTest::testGetRequest',
+      1 => 'ApplicationTest::testGetResponse',
+      2 => 'ApplicationTest::testSetConfiguration',
+      3 => 'ApplicationTest::testRun',
+      4 => 'ApplicationTest::testRunException',
+      5 => 'ApplicationTest::testAnonimus',
+      6 => 'ApplicationTest::testGetComponent',
+      7 => 'ApplicationTest::testComponentException',
+      8 => 'AuthorizationTest::testIt',
+      9 => 'ControllerTest::testResponse',
+      10 => 'PaginatorTest::testMethods',
+      11 => 'ResponseTest::testCookie',
+      12 => 'ResponseTest::testResponseType',
+      13 => 'ResponseTest::testCoockieSend',
+    ),
+    90 => NULL,
+    103 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+      1 => 'ResponseTest::testCookie',
+      2 => 'ResponseTest::testCoockieSend',
+    ),
+    104 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+      1 => 'ResponseTest::testCookie',
+      2 => 'ResponseTest::testCoockieSend',
+    ),
+    105 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+      1 => 'ResponseTest::testCookie',
+      2 => 'ResponseTest::testCoockieSend',
+    ),
+    107 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+      1 => 'ResponseTest::testCookie',
+      2 => 'ResponseTest::testCoockieSend',
+    ),
+    108 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+      1 => 'ResponseTest::testCookie',
+      2 => 'ResponseTest::testCoockieSend',
+    ),
+    109 => NULL,
+    118 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'ResponseTest::testCookie',
+      4 => 'ResponseTest::testCoockieSend',
+    ),
+    119 => NULL,
+    129 => 
+    array (
+      0 => 'ResponseTest::testCookie',
+    ),
+    130 => 
+    array (
+      0 => 'ResponseTest::testCookie',
+    ),
+    131 => NULL,
+    141 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'ResponseTest::testCoockieSend',
+    ),
+    142 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'ResponseTest::testCoockieSend',
+    ),
+    143 => NULL,
+    152 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+    ),
+    153 => NULL,
+    162 => 
+    array (
+      0 => 'ResponseTest::testCookie',
+    ),
+    163 => 
+    array (
+      0 => 'ResponseTest::testCookie',
+    ),
+    164 => 
+    array (
+      0 => 'ResponseTest::testCookie',
+    ),
+    165 => NULL,
+    174 => 
+    array (
+      0 => 'ResponseTest::testResponseType',
+    ),
+    175 => NULL,
+    184 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'ResponseTest::testResponseType',
+      4 => 'ResponseTest::testCoockieSend',
+    ),
+    185 => NULL,
+    194 => 
+    array (
+      0 => 'ResponseTest::testResponseType',
+    ),
+    195 => NULL,
+    205 => 
+    array (
+      0 => 'ResponseTest::testResponseType',
+      1 => 'ResponseTest::testCoockieSend',
+    ),
+    206 => 
+    array (
+      0 => 'ResponseTest::testResponseType',
+      1 => 'ResponseTest::testCoockieSend',
+    ),
+    207 => NULL,
+    216 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'ResponseTest::testCoockieSend',
+    ),
+    218 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'ResponseTest::testCoockieSend',
+    ),
+    220 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'ResponseTest::testCoockieSend',
+    ),
+    221 => 
+    array (
+      0 => 'ResponseTest::testCoockieSend',
+    ),
+    222 => 
+    array (
+      0 => 'ResponseTest::testCoockieSend',
+    ),
+    224 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'ResponseTest::testCoockieSend',
+    ),
+    225 => NULL,
+    232 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'ResponseTest::testCoockieSend',
+    ),
+    233 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'ResponseTest::testCoockieSend',
+    ),
+    235 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'ResponseTest::testCoockieSend',
+    ),
+    236 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'ResponseTest::testCoockieSend',
+    ),
+    245 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'ResponseTest::testCoockieSend',
+    ),
+    247 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'ResponseTest::testCoockieSend',
+    ),
+    248 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+    ),
+    249 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'ResponseTest::testCoockieSend',
+    ),
+    250 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'ResponseTest::testCoockieSend',
+    ),
+    251 => NULL,
+    260 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'ResponseTest::testCoockieSend',
+    ),
+    262 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'ResponseTest::testCoockieSend',
+    ),
+    263 => 
+    array (
+      0 => 'ResponseTest::testCoockieSend',
+    ),
+    264 => 
+    array (
+      0 => 'ResponseTest::testCoockieSend',
+    ),
+    265 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'ResponseTest::testCoockieSend',
+    ),
+    267 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'ResponseTest::testCoockieSend',
+    ),
+    268 => NULL,
+    278 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+      1 => 'ResponseTest::testCookie',
+    ),
+    280 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+      1 => 'ResponseTest::testCookie',
+    ),
+    281 => NULL,
+    291 => 
+    array (
+      0 => 'ResponseTest::testCookie',
+    ),
+    292 => 
+    array (
+      0 => 'ResponseTest::testCookie',
+    ),
+    293 => NULL,
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\dbconnection\\interfaces\\Connection.php' => 
+  array (
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\exception\\abstraction\\HttpExceptionAbstract.php' => 
+  array (
+    15 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'CallbackTest::testMethods',
+    ),
+    17 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'CallbackTest::testMethods',
+    ),
+    18 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'CallbackTest::testMethods',
+    ),
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\basic\\RouteHandler.php' => 
+  array (
+    27 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'RouteHandlerTest::testRouteHandler with data set #0',
+    ),
+    28 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'RouteHandlerTest::testRouteHandler with data set #0',
+    ),
+    38 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'RouteHandlerTest::testRouteHandler with data set #0',
+    ),
+    40 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'RouteHandlerTest::testRouteHandler with data set #0',
+    ),
+    42 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'RouteHandlerTest::testRouteHandler with data set #0',
+    ),
+    43 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'RouteHandlerTest::testRouteHandler with data set #0',
+    ),
+    44 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'RouteHandlerTest::testRouteHandler with data set #0',
+    ),
+    45 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'RouteHandlerTest::testRouteHandler with data set #0',
+    ),
+    46 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'RouteHandlerTest::testRouteHandler with data set #0',
+    ),
+    47 => 
+    array (
+      0 => 'ApplicationTest::testAnonimus',
+    ),
+    48 => 
+    array (
+      0 => 'ApplicationTest::testAnonimus',
+    ),
+    49 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'RouteHandlerTest::testRouteHandler with data set #0',
+    ),
+    50 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'RouteHandlerTest::testRouteHandler with data set #0',
+    ),
+    51 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'RouteHandlerTest::testRouteHandler with data set #0',
+    ),
+    52 => NULL,
+    53 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'RouteHandlerTest::testRouteHandler with data set #0',
+    ),
+    55 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'RouteHandlerTest::testRouteHandler with data set #0',
+    ),
+    56 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+    ),
+    57 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+    ),
+    59 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testRunException',
+      2 => 'ApplicationTest::testAnonimus',
+      3 => 'RouteHandlerTest::testRouteHandler with data set #0',
+    ),
+    60 => NULL,
+    70 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'RouteHandlerTest::testParseRoute with data set #0',
+      2 => 'RouteHandlerTest::testParseRoute with data set #1',
+    ),
+    72 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'RouteHandlerTest::testParseRoute with data set #0',
+      2 => 'RouteHandlerTest::testParseRoute with data set #1',
+    ),
+    74 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'RouteHandlerTest::testParseRoute with data set #0',
+      2 => 'RouteHandlerTest::testParseRoute with data set #1',
+    ),
+    75 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'RouteHandlerTest::testParseRoute with data set #0',
+      2 => 'RouteHandlerTest::testParseRoute with data set #1',
+    ),
+    76 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'RouteHandlerTest::testParseRoute with data set #0',
+      2 => 'RouteHandlerTest::testParseRoute with data set #1',
+    ),
+    77 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'RouteHandlerTest::testParseRoute with data set #0',
+      2 => 'RouteHandlerTest::testParseRoute with data set #1',
+    ),
+    79 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'RouteHandlerTest::testParseRoute with data set #0',
+      2 => 'RouteHandlerTest::testParseRoute with data set #1',
+    ),
+    80 => 
+    array (
+      0 => 'RouteHandlerTest::testParseRoute with data set #0',
+      1 => 'RouteHandlerTest::testParseRoute with data set #1',
+    ),
+    81 => 
+    array (
+      0 => 'RouteHandlerTest::testParseRoute with data set #0',
+      1 => 'RouteHandlerTest::testParseRoute with data set #1',
+    ),
+    83 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'RouteHandlerTest::testParseRoute with data set #0',
+      2 => 'RouteHandlerTest::testParseRoute with data set #1',
+    ),
+    84 => NULL,
+    94 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'RouteHandlerTest::testParseRoute with data set #0',
+      2 => 'RouteHandlerTest::testParseRoute with data set #1',
+    ),
+    95 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'RouteHandlerTest::testParseRoute with data set #0',
+      2 => 'RouteHandlerTest::testParseRoute with data set #1',
+    ),
+    96 => 
+    array (
+      0 => 'RouteHandlerTest::testParseRoute with data set #0',
+      1 => 'RouteHandlerTest::testParseRoute with data set #1',
+    ),
+    97 => 
+    array (
+      0 => 'RouteHandlerTest::testParseRoute with data set #0',
+      1 => 'RouteHandlerTest::testParseRoute with data set #1',
+    ),
+    98 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'RouteHandlerTest::testParseRoute with data set #0',
+      2 => 'RouteHandlerTest::testParseRoute with data set #1',
+    ),
+    99 => NULL,
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\exception\\HttpNotFoundException.php' => 
+  array (
+    12 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'CallbackTest::testMethods',
+    ),
+    14 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'CallbackTest::testMethods',
+    ),
+    15 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'CallbackTest::testMethods',
+    ),
+    19 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+    ),
+    20 => NULL,
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\traits\\HeadersTrait.php' => 
+  array (
+    17 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'CallbackTest::testMethods',
+    ),
+    18 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'CallbackTest::testMethods',
+    ),
+    19 => NULL,
+    28 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+    ),
+    29 => NULL,
+    39 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'CallbackTest::testMethods',
+    ),
+    40 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'CallbackTest::testMethods',
+    ),
+    41 => NULL,
+    50 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'CallbackTest::testMethods',
+    ),
+    51 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'CallbackTest::testMethods',
+    ),
+    52 => NULL,
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\dbconnection\\PDOConnection.php' => 
+  array (
+    31 => 
+    array (
+      0 => 'ConnectionTest::testParams',
+    ),
+    32 => 
+    array (
+      0 => 'ConnectionTest::testParams',
+    ),
+    33 => NULL,
+    42 => 
+    array (
+      0 => 'ConnectionTest::testParams',
+    ),
+    43 => 
+    array (
+    ),
+    44 => 
+    array (
+    ),
+    45 => 
+    array (
+      0 => 'ConnectionTest::testParams',
+    ),
+    46 => NULL,
+    55 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'ApplicationTest::testGetComponent',
+      3 => 'ConnectionTest::testParams',
+    ),
+    56 => NULL,
+    66 => 
+    array (
+    ),
+    67 => 
+    array (
+    ),
+    68 => 
+    array (
+    ),
+    69 => NULL,
+    78 => 
+    array (
+      0 => 'ConnectionTest::testConnect',
+    ),
+    79 => 
+    array (
+      0 => 'ConnectionTest::testConnect',
+    ),
+    80 => 
+    array (
+      0 => 'ConnectionTest::testConnect',
+    ),
+    81 => NULL,
+    91 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'ApplicationTest::testGetComponent',
+      3 => 'ConnectionTest::testParams',
+    ),
+    92 => 
+    array (
+      0 => 'ConnectionTest::testParams',
+    ),
+    93 => 
+    array (
+      0 => 'ConnectionTest::testParams',
+    ),
+    94 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'ApplicationTest::testGetComponent',
+      3 => 'ConnectionTest::testParams',
+    ),
+    95 => 
+    array (
+      0 => 'ConnectionTest::testParams',
+    ),
+    96 => 
+    array (
+      0 => 'ConnectionTest::testParams',
+    ),
+    97 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'ApplicationTest::testGetComponent',
+      3 => 'ConnectionTest::testParams',
+    ),
+    98 => 
+    array (
+      0 => 'ConnectionTest::testParams',
+    ),
+    99 => 
+    array (
+      0 => 'ConnectionTest::testParams',
+    ),
+    100 => 
+    array (
+      0 => 'ApplicationTest::testRun',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'ApplicationTest::testGetComponent',
+      3 => 'ConnectionTest::testParams',
+    ),
+    101 => NULL,
+    112 => 
+    array (
+    ),
+    113 => 
+    array (
+    ),
+    114 => NULL,
+    125 => 
+    array (
+    ),
+    126 => 
+    array (
+    ),
+    127 => 
+    array (
+    ),
+    128 => NULL,
+    137 => 
+    array (
+    ),
+    138 => NULL,
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\dbconnection\\abstraction\\Connection.php' => 
+  array (
+    36 => 
+    array (
+      0 => 'ConnectionTest::testParams',
+    ),
+    37 => 
+    array (
+      0 => 'ConnectionTest::testParams',
+    ),
+    38 => NULL,
+    47 => 
+    array (
+      0 => 'ConnectionTest::testParams',
+    ),
+    48 => NULL,
+    58 => 
+    array (
+      0 => 'ConnectionTest::testParams',
+    ),
+    59 => 
+    array (
+      0 => 'ConnectionTest::testParams',
+    ),
+    60 => NULL,
+    69 => 
+    array (
+      0 => 'ConnectionTest::testParams',
+    ),
+    70 => NULL,
+    80 => 
+    array (
+      0 => 'ConnectionTest::testParams',
+    ),
+    81 => 
+    array (
+      0 => 'ConnectionTest::testParams',
+    ),
+    82 => NULL,
+    91 => 
+    array (
+      0 => 'ConnectionTest::testParams',
+    ),
+    92 => NULL,
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\exception\\interfaces\\HttpException.php' => 
+  array (
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\helpers\\SystemHelpers.php' => 
+  array (
+    17 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'CallbackTest::testEvent',
+      3 => 'HelpersTest::testSystemMethodDI',
+    ),
+    18 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'CallbackTest::testEvent',
+      3 => 'HelpersTest::testSystemMethodDI',
+    ),
+    19 => 
+    array (
+      0 => 'HelpersTest::testSystemMethodDI',
+    ),
+    20 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'CallbackTest::testEvent',
+      3 => 'HelpersTest::testSystemMethodDI',
+    ),
+    21 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'CallbackTest::testEvent',
+    ),
+    22 => 
+    array (
+      0 => 'CallbackTest::testEvent',
+    ),
+    23 => 
+    array (
+      0 => 'CallbackTest::testEvent',
+      1 => 'HelpersTest::testSystemMethodDI',
+    ),
+    24 => NULL,
+    36 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'CallbackTest::testEvent',
+    ),
+    37 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'CallbackTest::testEvent',
+    ),
+    38 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'CallbackTest::testEvent',
+    ),
+    39 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'CallbackTest::testEvent',
+    ),
+    40 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+    ),
+    41 => 
+    array (
+      0 => 'ApplicationTest::testAnonimus',
+    ),
+    42 => 
+    array (
+      0 => 'ApplicationTest::testAnonimus',
+    ),
+    43 => 
+    array (
+      0 => 'ApplicationTest::testAnonimus',
+    ),
+    44 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+    ),
+    45 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+    ),
+    46 => 
+    array (
+      0 => 'ApplicationTest::testRunException',
+      1 => 'ApplicationTest::testAnonimus',
+      2 => 'CallbackTest::testEvent',
+    ),
+    47 => NULL,
+    58 => 
+    array (
+      0 => 'HelpersTest::testSystemMethodDI',
+    ),
+    59 => 
+    array (
+      0 => 'HelpersTest::testSystemMethodDI',
+    ),
+    60 => 
+    array (
+      0 => 'HelpersTest::testSystemMethodDI',
+    ),
+    61 => 
+    array (
+      0 => 'HelpersTest::testSystemMethodDI',
+    ),
+    62 => 
+    array (
+      0 => 'HelpersTest::testSystemMethodDI',
+    ),
+    63 => 
+    array (
+      0 => 'HelpersTest::testSystemMethodDI',
+    ),
+    64 => 
+    array (
+      0 => 'HelpersTest::testSystemMethodDI',
+    ),
+    65 => 
+    array (
+      0 => 'HelpersTest::testSystemMethodDI',
+    ),
+    66 => NULL,
+    67 => 
+    array (
+      0 => 'HelpersTest::testSystemMethodDI',
+    ),
+    68 => 
+    array (
+      0 => 'HelpersTest::testSystemMethodDI',
+    ),
+    69 => 
+    array (
+      0 => 'HelpersTest::testSystemMethodDI',
+    ),
+    70 => 
+    array (
+      0 => 'HelpersTest::testSystemMethodDI',
+    ),
+    71 => 
+    array (
+      0 => 'HelpersTest::testSystemMethodDI',
+    ),
+    72 => 
+    array (
+      0 => 'HelpersTest::testSystemMethodDI',
+    ),
+    73 => 
+    array (
+      0 => 'HelpersTest::testSystemMethodDI',
+    ),
+    74 => NULL,
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\authorization\\Authorization.php' => 
+  array (
+    40 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    41 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    42 => NULL,
+    51 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    52 => NULL,
+    62 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    63 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    64 => NULL,
+    73 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    74 => NULL,
+    84 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    86 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    87 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    88 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    89 => NULL,
+    98 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    99 => NULL,
+    108 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    109 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    110 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    111 => NULL,
+    120 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    121 => NULL,
+    130 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    131 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    132 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    133 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    134 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    135 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    136 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    137 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    146 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    147 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    148 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    149 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    150 => NULL,
+    157 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    158 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    159 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    160 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    161 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    162 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    163 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    164 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    165 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+    166 => 
+    array (
+      0 => 'AuthorizationTest::testIt',
+    ),
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\basic\\interfaces\\Controller.php' => 
+  array (
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\basic\\controller\\Controller.php' => 
+  array (
+    26 => 
+    array (
+      0 => 'ControllerTest::testRequest',
+      1 => 'ControllerTest::testResponse',
+      2 => 'WebControllerTest::testGetView',
+      3 => 'WebControllerTest::testRender',
+    ),
+    36 => 
+    array (
+      0 => 'ControllerTest::testRequest',
+    ),
+    37 => 
+    array (
+      0 => 'ControllerTest::testRequest',
+    ),
+    38 => NULL,
+    47 => 
+    array (
+      0 => 'ControllerTest::testRequest',
+    ),
+    48 => NULL,
+    58 => 
+    array (
+      0 => 'ControllerTest::testResponse',
+    ),
+    59 => 
+    array (
+      0 => 'ControllerTest::testResponse',
+    ),
+    60 => NULL,
+    69 => 
+    array (
+      0 => 'ControllerTest::testResponse',
+    ),
+    70 => NULL,
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\datamapper\\interfaces\\Repository.php' => 
+  array (
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\datamapper\\abstraction\\Repository.php' => 
+  array (
+    17 => 
+    array (
+      0 => 'DatamapperRepositoryTest::testConnection',
+    ),
+    18 => 
+    array (
+      0 => 'DatamapperRepositoryTest::testConnection',
+    ),
+    19 => NULL,
+    28 => 
+    array (
+      0 => 'DatamapperRepositoryTest::testConnection',
+    ),
+    29 => NULL,
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\helpers\\ArrayHelper.php' => 
+  array (
+    16 => 
+    array (
+      0 => 'HelpersTest::testArrayHelper',
+      1 => 'ResponseTest::testCoockieSend',
+    ),
+    17 => 
+    array (
+      0 => 'HelpersTest::testArrayHelper',
+      1 => 'ResponseTest::testCoockieSend',
+    ),
+    18 => 
+    array (
+      0 => 'HelpersTest::testArrayHelper',
+      1 => 'ResponseTest::testCoockieSend',
+    ),
+    19 => 
+    array (
+      0 => 'HelpersTest::testArrayHelper',
+      1 => 'ResponseTest::testCoockieSend',
+    ),
+    20 => 
+    array (
+      0 => 'HelpersTest::testArrayHelper',
+      1 => 'ResponseTest::testCoockieSend',
+    ),
+    21 => 
+    array (
+      0 => 'HelpersTest::testArrayHelper',
+    ),
+    22 => NULL,
+    24 => 
+    array (
+      0 => 'HelpersTest::testArrayHelper',
+      1 => 'ResponseTest::testCoockieSend',
+    ),
+    25 => NULL,
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\helpers\\StringHelpers.php' => 
+  array (
+    17 => 
+    array (
+      0 => 'HelpersTest::testStringHelper',
+    ),
+    19 => 
+    array (
+      0 => 'HelpersTest::testStringHelper',
+    ),
+    20 => 
+    array (
+      0 => 'HelpersTest::testStringHelper',
+    ),
+    21 => 
+    array (
+      0 => 'HelpersTest::testStringHelper',
+    ),
+    23 => 
+    array (
+      0 => 'HelpersTest::testStringHelper',
+    ),
+    24 => NULL,
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\observer\\interfaces\\Subject.php' => 
+  array (
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\datapaginator\\abstraction\\Paginator.php' => 
+  array (
+    36 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    37 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    38 => NULL,
+    47 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    48 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    49 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    51 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    52 => NULL,
+    62 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    63 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    64 => NULL,
+    73 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    74 => NULL,
+    84 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    85 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    86 => NULL,
+    95 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    96 => NULL,
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\datapaginator\\interfaces\\Paginator.php' => 
+  array (
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\activerecord\\Paginator.php' => 
+  array (
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\datamapper\\Paginator.php' => 
+  array (
+    28 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    29 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    30 => NULL,
+    39 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    40 => NULL,
+    50 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    51 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    52 => NULL,
+    61 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    62 => NULL,
+    71 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    72 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    73 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    74 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    75 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    76 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    77 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    78 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    79 => NULL,
+    88 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    89 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    90 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    91 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    92 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    94 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    95 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    96 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    97 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    98 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    100 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    101 => 
+    array (
+      0 => 'PaginatorTest::testMethods',
+    ),
+    102 => NULL,
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\basic\\interfaces\\View.php' => 
+  array (
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\basic\\View.php' => 
+  array (
+    17 => 
+    array (
+      0 => 'ViewTest::testView',
+      1 => 'WebControllerTest::testRender',
+    ),
+    18 => 
+    array (
+      0 => 'ViewTest::testView',
+      1 => 'WebControllerTest::testRender',
+    ),
+    19 => 
+    array (
+      0 => 'ViewTest::testView',
+      1 => 'WebControllerTest::testRender',
+    ),
+    20 => 
+    array (
+      0 => 'ViewTest::testView',
+      1 => 'WebControllerTest::testRender',
+    ),
+    22 => 
+    array (
+      0 => 'ViewTest::testView',
+      1 => 'WebControllerTest::testRender',
+    ),
+    23 => NULL,
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\basic\\controller\\WebController.php' => 
+  array (
+    25 => 
+    array (
+      0 => 'WebControllerTest::testGetView',
+      1 => 'WebControllerTest::testRender',
+    ),
+    26 => 
+    array (
+      0 => 'WebControllerTest::testGetView',
+      1 => 'WebControllerTest::testRender',
+    ),
+    27 => 
+    array (
+      0 => 'WebControllerTest::testGetView',
+      1 => 'WebControllerTest::testRender',
+    ),
+    37 => 
+    array (
+      0 => 'WebControllerTest::testGetView',
+      1 => 'WebControllerTest::testRender',
+    ),
+    38 => 
+    array (
+      0 => 'WebControllerTest::testGetView',
+      1 => 'WebControllerTest::testRender',
+    ),
+    39 => NULL,
+    48 => 
+    array (
+      0 => 'WebControllerTest::testGetView',
+      1 => 'WebControllerTest::testRender',
+    ),
+    49 => NULL,
+    60 => 
+    array (
+      0 => 'WebControllerTest::testRender',
+    ),
+    61 => 
+    array (
+      0 => 'WebControllerTest::testRender',
+    ),
+    62 => 
+    array (
+      0 => 'WebControllerTest::testRender',
+    ),
+    64 => 
+    array (
+      0 => 'WebControllerTest::testRender',
+    ),
+    65 => NULL,
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\basic\\interfaces\\Component.php' => 
+  array (
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\authorization\\interfaces\\AuthorizationComponent.php' => 
+  array (
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\authorization\\interfaces\\Identity.php' => 
+  array (
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\datamapper\\Model.php' => 
+  array (
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\datamapper\\Repository.php' => 
+  array (
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\eventhandler\\interfaces\\EventHandler.php' => 
+  array (
+  ),
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\observer\\interfaces\\Observer.php' => 
+  array (
+  ),
+));
+$coverage->setTests(array (
+  'ActiveRecordTest::testAttributes' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'ActiveRecordTest::testErrors' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'ApplicationTest::testGetRequest' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'ApplicationTest::testGetResponse' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'ApplicationTest::testSetConfiguration' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'ApplicationTest::testRun' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'ApplicationTest::testRunException' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'ApplicationTest::testAnonimus' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'ApplicationTest::testGetComponent' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'ApplicationTest::testComponentException' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'AuthorizationTest::testIt' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'AuthorizationTest::testTraits' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'CallbackTest::testMethods' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'CallbackTest::testEvent' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'ComponentTest::testBaseComponent' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'ConnectionTest::testParams' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'ConnectionTest::testConnect' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'ControllerTest::testRequest' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'ControllerTest::testResponse' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'DatamapperRepositoryTest::testConnection' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'HelpersTest::testArrayHelper' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'HelpersTest::testStringHelper' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'HelpersTest::testSystemMethodDI' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'ObserverTest::testObserver' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'PaginatorTest::testMethods' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'RequestTest::testRequestParams' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'RequestTest::testHttpMethods with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'RequestTest::testHttpMethods with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'RequestTest::testHttpMethods with data set #2' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'RequestTest::testCookies' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'ResponseTest::testCookie' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'ResponseTest::testResponseType' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'ResponseTest::testCoockieSend' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'RouteHandlerTest::testRouteHandler with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'RouteHandlerTest::testParseRoute with data set #0' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'RouteHandlerTest::testParseRoute with data set #1' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'ViewTest::testView' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'WebControllerTest::testGetView' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'WebControllerTest::testRender' => 
+  array (
+    'size' => 'unknown',
+    'status' => 0,
+  ),
+  'UNCOVERED_FILES_FROM_WHITELIST' => 
+  array (
+    'size' => 'unknown',
+    'status' => NULL,
+  ),
+));
+
+$filter = $coverage->filter();
+$filter->setBlacklistedFiles(array (
+));
+$filter->setWhitelistedFiles(array (
+  'P:\\Programming\\PHP\\dlf\\framework\\basic\\Application.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\basic\\Component.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\basic\\controller\\Controller.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\basic\\controller\\WebController.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\basic\\interfaces\\Application.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\basic\\interfaces\\Component.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\basic\\interfaces\\Controller.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\basic\\interfaces\\View.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\basic\\RouteHandler.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\basic\\View.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\activerecord\\abstraction\\Model.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\activerecord\\interfaces\\Model.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\activerecord\\Model.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\activerecord\\Paginator.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\authorization\\Authorization.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\authorization\\interfaces\\AuthorizationComponent.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\authorization\\interfaces\\Identity.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\authorization\\traits\\AuthorizationCheckTrait.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\datamapper\\abstraction\\Model.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\datamapper\\abstraction\\Repository.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\datamapper\\interfaces\\Getter.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\datamapper\\interfaces\\Model.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\datamapper\\interfaces\\Repository.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\datamapper\\Model.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\datamapper\\Paginator.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\datamapper\\Repository.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\datamapper\\traits\\ErrorTrait.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\datapaginator\\abstraction\\Paginator.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\datapaginator\\interfaces\\Paginator.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\dbconnection\\abstraction\\Connection.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\dbconnection\\interfaces\\Connection.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\dbconnection\\PDOConnection.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\eventhandler\\interfaces\\EventHandler.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\eventhandler\\traits\\CallbackTrait.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\eventhandler\\traits\\EventTrait.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\observer\\interfaces\\Observer.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\observer\\interfaces\\Subject.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\components\\observer\\traits\\Subject.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\exception\\abstraction\\HttpExceptionAbstract.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\exception\\HttpNotFoundException.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\exception\\interfaces\\HttpException.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\helpers\\ArrayHelper.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\helpers\\StringHelpers.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\helpers\\SystemHelpers.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\traits\\HeadersTrait.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\web\\Request.php' => true,
+  'P:\\Programming\\PHP\\dlf\\framework\\web\\Response.php' => true,
+));
+
+return $coverage;

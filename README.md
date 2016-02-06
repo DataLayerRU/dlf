@@ -3,6 +3,11 @@ PWF - framework for proffessional web development
 
 [http://pwf.web-development.pw/](http://pwf.web-development.pw/)
 
+[![Build Status](https://travis-ci.org/SergioMadness/pwf.svg?branch=dev)](https://travis-ci.org/SergioMadness/pwf)
+[![Code Climate](https://codeclimate.com/github/SergioMadness/pwf/badges/gpa.svg)](https://codeclimate.com/github/SergioMadness/pwf)
+[![Test Coverage](https://codeclimate.com/github/SergioMadness/pwf/badges/coverage.svg)](https://codeclimate.com/github/SergioMadness/pwf/coverage)
+[![Dependency Status](https://www.versioneye.com/user/projects/56b53a8e0a0ff5003b975815/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56b53a8e0a0ff5003b975815)
+
 Project structure
 -------------------
 ```

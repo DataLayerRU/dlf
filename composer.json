@@ -10,6 +10,7 @@
         "mvc",
         "composer"
     ],
+    "minimum-stability": "stable",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -21,12 +22,16 @@
     "require": {
         "php": ">=5.4.0"
     },
+    "require-dev": {
+        "codeception/codeception": "*",
+        "codeclimate/php-test-reporter": "dev-master"
+    },
     "config": {
         "process-timeout": 1800
     },
     "autoload": {
         "psr-4": {
-            "pwf\\": ""
+            "pwf\\": "framework/"
         }
     }
 }

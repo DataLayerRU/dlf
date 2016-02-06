@@ -1,0 +1,19 @@
+language: php
+php:
+  - '5.4'
+  - '5.5'
+  - '5.6'
+  - '7.0'
+  - hhvm
+  - nightly
+before_script: composer self-update && composer update
+script: 
+  - vendor/bin/codecept build && vendor/bin/codecept run
+  - vendor/bin/codecept run --coverage --coverage-xml
+branches:
+  only:
+    - master
+    - dev
+addons:
+    code_climate:
+        repo_token: 6f443d6d70f0ebf987eea38654854c1c89e228bba92616800c4a06f254eda183
