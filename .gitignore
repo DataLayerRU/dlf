@@ -25,3 +25,5 @@ phpunit.phar
 
 # logs
 *.log
+
+tests/_output

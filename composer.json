@@ -19,6 +19,12 @@
             "email": "zinchenko@web-development.pw"
         }
     ],
+    "support": {
+        "email": "info@web-development.pw",
+        "issues": "https://github.com/SergioMadness/pwf/issues",
+        "wiki": "https://github.com/SergioMadness/pwf/wiki",
+        "source": "https://github.com/SergioMadness/pwf/releases"
+    },
     "require": {
         "php": ">=5.4.0"
     },
