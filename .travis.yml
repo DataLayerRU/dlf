@@ -10,7 +10,12 @@ before_script:
   - composer self-update && composer update
 script: 
   - vendor/bin/codecept build && vendor/bin/codecept run
-  - vendor/bin/codecept run --coverage --coverage-xml build/logs/clover.xml
+  - |
+    if [ $TRAVIS_HHVM_VERSION != '' ]; then
+      vendor/bin/codecept run --coverage --coverage-xml build/logs/clover.xml
+    fi
+after_script:
+  - CODECLIMATE_REPO_TOKEN="6f443d6d70f0ebf987eea38654854c1c89e228bba92616800c4a06f254eda183" ./vendor/bin/test-reporter
 branches:
   only:
     - master
