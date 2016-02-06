@@ -3,6 +3,9 @@ PWF - framework for proffessional web development
 
 [http://pwf.web-development.pw/](http://pwf.web-development.pw/)
 
+[![Build Status](https://travis-ci.org/SergioMadness/pwf.svg?branch=dev)](https://travis-ci.org/SergioMadness/pwf)
+[![Coverage Status](https://coveralls.io/repos/github/SergioMadness/pwf/badge.svg?branch=dev)](https://coveralls.io/github/SergioMadness/pwf?branch=dev)
+
 Project structure
 -------------------
 ```

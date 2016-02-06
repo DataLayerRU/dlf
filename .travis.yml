@@ -8,7 +8,7 @@ php:
   - nightly
 before_script: composer self-update && composer update
 script: vendor/bin/codecept build && vendor/bin/codecept run
-#branches:
-#  only:
-#    - master
-#    - dev
+branches:
+  only:
+    - master
+    - dev
