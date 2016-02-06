@@ -5,11 +5,12 @@ namespace pwf\autoloader;
 class Basic extends Handler
 {
 
-    public function load($_className)
+    public function load($className)
     {
-        $ClassFullPath = __DIR__."/../../../../../".str_replace("\\", "/", $_className).".php";
-        if (file_exists($ClassFullPath)) {
-            require_once($ClassFullPath);
+        $classFullPath = __DIR__."/../../../../../".str_replace("\\", "/",
+                $className).".php";
+        if (file_exists($classFullPath)) {
+            require_once($classFullPath);
         }
     }
 }

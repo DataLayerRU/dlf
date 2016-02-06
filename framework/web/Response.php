@@ -153,13 +153,14 @@ class Response
     }
 
     /**
-     * Clear header list
+     * Clear header and cookie lists
      *
      * @return Response
      */
     public function clear()
     {
         $this->headers = [];
+        $this->cookies = [];
         return $this;
     }
 
@@ -181,6 +182,16 @@ class Response
     public function isJson()
     {
         return $this->responseType === self::RESPONSE_JSON;
+    }
+
+    /**
+     * Response type is XML
+     *
+     * @return bool
+     */
+    public function isXML()
+    {
+        return $this->responseType === self::RESPONSE_XML;
     }
 
     /**

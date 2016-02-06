@@ -19,27 +19,16 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         self::$stubApplication = null;
     }
 
-    /**
-     * @covers \pwf\basic\Application::getRequest
-     */
     public function testGetRequest()
     {
         $this->assertNotEmpty(self::$stubApplication->getRequest());
     }
 
-    /**
-     * @covers \pwf\basic\Application::getResponse
-     */
     public function testGetResponse()
     {
         $this->assertNotEmpty(self::$stubApplication->getResponse());
     }
 
-    /**
-     * @covers \pwf\basic\Application::getConfiguration
-     * @covers \pwf\basic\Application::setConfiguration
-     * @covers \pwf\basic\Application::appendConfiguration
-     */
     public function testSetConfiguration()
     {
         $testConfig = [
@@ -57,32 +46,73 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
             === array_merge($testConfig, $configForAppend));
     }
 
-    /**
-     * @covers \pwf\basic\Application::run
-     * @covers \pwf\basic\Application::forceComponentLoading
-     * @covers \pwf\basic\Application::prepareCallback
-     * @covers \pwf\web\Request::getPath
-     * @covers pwf\web\Response::setHeaders
-     * @covers pwf\web\Response::send
-     * @covers \pwf\basic\RouteHandler::getHandler
-     */
     public function testRun()
     {
+        self::$stubApplication->setConfiguration([
+            'db' => [
+                'class' => 'pwf\components\dbconnection\PDOConnection',
+                'force' => true
+            ]
+        ]);
+
         try {
             self::$stubApplication->run();
         } catch (Exception $ex) {
             $this->fail($ex->getMessage());
         }
 
-        $this->assertEquals('', self::$stubApplication->getResponse()->getBody());
+        $this->assertEquals('404. Not found.', self::$stubApplication->getResponse()->getBody());
         $this->assertEquals('HTTP/1.0 404 Not Found',
             self::$stubApplication->getResponse()->getHeaders()[0]);
     }
 
-    /**
-     * @covers \pwf\basic\Application::getComponent
-     * @covers \pwf\basic\Application::createComponent
-     */
+    public function testRunException()
+    {
+        \pwf\basic\RouteHandler::registerHandler('/',
+            function() {
+            throw new Exception('Test');
+        });
+
+        self::$stubApplication->getRequest()->setRequestParams([
+            'path' => '/'
+        ]);
+
+        try {
+            self::$stubApplication->run();
+            $this->fail();
+        } catch (Exception $ex) {
+
+        }
+    }
+
+    public function testAnonimus()
+    {
+        $_POST['testParam'] = '';
+        $_GET['testParam2'] = '';
+
+        self::$stubApplication->setConfiguration([
+            'db' => [
+                'class' => 'pwf\components\dbconnection\PDOConnection'
+            ]
+        ]);
+
+        \pwf\basic\RouteHandler::registerHandler('/test/(?P<id>\d+)/test',
+            function($testParam2, $testParam, $db) {
+            return true;
+        });
+
+        self::$stubApplication->getRequest()->setRequestParams([
+            'path' => '/test/12/test'
+        ]);
+
+        try {
+            self::$stubApplication->run();
+            $this->fail();
+        } catch (Exception $ex) {
+
+        }
+    }
+
     public function testGetComponent()
     {
         $this->assertInstanceOf('pwf\components\dbconnection\PDOConnection',
@@ -91,5 +121,19 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
                     'class' => 'pwf\components\dbconnection\PDOConnection'
                 ]
             ])->getComponent('db'));
+    }
+
+    public function testComponentException()
+    {
+        try {
+            self::$stubApplication->setConfiguration([
+                'db' => [
+                    'class' => '\stdClass'
+                ]
+            ])->getComponent('db');
+            $this->fail();
+        } catch (Exception $ex) {
+            return true;
+        }
     }
 }

@@ -14,11 +14,13 @@ class SystemHelpers
      */
     public static function call($function, \Closure $callback = null)
     {
+        $result = null;
         if (is_array($function)) {
-            return self::methodDI($function, $callback);
+            $result = self::methodDI($function, $callback);
         } elseif (is_callable($function, true)) {
-            return self::functionDI($function, $callback);
+            $result = self::functionDI($function, $callback);
         }
+        return $result;
     }
 
     /**

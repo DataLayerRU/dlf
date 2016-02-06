@@ -15,6 +15,6 @@ class Autoloader
      */
     public static function register(Handler $handler)
     {
-        spl_autoload_register($handler->GetHandler());
+        spl_autoload_register($handler->getHandler());
     }
 }

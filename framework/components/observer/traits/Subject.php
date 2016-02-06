@@ -2,6 +2,8 @@
 
 namespace pwf\components\observer\traits;
 
+use \pwf\components\observer\interfaces\Observer;
+
 trait Subject
 {
     /**

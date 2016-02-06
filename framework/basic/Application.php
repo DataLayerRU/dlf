@@ -149,9 +149,11 @@ class Application implements \pwf\basic\interfaces\Application
                     if (isset($_POST[$paramName])) {
                         return $_POST[$paramName];
                     }
-                }));
+                })
+            );
         } catch (HttpException $ex) {
             $this->response->setHeaders($ex->getHeaders());
+            $this->response->setBody($ex->getContent());
         } catch (\Exception $ex) {
             $this->response->setHeaders([
                 'HTTP/1.1 500 Internal Server Error'
@@ -212,12 +214,11 @@ class Application implements \pwf\basic\interfaces\Application
 
         if ($config !== null && isset($config['class'])) {
             $result = new $config['class'];
-            if ($result instanceof \pwf\basic\interfaces\Component) {
-                $result->loadConfiguration($config);
-            } else {
+            if (!($result instanceof \pwf\basic\interfaces\Component)) {
                 throw new \Exception('Component must implement \'Component\' interface',
                 500);
             }
+            $result->loadConfiguration($config);
         }
 
         return $result;

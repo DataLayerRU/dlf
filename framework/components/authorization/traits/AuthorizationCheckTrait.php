@@ -1,8 +1,8 @@
 <?php
 
-namespace dlf\components\authorization\traits;
+namespace pwf\components\authorization\traits;
 
-use dlf\basic\interfaces\Component;
+use pwf\basic\interfaces\Component;
 
 trait AuthorizationCheckTrait
 {
@@ -30,7 +30,7 @@ trait AuthorizationCheckTrait
      *
      * @return Component
      */
-    public function setAuthorizationComponent()
+    public function getAuthorizationComponent()
     {
         return $this->authComponent;
     }

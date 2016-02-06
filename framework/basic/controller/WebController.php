@@ -57,7 +57,9 @@ class WebController extends Controller
      */
     protected function render($viewPath, $params = [])
     {
-        $params['title'] = $this->title;
+        if (!isset($params['title'])) {
+            $params['title'] = $this->title;
+        }
 
         return $this->getView()->render($viewPath, $params);
     }

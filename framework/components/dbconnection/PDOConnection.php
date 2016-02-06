@@ -59,11 +59,13 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
      * Connection params
      *
      * @param array $params
+     * @return $this
      */
     public function connect($params = [])
     {
         $this->setPDO(new PDO($this->getDSN(), $this->getLogin(),
             $this->getPassword(), $params));
+        return $this;
     }
 
     /**

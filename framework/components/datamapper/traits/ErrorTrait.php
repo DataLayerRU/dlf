@@ -4,6 +4,7 @@ namespace pwf\components\datamapper\traits;
 
 trait ErrorTrait
 {
+    private $errors = [];
 
     /**
      * Add error

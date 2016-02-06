@@ -24,6 +24,17 @@ trait EventTrait
     }
 
     /**
+     * Clear callbacks
+     * 
+     * @return $this
+     */
+    public function clear()
+    {
+        $this->callbacks = [];
+        return $this;
+    }
+
+    /**
      * Trigger event
      *
      * @param mixed $type

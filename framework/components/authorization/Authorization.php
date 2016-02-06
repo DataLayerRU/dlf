@@ -3,7 +3,7 @@
 namespace pwf\components\authorization;
 
 use pwf\basic\Component;
-use project\Application;
+use pwf\basic\Application;
 use pwf\components\authorization\interfaces\Identity;
 
 class Authorization extends Component
@@ -32,7 +32,7 @@ class Authorization extends Component
     /**
      * Set identity class name
      *
-     * @param string $className
+     * @param mixed $className
      * @return \pwf\components\authorization\Authorization
      */
     public function setIdentityClass($className)
@@ -44,7 +44,7 @@ class Authorization extends Component
     /**
      * Get identity class name
      *
-     * @return string
+     * @return mixed
      */
     public function getIdentityClass()
     {
@@ -138,12 +138,15 @@ class Authorization extends Component
 
     /**
      * Component initialization
+     *
+     * @return $this
      */
     public function init()
     {
         if ($this->isAutoLogin()) {
             $this->autoLogin();
         }
+        return $this;
     }
 
     /**
