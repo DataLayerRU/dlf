@@ -2,7 +2,7 @@
 
 namespace pwf\components\querybuilder\abstraction;
 
-abstract class InsertBuilder implements \pwf\components\querybuilder\interfaces\IUBuilder
+abstract class InsertBuilder implements \pwf\components\querybuilder\interfaces\InsertBuilder
 {
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace pwf\components\querybuilder\abstraction;
+namespace pwf\components\querybuilder\traits;
 
 trait SelectBuilder
 {

@@ -2,7 +2,7 @@
 
 namespace pwf\components\querybuilder\interfaces;
 
-interface QueryBuilder
+interface QueryBuilder extends Condition
 {
 
     /**
@@ -11,18 +11,4 @@ interface QueryBuilder
      * @param string $table
      */
     public function table($table);
-
-    /**
-     * Generate query
-     *
-     * @return string
-     */
-    public function generate();
-
-    /**
-     * Set params
-     *
-     * @param array $params
-     */
-    public function setParams(array $params = []);
 }
