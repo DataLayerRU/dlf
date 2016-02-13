@@ -18,5 +18,5 @@ interface ConditionBuilder
      * @param array $params
      * @return ConditionBuilder
      */
-    public function setParams(array $params = []);
+    public function setParams(array $params);
 }

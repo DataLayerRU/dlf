@@ -9,7 +9,7 @@ trait SelectBuilder
      *
      * @var array
      */
-    private $selectFields = [];
+    private $selectFields = ['*'];
 
     /**
      * Condition
@@ -78,7 +78,7 @@ trait SelectBuilder
      * Set table
      *
      * @param string $table
-     * @return $this
+     * @return \pwf\components\querybuilder\interfaces\SelectBuilder
      */
     public function table($table)
     {
@@ -99,7 +99,7 @@ trait SelectBuilder
     /**
      *
      * @param mixed $group
-     * @return $this
+     * @return \pwf\components\querybuilder\interfaces\SelectBuilder
      */
     public function group($group)
     {
@@ -121,7 +121,7 @@ trait SelectBuilder
      * Set params
      * 
      * @param array $params
-     * @return $this
+     * @return \pwf\components\querybuilder\interfaces\SelectBuilder
      */
     public function setParams(array $params)
     {
@@ -134,7 +134,7 @@ trait SelectBuilder
      *
      * @param string $name
      * @param string $value
-     * @return $this
+     * @return \pwf\components\querybuilder\interfaces\SelectBuilder
      */
     public function addParam($name, $value)
     {
@@ -156,7 +156,7 @@ trait SelectBuilder
      * Set limit
      *
      * @param int $limit
-     * @return $this
+     * @return \pwf\components\querybuilder\interfaces\SelectBuilder
      */
     public function limit($limit)
     {
@@ -178,7 +178,7 @@ trait SelectBuilder
      * Set offset
      *
      * @param int $offset
-     * @return $this
+     * @return \pwf\components\querybuilder\interfaces\SelectBuilder
      */
     public function offset($offset)
     {
@@ -200,7 +200,7 @@ trait SelectBuilder
      * Set where condition
      *
      * @param mixed $condition
-     * @return $this
+     * @return \pwf\components\querybuilder\interfaces\SelectBuilder
      */
     public function where($condition)
     {
@@ -222,7 +222,7 @@ trait SelectBuilder
      * Set having condition
      *
      * @param mixed $condition
-     * @return $this
+     * @return \pwf\components\querybuilder\interfaces\SelectBuilder
      */
     public function having($condition)
     {
@@ -244,9 +244,9 @@ trait SelectBuilder
      * Set select fields
      *
      * @param array $fields
-     * @return $this
+     * @return \pwf\components\querybuilder\interfaces\SelectBuilder
      */
-    public function select(array $fields = array())
+    public function select(array $fields)
     {
         $this->selectFields = $fields;
         return $this;
@@ -266,7 +266,7 @@ trait SelectBuilder
      * Add union
      *
      * @param \pwf\components\querybuilder\interfaces\QueryBuilder $query
-     * @return $this
+     * @return \pwf\components\querybuilder\interfaces\SelectBuilder
      */
     public function union(\pwf\components\querybuilder\interfaces\QueryBuilder $query)
     {
@@ -290,7 +290,7 @@ trait SelectBuilder
      * @param string $table
      * @param mixed $condition
      * @param int $joinType
-     * @return $this
+     * @return \pwf\components\querybuilder\interfaces\SelectBuilder
      */
     public function join($table, $condition, $joinType = self::JOIN_LEFT)
     {

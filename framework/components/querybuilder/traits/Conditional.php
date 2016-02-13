@@ -30,6 +30,6 @@ trait Conditional
      */
     public function getConditionBuilder()
     {
-        return $this;
+        return $this->conditionBuilder;
     }
 }

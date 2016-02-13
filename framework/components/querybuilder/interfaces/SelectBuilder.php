@@ -34,7 +34,7 @@ interface SelectBuilder extends QueryBuilder
      *
      * @param array $fields
      */
-    public function select(array $fields = []);
+    public function select(array $fields);
 
     /**
      * Add condition

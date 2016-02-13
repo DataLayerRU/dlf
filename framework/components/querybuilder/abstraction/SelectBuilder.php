@@ -81,19 +81,19 @@ abstract class SelectBuilder implements \pwf\components\querybuilder\interfaces\
 
         $result.='SELECT '.$select.' FROM '.$table;
         if ($join != '') {
-            $result.=$join;
+            $result.=' '.$join;
         }
         if ($where != '') {
-            $result.=$where;
+            $result.=' '.$where;
         }
         if ($group != '') {
-            $result.=$group;
+            $result.=' '.$group;
         }
         if ($limit != '') {
-            $result.=$limit;
+            $result.=' '.$limit;
         }
         if ($having != '') {
-            $result.=$having;
+            $result.=' '.$having;
         }
         if ($union != '') {
             $result = '('.$result.')'.$union;

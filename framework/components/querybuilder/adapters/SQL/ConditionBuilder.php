@@ -22,7 +22,7 @@ class ConditionBuilder extends \pwf\components\querybuilder\abstraction\Conditio
                 $result = $conditions[0];
                 break;
             case 2:
-                $result = $conditions[0].'='.$conditions[1];
+                $result = $conditions[0].'=:'.$conditions[0];
                 break;
             case 3:
                 $left   = is_array($conditions[1]) ? $this->prepareArray($conditions[1])
@@ -47,14 +47,16 @@ class ConditionBuilder extends \pwf\components\querybuilder\abstraction\Conditio
 
         $params = $this->getParams();
 
-        foreach ($params as $value) {
-            if (is_array($value)) {
-                $value = $this->prepareArray($value);
+        foreach ($params as $key => $value) {
+            if (!is_array($value)) {
+                $value = [$key, $value];
             }
+            $condition = $this->prepareArray($value);
+
             if ($result != '') {
                 $result.=' AND ';
             }
-            $result.=$value;
+            $result.=$condition;
         }
 
         return $result;

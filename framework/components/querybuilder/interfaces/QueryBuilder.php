@@ -2,7 +2,7 @@
 
 namespace pwf\components\querybuilder\interfaces;
 
-interface QueryBuilder extends Condition
+interface QueryBuilder extends ConditionBuilder
 {
 
     /**

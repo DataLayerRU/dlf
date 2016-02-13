@@ -31,9 +31,7 @@ abstract class InsertBuilder implements \pwf\components\querybuilder\interfaces\
         $table  = $this->buildTable();
         $fields = $this->buildFields();
 
-        $result.='UPDATE '.$table.' SET '.$fields.
-
-        $result.='INSERT INTO '.$table.' ('.$fields.') VALUES ('.$values.')';
+        $result.='INSERT INTO '.$table.' '.$fields;
 
         return $result;
     }
