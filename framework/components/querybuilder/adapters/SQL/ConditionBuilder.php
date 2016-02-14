@@ -23,11 +23,12 @@ class ConditionBuilder extends \pwf\components\querybuilder\abstraction\Conditio
                 break;
             case 2:
                 $result = $conditions[0].'=:'.$conditions[0];
+                $this->addParam($conditions[0], $conditions[1]);
                 break;
             case 3:
-                $left   = is_array($conditions[1]) ? $this->prepareArray($conditions[1])
+                $left   = is_array($conditions[1]) ? $this->prepareConditions($conditions[1])
                         : $conditions[1];
-                $right  = is_array($conditions[2]) ? $this->prepareArray($conditions[2])
+                $right  = is_array($conditions[2]) ? $this->prepareConditions($conditions[2])
                         : $conditions[2];
                 $result = $left.' '.$conditions[0].' '.$right;
                 break;
@@ -38,20 +39,15 @@ class ConditionBuilder extends \pwf\components\querybuilder\abstraction\Conditio
         return $result;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function generate()
+    protected function prepareConditions(array $conditions)
     {
         $result = '';
 
-        $params = $this->getParams();
-
-        foreach ($params as $key => $value) {
-            if (!is_array($value)) {
+        foreach ($conditions as $key => $value) {
+            if (is_string($key)) {
                 $value = [$key, $value];
             }
-            $condition = $this->prepareArray($value);
+            $condition = $this->prepareArray((array) $value);
 
             if ($result != '') {
                 $result.=' AND ';
@@ -60,5 +56,13 @@ class ConditionBuilder extends \pwf\components\querybuilder\abstraction\Conditio
         }
 
         return $result;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function generate()
+    {
+        return $this->prepareConditions($this->getCondition());
     }
 }

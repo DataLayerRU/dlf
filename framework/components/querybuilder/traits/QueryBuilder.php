@@ -4,8 +4,6 @@ namespace pwf\components\querybuilder\traits;
 
 trait QueryBuilder
 {
-
-    use ConditionBuilder;
     /**
      * Table
      *

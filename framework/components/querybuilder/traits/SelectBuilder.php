@@ -4,19 +4,14 @@ namespace pwf\components\querybuilder\traits;
 
 trait SelectBuilder
 {
+
+    use QueryBuilder;
     /**
      * Select fields
      *
      * @var array
      */
     private $selectFields = ['*'];
-
-    /**
-     * Condition
-     *
-     * @var array
-     */
-    private $where = [];
 
     /**
      * Limit
@@ -54,47 +49,11 @@ trait SelectBuilder
     private $union = [];
 
     /**
-     * Params
-     *
-     * @var array
-     */
-    private $params = [];
-
-    /**
-     * Table
-     *
-     * @var string
-     */
-    private $table;
-
-    /**
      * Groupping
      *
      * @var array
      */
     private $group;
-
-    /**
-     * Set table
-     *
-     * @param string $table
-     * @return \pwf\components\querybuilder\interfaces\SelectBuilder
-     */
-    public function table($table)
-    {
-        $this->table = $table;
-        return $this;
-    }
-
-    /**
-     * Get table
-     * 
-     * @return string
-     */
-    public function getTable()
-    {
-        return $this->table;
-    }
 
     /**
      *
@@ -115,41 +74,6 @@ trait SelectBuilder
     public function getGroup()
     {
         return $this->group;
-    }
-
-    /**
-     * Set params
-     * 
-     * @param array $params
-     * @return \pwf\components\querybuilder\interfaces\SelectBuilder
-     */
-    public function setParams(array $params)
-    {
-        $this->params = $params;
-        return $this;
-    }
-
-    /**
-     * Add param
-     *
-     * @param string $name
-     * @param string $value
-     * @return \pwf\components\querybuilder\interfaces\SelectBuilder
-     */
-    public function addParam($name, $value)
-    {
-        $this->params[$name] = $value;
-        return $this;
-    }
-
-    /**
-     * Get params
-     *
-     * @return array
-     */
-    public function getParams()
-    {
-        return $this->params;
     }
 
     /**
@@ -194,28 +118,6 @@ trait SelectBuilder
     public function getOffset()
     {
         return $this->offset;
-    }
-
-    /**
-     * Set where condition
-     *
-     * @param mixed $condition
-     * @return \pwf\components\querybuilder\interfaces\SelectBuilder
-     */
-    public function where($condition)
-    {
-        $this->where = array_merge($this->where, (array) $condition);
-        return $this;
-    }
-
-    /**
-     * Get where
-     *
-     * @return array
-     */
-    public function getWhere()
-    {
-        return $this->where;
     }
 
     /**

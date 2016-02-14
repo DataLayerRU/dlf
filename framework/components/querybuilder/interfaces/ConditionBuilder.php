@@ -2,21 +2,21 @@
 
 namespace pwf\components\querybuilder\interfaces;
 
-interface ConditionBuilder
+interface ConditionBuilder extends Generatable
 {
-
-    /**
-     * Generate query
-     *
-     * @return string
-     */
-    public function generate();
 
     /**
      * Set params
      *
-     * @param array $params
+     * @param array $condition
      * @return ConditionBuilder
      */
-    public function setParams(array $params);
+    public function setCondition(array $condition);
+
+    /**
+     * Get params
+     *
+     * @return array
+     */
+    public function getParams();
 }

@@ -12,6 +12,13 @@ trait Conditional
     private $conditionBuilder;
 
     /**
+     * Condition
+     *
+     * @var array
+     */
+    private $where = [];
+
+    /**
      * Set condition builder
      *
      * @param \pwf\components\querybuilder\interfaces\ConditionBuilder $builder
@@ -31,5 +38,27 @@ trait Conditional
     public function getConditionBuilder()
     {
         return $this->conditionBuilder;
+    }
+
+    /**
+     * Set where condition
+     *
+     * @param mixed $condition
+     * @return \pwf\components\querybuilder\interfaces\ConditionBuilder
+     */
+    public function where($condition)
+    {
+        $this->where = array_merge($this->where, (array) $condition);
+        return $this;
+    }
+
+    /**
+     * Get where
+     *
+     * @return array
+     */
+    public function getWhere()
+    {
+        return $this->where;
     }
 }

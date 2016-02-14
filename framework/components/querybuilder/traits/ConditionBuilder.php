@@ -4,45 +4,34 @@ namespace pwf\components\querybuilder\traits;
 
 trait ConditionBuilder
 {
+
+    use Parameterized;
     /**
-     * Params
+     * Conditions
      *
      * @var array
      */
-    private $params = [];
+    private $condition = [];
 
     /**
      * Set params
      *
-     * @param array $params
-     * @return $this
+     * @param array $condition
+     * @return \pwf\components\querybuilder\interfaces\ConditionBuilder
      */
-    public function setParams(array $params)
+    public function setCondition(array $condition)
     {
-        $this->params = $params;
+        $this->condition = $condition;
         return $this;
     }
 
     /**
-     * Add param
-     *
-     * @param string $name
-     * @param string $value
-     * @return $this
-     */
-    public function addParam($name, $value)
-    {
-        $this->params[$name] = $value;
-        return $this;
-    }
-
-    /**
-     * Get params
+     * Get conditions
      *
      * @return array
      */
-    public function getParams()
+    public function getCondition()
     {
-        return $this->params;
+        return $this->condition;
     }
 }

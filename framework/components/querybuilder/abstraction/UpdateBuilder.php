@@ -28,7 +28,7 @@ abstract class UpdateBuilder extends InsertBuilder implements \pwf\components\qu
         $result.='UPDATE '.$table.' SET '.$fields;
 
         if ($where != '') {
-            $result.=' WHERE '.$where;
+            $result.=' '.$where;
         }
 
         return $result;

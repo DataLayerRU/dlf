@@ -43,7 +43,7 @@ class SelectBuilder extends \pwf\components\querybuilder\abstraction\SelectBuild
         $result = '';
 
         $having = $this->getConditionBuilder()
-            ->setParams($this->getHaving())
+            ->setCondition($this->getHaving())
             ->generate();
 
         if ($having != '') {
@@ -86,7 +86,7 @@ class SelectBuilder extends \pwf\components\querybuilder\abstraction\SelectBuild
         }
         $result.=$limit;
         if ($result != '') {
-            $result.='LIMIT '.$result;
+            $result = 'LIMIT '.$result;
         }
 
         return $result;
@@ -97,7 +97,14 @@ class SelectBuilder extends \pwf\components\querybuilder\abstraction\SelectBuild
      */
     protected function buildSelectFields()
     {
-        return implode(',', (array) $this->getSelect());
+        $fields = (array) $this->getSelect();
+        array_walk($fields,
+            function(&$value, $key) {
+            if (is_string($key)) {
+                $value = $key.' AS '.$value;
+            }
+        });
+        return implode(',', $fields);
     }
 
     /**
@@ -132,7 +139,7 @@ class SelectBuilder extends \pwf\components\querybuilder\abstraction\SelectBuild
         $result = '';
 
         $having = $this->getConditionBuilder()
-            ->setParams($this->getWhere())
+            ->setCondition($this->getWhere())
             ->generate();
 
         if ($having != '') {
@@ -140,5 +147,15 @@ class SelectBuilder extends \pwf\components\querybuilder\abstraction\SelectBuild
         }
 
         return $result;
+    }
+
+    /**
+     * Get params
+     *
+     * @return array
+     */
+    public function getParams()
+    {
+        return $this->getConditionBuilder()->getParams();
     }
 }

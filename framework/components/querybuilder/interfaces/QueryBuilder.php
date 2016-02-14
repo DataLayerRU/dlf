@@ -2,7 +2,7 @@
 
 namespace pwf\components\querybuilder\interfaces;
 
-interface QueryBuilder extends ConditionBuilder
+interface QueryBuilder extends Generatable
 {
 
     /**
@@ -11,4 +11,11 @@ interface QueryBuilder extends ConditionBuilder
      * @param string $table
      */
     public function table($table);
+
+    /**
+     * Get params
+     *
+     * @return array
+     */
+    public function getParams();
 }
