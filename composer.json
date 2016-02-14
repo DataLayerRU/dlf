@@ -30,7 +30,8 @@
     },
     "require-dev": {
         "codeception/codeception": "*",
-        "codeclimate/php-test-reporter": "dev-master"
+        "codeclimate/php-test-reporter": "dev-master",
+        "satooshi/php-coveralls": "dev-master"
     },
     "config": {
         "process-timeout": 1800
