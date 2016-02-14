@@ -15,7 +15,7 @@ script:
   - '[[ "$TRAVIS_PHP_VERSION" != "hhvm" ]] || echo "xdebug.enable = Off" >> /etc/hhvm/php.ini'
 after_script:
   - CODECLIMATE_REPO_TOKEN="6f443d6d70f0ebf987eea38654854c1c89e228bba92616800c4a06f254eda183" ./vendor/bin/test-reporter
-  - php vendor/bin/coveralls -v
+  - php vendor/bin/coveralls -v --coverage_clover=build/logs/clover.xml
 branches:
   only:
     - master
