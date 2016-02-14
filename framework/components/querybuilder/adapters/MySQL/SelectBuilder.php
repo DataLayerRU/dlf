@@ -16,9 +16,14 @@ class SelectBuilder extends \pwf\components\querybuilder\abstraction\SelectBuild
         self::JOIN_LEFT => 'LEFT JOIN',
         self::JOIN_RIGHT => 'RIGHT JOIN',
         self::JOIN_CROSS => 'CROSS JOIN',
-        self::JOIN_INNER => 'INNER JOIN',
-        self::JOIN_OUTER => ''
+        self::JOIN_INNER => 'INNER JOIN'
     ];
+
+    public function __construct()
+    {
+        self::$joinTypes[self::JOIN_LEFT | self::JOIN_OUTER]  = 'LEFT OUTER JOIN';
+        self::$joinTypes[self::JOIN_RIGHT | self::JOIN_OUTER] = 'RIGHT OUTER JOIN';
+    }
 
     /**
      * @inheritdoc
