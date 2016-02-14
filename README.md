@@ -6,7 +6,7 @@ PWF - framework for proffessional web development
 [![Latest Stable Version](https://poser.pugx.org/professionalweb/pwf/v/stable)](https://packagist.org/packages/professionalweb/pwf)
 [![Build Status](https://travis-ci.org/SergioMadness/pwf.svg?branch=dev)](https://travis-ci.org/SergioMadness/pwf)
 [![Code Climate](https://codeclimate.com/github/SergioMadness/pwf/badges/gpa.svg)](https://codeclimate.com/github/SergioMadness/pwf)
-[![Coverage Status](https://coveralls.io/repos/SergioMadness/pwf/badge.svg?branch=master&service=github)](https://coveralls.io/github/SergioMadness/pwf?branch=dev)
+[![Coverage Status](https://coveralls.io/repos/github/SergioMadness/pwf/badge.svg?branch=dev)](https://coveralls.io/github/SergioMadness/pwf?branch=dev)
 [![Dependency Status](https://www.versioneye.com/user/projects/56b53a8e0a0ff5003b975815/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56b53a8e0a0ff5003b975815)
 [![License](https://poser.pugx.org/professionalweb/pwf/license)](https://packagist.org/packages/professionalweb/pwf)
 [![Latest Unstable Version](https://poser.pugx.org/professionalweb/pwf/v/unstable)](https://packagist.org/packages/professionalweb/pwf)
