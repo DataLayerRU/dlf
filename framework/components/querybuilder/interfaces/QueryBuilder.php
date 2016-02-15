@@ -11,11 +11,4 @@ interface QueryBuilder extends Generatable
      * @param string $table
      */
     public function table($table);
-
-    /**
-     * Get params
-     *
-     * @return array
-     */
-    public function getParams();
 }

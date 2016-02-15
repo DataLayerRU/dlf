@@ -2,15 +2,8 @@
 
 namespace pwf\components\querybuilder\interfaces;
 
-interface DeleteBuilder
+interface DeleteBuilder extends QueryBuilder
 {
-
-    /**
-     * Set table
-     *
-     * @param string $table
-     */
-    public function table($table);
 
     /**
      * Add condition

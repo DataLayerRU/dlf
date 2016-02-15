@@ -2,13 +2,7 @@
 
 namespace pwf\components\querybuilder\interfaces;
 
-interface UpdateBuilder extends InsertBuilder
+interface UpdateBuilder extends InsertBuilder, DeleteBuilder
 {
 
-    /**
-     * Add condition
-     *
-     * @param mixed $condition
-     */
-    public function where($condition);
 }
