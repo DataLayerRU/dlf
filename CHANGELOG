@@ -2,6 +2,7 @@ PWF
 ====
 
 ## v0.4 In dev
+ - Query builder
 
 ## v0.3 07.02.2016
  - Auto authorization
@@ -9,7 +10,6 @@ PWF
  - Tests
 
 ## v0.2 27.01.2016
-
  - Active record
  - Data mapper
  - DI
@@ -18,7 +18,6 @@ PWF
  - Routing refactoring
 
 ## v0.1 06.11.2015
-
  - MVC
  - RouteHandler
  - Basic components

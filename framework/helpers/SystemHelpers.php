@@ -74,4 +74,17 @@ class SystemHelpers
         }
         return call_user_func_array($objectInfo, $inputParams);
     }
+
+    /**
+     * Create object byclass name and arguments for constructor
+     *
+     * @param array $className
+     * @param string $className
+     * @return object
+     */
+    public static function createObject($className, array $className = [])
+    {
+        $ref = new \ReflectionClass($className);
+        return $ref->newInstanceArgs($className);
+    }
 }

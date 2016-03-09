@@ -49,7 +49,9 @@ class Application implements \pwf\basic\interfaces\Application
     {
         $this->request  = new Request($_REQUEST);
         $this->response = new Response();
-        $this->setConfiguration($config);
+        $this->setConfiguration($this->requiredComponents())
+            ->appendConfiguration($config);
+
 
         static::$instance = $this;
     }
@@ -222,5 +224,28 @@ class Application implements \pwf\basic\interfaces\Application
         }
 
         return $result;
+    }
+
+    /**
+     * Default components
+     *
+     * @return array
+     */
+    protected function requiredComponents()
+    {
+        return [
+            'log' => [
+                'handlers' => [
+                    [
+                        'class' => '\Monolog\Handler\RotatingFileHandler',
+                        'params' => [
+                            '../logs/error_log.log',
+                            0,
+                            \Monolog\Logger::DEBUG
+                        ]
+                    ]
+                ]
+            ]
+        ];
     }
 }
