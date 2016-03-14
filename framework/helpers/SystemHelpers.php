@@ -78,13 +78,13 @@ class SystemHelpers
     /**
      * Create object byclass name and arguments for constructor
      *
-     * @param array $className
      * @param string $className
+     * @param array $constructorArguments
      * @return object
      */
-    public static function createObject($className, array $className = [])
+    public static function createObject($className, array $constructorArguments = [])
     {
         $ref = new \ReflectionClass($className);
-        return $ref->newInstanceArgs($className);
+        return $ref->newInstanceArgs($constructorArguments);
     }
 }

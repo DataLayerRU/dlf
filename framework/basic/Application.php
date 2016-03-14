@@ -2,6 +2,7 @@
 
 namespace pwf\basic;
 
+use Monolog\Logger;
 use pwf\web\Request;
 use pwf\web\Response;
 use pwf\exception\interfaces\HttpException;
@@ -82,7 +83,7 @@ class Application implements \pwf\basic\interfaces\Application
      * @param array $config
      * @return Application
      */
-    public function setConfiguration($config = [])
+    public function setConfiguration(array $config = [])
     {
         $this->configuration = $config;
         return $this;
@@ -235,17 +236,33 @@ class Application implements \pwf\basic\interfaces\Application
     {
         return [
             'log' => [
+                'class' => '\pwf\components\monologadapter\MonologLogger',
                 'handlers' => [
                     [
                         'class' => '\Monolog\Handler\RotatingFileHandler',
                         'params' => [
                             '../logs/error_log.log',
                             0,
-                            \Monolog\Logger::DEBUG
+                            Logger::DEBUG
                         ]
                     ]
                 ]
             ]
         ];
+    }
+
+    /**
+     * Add message to log
+     *
+     * @param string $message
+     * @param array $context
+     * @param int $level
+     * @return boolean
+     */
+    public static function log($message, array $context = [],
+                               $level = Logger::DEBUG)
+    {
+        return self::$instance->getComponent('log')->log($level, $message,
+                $context);
     }
 }

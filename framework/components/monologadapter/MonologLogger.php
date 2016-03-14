@@ -16,7 +16,7 @@ class MonologLogger extends Logger implements \pwf\basic\interfaces\Component
      *
      * @var array
      */
-    private $handlers = [];
+    private $logHandlers = [];
 
     public function __construct()
     {
@@ -28,16 +28,14 @@ class MonologLogger extends Logger implements \pwf\basic\interfaces\Component
      */
     public function init()
     {
-        if ($this->logger === null) {
-            $handlers = $this->getHandlers();
-            foreach ($handlers as $handler) {
-                if (!isset($handler['class'])) {
-                    throw \Exception(__CLASS__.': \'class\' is required for handler');
-                }
-                $params = isset($handler['params']) ? $handler['params'] : [];
-                $this->pushHandler(\pwf\helpers\SystemHelpers::createObject($handler['class'],
-                        $params));
+        $handlers = $this->getHandlers();
+        foreach ($handlers as $handler) {
+            if (!isset($handler['class'])) {
+                throw \Exception(__CLASS__.': \'class\' is required for handler');
             }
+            $params = isset($handler['params']) ? $handler['params'] : [];
+            $this->pushHandler(\pwf\helpers\SystemHelpers::createObject($handler['class'],
+                    $params));
         }
         return $this;
     }
@@ -50,7 +48,7 @@ class MonologLogger extends Logger implements \pwf\basic\interfaces\Component
      */
     public function loadConfiguration(array $config = array())
     {
-        $this->handlers = $config['handlers'];
+        $this->setHandlers($config['handlers']);
         return $this;
     }
 
@@ -62,7 +60,7 @@ class MonologLogger extends Logger implements \pwf\basic\interfaces\Component
      */
     public function setHandlers(array $handlers)
     {
-        $this->handlers = $handlers;
+        $this->logHandlers = $handlers;
         return $this;
     }
 
@@ -73,6 +71,6 @@ class MonologLogger extends Logger implements \pwf\basic\interfaces\Component
      */
     public function getHandlers()
     {
-        return $this->handlers;
+        return $this->logHandlers;
     }
 }
