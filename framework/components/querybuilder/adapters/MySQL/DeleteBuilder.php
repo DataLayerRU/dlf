@@ -6,7 +6,8 @@ class DeleteBuilder extends \pwf\components\querybuilder\abstraction\DeleteBuild
 {
 
     use \pwf\components\querybuilder\traits\QueryBuilder,
-        \pwf\components\querybuilder\traits\Conditional;
+        \pwf\components\querybuilder\traits\Conditional,
+        \pwf\components\querybuilder\traits\Parameterized;
 
     /**
      * @inheritdoc
