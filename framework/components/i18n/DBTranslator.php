@@ -5,6 +5,8 @@ namespace pwf\components\i18n;
 class ArrayTranslator extends \pwf\components\i18n\abstraction\DBTranslator
 {
 
+    use traits\ParamReplace;
+
     /**
      * Translate
      *
@@ -27,10 +29,7 @@ class ArrayTranslator extends \pwf\components\i18n\abstraction\DBTranslator
             $this->getQueryBuilder()->getParams());
 
         if ($res !== false) {
-            $result = $res->fetchColumn($this->getResultFieldName());
-            foreach ($params as $key => $value) {
-                $result = str_replace('{'.$key.'}', $value, $result);
-            }
+            $result = $this->prepareValue($res->fetchColumn($this->getResultFieldName()));
         }
         return $result;
     }

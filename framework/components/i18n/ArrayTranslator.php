@@ -5,6 +5,8 @@ namespace pwf\components\i18n;
 class ArrayTranslator extends \pwf\components\i18n\abstraction\ArrayTranslator
 {
 
+    use traits\ParamReplace;
+
     /**
      * Translate string
      *
@@ -18,10 +20,7 @@ class ArrayTranslator extends \pwf\components\i18n\abstraction\ArrayTranslator
 
         $values = $this->getMap();
         if (isset($values[$this->getLanguage()][$alias])) {
-            $result = $values[$this->getLanguage()][$alias];
-            foreach ($params as $key => $value) {
-                $result = str_replace('{'.$key.'}', $value, $result);
-            }
+            $result = $this->prepareValue($values[$this->getLanguage()][$alias]);
         }
 
         return $result;
