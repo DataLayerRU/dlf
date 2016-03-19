@@ -12,7 +12,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model
     }
 
 
-    public function count($condition)
+    public function count()
     {
         
     }
@@ -22,7 +22,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model
 
     }
 
-    public function getAll($condition, $limit = null, $offset = null)
+    public function getAll()
     {
         
     }
@@ -32,7 +32,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model
 
     }
 
-    public function getOne($condition)
+    public function getOne()
     {
         
     }
