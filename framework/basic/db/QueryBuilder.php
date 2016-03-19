@@ -2,8 +2,7 @@
 
 namespace pwf\basic\db;
 
-class QueryBuilder implements \pwf\components\querybuilder\interfaces\SelectBuilder,
-    \pwf\components\querybuilder\interfaces\InsertBuilder, \pwf\components\querybuilder\interfaces\UpdateBuilder
+class QueryBuilder
 {
     /**
      * MySQL driver
@@ -21,27 +20,6 @@ class QueryBuilder implements \pwf\components\querybuilder\interfaces\SelectBuil
      * @var string
      */
     private static $driver;
-
-    /**
-     * Current query builder
-     *
-     * @var \pwf\components\querybuilder\interfaces\SelectBuilder
-     */
-    private static $queryBuilder;
-
-    /**
-     * Insert builder
-     *
-     * @var \pwf\components\querybuilder\interfaces\InsertBuilder
-     */
-    private static $insertBuilder;
-
-    /**
-     * Update builder
-     *
-     * @var \pwf\components\querybuilder\interfaces\UpdateBuilder
-     */
-    private static $updateBuilder;
 
     /**
      * Set current driver
@@ -63,73 +41,116 @@ class QueryBuilder implements \pwf\components\querybuilder\interfaces\SelectBuil
         return self::$driver;
     }
 
-    protected static function getQueryBuilder()
+    /**
+     * Get query builder
+     *
+     * @return \pwf\components\querybuilder\interfaces\SelectBuilder
+     * @throws \Exception
+     */
+    public static function select()
     {
-        if (self::$queryBuilder === null) {
-            switch (static::getDriver()) {
-                case self::DRIVER_MYSQL:
-                    self::$queryBuilder=new \pwf\components\querybuilder\adapters\MySQL\SelectBuilder();
-                    break;
-                case self::DRIVER_PG:
-                    break;
-                default:
-                    throw new \Exception('Wrong query builder driver');
-            }
+        $result = null;
+
+        switch (static::getDriver()) {
+            case self::DRIVER_MYSQL:
+                $result = new \pwf\components\querybuilder\adapters\MySQL\SelectBuilder();
+                break;
+            case self::DRIVER_PG:
+                $result = new \pwf\components\querybuilder\adapters\PostgreSQL\SelectBuilder();
+                break;
+            default:
+                throw new \Exception('Wrong query builder driver');
         }
+
+        return $result;
     }
 
-    public function generate()
+    /**
+     * Get insert builder
+     *
+     * @return \pwf\components\querybuilder\interfaces\InsertBuilder
+     * @throws \Exception
+     */
+    public static function insert()
     {
+        $result = null;
 
+        switch (static::getDriver()) {
+            case self::DRIVER_MYSQL:
+                $result = new \pwf\components\querybuilder\adapters\MySQL\InsertBuilder();
+                break;
+            case self::DRIVER_PG:
+                $result = new \pwf\components\querybuilder\adapters\PostgreSQL\InsertBuilder();
+                break;
+            default:
+                throw new \Exception('Wrong query builder driver');
+        }
+
+        return $result;
     }
 
-    public function getParams()
+    /**
+     * Get update builder
+     *
+     * @return \pwf\components\querybuilder\interfaces\UpdateBuilder
+     * @throws \Exception
+     */
+    public static function update()
     {
-        
+        $result = null;
+
+        switch (static::getDriver()) {
+            case self::DRIVER_MYSQL:
+                $result = new \pwf\components\querybuilder\adapters\MySQL\UpdateBuilder();
+                break;
+            case self::DRIVER_PG:
+                $result = new \pwf\components\querybuilder\adapters\PostgreSQL\UpdateBuilder();
+                break;
+            default:
+                throw new \Exception('Wrong query builder driver');
+        }
+
+        return $result;
     }
 
-    public function group($group)
+    /**
+     * Get delete builder
+     *
+     * @return \pwf\components\querybuilder\interfaces\DeleteBuilder
+     * @throws \Exception
+     */
+    public static function delete()
     {
+        $result = null;
 
+        switch (static::getDriver()) {
+            case self::DRIVER_MYSQL:
+                $result = new \pwf\components\querybuilder\adapters\MySQL\DeleteBuilder();
+                break;
+            case self::DRIVER_PG:
+                $result = new \pwf\components\querybuilder\adapters\PostgreSQL\DeleteBuilder();
+                break;
+            default:
+                throw new \Exception('Wrong query builder driver');
+        }
+
+        return $result;
     }
 
-    public function having($condition)
+    /**
+     * Get condition builder
+     *
+     * @return \pwf\components\querybuilder\adapters\SQL\ConditionBuilder
+     */
+    public static function getConditionBuilder()
     {
-        
-    }
+        $result = null;
 
-    public function join($table, $condition, $joinType = self::JOIN_LEFT)
-    {
+        switch (static::getDriver()) {
+            default:
+                $result = new \pwf\components\querybuilder\adapters\SQL\ConditionBuilder();
+        }
 
-    }
-
-    public function limit($limit)
-    {
-        
-    }
-
-    public function offset($offset)
-    {
-
-    }
-
-    public function select(array $fields)
-    {
-        
-    }
-
-    public function table($table)
-    {
-
-    }
-
-    public function union(\pwf\components\querybuilder\interfaces\QueryBuilder $query)
-    {
-        
-    }
-
-    public function where($condition)
-    {
-
+        return $result;
     }
 }
