@@ -26,7 +26,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
      * 
      * @return type
      */
-    public function count($condition) {
+    public function count() {
         return (int) $this->getConnection()
                         ->query(QueryBuilder::select()
                                 ->select(['COUNT(' . $this->getPK() . ') AS CNT'])
@@ -50,7 +50,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
                                 ->generate(), $this->getParams());
     }
 
-    public function getAll($condition, $limit = null, $offset = null) {
+    public function getAll() {
         return $this->getConnection()->query(QueryBuilder::select()
                                 ->table($this->getTable())
                                 ->setConditionBuilder($this->getConditionBuilder())
@@ -60,19 +60,14 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
                                 ->generate(), $this->getParams());
     }
 
-    public function getOne($condition) {
-        if (is_numeric($condition)) {
-            $condition = [
-                $this->getPK() => $condition
-            ];
-        }
-        $this->getConnection()->query(
-                QueryBuilder::select()
-                        ->table($this->getTable())
-                        ->setConditionBuilder($this->getConditionBuilder())
-                        ->where($condition)
-                        ->limit(1)
-                        ->generate(), $this->getParams());
+    public function getOne() {
+        return $this->getConnection()->query(
+                        QueryBuilder::select()
+                                ->table($this->getTable())
+                                ->setConditionBuilder($this->getConditionBuilder())
+                                ->where($condition)
+                                ->limit(1)
+                                ->generate(), $this->getParams());
     }
 
     /**
