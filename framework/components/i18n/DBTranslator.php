@@ -2,7 +2,7 @@
 
 namespace pwf\components\i18n;
 
-class ArrayTranslator extends \pwf\components\i18n\abstraction\DBTranslator
+class DBTranslator extends \pwf\components\i18n\abstraction\DBTranslator
 {
 
     use traits\ParamReplace;

@@ -4,6 +4,20 @@ namespace pwf\components\i18n\interfaces;
 
 interface Translator
 {
+    /**
+     * Values in array
+     */
+    const TRANSLATOR_ARRAY = 'array';
+
+    /**
+     * Values in DB
+     */
+    const TRANSLATOR_DB = 'db';
+
+    /**
+     * Values in files
+     */
+    const TRANSLATOR_FILE = 'file';
 
     /**
      * Get translation

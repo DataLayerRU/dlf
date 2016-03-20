@@ -6,21 +6,6 @@ class Translator extends abstraction\Translator implements \pwf\basic\interfaces
     interfaces\Translator
 {
     /**
-     * Values in array
-     */
-    const TRANSLATOR_ARRAY = 'array';
-
-    /**
-     * Values in DB
-     */
-    const TRANSLATOR_DB = 'db';
-
-    /**
-     * Values in files
-     */
-    const TRANSLATOR_FILE = 'file';
-
-    /**
      * Translators
      *
      * @var array
@@ -32,9 +17,10 @@ class Translator extends abstraction\Translator implements \pwf\basic\interfaces
         $translators = $this->getTranslators();
         foreach ($translators as $translator) {
             if (!isset($translator['type'])) {
-                throw \Exception(__CLASS__.': \'type\' is required for translator');
+                throw new \Exception(__CLASS__.': \'type\' is required for translator');
             }
         }
+        return $this;
     }
 
     /**
@@ -48,6 +34,7 @@ class Translator extends abstraction\Translator implements \pwf\basic\interfaces
         if (isset($config['language'])) {
             $this->setLanguage($config['language']);
         }
+        return $this;
     }
 
     /**

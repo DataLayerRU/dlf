@@ -4,6 +4,11 @@ namespace pwf\components\i18n\abstraction;
 
 abstract class FileTranslator extends Translator implements \pwf\components\i18n\interfaces\FileTranslator
 {
+    /**
+     * Path to lang dir
+     *
+     * @var string
+     */
     private $dir;
 
     /**
