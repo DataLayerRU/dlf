@@ -23,6 +23,7 @@ class Translator extends abstraction\Translator implements \pwf\basic\interfaces
                     $translator);
             }
         }
+        $this->setTranslators($translators);
         return $this;
     }
 
@@ -51,6 +52,7 @@ class Translator extends abstraction\Translator implements \pwf\basic\interfaces
             $trans = $translator->translate($alias, $params);
             if ($trans != '') {
                 $result = $trans;
+                break;
             }
         }
         return $result;

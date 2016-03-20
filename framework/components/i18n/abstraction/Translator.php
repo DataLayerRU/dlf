@@ -30,6 +30,6 @@ abstract class Translator implements \pwf\components\i18n\interfaces\Translator
      */
     public function getLanguage()
     {
-        return $this;
+        return $this->currentLanguage;
     }
 }

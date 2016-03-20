@@ -25,7 +25,7 @@ class FileTranslator extends \pwf\components\i18n\abstraction\FileTranslator
         $result = '';
         $values = $this->getValues();
         if (isset($values[$alias])) {
-            $result = $this->prepareValue($values[$alias]);
+            $result = $this->prepareValue($values[$alias], $params);
         }
         return $result;
     }

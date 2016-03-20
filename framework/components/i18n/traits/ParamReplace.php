@@ -18,6 +18,6 @@ trait ParamReplace
         foreach ($params as $key => $value) {
             $result = str_replace('{'.$key.'}', $value, $result);
         }
-        return $str;
+        return $result;
     }
 }

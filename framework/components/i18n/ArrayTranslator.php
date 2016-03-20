@@ -20,7 +20,7 @@ class ArrayTranslator extends \pwf\components\i18n\abstraction\ArrayTranslator
 
         $values = $this->getMap();
         if (isset($values[$this->getLanguage()][$alias])) {
-            $result = $this->prepareValue($values[$this->getLanguage()][$alias]);
+            $result = $this->prepareValue($values[$this->getLanguage()][$alias], $params);
         }
 
         return $result;
