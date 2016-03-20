@@ -24,8 +24,24 @@ class Fabric
                 $result->setMap($params['map']);
                 break;
             case Translator::TRANSLATOR_DB:
-                $result=new DBTranslator();
-                $result->setAliasFieldName($params[]);
+                $result = new DBTranslator();
+                if (!isset($params['aliasFieldName'])) {
+                    throw new \Exception('Need \'aliasFieldName\' param');
+                }
+                if (!isset($params['languageFieldName'])) {
+                    throw new \Exception('Need \'languageFieldName\' param');
+                }
+                if (!isset($params['resultFieldName'])) {
+                    throw new \Exception('Need \'resultFieldName\' param');
+                }
+                if (!isset($params['table'])) {
+                    throw new \Exception('Need \'table\' param');
+                }
+                $result->setAliasFieldName($params['aliasFieldName']);
+                $result->setResultFieldName($params['resultFieldName']);
+                $result->setTableName($params['table']);
+                $result->setLanguageFieldName($params['languageFieldName']);
+                $result->setQueryBuilder(\pwf\basic\db\QueryBuilder::select());
         }
 
         return $result;

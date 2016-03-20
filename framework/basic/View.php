@@ -2,7 +2,7 @@
 
 namespace pwf\basic;
 
-class View implements \pwf\basic\interfaces\View
+class View extends Object implements \pwf\basic\interfaces\View
 {
 
     /**

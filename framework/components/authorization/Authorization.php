@@ -125,7 +125,7 @@ class Authorization extends Component
      *
      * @param array $config
      */
-    public function loadConfiguration($config = [])
+    public function loadConfiguration(array $config = [])
     {
         parent::loadConfiguration($config);
         if (isset($config['auto'])) {

@@ -34,7 +34,7 @@ class MonologLogger extends Logger implements \pwf\basic\interfaces\Component
                 throw \Exception(__CLASS__.': \'class\' is required for handler');
             }
             $params = isset($handler['params']) ? $handler['params'] : [];
-            $this->pushHandler(\pwf\helpers\SystemHelpers::createObject($handler['class'],
+            $this->pushHandler(\pwf\helpers\SystemHelpers::constructObject($handler['class'],
                     $params));
         }
         return $this;

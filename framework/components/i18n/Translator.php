@@ -15,9 +15,12 @@ class Translator extends abstraction\Translator implements \pwf\basic\interfaces
     public function init()
     {
         $translators = $this->getTranslators();
-        foreach ($translators as $translator) {
+        foreach ($translators as $key => $translator) {
             if (!isset($translator['type'])) {
                 throw new \Exception(__CLASS__.': \'type\' is required for translator');
+            } else {
+                $translators[$key] = (new Fabric())->getTranslator($translator['type'],
+                    $translator);
             }
         }
         return $this;
@@ -26,7 +29,7 @@ class Translator extends abstraction\Translator implements \pwf\basic\interfaces
     /**
      * @inheritdoc
      */
-    public function loadConfiguration($config = array())
+    public function loadConfiguration(array $config = array())
     {
         if (isset($config['translators'])) {
             $this->setTranslators($config['translators']);

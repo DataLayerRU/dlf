@@ -7,7 +7,7 @@ use pwf\web\Request;
 use pwf\web\Response;
 use pwf\exception\interfaces\HttpException;
 
-class Application implements \pwf\basic\interfaces\Application
+class Application extends Object implements \pwf\basic\interfaces\Application
 {
 
     use \pwf\components\eventhandler\traits\CallbackTrait;
