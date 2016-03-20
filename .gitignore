@@ -29,3 +29,6 @@ codecept.phar
 *.log
 
 tests/_output
+tests/_output/*
+tests/_output/*
+tests/_output/*

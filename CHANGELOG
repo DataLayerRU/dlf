@@ -4,7 +4,10 @@ PWF
 ## v0.4 In dev
  - Query builder
 
+ - Query builder
+
 ## v0.3 07.02.2016
+
  - Auto authorization
  - Force component initialization
  - Tests
