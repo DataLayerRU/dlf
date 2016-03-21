@@ -50,8 +50,7 @@ class Application extends Object implements \pwf\basic\interfaces\Application
     {
         $this->request  = new Request($_REQUEST);
         $this->response = new Response();
-        $this->setConfiguration($this->requiredComponents())
-            ->appendConfiguration($config);
+        $this->setConfiguration($config);
 
 
         static::$instance = $this;
@@ -85,7 +84,7 @@ class Application extends Object implements \pwf\basic\interfaces\Application
      */
     public function setConfiguration(array $config = [])
     {
-        $this->configuration = $config;
+        $this->configuration = array_merge($this->requiredComponents(), $config);
         return $this;
     }
 
@@ -135,11 +134,17 @@ class Application extends Object implements \pwf\basic\interfaces\Application
         try {
             $this->forceComponentLoading();
 
-            $callback = $this->prepareCallback(RouteHandler::getHandler($this->request->getPath()));
+            $path = $this->request->getPath();
+
+            static::log('Request', ['path' => $path], Logger::INFO);
+
+            $callback = $this->prepareCallback(RouteHandler::getHandler($path));
 
             if (is_array($callback) && $callback[0] instanceof \pwf\basic\interfaces\Controller) {
                 $callback[0]->setRequest($this->getRequest())->setResponse($this->getResponse());
             }
+
+            static::log('Call callback', [], Logger::INFO);
 
             $this->response->setBody(\pwf\helpers\SystemHelpers::call($callback,
                     function($paramName) {
@@ -157,6 +162,8 @@ class Application extends Object implements \pwf\basic\interfaces\Application
         } catch (HttpException $ex) {
             $this->response->setHeaders($ex->getHeaders());
             $this->response->setBody($ex->getContent());
+            static::log($ex->getContent(), [], Logger::ERROR);
+            $this->getComponent('log')->addError($ex->getMessage());
         } catch (\Exception $ex) {
             $this->response->setHeaders([
                 'HTTP/1.1 500 Internal Server Error'
@@ -166,7 +173,9 @@ class Application extends Object implements \pwf\basic\interfaces\Application
                 .'<pre>'
                 .$ex->getTraceAsString()
                 .'</pre>');
+            static::log($ex->getMessage(), [], Logger::ERROR);
         }
+        static::log('Send response', [], Logger::INFO);
         $this->response->send();
     }
 
@@ -179,7 +188,7 @@ class Application extends Object implements \pwf\basic\interfaces\Application
     {
         $config = $this->getConfiguration();
         foreach ($config as $key => $params) {
-            if (isset($params['class']) && isset($params['force'])) {
+            if (isset($params['class']) && isset($params['force']) && $params['force']) {
                 $this->getComponent($key);
             }
         }
@@ -240,6 +249,7 @@ class Application extends Object implements \pwf\basic\interfaces\Application
                 'handlers' => [
                     [
                         'class' => '\Monolog\Handler\RotatingFileHandler',
+                        'force' => true,
                         'params' => [
                             '../logs/error_log.log',
                             0,

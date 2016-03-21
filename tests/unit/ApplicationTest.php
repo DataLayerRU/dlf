@@ -42,8 +42,8 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
                 'dsn' => 'dsn: mysql'
             ]
         ];
-        $this->assertTrue(self::$stubApplication->setConfiguration($testConfig)->appendConfiguration($configForAppend)->getConfiguration()
-            === array_merge($testConfig, $configForAppend));
+        $this->assertArrayHasKey('db',
+            self::$stubApplication->setConfiguration($testConfig)->appendConfiguration($configForAppend)->getConfiguration());
     }
 
     public function testRun()
@@ -61,7 +61,8 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
             $this->fail($ex->getMessage());
         }
 
-        $this->assertEquals('404. Not found.', self::$stubApplication->getResponse()->getBody());
+        $this->assertEquals('404. Not found.',
+            self::$stubApplication->getResponse()->getBody());
         $this->assertEquals('HTTP/1.0 404 Not Found',
             self::$stubApplication->getResponse()->getHeaders()[0]);
     }
