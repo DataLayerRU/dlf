@@ -66,6 +66,21 @@ class i18nTest extends \PHPUnit_Framework_TestCase
             $translation = $this->translator->loadConfiguration([
                     'translators' => [
                         [
+                            'type' => trans::TRANSLATOR_FILE,
+                            'language' => 'ru'
+                        ]
+                    ],
+                    'language' => 'ru'
+                ])->init()->translate('test');
+            $this->fail('Need exception');
+        } catch (Exception $ex) {
+
+        }
+
+        try {
+            $translation = $this->translator->loadConfiguration([
+                    'translators' => [
+                        [
                             'type' => trans::TRANSLATOR_ARRAY,
                             'language' => 'ru'
                         ]
@@ -201,14 +216,20 @@ class i18nTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($translatedWord, $translation);
 
-        $translator = Codeception\Util\Stub::construct('\pwf\components\i18n\Translator',
+        $connection = Codeception\Util\Stub::construct('\pwf\components\dbconnection\PDOConnection',
                 [],
                 [
-                'prepareValue' => function($str, array $params = []) use ($translatedWord) {
-                return $translatedWord;
+                'query' => function($query, $params = []) {
+                return Codeception\Util\Stub::constructEmpty('\PDOStatement',
+                        [],
+                        [
+                        'fetchColumn' => function($field) {
+                            return 'Тест {placeholder}';
+                        }
+                ]);
             }
         ]);
-        $translation = $translator->loadConfiguration([
+        $translation = $this->translator->loadConfiguration([
                 'translators' => [
                     [
                         'type' => trans::TRANSLATOR_DB,
@@ -218,6 +239,19 @@ class i18nTest extends \PHPUnit_Framework_TestCase
                         'resultFieldName' => 'field3',
                         'table' => 'table_name',
                         'connection' => $connection
+                    ]
+                ],
+                'language' => 'ru'
+            ])->init()->translate('test', ['placeholder' => 'ok']);
+
+        $this->assertEquals($translatedWord, $translation);
+
+        $translation = $this->translator->loadConfiguration([
+                'translators' => [
+                    [
+                        'type' => trans::TRANSLATOR_FILE,
+                        'language' => 'ru',
+                        'dir' => 'tests/_data/'
                     ]
                 ],
                 'language' => 'ru'

@@ -20,7 +20,15 @@ class Fabric
             throw new \Exception('Need \'language\' param');
         }
         switch ($type) {
-            case \pwf\components\i18n\interfaces\Translator::TRANSLATOR_ARRAY:
+            case interfaces\Translator::TRANSLATOR_FILE:
+                $result = new FileTranslator();
+                if (!isset($params['dir'])) {
+                    throw new \Exception('Need \'dir\' param');
+                }
+                $result->setDir($params['dir']);
+                $result->setLanguage($params['language']);
+                break;
+            case interfaces\Translator::TRANSLATOR_ARRAY:
                 $result = new ArrayTranslator();
                 if (!isset($params['map'])) {
                     throw new \Exception('Need \'map\' param');
@@ -28,7 +36,7 @@ class Fabric
                 $result->setMap($params['map']);
                 $result->setLanguage($params['language']);
                 break;
-            case \pwf\components\i18n\interfaces\Translator::TRANSLATOR_DB:
+            case interfaces\Translator::TRANSLATOR_DB:
                 $result = new DBTranslator();
                 if (!isset($params['aliasFieldName'])) {
                     throw new \Exception('Need \'aliasFieldName\' param');
