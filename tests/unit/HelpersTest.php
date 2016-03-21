@@ -2,6 +2,17 @@
 
 class StubClass
 {
+    private $testField;
+
+    public function setTestField($field)
+    {
+        $this->testField = $field;
+    }
+
+    public function getTestField()
+    {
+        return $this->testField;
+    }
 
     public function action($param)
     {
@@ -58,5 +69,14 @@ class HelpersTest extends \PHPUnit_Framework_TestCase
                         return $result;
                     }
                 }));
+        }
+
+        public function testObjectCreate()
+        {
+            $o = \pwf\helpers\SystemHelpers::createObject('StubClass',
+                    [
+                    'testField' => 11
+            ]);
+            $this->assertEquals('11', $o->getTestField());
         }
     }

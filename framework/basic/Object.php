@@ -17,8 +17,9 @@ class Object
         $methodName = 'set'.ucfirst($name);
         if (method_exists($this, $methodName)) {
             $this->$methodName($value);
+        } else {
+            throw new \Exception('No field named \''.$name.'\'');
         }
-        throw new \Exception('No field named \''.$name.'\'');
     }
 
     /**
@@ -32,7 +33,7 @@ class Object
     {
         $methodName = 'get'.ucfirst($name);
         if (method_exists($this, $methodName)) {
-            return $this->$methodName($value);
+            return $this->$methodName();
         }
         throw new \Exception('No field named \''.$name.'\'');
     }

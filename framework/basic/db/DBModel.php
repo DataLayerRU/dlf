@@ -39,7 +39,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
                     ->setConditionBuilder($this->getConditionBuilder())
                     ->where($this->getWhere())
                     ->generate(), $this->getParams())
-                ->fetchColumn('CNT');
+                ->fetchColumn();
     }
 
     /**
