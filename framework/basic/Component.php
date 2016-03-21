@@ -2,7 +2,7 @@
 
 namespace pwf\basic;
 
-abstract class Component implements \pwf\basic\interfaces\Component
+abstract class Component extends Object implements \pwf\basic\interfaces\Component
 {
     /**
      * Force initialization
@@ -32,7 +32,7 @@ abstract class Component implements \pwf\basic\interfaces\Component
      * @param array $config
      * @return \pwf\basic\Comonent
      */
-    public function loadConfiguration($config = [])
+    public function loadConfiguration(array $config = [])
     {
         if (isset($config['force'])) {
             $this->isForceInitialization((bool) $config['force']);

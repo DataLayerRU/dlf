@@ -74,4 +74,37 @@ class SystemHelpers
         }
         return call_user_func_array($objectInfo, $inputParams);
     }
+
+    /**
+     * Create object byclass name and arguments for constructor
+     *
+     * @param string $className
+     * @param array $constructorArguments
+     * @return object
+     */
+    public static function constructObject($className,
+                                           array $constructorArguments = [])
+    {
+        $ref = new \ReflectionClass($className);
+        return $ref->newInstanceArgs($constructorArguments);
+    }
+
+    /**
+     * Create object and set params
+     *
+     * @param string $className
+     * @param array $params
+     * @return \pwf\helpers\className
+     */
+    public static function createObject($className, array $params = [])
+    {
+        $result = new $className;
+        foreach ($params as $key => $val) {
+            $methodName = 'set'.ucfirst($key);
+            if (method_exists($result, $methodName)) {
+                $result->$methodName($val);
+            }
+        }
+        return $result;
+    }
 }

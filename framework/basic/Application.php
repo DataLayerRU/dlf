@@ -2,11 +2,12 @@
 
 namespace pwf\basic;
 
+use Monolog\Logger;
 use pwf\web\Request;
 use pwf\web\Response;
 use pwf\exception\interfaces\HttpException;
 
-class Application implements \pwf\basic\interfaces\Application
+class Application extends Object implements \pwf\basic\interfaces\Application
 {
 
     use \pwf\components\eventhandler\traits\CallbackTrait;
@@ -51,6 +52,7 @@ class Application implements \pwf\basic\interfaces\Application
         $this->response = new Response();
         $this->setConfiguration($config);
 
+
         static::$instance = $this;
     }
 
@@ -80,9 +82,9 @@ class Application implements \pwf\basic\interfaces\Application
      * @param array $config
      * @return Application
      */
-    public function setConfiguration($config = [])
+    public function setConfiguration(array $config = [])
     {
-        $this->configuration = $config;
+        $this->configuration = array_merge($this->requiredComponents(), $config);
         return $this;
     }
 
@@ -132,11 +134,17 @@ class Application implements \pwf\basic\interfaces\Application
         try {
             $this->forceComponentLoading();
 
-            $callback = $this->prepareCallback(RouteHandler::getHandler($this->request->getPath()));
+            $path = $this->request->getPath();
+
+            static::log('Request', ['path' => $path], Logger::INFO);
+
+            $callback = $this->prepareCallback(RouteHandler::getHandler($path));
 
             if (is_array($callback) && $callback[0] instanceof \pwf\basic\interfaces\Controller) {
                 $callback[0]->setRequest($this->getRequest())->setResponse($this->getResponse());
             }
+
+            static::log('Call callback', [], Logger::INFO);
 
             $this->response->setBody(\pwf\helpers\SystemHelpers::call($callback,
                     function($paramName) {
@@ -154,6 +162,8 @@ class Application implements \pwf\basic\interfaces\Application
         } catch (HttpException $ex) {
             $this->response->setHeaders($ex->getHeaders());
             $this->response->setBody($ex->getContent());
+            static::log($ex->getContent(), [], Logger::ERROR);
+            $this->getComponent('log')->addError($ex->getMessage());
         } catch (\Exception $ex) {
             $this->response->setHeaders([
                 'HTTP/1.1 500 Internal Server Error'
@@ -163,7 +173,9 @@ class Application implements \pwf\basic\interfaces\Application
                 .'<pre>'
                 .$ex->getTraceAsString()
                 .'</pre>');
+            static::log($ex->getMessage(), [], Logger::ERROR);
         }
+        static::log('Send response', [], Logger::INFO);
         $this->response->send();
     }
 
@@ -176,7 +188,7 @@ class Application implements \pwf\basic\interfaces\Application
     {
         $config = $this->getConfiguration();
         foreach ($config as $key => $params) {
-            if (isset($params['class']) && isset($params['force'])) {
+            if (isset($params['class']) && isset($params['force']) && $params['force']) {
                 $this->getComponent($key);
             }
         }
@@ -222,5 +234,45 @@ class Application implements \pwf\basic\interfaces\Application
         }
 
         return $result;
+    }
+
+    /**
+     * Default components
+     *
+     * @return array
+     */
+    protected function requiredComponents()
+    {
+        return [
+            'log' => [
+                'class' => '\pwf\components\monologadapter\MonologLogger',
+                'handlers' => [
+                    [
+                        'class' => '\Monolog\Handler\RotatingFileHandler',
+                        'force' => true,
+                        'params' => [
+                            '../logs/error_log.log',
+                            0,
+                            Logger::DEBUG
+                        ]
+                    ]
+                ]
+            ]
+        ];
+    }
+
+    /**
+     * Add message to log
+     *
+     * @param string $message
+     * @param array $context
+     * @param int $level
+     * @return boolean
+     */
+    public static function log($message, array $context = [],
+                               $level = Logger::DEBUG)
+    {
+        return self::$instance->getComponent('log')->log($level, $message,
+                $context);
     }
 }

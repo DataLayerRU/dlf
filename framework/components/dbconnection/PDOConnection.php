@@ -86,7 +86,7 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
      * @param array $config
      * @return \pwf\components\dbconnection\PDOConnection
      */
-    public function loadConfiguration($config = array())
+    public function loadConfiguration(array $config = array())
     {
         if (isset($config['login'])) {
             $this->setLogin($config['login']);

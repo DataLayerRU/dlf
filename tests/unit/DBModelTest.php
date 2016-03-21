@@ -48,7 +48,7 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
                     ])->count();
             } catch (Exception $ex) {
                 if ($driver != -1) {
-                    $this->assertTrue(false);
+                    $this->fail($driver.': '.$ex->getMessage());
                 }
             }
         }
