@@ -4,7 +4,7 @@ PWF - framework for proffessional web development
 [http://pwf.web-development.pw/](http://pwf.web-development.pw/)
 
 [![Latest Stable Version](https://poser.pugx.org/professionalweb/pwf/v/stable)](https://packagist.org/packages/professionalweb/pwf)
-[![Build Status](https://travis-ci.org/SergioMadness/pwf.svg?branch=dev)](https://travis-ci.org/SergioMadness/pwf)
+[![Build Status](https://travis-ci.org/SergioMadness/framework.svg?branch=dev)](https://travis-ci.org/SergioMadness/framework)
 [![Code Climate](https://codeclimate.com/github/SergioMadness/pwf/badges/gpa.svg)](https://codeclimate.com/github/SergioMadness/pwf)
 [![Coverage Status](https://coveralls.io/repos/github/SergioMadness/pwf/badge.svg?branch=dev)](https://coveralls.io/github/SergioMadness/pwf?branch=dev)
 [![Dependency Status](https://www.versioneye.com/user/projects/56b53a8e0a0ff5003b975815/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56b53a8e0a0ff5003b975815)
@@ -24,7 +24,10 @@ components/          modules
     datamapper/      data mapper pattern
     dbconnection/    database connection module
     eventhandler/    event handler
+    i18n/            internationalization module
+    monologadapter/  adapter for Seldaek/monolog
     observer/        obserber pattern
+    querybuilder/    query builder
 exception/           exception classes
     abstraction/     abstract classes
     interfaces/      interfaces
@@ -37,6 +40,11 @@ web/                 web/net objects
 Requirements
 ------------
  - PHP 5.4+
+
+Dependencies
+------------
+ - [Seldaek/monolog](https://github.com/Seldaek/monolog)
+
 
 Installation
 ------------
