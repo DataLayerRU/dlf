@@ -20,7 +20,7 @@ class FileTranslator extends \pwf\components\i18n\abstraction\FileTranslator
      * @param array $params
      * @return string
      */
-    public function translate($alias, array $params = array())
+    public function translate($alias, array $params = [])
     {
         $result = '';
         $values = $this->getValues();

@@ -46,7 +46,7 @@ interface SelectBuilder extends QueryBuilder
      * @param mixed $condition
      * @return SelectBuilder
      */
-    public function where($condition);
+    public function where(array $condition);
 
     /**
      * Set limit

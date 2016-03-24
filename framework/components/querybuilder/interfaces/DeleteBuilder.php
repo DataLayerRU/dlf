@@ -8,7 +8,7 @@ interface DeleteBuilder extends QueryBuilder
     /**
      * Add condition
      *
-     * @param mixed $condition
+     * @param array $condition
      */
-    public function where($condition);
+    public function where(array $condition);
 }

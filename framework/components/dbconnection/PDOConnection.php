@@ -61,7 +61,7 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
      * @param array $params
      * @return $this
      */
-    public function connect($params = [])
+    public function connect(array $params = [])
     {
         $this->setPDO(new PDO($this->getDSN(), $this->getLogin(),
             $this->getPassword(), $params));
@@ -86,7 +86,7 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
      * @param array $config
      * @return \pwf\components\dbconnection\PDOConnection
      */
-    public function loadConfiguration(array $config = array())
+    public function loadConfiguration(array $config = [])
     {
         if (isset($config['login'])) {
             $this->setLogin($config['login']);
@@ -107,7 +107,7 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
      * @param array $params
      * @return PDOStatement
      */
-    public function exec($query, $params = [])
+    public function exec($query, array $params = [])
     {
         $this->lastStatement = $this->getPDO()->prepare($query);
         return $this->lastStatement->execute($params);
@@ -120,7 +120,7 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
      * @param array $params
      * @return PDOStatement
      */
-    public function query($query, $params = [])
+    public function query($query, array $params = [])
     {
         $this->lastStatement = $this->getPDO()->prepare($query);
         $this->lastStatement->execute($params);

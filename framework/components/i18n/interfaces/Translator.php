@@ -26,7 +26,7 @@ interface Translator
      * @param array $params
      * @return Translator
      */
-    public function translate($alias, array $params = array());
+    public function translate($alias, array $params = []);
 
     /**
      * Set current language

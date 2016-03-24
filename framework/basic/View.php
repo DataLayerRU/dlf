@@ -12,7 +12,7 @@ class View extends Object implements \pwf\basic\interfaces\View
      * @param array $params
      * @return mixed
      */
-    public function render($viewPath, $params = [])
+    public function render($viewPath, array $params = [])
     {
         ob_start();
         ob_implicit_flush(false);

@@ -46,7 +46,7 @@ class MonologLogger extends Logger implements \pwf\basic\interfaces\Component
      * @param array $config
      * @return \pwf\components\monologadapter\MonologAdapter
      */
-    public function loadConfiguration(array $config = array())
+    public function loadConfiguration(array $config = [])
     {
         $this->setHandlers($config['handlers']);
         return $this;

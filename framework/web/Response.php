@@ -49,7 +49,7 @@ class Response
      */
     private $body;
 
-    public function __construct($headers = [], $cookies = [])
+    public function __construct(array $headers = [], array $cookies = [])
     {
         $this->setHeaders($headers);
         $this->setCookies($cookies);
@@ -61,7 +61,7 @@ class Response
      * @param array $headers
      * @return Response
      */
-    public function setHeaders($headers)
+    public function setHeaders(array $headers)
     {
         $this->headers = $headers;
         return $this;

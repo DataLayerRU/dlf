@@ -43,10 +43,10 @@ trait Conditional
     /**
      * Set where condition
      *
-     * @param mixed $condition
+     * @param array $condition
      * @return \pwf\components\querybuilder\interfaces\ConditionBuilder
      */
-    public function where($condition)
+    public function where(array $condition)
     {
         $this->where = array_merge($this->where, (array) $condition);
         return $this;

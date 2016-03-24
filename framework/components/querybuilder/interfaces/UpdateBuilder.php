@@ -9,5 +9,5 @@ interface UpdateBuilder extends InsertBuilder {
      *
      * @param mixed $condition
      */
-    public function where($condition);
+    public function where(array $condition);
 }

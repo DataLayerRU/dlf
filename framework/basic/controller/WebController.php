@@ -55,7 +55,7 @@ class WebController extends Controller
      * @param array $params
      * @return string
      */
-    protected function render($viewPath, $params = [])
+    protected function render($viewPath, array $params = [])
     {
         if (!isset($params['title'])) {
             $params['title'] = $this->title;

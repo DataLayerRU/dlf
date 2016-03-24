@@ -11,5 +11,5 @@ interface View
      * @param string $viewPath
      * @param array $params
      */
-    public function render($viewPath, $params = []);
+    public function render($viewPath, array $params = []);
 }

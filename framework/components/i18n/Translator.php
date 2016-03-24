@@ -30,7 +30,7 @@ class Translator extends abstraction\Translator implements \pwf\basic\interfaces
     /**
      * @inheritdoc
      */
-    public function loadConfiguration(array $config = array())
+    public function loadConfiguration(array $config = [])
     {
         if (isset($config['translators'])) {
             $this->setTranslators($config['translators']);
@@ -44,7 +44,7 @@ class Translator extends abstraction\Translator implements \pwf\basic\interfaces
     /**
      * @inheritdoc
      */
-    public function translate($alias, array $params = array())
+    public function translate($alias, array $params = [])
     {
         $result      = '';
         $translators = $this->getTranslators();

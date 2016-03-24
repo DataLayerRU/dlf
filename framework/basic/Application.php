@@ -46,7 +46,7 @@ class Application extends Object implements \pwf\basic\interfaces\Application
      */
     private $response;
 
-    public function __construct($config = [])
+    public function __construct(array $config = [])
     {
         $this->request  = new Request($_REQUEST);
         $this->response = new Response();
@@ -104,7 +104,7 @@ class Application extends Object implements \pwf\basic\interfaces\Application
      * @param array $config
      * @return Application
      */
-    public function appendConfiguration($config)
+    public function appendConfiguration(array $config)
     {
         $this->setConfiguration(array_merge($this->getConfiguration(), $config));
         return $this;

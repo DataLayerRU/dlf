@@ -14,7 +14,7 @@ class ArrayTranslator extends \pwf\components\i18n\abstraction\ArrayTranslator
      * @param array $params
      * @return string
      */
-    public function translate($alias, array $params = array())
+    public function translate($alias, array $params = [])
     {
         $result = '';
 
