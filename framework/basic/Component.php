@@ -15,7 +15,7 @@ abstract class Component extends Object implements \pwf\basic\interfaces\Compone
      * Gets or sets flag
      *
      * @param bool $flag
-     * @return \pwf\basic\Comonent
+     * @return Component
      */
     public function isForceInitialization($flag = null)
     {
@@ -30,7 +30,7 @@ abstract class Component extends Object implements \pwf\basic\interfaces\Compone
      * Configuration loading
      *
      * @param array $config
-     * @return \pwf\basic\Comonent
+     * @return Component
      */
     public function loadConfiguration(array $config = [])
     {
