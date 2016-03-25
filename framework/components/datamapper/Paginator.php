@@ -13,14 +13,14 @@ class Paginator extends \pwf\components\datapaginator\abstraction\Paginator
 
     /**
      *
-     * @var mixed
+     * @var array
      */
     private $condition;
 
     /**
      * Set condition
      *
-     * @param mixed $condition
+     * @param array $condition
      * @return \pwf\components\datamapper\Paginator
      */
     public function setCondition($condition)
@@ -32,7 +32,7 @@ class Paginator extends \pwf\components\datapaginator\abstraction\Paginator
     /**
      * Get condition
      *
-     * @return mixed
+     * @return array
      */
     public function getCondition()
     {
@@ -64,7 +64,7 @@ class Paginator extends \pwf\components\datapaginator\abstraction\Paginator
     /**
      * Get data
      *
-     * @return mixed[]
+     * @return array
      */
     public function getData()
     {

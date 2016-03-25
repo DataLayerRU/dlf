@@ -10,7 +10,7 @@ class View extends Object implements \pwf\basic\interfaces\View
      *
      * @param string $viewPath
      * @param array $params
-     * @return mixed
+     * @return string
      */
     public function render($viewPath, array $params = [])
     {

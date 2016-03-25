@@ -3,8 +3,8 @@ PWF
 
 ## v0.4 In dev
  - Query builder
-
- - Query builder
+ - i18n
+ - logger (adapter for [Seldaek/monolog](https://github.com/Seldaek/monolog))
 
 ## v0.3 07.02.2016
 

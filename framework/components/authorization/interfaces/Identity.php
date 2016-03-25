@@ -15,14 +15,14 @@ interface Identity
     /**
      * Get authorization token
      *
-     * @return mixed
+     * @return string
      */
     public function getAuthToken();
 
     /**
      * Get user by token
      *
-     * @param mixed $token
+     * @param string $token
      * @return Identity
      */
     public function getByAuthToken($token);

@@ -10,7 +10,7 @@ trait EventTrait
     /**
      * Register event handler
      *
-     * @param mixed $type
+     * @param string $type
      * @param \Closure|array|string $callback
      * @return $this
      */
@@ -37,7 +37,7 @@ trait EventTrait
     /**
      * Trigger event
      *
-     * @param mixed $type
+     * @param string $type
      * @return $this
      */
     public function trigger($type)

@@ -24,7 +24,7 @@ interface Paginator
     /**
      * Get data
      *
-     * @return mixed[]
+     * @return array
      */
     public function getData();
 }

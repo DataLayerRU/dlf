@@ -45,7 +45,7 @@ class Response
     /**
      * Request body
      *
-     * @var mixed
+     * @var string
      */
     private $body;
 
@@ -133,7 +133,7 @@ class Response
     /**
      * Set body
      *
-     * @param mixed $body
+     * @param string $body
      * @return Response
      */
     public function setBody($body)
@@ -145,7 +145,7 @@ class Response
     /**
      * Set body
      *
-     * @return mixed
+     * @return string
      */
     public function getBody()
     {

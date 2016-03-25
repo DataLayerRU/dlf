@@ -8,7 +8,7 @@ interface EventHandler
     /**
      * Handler registration
      *
-     * @param mixed $type
+     * @param string $type
      * @param \Callback|array|string $callback
      */
     public function on($type, $callback);
@@ -16,7 +16,7 @@ interface EventHandler
     /**
      * Trigger event
      *
-     * @param mixed $type
+     * @param string $type
      */
     public function trigger($type);
 }

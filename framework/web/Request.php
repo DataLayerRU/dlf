@@ -94,7 +94,7 @@ class Request
      * Get cookie's value by name
      *
      * @param string $name
-     * @param mixed $default
+     * @param string $default
      * @return string
      */
     public function getCookie($name, $default = null)

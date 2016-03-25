@@ -43,7 +43,7 @@ interface SelectBuilder extends QueryBuilder
     /**
      * Add condition
      *
-     * @param mixed $condition
+     * @param array $condition
      * @return SelectBuilder
      */
     public function where(array $condition);
@@ -67,7 +67,7 @@ interface SelectBuilder extends QueryBuilder
     /**
      * Set grouping
      *
-     * @param mixed $group
+     * @param array $group
      * @return SelectBuilder
      */
     public function group($group);
@@ -75,7 +75,7 @@ interface SelectBuilder extends QueryBuilder
     /**
      * Add having condition
      *
-     * @param mixed $condition
+     * @param array $condition
      * @return SelectBuilder
      */
     public function having($condition);
