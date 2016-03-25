@@ -16,7 +16,7 @@ script:
   - vendor/bin/codecept run --coverage --coverage-xml ../../build/logs/clover.xml
   - '[[ "$TRAVIS_PHP_VERSION" != "hhvm" ]] || echo "xdebug.enable = Off" >> /etc/hhvm/php.ini'
 after_success:
-  - CODECLIMATE_REPO_TOKEN="6f443d6d70f0ebf987eea38654854c1c89e228bba92616800c4a06f254eda183" ./vendor/bin/test-reporter
+  - CODECLIMATE_REPO_TOKEN="9c931dd78e634d54a83a91f158d14f24550b723462d3bb6bea0e3c0192e1994f" ./vendor/bin/test-reporter
   - sh -c 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ]; then php vendor/bin/coveralls -v; fi;'
 branches:
   only:
@@ -24,4 +24,4 @@ branches:
     - dev
 addons:
     code_climate:
-        repo_token: 6f443d6d70f0ebf987eea38654854c1c89e228bba92616800c4a06f254eda183
+        repo_token: 9c931dd78e634d54a83a91f158d14f24550b723462d3bb6bea0e3c0192e1994f
