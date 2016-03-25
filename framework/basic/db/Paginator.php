@@ -1,51 +1,23 @@
 <?php
 
-namespace pwf\components\datamapper;
+namespace pwf\basic\db;
 
 class Paginator extends \pwf\components\datapaginator\abstraction\Paginator
 {
     /**
      * Data source
      *
-     * @var interfaces\Getter
+     * @var \pwf\basic\db\DBModel
      */
     private $dataSource;
 
     /**
-     *
-     * @var array
-     */
-    private $condition;
-
-    /**
-     * Set condition
-     *
-     * @param array $condition
-     * @return \pwf\components\datamapper\Paginator
-     */
-    public function setCondition($condition)
-    {
-        $this->condition = $condition;
-        return $this;
-    }
-
-    /**
-     * Get condition
-     *
-     * @return array
-     */
-    public function getCondition()
-    {
-        return $this->condition;
-    }
-
-    /**
      * Set data source
      *
-     * @param \pwf\components\datamapper\interfaces\Getter $dataSource
+     * @param \pwf\basic\db\DBModel $dataSource
      * @return \pwf\components\datamapper\Paginator
      */
-    public function setDataSource(interfaces\Getter $dataSource)
+    public function setDataSource(\pwf\basic\db\DBModel $dataSource)
     {
         $this->dataSource = $dataSource;
         return $this;
@@ -54,7 +26,7 @@ class Paginator extends \pwf\components\datapaginator\abstraction\Paginator
     /**
      * Get data source
      *
-     * @return \pwf\components\datamapper\interfaces\Getter
+     * @return \pwf\basic\db\DBModel
      */
     public function getDataSource()
     {
@@ -74,8 +46,7 @@ class Paginator extends \pwf\components\datapaginator\abstraction\Paginator
         if ($page > 0) {
             $page-=1;
         }
-        return $this->getDataSource()->getAll($this->getCondition(), $limit,
-                $limit * $page);
+        return $this->getDataSource()->limit($limit)->offset($limit * $page)->getAll();
     }
 
     /**
@@ -85,7 +56,7 @@ class Paginator extends \pwf\components\datapaginator\abstraction\Paginator
      */
     protected function setHeaders()
     {
-        $cnt   = $this->getDataSource()->count($this->getCondition());
+        $cnt   = $this->getDataSource()->count();
         $limit = $this->getLimit();
         if ($limit == 0) {
             $limit = 1;
