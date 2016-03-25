@@ -32,7 +32,7 @@
     "require-dev": {
         "codeception/codeception": "*",
         "codeclimate/php-test-reporter": "*",
-        "satooshi/php-coveralls": "*"
+        "satooshi/php-coveralls": "1.0"
     },
     "config": {
         "process-timeout": 1800
