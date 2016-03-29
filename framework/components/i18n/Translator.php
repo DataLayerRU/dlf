@@ -20,7 +20,9 @@ class Translator extends abstraction\Translator implements \pwf\basic\interfaces
                 throw new \Exception(__CLASS__.': \'type\' is required for translator');
             } else {
                 $translators[$key] = (new Fabric())->getTranslator($translator['type'],
-                    $translator);
+                    array_merge([
+                    'language' => $this->getLanguage()
+                        ], $translator));
             }
         }
         $this->setTranslators($translators);
@@ -49,10 +51,12 @@ class Translator extends abstraction\Translator implements \pwf\basic\interfaces
         $result      = '';
         $translators = $this->getTranslators();
         foreach ($translators as $translator) {
-            $trans = $translator->translate($alias, $params);
-            if ($trans != '') {
-                $result = $trans;
-                break;
+            if ($translator->getLanguage() === $this->getLanguage()) {
+                $trans = $translator->translate($alias, $params);
+                if ($trans != '') {
+                    $result = $trans;
+                    break;
+                }
             }
         }
         return $result;

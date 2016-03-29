@@ -275,4 +275,13 @@ class Application extends Object implements \pwf\basic\interfaces\Application
         return self::$instance->getComponent('log')->log($level, $message,
                 $context);
     }
+
+    public function __get($name)
+    {
+        if (($component = $this->getComponent($name)) !== null) {
+            return $component;
+        }
+
+        return parent::__get($name);
+    }
 }
