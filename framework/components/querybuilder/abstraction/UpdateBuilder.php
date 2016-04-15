@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\querybuilder\abstraction;
 
 abstract class UpdateBuilder extends InsertBuilder implements \pwf\components\querybuilder\interfaces\InsertBuilder
@@ -10,14 +12,14 @@ abstract class UpdateBuilder extends InsertBuilder implements \pwf\components\qu
      *
      * @return string
      */
-    protected abstract function buildWhere();
+    protected abstract function buildWhere(): string;
 
     /**
      * Generate query
      *
      * @return string
      */
-    public function generate()
+    public function generate(): string
     {
         $result = '';
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\traits;
 
 trait HeadersTrait
@@ -12,7 +14,7 @@ trait HeadersTrait
      * @param array $headers
      * @return $this
      */
-    public function setHeaders($headers)
+    public function setHeaders(array $headers)
     {
         $this->headers = $headers;
         return $this;
@@ -23,7 +25,7 @@ trait HeadersTrait
      *
      * @return array
      */
-    public function getHeaders()
+    public function getHeaders(): array
     {
         return $this->headers;
     }
@@ -34,7 +36,7 @@ trait HeadersTrait
      * @param string $header
      * @return $this
      */
-    public function addHeader($header)
+    public function addHeader(string $header)
     {
         $this->headers[] = $header;
         return $this;

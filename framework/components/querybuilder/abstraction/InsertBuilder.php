@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\querybuilder\abstraction;
 
 abstract class InsertBuilder implements \pwf\components\querybuilder\interfaces\InsertBuilder
@@ -10,21 +12,21 @@ abstract class InsertBuilder implements \pwf\components\querybuilder\interfaces\
      *
      * @return string
      */
-    protected abstract function buildTable();
+    protected abstract function buildTable(): string;
 
     /**
      * Build fields part
      *
      * @return string
      */
-    protected abstract function buildFields();
+    protected abstract function buildFields(): string;
 
     /**
      * Generate query
      *
      * @return string
      */
-    public function generate()
+    public function generate(): string
     {
         $result = '';
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace pwf\autoloader;
 
 abstract class Handler
@@ -10,5 +12,5 @@ abstract class Handler
         return array($this, 'load');
     }
 
-    abstract public function load($className);
+    abstract public function load(string $className);
 }

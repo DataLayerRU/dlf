@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\querybuilder\interfaces;
 
 interface InsertBuilder extends QueryBuilder
@@ -10,5 +12,5 @@ interface InsertBuilder extends QueryBuilder
      *
      * @return array
      */
-    public function getParams();
+    public function getParams(): array;
 }

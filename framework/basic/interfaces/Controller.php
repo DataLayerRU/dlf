@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\basic\interfaces;
 
 use pwf\web\Request;
@@ -14,14 +16,14 @@ interface Controller
      * @param Request $request
      * @return Controller
      */
-    public function setRequest(Request $request);
+    public function setRequest(Request $request): Controller;
 
     /**
      * Get request
      *
      * @return Request
      */
-    public function getRequest();
+    public function getRequest(): Request;
 
     /**
      * Set current response object
@@ -29,12 +31,12 @@ interface Controller
      * @param Response $response
      * @return Controller
      */
-    public function setResponse(Response $response);
+    public function setResponse(Response $response): Controller;
 
     /**
      * Get current response object
      *
      * @return Response
      */
-    public function getResponse();
+    public function getResponse(): Response;
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\eventhandler\traits;
 
 trait EventTrait
@@ -14,7 +16,7 @@ trait EventTrait
      * @param \Closure|array|string $callback
      * @return $this
      */
-    public function on($type, $callback)
+    public function on(string $type, $callback)
     {
         if (!isset($this->callbacks[$type])) {
             $this->callbacks[$type] = [];
@@ -40,7 +42,7 @@ trait EventTrait
      * @param string $type
      * @return $this
      */
-    public function trigger($type)
+    public function trigger(string $type)
     {
         if (isset($this->callbacks[$type])) {
             foreach ($this->callbacks[$type] as $cb) {

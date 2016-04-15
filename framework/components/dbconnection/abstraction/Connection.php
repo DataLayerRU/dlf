@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\dbconnection\abstraction;
 
 abstract class Connection implements \pwf\components\dbconnection\interfaces\Connection
@@ -31,7 +33,7 @@ abstract class Connection implements \pwf\components\dbconnection\interfaces\Con
      * @param string $dsn
      * @return Connection
      */
-    public function setDSN($dsn)
+    public function setDSN(string $dsn): Connection
     {
         $this->dsn = $dsn;
         return $this;
@@ -42,7 +44,7 @@ abstract class Connection implements \pwf\components\dbconnection\interfaces\Con
      *
      * @return string
      */
-    public function getDSN()
+    public function getDSN(): string
     {
         return $this->dsn;
     }
@@ -53,7 +55,7 @@ abstract class Connection implements \pwf\components\dbconnection\interfaces\Con
      * @param string $login
      * @return Connection
      */
-    public function setLogin($login)
+    public function setLogin(string $login): Connection
     {
         $this->login = $login;
         return $this;
@@ -64,7 +66,7 @@ abstract class Connection implements \pwf\components\dbconnection\interfaces\Con
      *
      * @return string
      */
-    public function getLogin()
+    public function getLogin(): string
     {
         return $this->login;
     }
@@ -75,7 +77,7 @@ abstract class Connection implements \pwf\components\dbconnection\interfaces\Con
      * @param string $password
      * @return Connection
      */
-    public function setPassword($password)
+    public function setPassword(string $password): Connection
     {
         $this->password = $password;
         return $this;
@@ -86,7 +88,7 @@ abstract class Connection implements \pwf\components\dbconnection\interfaces\Con
      *
      * @return string
      */
-    public function getPassword()
+    public function getPassword(): string
     {
         return $this->password;
     }

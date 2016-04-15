@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\querybuilder\traits;
 
 trait Parameterized
@@ -30,7 +32,7 @@ trait Parameterized
      * @param mixed $value
      * @return \pwf\components\querybuilder\interfaces\ConditionBuilder
      */
-    public function addParam($name, $value)
+    public function addParam(string $name, $value)
     {
         $this->params[$name] = $value;
         return $this;
@@ -41,7 +43,7 @@ trait Parameterized
      *
      * @return array
      */
-    public function getParams()
+    public function getParams(): array
     {
         return $this->params;
     }

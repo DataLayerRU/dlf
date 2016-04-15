@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\helpers;
 
 class StringHelpers
@@ -12,7 +14,7 @@ class StringHelpers
      * @param int $iteration
      * @return string
      */
-    public static function hashString($string, $iteration = 5)
+    public static function hashString(string $string, int $iteration = 5): string
     {
         $result = $string;
 

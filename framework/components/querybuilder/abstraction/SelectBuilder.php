@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\querybuilder\abstraction;
 
 abstract class SelectBuilder implements \pwf\components\querybuilder\interfaces\SelectBuilder
@@ -10,63 +12,63 @@ abstract class SelectBuilder implements \pwf\components\querybuilder\interfaces\
      *
      * @return string
      */
-    protected abstract function buildSelectFields();
+    protected abstract function buildSelectFields(): string;
 
     /**
      * Build where part
      *
      * @return string
      */
-    protected abstract function buildWhere();
+    protected abstract function buildWhere(): string;
 
     /**
      * Build having part
      *
      * @return string
      */
-    protected abstract function buildHaving();
+    protected abstract function buildHaving(): string;
 
     /**
      * Build join part
      *
      * @return string
      */
-    protected abstract function buildJoin();
+    protected abstract function buildJoin(): string;
 
     /**
      * Build union part
      *
      * @return string
      */
-    protected abstract function buildUnion();
+    protected abstract function buildUnion(): string;
 
     /**
      * Build from part
      *
      * @return string
      */
-    protected abstract function buildTable();
+    protected abstract function buildTable(): string;
 
     /**
      * Build limit part
      *
      * @return string
      */
-    protected abstract function buildLimit();
+    protected abstract function buildLimit(): string;
 
     /**
      * Build group part
      *
      * @return string
      */
-    protected abstract function buildGroup();
+    protected abstract function buildGroup(): string;
 
     /**
      * Generate query
      *
      * @return string
      */
-    public function generate()
+    public function generate(): string
     {
         $result = '';
 

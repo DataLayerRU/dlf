@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\querybuilder\interfaces;
 
 interface QueryBuilder extends Generatable
@@ -11,12 +13,12 @@ interface QueryBuilder extends Generatable
      * @param string $table
      * @return QueryBuilder
      */
-    public function table($table);
+    public function table(string $table): QueryBuilder;
 
     /**
      * Get params for query
      *
      * @return array
      */
-    public function getParams();
+    public function getParams(): array;
 }

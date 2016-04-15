@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\i18n\interfaces;
 
 interface Translator
@@ -24,9 +26,9 @@ interface Translator
      *
      * @param string $alias
      * @param array $params
-     * @return Translator
+     * @return string
      */
-    public function translate($alias, array $params = []);
+    public function translate(string $alias, array $params = []): string;
 
     /**
      * Set current language
@@ -34,5 +36,5 @@ interface Translator
      * @param string $lang
      * @return Translator
      */
-    public function setLanguage($lang);
+    public function setLanguage(string $lang): Translator;
 }

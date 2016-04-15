@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\querybuilder\adapters\MySQL;
 
 class DeleteBuilder extends \pwf\components\querybuilder\abstraction\DeleteBuilder
@@ -12,7 +14,7 @@ class DeleteBuilder extends \pwf\components\querybuilder\abstraction\DeleteBuild
     /**
      * @inheritdoc
      */
-    protected function buildWhere()
+    protected function buildWhere(): string
     {
         $result = '';
 
@@ -30,7 +32,7 @@ class DeleteBuilder extends \pwf\components\querybuilder\abstraction\DeleteBuild
     /**
      * @inheritdoc
      */
-    protected function buildTable()
+    protected function buildTable(): string
     {
         return $this->getTable();
     }

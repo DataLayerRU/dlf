@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\i18n;
 
 class FileTranslator extends \pwf\components\i18n\abstraction\FileTranslator
@@ -20,7 +22,7 @@ class FileTranslator extends \pwf\components\i18n\abstraction\FileTranslator
      * @param array $params
      * @return string
      */
-    public function translate($alias, array $params = [])
+    public function translate(string $alias, array $params = []): string
     {
         $result = '';
         $values = $this->getValues();
@@ -35,12 +37,12 @@ class FileTranslator extends \pwf\components\i18n\abstraction\FileTranslator
      *
      * @return array
      */
-    protected function getValues()
+    protected function getValues(): array
     {
         $result = $this->values;
 
-        if ($result === null && file_exists($this->getDir().$this->getLanguage().'.php')) {
-            $result       = $this->values = include $this->getDir().$this->getLanguage().'.php';
+        if ($result === null && file_exists($this->getDir() . $this->getLanguage() . '.php')) {
+            $result = $this->values = include $this->getDir() . $this->getLanguage() . '.php';
         }
 
         return $result;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace pwf\autoloader;
 
 require_once(dirname(__FILE__).'/Handler.php');

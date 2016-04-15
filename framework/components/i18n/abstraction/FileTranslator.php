@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\i18n\abstraction;
 
 abstract class FileTranslator extends Translator implements \pwf\components\i18n\interfaces\FileTranslator
@@ -17,7 +19,7 @@ abstract class FileTranslator extends Translator implements \pwf\components\i18n
      * @param string $dir
      * @return \pwf\components\i18n\abstraction\FileTranslator
      */
-    public function setDir($dir)
+    public function setDir(string $dir): FileTranslator
     {
         $this->dir = $dir;
         return $this;
@@ -28,7 +30,7 @@ abstract class FileTranslator extends Translator implements \pwf\components\i18n
      *
      * @return string
      */
-    public function getDir()
+    public function getDir(): string
     {
         return $this->dir;
     }

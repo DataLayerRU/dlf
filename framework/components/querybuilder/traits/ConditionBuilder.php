@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\querybuilder\traits;
 
 trait ConditionBuilder
@@ -19,7 +21,7 @@ trait ConditionBuilder
      * @param array $condition
      * @return \pwf\components\querybuilder\interfaces\ConditionBuilder
      */
-    public function setCondition(array $condition)
+    public function setCondition(array $condition): \pwf\components\querybuilder\interfaces\ConditionBuilder
     {
         $this->condition = $condition;
         return $this;
@@ -30,7 +32,7 @@ trait ConditionBuilder
      *
      * @return array
      */
-    public function getCondition()
+    public function getCondition(): array
     {
         return $this->condition;
     }

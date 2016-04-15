@@ -1,8 +1,12 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\dbconnection;
 
 use PDO;
+use pwf\basic\interfaces\Component;
+use pwf\components\dbconnection\interfaces\Connection;
 
 class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection implements \pwf\basic\interfaces\Component
 {
@@ -16,7 +20,7 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
     /**
      * Last PDO statement
      *
-     * @var PdoStatement
+     * @var \PDOStatement
      */
     private $lastStatement;
 
@@ -26,7 +30,7 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
      * @param \PDO $pdo
      * @return \pwf\components\dbconnection\PDOConnection
      */
-    public function setPDO($pdo)
+    public function setPDO(\PDO $pdo): PDOConnection
     {
         $this->PDO = $pdo;
         return $this;
@@ -37,7 +41,7 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
      *
      * @return \PDO
      */
-    public function getPDO()
+    public function getPDO(): \PDO
     {
         if ($this->PDO === null) {
             $this->connect();
@@ -48,9 +52,9 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
     /**
      * Init connection
      *
-     * @return \pwf\components\dbconnection\PDOConnection
+     * @return Component
      */
-    public function init()
+    public function init(): Component
     {
         return $this;
     }
@@ -59,9 +63,9 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
      * Connection params
      *
      * @param array $params
-     * @return $this
+     * @return Connection
      */
-    public function connect(array $params = [])
+    public function connect(array $params = []): Connection
     {
         $this->setPDO(new PDO($this->getDSN(), $this->getLogin(),
             $this->getPassword(), $params));
@@ -71,9 +75,9 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
     /**
      * Disconnect from DB server
      *
-     * @return \pwf\components\dbconnection\PDOConnection
+     * @return Connection
      */
-    public function disconnect()
+    public function disconnect(): Connection
     {
         unset($this->PDO);
         $this->PDO = null;
@@ -84,9 +88,9 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
      * Load configuration
      *
      * @param array $config
-     * @return \pwf\components\dbconnection\PDOConnection
+     * @return Component
      */
-    public function loadConfiguration(array $config = [])
+    public function loadConfiguration(array $config = []): Component
     {
         if (isset($config['login'])) {
             $this->setLogin($config['login']);
@@ -105,9 +109,9 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
      *
      * @param string $query
      * @param array $params
-     * @return PDOStatement
+     * @return \PDOStatement
      */
-    public function exec($query, array $params = [])
+    public function exec(string $query, array $params = []): \PDOStatement
     {
         $this->lastStatement = $this->getPDO()->prepare($query);
         return $this->lastStatement->execute($params);
@@ -118,9 +122,9 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
      *
      * @param string $query
      * @param array $params
-     * @return PDOStatement
+     * @return \PDOStatement
      */
-    public function query($query, array $params = [])
+    public function query(string $query, array $params = []): \PDOStatement
     {
         $this->lastStatement = $this->getPDO()->prepare($query);
         $this->lastStatement->execute($params);
@@ -130,10 +134,10 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
     /**
      * Get last insert id
      *
-     * @return string
+     * @return int
      */
-    public function insertId()
+    public function insertId(): int
     {
-        return $this->getPDO()->lastInsertId();
+        return (int)$this->getPDO()->lastInsertId();
     }
 }

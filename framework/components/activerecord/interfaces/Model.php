@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\activerecord\interfaces;
 
 interface Model extends \pwf\components\datamapper\interfaces\Model, \pwf\components\datamapper\interfaces\Getter
@@ -10,12 +12,12 @@ interface Model extends \pwf\components\datamapper\interfaces\Model, \pwf\compon
      *
      * @return bool
      */
-    public function save();
+    public function save(): bool;
 
     /**
      * Delete record
      *
      * @return bool
      */
-    public function delete();
+    public function delete(): bool;
 }

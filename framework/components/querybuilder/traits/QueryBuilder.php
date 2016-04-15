@@ -1,6 +1,10 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\querybuilder\traits;
+
+use pwf\components\querybuilder\interfaces\QueryBuilder as IQueryBuilder;
 
 trait QueryBuilder
 {
@@ -22,9 +26,9 @@ trait QueryBuilder
      * Set table
      *
      * @param string $table
-     * @return $this
+     * @return IQueryBuilder
      */
-    public function table($table)
+    public function table(string $table): IQueryBuilder
     {
         $this->table = $table;
         return $this;
@@ -35,7 +39,7 @@ trait QueryBuilder
      *
      * @return string
      */
-    public function getTable()
+    public function getTable(): string
     {
         return $this->table;
     }
@@ -44,9 +48,9 @@ trait QueryBuilder
      * Set primary key name
      *
      * @param string $name
-     * @return $this
+     * @return IQueryBuilder
      */
-    public function setPK($name)
+    public function setPK(string $name): IQueryBuilder
     {
         $this->pkField = $name;
         return $this;
@@ -57,7 +61,7 @@ trait QueryBuilder
      *
      * @return string
      */
-    public function getPK()
+    public function getPK(): string
     {
         return $this->pkField;
     }

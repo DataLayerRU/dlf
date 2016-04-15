@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\datamapper\interfaces;
 
 interface Getter
@@ -10,19 +12,19 @@ interface Getter
      *
      * @return \pwf\components\datamapper\interfaces\Getter
      */
-    public function getOne();
+    public function getOne(): Getter;
 
     /**
      * Get all models
      *
      * @return \pwf\components\datamapper\interfaces\Getter[]
      */
-    public function getAll();
+    public function getAll(): array;
 
     /**
      * Count objects
-     * 
+     *
      * @return int
      */
-    public function count();
+    public function count(): int;
 }

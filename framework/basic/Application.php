@@ -1,10 +1,13 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\basic;
 
 use Monolog\Logger;
 use pwf\web\Request;
 use pwf\web\Response;
+use pwf\basic\interfaces\Component as IComponent;
 use pwf\exception\interfaces\HttpException;
 
 class Application extends Object implements \pwf\basic\interfaces\Application
@@ -35,20 +38,20 @@ class Application extends Object implements \pwf\basic\interfaces\Application
     /**
      * Request object
      *
-     * @var pwf\web\Request
+     * @var Request
      */
     private $request;
 
     /**
      * Response
      *
-     * @var pwf\web\Response
+     * @var Response
      */
     private $response;
 
     public function __construct(array $config = [])
     {
-        $this->request  = new Request($_REQUEST);
+        $this->request = new Request($_REQUEST);
         $this->response = new Response();
         $this->setConfiguration($config);
 
@@ -61,7 +64,7 @@ class Application extends Object implements \pwf\basic\interfaces\Application
      *
      * @return \pwf\web\Request
      */
-    public function getRequest()
+    public function getRequest(): Request
     {
         return $this->request;
     }
@@ -69,9 +72,9 @@ class Application extends Object implements \pwf\basic\interfaces\Application
     /**
      * Get current response
      *
-     * @return \pwf\web\Response
+     * @return Response
      */
-    public function getResponse()
+    public function getResponse(): Response
     {
         return $this->response;
     }
@@ -82,7 +85,7 @@ class Application extends Object implements \pwf\basic\interfaces\Application
      * @param array $config
      * @return Application
      */
-    public function setConfiguration(array $config = [])
+    public function setConfiguration(array $config = []): Application
     {
         $this->configuration = array_merge($this->requiredComponents(), $config);
         return $this;
@@ -93,7 +96,7 @@ class Application extends Object implements \pwf\basic\interfaces\Application
      *
      * @return array
      */
-    public function getConfiguration()
+    public function getConfiguration(): array
     {
         return $this->configuration;
     }
@@ -104,7 +107,7 @@ class Application extends Object implements \pwf\basic\interfaces\Application
      * @param array $config
      * @return Application
      */
-    public function appendConfiguration(array $config)
+    public function appendConfiguration(array $config): Application
     {
         $this->setConfiguration(array_merge($this->getConfiguration(), $config));
         return $this;
@@ -116,7 +119,7 @@ class Application extends Object implements \pwf\basic\interfaces\Application
      * @param string $componentName
      * @return array
      */
-    public function getComponentConfig($componentName)
+    public function getComponentConfig(string $componentName): array
     {
         $result = null;
         $config = $this->getConfiguration();
@@ -147,7 +150,7 @@ class Application extends Object implements \pwf\basic\interfaces\Application
             static::log('Call callback', [], Logger::INFO);
 
             $this->response->setBody(\pwf\helpers\SystemHelpers::call($callback,
-                    function($paramName) {
+                function ($paramName) {
                     if (($component = $this->getComponent($paramName)) !== null) {
                         return $component;
                     }
@@ -169,10 +172,10 @@ class Application extends Object implements \pwf\basic\interfaces\Application
                 'HTTP/1.1 500 Internal Server Error'
             ]);
             $this->response->setBody('<h2>Handled exception</h2>'
-                .'<h3>'.$ex->getMessage().'</h3>'
-                .'<pre>'
-                .$ex->getTraceAsString()
-                .'</pre>');
+                . '<h3>' . $ex->getMessage() . '</h3>'
+                . '<pre>'
+                . $ex->getTraceAsString()
+                . '</pre>');
             static::log($ex->getMessage(), [], Logger::ERROR);
         }
         static::log('Send response', [], Logger::INFO);
@@ -184,7 +187,7 @@ class Application extends Object implements \pwf\basic\interfaces\Application
      *
      * @return \pwf\basic\Application
      */
-    protected function forceComponentLoading()
+    protected function forceComponentLoading(): Application
     {
         $config = $this->getConfiguration();
         foreach ($config as $key => $params) {
@@ -199,12 +202,13 @@ class Application extends Object implements \pwf\basic\interfaces\Application
      * Get component by name
      *
      * @param string $name
-     * @return Component
+     * @return IComponent
      */
-    public function getComponent($name)
+    public function getComponent(string $name): IComponent
     {
         if (!isset($this->componentCache[$name]) && ($this->componentCache[$name]
-            = $this->createComponent($name)) !== null) {
+                = $this->createComponent($name)) !== null
+        ) {
             $this->componentCache[$name]->init();
         }
 
@@ -215,10 +219,10 @@ class Application extends Object implements \pwf\basic\interfaces\Application
      * Create component/module by name
      *
      * @param string $name
-     * @return \interfaces\Component
+     * @return IComponent
      * @throws \Exception
      */
-    protected function createComponent($name)
+    protected function createComponent(string $name): IComponent
     {
         $result = null;
 
@@ -228,7 +232,7 @@ class Application extends Object implements \pwf\basic\interfaces\Application
             $result = new $config['class'];
             if (!($result instanceof \pwf\basic\interfaces\Component)) {
                 throw new \Exception('Component must implement \'Component\' interface',
-                500);
+                    500);
             }
             $result->loadConfiguration($config);
         }
@@ -241,7 +245,7 @@ class Application extends Object implements \pwf\basic\interfaces\Application
      *
      * @return array
      */
-    protected function requiredComponents()
+    protected function requiredComponents(): array
     {
         return [
             'log' => [
@@ -269,14 +273,23 @@ class Application extends Object implements \pwf\basic\interfaces\Application
      * @param int $level
      * @return boolean
      */
-    public static function log($message, array $context = [],
-                               $level = Logger::DEBUG)
-    {
+    public static function log(
+        $message,
+        array $context = [],
+        $level = Logger::DEBUG
+    ) {
         return self::$instance->getComponent('log')->log($level, $message,
-                $context);
+            $context);
     }
 
-    public function __get($name)
+    /**
+     * Get field
+     *
+     * @param string $name
+     * @return mixed|Component
+     * @throws \Exception
+     */
+    public function __get(string $name)
     {
         if (($component = $this->getComponent($name)) !== null) {
             return $component;

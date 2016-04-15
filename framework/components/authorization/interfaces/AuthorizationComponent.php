@@ -1,13 +1,17 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace dlf\components\authorization\interfaces;
+
+use pwf\components\authorization\interfaces\Identity;
 
 interface AuthorizationComponent
 {
 
-    public function setIdentity(Identity $user);
+    public function setIdentity(Identity $user): AuthorizationComponent;
 
-    public function getIdentity();
+    public function getIdentity(): Identity;
 
-    public function isAvailable($name);
+    public function isAvailable(string $name): bool;
 }

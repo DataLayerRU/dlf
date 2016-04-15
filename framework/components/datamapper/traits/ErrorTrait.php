@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\datamapper\traits;
 
 trait ErrorTrait
@@ -13,7 +15,7 @@ trait ErrorTrait
      * @param string $message
      * @return $this
      */
-    public function addError($attribute, $message)
+    public function addError(string $attribute, string $message)
     {
         $this->errors[$attribute] = $message;
         return $this;
@@ -25,7 +27,7 @@ trait ErrorTrait
      * @param string $attribute
      * @return string
      */
-    public function getError($attribute)
+    public function getError(string $attribute): string
     {
         $result = null;
 
@@ -42,7 +44,7 @@ trait ErrorTrait
      * @param string $attribute
      * @return bool
      */
-    public function isErrorExists($attribute)
+    public function isErrorExists(string $attribute): bool
     {
         return isset($this->errors[$attribute]);
     }
@@ -52,7 +54,7 @@ trait ErrorTrait
      *
      * @return bool
      */
-    public function hasErrors()
+    public function hasErrors(): bool
     {
         return count($this->errors) > 0;
     }

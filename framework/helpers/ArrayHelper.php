@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\helpers;
 
 class ArrayHelper
@@ -11,7 +13,7 @@ class ArrayHelper
      * @param mixed $o
      * @return array
      */
-    public static function toArray($o)
+    public static function toArray($o): array
     {
         if (is_array($o)) {
             foreach ($o as $key => $val) {

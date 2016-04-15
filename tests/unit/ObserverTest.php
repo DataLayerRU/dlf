@@ -9,7 +9,8 @@ class SubjectClass implements \pwf\components\observer\interfaces\Subject
 class ObserverClass implements \pwf\components\observer\interfaces\Observer
 {
 
-    public function update(\pwf\components\observer\interfaces\Subject $subject)
+    public function update(\pwf\components\observer\interfaces\Subject $subject
+    ): \pwf\components\observer\interfaces\Observer
     {
         throw new Exception('Test');
     }
@@ -30,13 +31,13 @@ class ObserverTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
 
-        self::$stubSubject  = \Codeception\Util\Stub::make('SubjectClass');
+        self::$stubSubject = \Codeception\Util\Stub::make('SubjectClass');
         self::$stubObserver = \Codeception\Util\Stub::makeEmpty('\pwf\components\observer\interfaces\Observer');
     }
 
     protected function tearDown()
     {
-        self::$stubSubject  = null;
+        self::$stubSubject = null;
         self::$stubObserver = null;
     }
 

@@ -1,6 +1,10 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\i18n;
+
+use pwf\basic\interfaces\Component;
 
 class Translator extends abstraction\Translator implements \pwf\basic\interfaces\Component,
     interfaces\Translator
@@ -12,17 +16,17 @@ class Translator extends abstraction\Translator implements \pwf\basic\interfaces
      */
     private $translators = [];
 
-    public function init()
+    public function init(): Component
     {
         $translators = $this->getTranslators();
         foreach ($translators as $key => $translator) {
             if (!isset($translator['type'])) {
-                throw new \Exception(__CLASS__.': \'type\' is required for translator');
+                throw new \Exception(__CLASS__ . ': \'type\' is required for translator');
             } else {
                 $translators[$key] = (new Fabric())->getTranslator($translator['type'],
                     array_merge([
-                    'language' => $this->getLanguage()
-                        ], $translator));
+                        'language' => $this->getLanguage()
+                    ], $translator));
             }
         }
         $this->setTranslators($translators);
@@ -32,7 +36,7 @@ class Translator extends abstraction\Translator implements \pwf\basic\interfaces
     /**
      * @inheritdoc
      */
-    public function loadConfiguration(array $config = [])
+    public function loadConfiguration(array $config = []): Component
     {
         if (isset($config['translators'])) {
             $this->setTranslators($config['translators']);
@@ -46,9 +50,9 @@ class Translator extends abstraction\Translator implements \pwf\basic\interfaces
     /**
      * @inheritdoc
      */
-    public function translate($alias, array $params = [])
+    public function translate(string $alias, array $params = []): string
     {
-        $result      = '';
+        $result = '';
         $translators = $this->getTranslators();
         foreach ($translators as $translator) {
             if ($translator->getLanguage() === $this->getLanguage()) {
@@ -68,7 +72,7 @@ class Translator extends abstraction\Translator implements \pwf\basic\interfaces
      * @param array $translators
      * @return \pwf\components\i18n\Translator
      */
-    public function setTranslators(array $translators)
+    public function setTranslators(array $translators): Translator
     {
         $this->translators = $translators;
         return $this;
@@ -79,7 +83,7 @@ class Translator extends abstraction\Translator implements \pwf\basic\interfaces
      *
      * @return array
      */
-    public function getTranslators()
+    public function getTranslators(): array
     {
         return $this->translators;
     }

@@ -9,21 +9,21 @@ class App
 class Component extends \pwf\basic\Component
 {
 
-    public function init()
+    public function init(): \pwf\basic\interfaces\Component
     {
-        
+
     }
 }
 
 class Identity implements \pwf\components\authorization\interfaces\Identity
 {
 
-    public function getAuthToken()
+    public function getAuthToken(): string
     {
         return 'jsdhfjk4776';
     }
 
-    public function getByAuthToken($token)
+    public function getByAuthToken(string $token): \pwf\components\authorization\interfaces\Identity
     {
         return $this;
     }

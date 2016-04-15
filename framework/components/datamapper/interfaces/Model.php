@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\datamapper\interfaces;
 
 interface Model
@@ -15,21 +17,24 @@ interface Model
      * Set model attributes
      *
      * @param array $attributes
+     * @return Model
      */
-    public function setAttributes(array $attributes);
+    public function setAttributes(array $attributes): Model;
 
     /**
      * Get attribute
      *
      * @param string $name
+     * @return string
      */
-    public function getAttribute($name);
+    public function getAttribute(string $name): string;
 
     /**
      * Set attribute
      *
      * @param string $name
      * @param string $value
+     * @return Model
      */
-    public function setAttribute($name, $value);
+    public function setAttribute(string $name, string $value): Model;
 }

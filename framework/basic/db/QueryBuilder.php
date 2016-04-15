@@ -1,6 +1,14 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\basic\db;
+
+use pwf\components\querybuilder\interfaces\ConditionBuilder;
+use pwf\components\querybuilder\interfaces\DeleteBuilder;
+use pwf\components\querybuilder\interfaces\InsertBuilder;
+use pwf\components\querybuilder\interfaces\SelectBuilder;
+use pwf\components\querybuilder\interfaces\UpdateBuilder;
 
 class QueryBuilder
 {
@@ -26,7 +34,7 @@ class QueryBuilder
      *
      * @param string $driver
      */
-    public static function setDriver($driver)
+    public static function setDriver(string $driver)
     {
         self::$driver = $driver;
     }
@@ -36,7 +44,7 @@ class QueryBuilder
      *
      * @return string
      */
-    public static function getDriver()
+    public static function getDriver(): string
     {
         return self::$driver;
     }
@@ -47,7 +55,7 @@ class QueryBuilder
      * @return \pwf\components\querybuilder\interfaces\SelectBuilder
      * @throws \Exception
      */
-    public static function select()
+    public static function select(): SelectBuilder
     {
         $result = null;
 
@@ -71,7 +79,7 @@ class QueryBuilder
      * @return \pwf\components\querybuilder\interfaces\InsertBuilder
      * @throws \Exception
      */
-    public static function insert()
+    public static function insert(): InsertBuilder
     {
         $result = null;
 
@@ -95,7 +103,7 @@ class QueryBuilder
      * @return \pwf\components\querybuilder\interfaces\UpdateBuilder
      * @throws \Exception
      */
-    public static function update()
+    public static function update(): UpdateBuilder
     {
         $result = null;
 
@@ -119,7 +127,7 @@ class QueryBuilder
      * @return \pwf\components\querybuilder\interfaces\DeleteBuilder
      * @throws \Exception
      */
-    public static function delete()
+    public static function delete(): DeleteBuilder
     {
         $result = null;
 
@@ -142,7 +150,7 @@ class QueryBuilder
      *
      * @return \pwf\components\querybuilder\adapters\SQL\ConditionBuilder
      */
-    public static function getConditionBuilder()
+    public static function getConditionBuilder(): ConditionBuilder
     {
         $result = null;
 

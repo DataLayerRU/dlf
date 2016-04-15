@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\web;
 
 class Response
@@ -61,7 +63,7 @@ class Response
      * @param array $headers
      * @return Response
      */
-    public function setHeaders(array $headers)
+    public function setHeaders(array $headers): Response
     {
         $this->headers = $headers;
         return $this;
@@ -72,7 +74,7 @@ class Response
      *
      * @return array
      */
-    public function getCookies()
+    public function getCookies(): array
     {
         return $this->cookies;
     }
@@ -83,7 +85,7 @@ class Response
      * @param array $cookies
      * @return Response
      */
-    public function setCookies($cookies)
+    public function setCookies($cookies): Response
     {
         $this->cookies = $cookies;
         return $this;
@@ -94,11 +96,11 @@ class Response
      *
      * @param string $name
      * @param string $value
-     * @param intetger $expire
+     * @param int $expire
      * @param string $path
      * @return Response
      */
-    public function addCookie($name, $value, $expire = null, $path = null)
+    public function addCookie(string $name, string $value, int $expire = null, string $path = null): Response
     {
         $this->cookies[$name] = [
             'value' => $value,
@@ -113,7 +115,7 @@ class Response
      *
      * @return array
      */
-    public function getHeaders()
+    public function getHeaders(): array
     {
         return $this->headers;
     }
@@ -124,7 +126,7 @@ class Response
      * @param string $header
      * @return Response
      */
-    public function addHeader($header)
+    public function addHeader(string $header): Response
     {
         $this->headers[] = $header;
         return $this;
@@ -136,7 +138,7 @@ class Response
      * @param string $body
      * @return Response
      */
-    public function setBody($body)
+    public function setBody(string $body): Response
     {
         $this->body = $body;
         return $this;
@@ -147,7 +149,7 @@ class Response
      *
      * @return string
      */
-    public function getBody()
+    public function getBody(): string
     {
         return $this->body;
     }
@@ -157,7 +159,7 @@ class Response
      *
      * @return Response
      */
-    public function clear()
+    public function clear(): Response
     {
         $this->headers = [];
         $this->cookies = [];
@@ -169,7 +171,7 @@ class Response
      *
      * @return bool
      */
-    public function isRaw()
+    public function isRaw(): bool
     {
         return $this->responseType === self::RESPONSE_RAW;
     }
@@ -179,7 +181,7 @@ class Response
      *
      * @return bool
      */
-    public function isJson()
+    public function isJson(): bool
     {
         return $this->responseType === self::RESPONSE_JSON;
     }
@@ -189,7 +191,7 @@ class Response
      *
      * @return bool
      */
-    public function isXML()
+    public function isXML(): bool
     {
         return $this->responseType === self::RESPONSE_XML;
     }
@@ -197,10 +199,10 @@ class Response
     /**
      * Set response type
      *
-     * @param integer $type
+     * @param int $type
      * @return Response
      */
-    public function setResponseType($type)
+    public function setResponseType(int $type): Response
     {
         $this->responseType = $type;
         return $this;
@@ -211,7 +213,7 @@ class Response
      *
      * @return string
      */
-    protected function prepareBody()
+    protected function prepareBody(): string
     {
         $body = $this->body;
 
@@ -226,13 +228,17 @@ class Response
 
     /**
      * Send response
+     *
+     * @return Response
      */
-    public function send()
+    public function send(): Response
     {
         $this->sendHeaders();
         $this->sendCookies();
 
         echo $this->prepareBody();
+
+        return $this;
     }
 
     /**
@@ -240,7 +246,7 @@ class Response
      *
      * @return Response
      */
-    protected function sendHeaders()
+    protected function sendHeaders(): Response
     {
         $headers = $this->getHeaders();
 
@@ -255,7 +261,7 @@ class Response
      *
      * @return Response
      */
-    protected function sendCookies()
+    protected function sendCookies(): Response
     {
         $cookies = $this->getCookies();
 
@@ -273,7 +279,7 @@ class Response
      * @param string $name
      * @return Response
      */
-    public function removeCookie($name)
+    public function removeCookie(string $name): Response
     {
         $this->addCookie($name, null, -1);
 
@@ -286,9 +292,9 @@ class Response
      * @param string $path
      * @return Response
      */
-    public function redirect($path)
+    public function redirect(string $path): Response
     {
-        $this->addHeader('Location: '.$path);
+        $this->addHeader('Location: ' . $path);
         return $this;
     }
 }

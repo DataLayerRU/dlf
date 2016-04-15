@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\querybuilder\adapters\PostgreSQL;
 
 class SelectBuilder extends \pwf\components\querybuilder\adapters\MySQL\SelectBuilder
@@ -8,18 +10,18 @@ class SelectBuilder extends \pwf\components\querybuilder\adapters\MySQL\SelectBu
     /**
      * @inheritdoc
      */
-    protected function buildLimit()
+    protected function buildLimit(): string
     {
         $result = '';
 
         $offset = $this->getOffset();
 
         if (($limit = $this->getLimit()) > 0) {
-            $result.='LIMIT '.$limit;
+            $result .= 'LIMIT ' . $limit;
         }
         if (($offset = $this->getOffset()) !== null) {
-            $result.=' ';
-            $result.='OFFSET '.$offset;
+            $result .= ' ';
+            $result .= 'OFFSET ' . $offset;
         }
 
         return $result;

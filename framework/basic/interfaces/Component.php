@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\basic\interfaces;
 
 interface Component
@@ -10,12 +12,12 @@ interface Component
      * @param array $config
      * @return Component
      */
-    public function loadConfiguration(array $config = []);
+    public function loadConfiguration(array $config = []): Component;
 
     /**
      * Component initialization
      *
      * @return Component
      */
-    public function init();
+    public function init(): Component;
 }

@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\i18n\abstraction;
 
 use pwf\components\dbconnection\interfaces\Connection;
+use pwf\components\querybuilder\interfaces\SelectBuilder;
 
 abstract class DBTranslator extends Translator implements \pwf\components\i18n\interfaces\DBTranslator
 {
@@ -74,8 +77,9 @@ abstract class DBTranslator extends Translator implements \pwf\components\i18n\i
      * Set query builder
      *
      * @param \pwf\components\querybuilder\interfaces\SelectBuilder $builder
+     * @return DBTranslator
      */
-    public function setQueryBuilder(\pwf\components\querybuilder\interfaces\SelectBuilder $builder)
+    public function setQueryBuilder(\pwf\components\querybuilder\interfaces\SelectBuilder $builder): DBTranslator
     {
         $this->queryBuilder = $builder;
         return $this;
@@ -86,7 +90,7 @@ abstract class DBTranslator extends Translator implements \pwf\components\i18n\i
      *
      * @return \pwf\components\querybuilder\interfaces\SelectBuilder
      */
-    public function getQueryBuilder()
+    public function getQueryBuilder(): SelectBuilder
     {
         return $this->queryBuilder;
     }
@@ -97,7 +101,7 @@ abstract class DBTranslator extends Translator implements \pwf\components\i18n\i
      * @param string $tableName
      * @return DBTranslator
      */
-    public function setTableName($tableName)
+    public function setTableName(string $tableName): DBTranslator
     {
         $this->tableName = $tableName;
         return $this;
@@ -108,7 +112,7 @@ abstract class DBTranslator extends Translator implements \pwf\components\i18n\i
      *
      * @return string
      */
-    public function getTableName()
+    public function getTableName(): string
     {
         return $this->tableName;
     }
@@ -119,7 +123,7 @@ abstract class DBTranslator extends Translator implements \pwf\components\i18n\i
      * @param string $fieldName
      * @return DBTranslator
      */
-    public function setAliasFieldName($fieldName)
+    public function setAliasFieldName(string $fieldName): DBTranslator
     {
         $this->aliasFieldName = $fieldName;
         return $this;
@@ -130,7 +134,7 @@ abstract class DBTranslator extends Translator implements \pwf\components\i18n\i
      *
      * @return string
      */
-    public function getAliasFieldName()
+    public function getAliasFieldName(): string
     {
         return $this->aliasFieldName;
     }
@@ -141,7 +145,7 @@ abstract class DBTranslator extends Translator implements \pwf\components\i18n\i
      * @param string $fieldName
      * @return DBTranslator
      */
-    public function setResultFieldName($fieldName)
+    public function setResultFieldName(string $fieldName): DBTranslator
     {
         $this->resultFieldName = $fieldName;
         return $this;
@@ -152,7 +156,7 @@ abstract class DBTranslator extends Translator implements \pwf\components\i18n\i
      *
      * @return string
      */
-    public function getResultFieldName()
+    public function getResultFieldName(): string
     {
         return $this->resultFieldName;
     }
@@ -163,7 +167,7 @@ abstract class DBTranslator extends Translator implements \pwf\components\i18n\i
      * @param string $fieldName
      * @return DBTranslator
      */
-    public function setLanguageFieldName($fieldName)
+    public function setLanguageFieldName(string $fieldName): DBTranslator
     {
         $this->languageFieldName = $fieldName;
         return $this;
@@ -174,7 +178,7 @@ abstract class DBTranslator extends Translator implements \pwf\components\i18n\i
      *
      * @return string
      */
-    public function getLanguageFieldName()
+    public function getLanguageFieldName(): string
     {
         return $this->languageFieldName;
     }

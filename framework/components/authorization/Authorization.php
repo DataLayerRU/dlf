@@ -1,9 +1,12 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\authorization;
 
 use pwf\basic\Component;
 use pwf\basic\Application;
+use pwf\basic\interfaces\Component as IComponent;
 use pwf\components\authorization\interfaces\Identity;
 
 class Authorization extends Component
@@ -35,7 +38,7 @@ class Authorization extends Component
      * @param string $className
      * @return \pwf\components\authorization\Authorization
      */
-    public function setIdentityClass($className)
+    public function setIdentityClass(string $className): Authorization
     {
         $this->identityClass = $className;
         return $this;
@@ -46,18 +49,18 @@ class Authorization extends Component
      *
      * @return string
      */
-    public function getIdentityClass()
+    public function getIdentityClass(): string
     {
         return $this->identityClass;
     }
 
     /**
      * Set auto login
-     * 
+     *
      * @param bool $autoLogin
      * @return \pwf\components\authorization\Authorization
      */
-    public function setAutoLogin($autoLogin)
+    public function setAutoLogin(bool $autoLogin): Authorization
     {
         $this->autoLogin = $autoLogin;
         return $this;
@@ -68,7 +71,7 @@ class Authorization extends Component
      *
      * @return bool
      */
-    public function isAutoLogin()
+    public function isAutoLogin(): bool
     {
         return $this->autoLogin;
     }
@@ -79,7 +82,7 @@ class Authorization extends Component
      * @param Identity $user
      * @return Authorization
      */
-    public function setIdentity(Identity $user)
+    public function setIdentity(Identity $user): Authorization
     {
         $this->identity = $user;
 
@@ -93,7 +96,7 @@ class Authorization extends Component
      *
      * @return Identity
      */
-    public function getIdentity()
+    public function getIdentity(): Identity
     {
         return $this->identity;
     }
@@ -103,7 +106,7 @@ class Authorization extends Component
      *
      * @return Authorization
      */
-    public function clearIdentity()
+    public function clearIdentity(): Authorization
     {
         $this->identity = null;
         Application::$instance->getResponse()->removeCookie('accessToken');
@@ -111,11 +114,11 @@ class Authorization extends Component
     }
 
     /**
-     * Check is authorixed
+     * Check is authorized
      *
      * @return bool
      */
-    public function isAuthorized()
+    public function isAuthorized(): bool
     {
         return $this->identity !== null && $this->identity->getId() > 0;
     }
@@ -124,24 +127,26 @@ class Authorization extends Component
      * Load configuration
      *
      * @param array $config
+     * @return IComponent
      */
-    public function loadConfiguration(array $config = [])
+    public function loadConfiguration(array $config = []): IComponent
     {
         parent::loadConfiguration($config);
         if (isset($config['auto'])) {
-            $this->setAutoLogin((bool) $config['auto']);
+            $this->setAutoLogin((bool)$config['auto']);
         }
         if (isset($config['identityClass'])) {
             $this->setIdentityClass($config['identityClass']);
         }
+        return $this;
     }
 
     /**
      * Component initialization
      *
-     * @return $this
+     * @return IComponent
      */
-    public function init()
+    public function init(): IComponent
     {
         if ($this->isAutoLogin()) {
             $this->autoLogin();
@@ -151,8 +156,10 @@ class Authorization extends Component
 
     /**
      * Auto login
+     *
+     * @return Authorization
      */
-    protected function autoLogin()
+    protected function autoLogin(): Authorization
     {
         $token = Application::$instance->getRequest()->get('access-token');
         if ($token === null) {
@@ -160,8 +167,9 @@ class Authorization extends Component
         }
         if ($token !== null) {
             $className = $this->getIdentityClass();
-            $user      = new $className;
+            $user = new $className;
             $this->setIdentity($user->getByAuthToken($token));
         }
+        return $this;
     }
 }

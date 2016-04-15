@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\basic\db;
 
 class Paginator extends \pwf\components\datapaginator\abstraction\Paginator
@@ -17,7 +19,7 @@ class Paginator extends \pwf\components\datapaginator\abstraction\Paginator
      * @param \pwf\basic\db\DBModel $dataSource
      * @return \pwf\components\datamapper\Paginator
      */
-    public function setDataSource(\pwf\basic\db\DBModel $dataSource)
+    public function setDataSource(\pwf\basic\db\DBModel $dataSource): Paginator
     {
         $this->dataSource = $dataSource;
         return $this;
@@ -28,7 +30,7 @@ class Paginator extends \pwf\components\datapaginator\abstraction\Paginator
      *
      * @return \pwf\basic\db\DBModel
      */
-    public function getDataSource()
+    public function getDataSource(): DBModel
     {
         return $this->dataSource;
     }
@@ -38,13 +40,13 @@ class Paginator extends \pwf\components\datapaginator\abstraction\Paginator
      *
      * @return array
      */
-    public function getData()
+    public function getData(): array
     {
         $limit = $this->getLimit();
         $this->setHeaders();
-        $page  = $this->getPage();
+        $page = $this->getPage();
         if ($page > 0) {
-            $page-=1;
+            $page -= 1;
         }
         return $this->getDataSource()->limit($limit)->offset($limit * $page)->getAll();
     }
@@ -52,11 +54,11 @@ class Paginator extends \pwf\components\datapaginator\abstraction\Paginator
     /**
      * Set headers
      *
-     * @return \pwf\components\datamapper\Paginator
+     * @return Paginator
      */
-    protected function setHeaders()
+    protected function setHeaders(): Paginator
     {
-        $cnt   = $this->getDataSource()->count();
+        $cnt = $this->getDataSource()->count();
         $limit = $this->getLimit();
         if ($limit == 0) {
             $limit = 1;
@@ -64,11 +66,11 @@ class Paginator extends \pwf\components\datapaginator\abstraction\Paginator
         \pwf\basic\Application::$instance
             ->getResponse()
             ->setHeaders([
-                'x-pagination-current-page: '.$this->getPage(),
-                'x-pagination-page-count: '.ceil($cnt / $limit),
-                'x-pagination-per-page: '.$limit,
-                'x-pagination-total-count: '.$cnt
-        ]);
+                'x-pagination-current-page: ' . $this->getPage(),
+                'x-pagination-page-count: ' . ceil($cnt / $limit),
+                'x-pagination-per-page: ' . $limit,
+                'x-pagination-total-count: ' . $cnt
+            ]);
         return $this;
     }
 }

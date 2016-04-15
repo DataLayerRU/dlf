@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\i18n;
 
 class Fabric
@@ -10,9 +12,10 @@ class Fabric
      *
      * @param string $type
      * @param array $params
-     * @return \pwf\components\i18n\interfaces\Translator
+     * @return Translator
+     * @throws \Exception
      */
-    public function getTranslator($type, array $params = [])
+    public function getTranslator(string $type, array $params = []): Translator
     {
         $result = null;
 

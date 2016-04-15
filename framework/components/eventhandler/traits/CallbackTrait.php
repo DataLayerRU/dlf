@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\eventhandler\traits;
 
 trait CallbackTrait
@@ -59,7 +61,7 @@ trait CallbackTrait
      * @param string $handler
      * @return array
      */
-    protected function parseHandlerStr($handler)
+    protected function parseHandlerStr(string $handler): array
     {
         $result = [];
 

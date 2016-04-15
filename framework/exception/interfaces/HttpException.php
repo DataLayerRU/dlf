@@ -4,7 +4,7 @@ namespace pwf\exception\interfaces;
 
 interface HttpException
 {
-    public function getHeaders();
+    public function getHeaders(): array;
 
-    public function getContent();
+    public function getContent(): string;
 }
