@@ -135,10 +135,10 @@ class Response
     /**
      * Set body
      *
-     * @param string $body
+     * @param mixed $body
      * @return Response
      */
-    public function setBody(string $body): Response
+    public function setBody($body): Response
     {
         $this->body = $body;
         return $this;
@@ -147,9 +147,9 @@ class Response
     /**
      * Set body
      *
-     * @return string
+     * @return mixed
      */
-    public function getBody(): string
+    public function getBody()
     {
         return $this->body;
     }
@@ -266,8 +266,8 @@ class Response
         $cookies = $this->getCookies();
 
         foreach ($cookies as $name => $cookie) {
-            setcookie($name, $cookie['value'], $cookie['expire'],
-                $cookie['path']);
+            setcookie($name, $cookie['value'], (int)$cookie['expire'],
+                '' . $cookie['path']);
         }
 
         return $this;
@@ -281,7 +281,7 @@ class Response
      */
     public function removeCookie(string $name): Response
     {
-        $this->addCookie($name, null, -1);
+        $this->addCookie($name, '', -1);
 
         return $this;
     }

@@ -13,7 +13,7 @@ trait QueryBuilder
      *
      * @var string
      */
-    private $table;
+    private $table = '';
 
     /**
      * Primary key name

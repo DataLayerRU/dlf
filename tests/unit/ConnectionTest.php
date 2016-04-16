@@ -1,5 +1,12 @@
 <?php
 
+class TestPDO extends PDO {
+    public function __construct()
+    {
+
+    }
+}
+
 class ConnectionTest extends \PHPUnit_Framework_TestCase
 {
     /**
@@ -11,12 +18,12 @@ class ConnectionTest extends \PHPUnit_Framework_TestCase
     protected function setUp()
     {
         self::$connectionStub = \Codeception\Util\Stub::construct('\pwf\components\dbconnection\PDOConnection',
-                [],
-                [
-                'connect' => function() {
-                    return true;
+            [],
+            [
+                'connect' => function () {
+                    return \Codeception\Util\Stub::makeEmpty('pwf\components\dbconnection\interfaces\Connection');
                 }
-        ]);
+            ]);
     }
 
     protected function tearDown()
@@ -38,8 +45,11 @@ class ConnectionTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals('test', self::$connectionStub->getPassword());
 
-        $this->assertEquals('test',
-            self::$connectionStub->init()->setPDO('test')->getPDO());
+
+        $pdo = new TestPDO;
+
+        $this->assertEquals($pdo,
+            self::$connectionStub->init()->setPDO($pdo)->getPDO());
     }
 
     public function testConnect()

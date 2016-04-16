@@ -12,7 +12,7 @@ abstract class HttpExceptionAbstract extends \Exception implements HttpException
 
     use HeadersTrait;
 
-    public function __construct(string $message, int $code, \Exception $previous)
+    public function __construct(string $message, int $code, \Exception $previous = null)
     {
         parent::__construct($message, $code, $previous);
 

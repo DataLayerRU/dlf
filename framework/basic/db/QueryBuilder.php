@@ -4,8 +4,8 @@ declare(strict_types = 1);
 
 namespace pwf\basic\db;
 
+use pwf\components\querybuilder\interfaces\Conditional;
 use pwf\components\querybuilder\interfaces\ConditionBuilder;
-use pwf\components\querybuilder\interfaces\DeleteBuilder;
 use pwf\components\querybuilder\interfaces\InsertBuilder;
 use pwf\components\querybuilder\interfaces\SelectBuilder;
 use pwf\components\querybuilder\interfaces\UpdateBuilder;
@@ -124,10 +124,10 @@ class QueryBuilder
     /**
      * Get delete builder
      *
-     * @return \pwf\components\querybuilder\interfaces\DeleteBuilder
+     * @return Conditional
      * @throws \Exception
      */
-    public static function delete(): DeleteBuilder
+    public static function delete(): Conditional
     {
         $result = null;
 

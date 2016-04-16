@@ -46,10 +46,10 @@ abstract class Model implements \pwf\components\datamapper\interfaces\Model
      * Set attribute
      *
      * @param string $name
-     * @param string $value
+     * @param mixed $value
      * @return IModel
      */
-    public function setAttribute(string $name, string $value): IModel
+    public function setAttribute(string $name, $value): IModel
     {
         $this->attributes[$name] = $value;
         return $this;
@@ -59,9 +59,9 @@ abstract class Model implements \pwf\components\datamapper\interfaces\Model
      * Get attribute by name
      *
      * @param string $name
-     * @return string
+     * @return mixed
      */
-    public function getAttribute(string $name): string
+    public function getAttribute(string $name)
     {
         $result = null;
 

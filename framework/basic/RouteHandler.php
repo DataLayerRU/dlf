@@ -69,7 +69,7 @@ class RouteHandler
      */
     public static function parseRoute(string $url): string
     {
-        $result = null;
+        $result = '';
 
         $parts = explode('/', $url);
 

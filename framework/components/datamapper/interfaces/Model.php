@@ -25,16 +25,16 @@ interface Model
      * Get attribute
      *
      * @param string $name
-     * @return string
+     * @return mixed
      */
-    public function getAttribute(string $name): string;
+    public function getAttribute(string $name);
 
     /**
      * Set attribute
      *
      * @param string $name
-     * @param string $value
+     * @param mixed $value
      * @return Model
      */
-    public function setAttribute(string $name, string $value): Model;
+    public function setAttribute(string $name, $value): Model;
 }

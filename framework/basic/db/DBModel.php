@@ -62,7 +62,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements ISe
             ->table($this->getTable())
             ->setConditionBuilder($this->getConditionBuilder())
             ->where($this->getWhere())
-            ->generate(), $this->getParams());
+            ->generate(), $this->getParams())->rowCount() > 0;
     }
 
     /**
@@ -76,13 +76,13 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements ISe
             ->where($this->getWhere())
             ->limit($this->getLimit())
             ->offset($this->getOffset())
-            ->generate(), $this->getParams());
+            ->generate(), $this->getParams())->fetchAll(\PDO::FETCH_ASSOC) ?: [];
     }
 
     /**
      * @inheritdoc
      */
-    public function getOne(): Getter
+    public function getOne(): array
     {
         return $this->getConnection()->query(
             QueryBuilder::select()
@@ -90,7 +90,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements ISe
                 ->setConditionBuilder($this->getConditionBuilder())
                 ->where($this->getWhere())
                 ->limit(1)
-                ->generate(), $this->getParams());
+                ->generate(), $this->getParams())->fetchAll(\PDO::FETCH_ASSOC) ?: [];
     }
 
     /**
@@ -100,6 +100,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements ISe
     {
         $result = null;
         $id = $this->getId();
+
         if (!empty($id)) {
             $result = $this->getConnection()->exec(QueryBuilder::update()
                 ->table($this->getTable())
@@ -115,7 +116,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements ISe
                 ->setParams($this->getAttributes())
                 ->generate(), $this->getParams());
         }
-        return $result;
+        return $result->rowCount() > 0;
     }
 
     /**

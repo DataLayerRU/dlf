@@ -4,9 +4,8 @@ declare(strict_types = 1);
 
 namespace pwf\components\querybuilder\traits;
 
-use pwf\components\querybuilder\adapters\SQL\ConditionBuilder;
 use pwf\components\querybuilder\interfaces\{
-    SelectBuilder as ISelectBuilder, Conditional as IConditional, ConditionBuilder as IConditionBuilder
+    Conditional as IConditional, ConditionBuilder as IConditionBuilder
 };
 
 trait Conditional
@@ -29,9 +28,9 @@ trait Conditional
      * Set condition builder
      *
      * @param IConditionBuilder $builder
-     * @return ISelectBuilder
+     * @return IConditional
      */
-    public function setConditionBuilder(IConditionBuilder $builder): ISelectBuilder
+    public function setConditionBuilder(IConditionBuilder $builder): IConditional
     {
         $this->conditionBuilder = $builder;
         return $this;

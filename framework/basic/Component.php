@@ -21,7 +21,7 @@ abstract class Component extends Object implements \pwf\basic\interfaces\Compone
      * @param bool $flag
      * @return IComponent
      */
-    public function isForceInitialization(bool $flag = null): IComponent
+    public function isForceInitialization($flag = null)
     {
         if ($flag === null) {
             return $this->forceInit;

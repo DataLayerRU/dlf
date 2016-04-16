@@ -10,9 +10,9 @@ interface Getter
     /**
      * Get single model
      *
-     * @return \pwf\components\datamapper\interfaces\Getter
+     * @return array
      */
-    public function getOne(): Getter;
+    public function getOne(): array;
 
     /**
      * Get all models

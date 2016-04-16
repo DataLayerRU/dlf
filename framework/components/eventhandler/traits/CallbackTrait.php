@@ -45,10 +45,10 @@ trait CallbackTrait
     public function prepareCallback($callback)
     {
         $result = $callback;
-        if (is_string($callback)) {
+        if (is_string($callback) && !empty($callback)) {
             $callbackInfo = $this->parseHandlerStr($callback);
-            $class        = new $callbackInfo['class'];
-            $result       = [$class, $callbackInfo['method']];
+            $class = new $callbackInfo['class'];
+            $result = [$class, $callbackInfo['method']];
         } elseif (!is_callable($callback)) {
             throw new \pwf\exception\HttpNotFoundException();
         }
@@ -67,7 +67,7 @@ trait CallbackTrait
 
         $parts = explode('::', $handler);
 
-        $result['class']  = isset($parts[0]) ? $parts[0] : null;
+        $result['class'] = isset($parts[0]) ? $parts[0] : null;
         $result['method'] = isset($parts[1]) ? $parts[1] : null;
 
         return $result;

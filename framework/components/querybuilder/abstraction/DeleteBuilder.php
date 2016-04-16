@@ -5,8 +5,9 @@ declare(strict_types = 1);
 namespace pwf\components\querybuilder\abstraction;
 
 use pwf\components\querybuilder\interfaces\Conditional;
+use pwf\components\querybuilder\interfaces\QueryBuilder;
 
-abstract class DeleteBuilder implements Conditional
+abstract class DeleteBuilder implements Conditional, QueryBuilder
 {
 
     /**

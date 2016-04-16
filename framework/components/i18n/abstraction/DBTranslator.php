@@ -6,8 +6,9 @@ namespace pwf\components\i18n\abstraction;
 
 use pwf\components\dbconnection\interfaces\Connection;
 use pwf\components\querybuilder\interfaces\SelectBuilder;
+use pwf\components\i18n\interfaces\DBTranslator as IDBTranslator;
 
-abstract class DBTranslator extends Translator implements \pwf\components\i18n\interfaces\DBTranslator
+abstract class DBTranslator extends Translator implements IDBTranslator
 {
     /**
      * DB connection
@@ -55,9 +56,9 @@ abstract class DBTranslator extends Translator implements \pwf\components\i18n\i
      * Set connection
      *
      * @param Connection $connection
-     * @return \pwf\components\i18n\abstraction\DBTranslator
+     * @return IDBTranslator
      */
-    public function setConnection(Connection $connection)
+    public function setConnection(Connection $connection): IDBTranslator
     {
         $this->connection = $connection;
         return $this;
@@ -79,7 +80,7 @@ abstract class DBTranslator extends Translator implements \pwf\components\i18n\i
      * @param \pwf\components\querybuilder\interfaces\SelectBuilder $builder
      * @return DBTranslator
      */
-    public function setQueryBuilder(\pwf\components\querybuilder\interfaces\SelectBuilder $builder): DBTranslator
+    public function setQueryBuilder(\pwf\components\querybuilder\interfaces\SelectBuilder $builder): IDBTranslator
     {
         $this->queryBuilder = $builder;
         return $this;
@@ -101,7 +102,7 @@ abstract class DBTranslator extends Translator implements \pwf\components\i18n\i
      * @param string $tableName
      * @return DBTranslator
      */
-    public function setTableName(string $tableName): DBTranslator
+    public function setTableName(string $tableName): IDBTranslator
     {
         $this->tableName = $tableName;
         return $this;
@@ -123,7 +124,7 @@ abstract class DBTranslator extends Translator implements \pwf\components\i18n\i
      * @param string $fieldName
      * @return DBTranslator
      */
-    public function setAliasFieldName(string $fieldName): DBTranslator
+    public function setAliasFieldName(string $fieldName): IDBTranslator
     {
         $this->aliasFieldName = $fieldName;
         return $this;
@@ -145,7 +146,7 @@ abstract class DBTranslator extends Translator implements \pwf\components\i18n\i
      * @param string $fieldName
      * @return DBTranslator
      */
-    public function setResultFieldName(string $fieldName): DBTranslator
+    public function setResultFieldName(string $fieldName): IDBTranslator
     {
         $this->resultFieldName = $fieldName;
         return $this;
@@ -167,7 +168,7 @@ abstract class DBTranslator extends Translator implements \pwf\components\i18n\i
      * @param string $fieldName
      * @return DBTranslator
      */
-    public function setLanguageFieldName(string $fieldName): DBTranslator
+    public function setLanguageFieldName(string $fieldName): IDBTranslator
     {
         $this->languageFieldName = $fieldName;
         return $this;

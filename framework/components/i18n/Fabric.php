@@ -4,6 +4,9 @@ declare(strict_types = 1);
 
 namespace pwf\components\i18n;
 
+use pwf\basic\db\QueryBuilder;
+use pwf\components\i18n\interfaces\Translator as ITranslator;
+
 class Fabric
 {
 
@@ -12,10 +15,10 @@ class Fabric
      *
      * @param string $type
      * @param array $params
-     * @return Translator
+     * @return ITranslator
      * @throws \Exception
      */
-    public function getTranslator(string $type, array $params = []): Translator
+    public function getTranslator(string $type, array $params = []): ITranslator
     {
         $result = null;
 
@@ -23,7 +26,7 @@ class Fabric
             throw new \Exception('Need \'language\' param');
         }
         switch ($type) {
-            case interfaces\Translator::TRANSLATOR_FILE:
+            case ITranslator::TRANSLATOR_FILE:
                 $result = new FileTranslator();
                 if (!isset($params['dir'])) {
                     throw new \Exception('Need \'dir\' param');
@@ -31,7 +34,7 @@ class Fabric
                 $result->setDir($params['dir']);
                 $result->setLanguage($params['language']);
                 break;
-            case interfaces\Translator::TRANSLATOR_ARRAY:
+            case ITranslator::TRANSLATOR_ARRAY:
                 $result = new ArrayTranslator();
                 if (!isset($params['map'])) {
                     throw new \Exception('Need \'map\' param');
@@ -39,7 +42,7 @@ class Fabric
                 $result->setMap($params['map']);
                 $result->setLanguage($params['language']);
                 break;
-            case interfaces\Translator::TRANSLATOR_DB:
+            case ITranslator::TRANSLATOR_DB:
                 $result = new DBTranslator();
                 if (!isset($params['aliasFieldName'])) {
                     throw new \Exception('Need \'aliasFieldName\' param');
@@ -60,10 +63,10 @@ class Fabric
                 $result->setResultFieldName($params['resultFieldName']);
                 $result->setTableName($params['table']);
                 $result->setLanguageFieldName($params['languageFieldName']);
-                $result->setQueryBuilder(\pwf\basic\db\QueryBuilder::select()
-                        ->setConditionBuilder(\Codeception\Util\Stub::construct('\pwf\components\querybuilder\adapters\SQL\ConditionBuilder')));
+                $result->setQueryBuilder(QueryBuilder::select()
+                    ->setConditionBuilder(QueryBuilder::getConditionBuilder()));
                 $result->setConnection(is_string($params['connection']) ? \pwf\basic\Application::$instance->getComponent($params['connection'])
-                            : $params['connection']);
+                    : $params['connection']);
                 $result->setLanguage($params['language']);
                 break;
         }

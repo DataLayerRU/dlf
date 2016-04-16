@@ -18,25 +18,25 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
             QueryBuilder::setDriver($driver);
 
             $connection = Codeception\Util\Stub::construct('\pwf\components\dbconnection\PDOConnection',
-                    [],
-                    [
-                    'query' => function($query, $params = []) use($countQuery) {
+                [],
+                [
+                    'query' => function ($query, $params = []) use ($countQuery) {
 
-                    $this->assertEquals($query, $countQuery);
+                        $this->assertEquals($query, $countQuery);
 
-                    return new PDOStatement();
-                }
-            ]);
+                        return new PDOStatement();
+                    }
+                ]);
 
             $model = Codeception\Util\Stub::construct('\pwf\basic\db\DBModel',
-                    [
+                [
                     'connection' => $connection
-                    ],
-                    [
-                    'getId' => function() {
+                ],
+                [
+                    'getId' => function () {
                         return 1;
                     }
-            ]);
+                ]);
 
             try {
                 $model
@@ -48,7 +48,7 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
                     ])->count();
             } catch (Exception $ex) {
                 if ($driver != -1) {
-                    $this->fail($driver.': '.$ex->getMessage());
+                    $this->fail($driver . ': ' . $ex->getMessage());
                 }
             }
         }
@@ -61,25 +61,25 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
         foreach ($this->drivers as $driver) {
             QueryBuilder::setDriver($driver);
             $connection = Codeception\Util\Stub::construct('\pwf\components\dbconnection\PDOConnection',
-                    [],
-                    [
-                    'exec' => function($query, $params = [])use($countQuery) {
+                [],
+                [
+                    'exec' => function ($query, $params = []) use ($countQuery) {
 
-                    $this->assertEquals($query, $countQuery);
+                        $this->assertEquals($query, $countQuery);
 
-                    return new PDOStatement();
-                }
-            ]);
+                        return new PDOStatement();
+                    }
+                ]);
 
             $model = Codeception\Util\Stub::construct('\pwf\basic\db\DBModel',
-                    [
+                [
                     'connection' => $connection
-                    ],
-                    [
-                    'getId' => function() {
+                ],
+                [
+                    'getId' => function () {
                         return 1;
                     }
-            ]);
+                ]);
 
             try {
                 $model
@@ -104,25 +104,25 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
         foreach ($this->drivers as $driver) {
             QueryBuilder::setDriver($driver);
             $connection = Codeception\Util\Stub::construct('\pwf\components\dbconnection\PDOConnection',
-                    [],
-                    [
-                    'query' => function($query, $params = []) use($countQuery) {
+                [],
+                [
+                    'query' => function ($query, $params = []) use ($countQuery) {
 
-                    $this->assertEquals($query, $countQuery);
+                        $this->assertEquals($query, $countQuery);
 
-                    return new PDOStatement();
-                }
-            ]);
+                        return new PDOStatement();
+                    }
+                ]);
 
             $model = Codeception\Util\Stub::construct('\pwf\basic\db\DBModel',
-                    [
+                [
                     'connection' => $connection
-                    ],
-                    [
-                    'getId' => function() {
+                ],
+                [
+                    'getId' => function () {
                         return 1;
                     }
-            ]);
+                ]);
 
             try {
                 $model
@@ -147,25 +147,25 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
         foreach ($this->drivers as $driver) {
             QueryBuilder::setDriver($driver);
             $connection = Codeception\Util\Stub::construct('\pwf\components\dbconnection\PDOConnection',
-                    [],
-                    [
-                    'query' => function($query, $params = []) use($countQuery) {
+                [],
+                [
+                    'query' => function ($query, $params = []) use ($countQuery) {
 
-                    $this->assertEquals($query, $countQuery);
+                        $this->assertEquals($query, $countQuery);
 
-                    return new PDOStatement();
-                }
-            ]);
+                        return new PDOStatement();
+                    }
+                ]);
 
             $model = Codeception\Util\Stub::construct('\pwf\basic\db\DBModel',
-                    [
+                [
                     'connection' => $connection
-                    ],
-                    [
-                    'getId' => function() {
+                ],
+                [
+                    'getId' => function () {
                         return 1;
                     }
-            ]);
+                ]);
 
             try {
                 $model
@@ -212,25 +212,25 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
         foreach ($this->drivers as $driver) {
             QueryBuilder::setDriver($driver);
             $connection = Codeception\Util\Stub::construct('\pwf\components\dbconnection\PDOConnection',
-                    [],
-                    [
-                    'exec' => function($query, $params = [])use($updateQuery) {
+                [],
+                [
+                    'exec' => function ($query, $params = []) use ($updateQuery) {
 
-                    $this->assertEquals($query, $updateQuery);
+                        $this->assertEquals($query, $updateQuery);
 
-                    return new PDOStatement();
-                }
-            ]);
+                        return new PDOStatement();
+                    }
+                ]);
 
             $model = Codeception\Util\Stub::construct('\pwf\basic\db\DBModel',
-                    [
+                [
                     'connection' => $connection
-                    ],
-                    [
-                    'getId' => function() {
+                ],
+                [
+                    'getId' => function () {
                         return 1;
                     }
-            ]);
+                ]);
 
             try {
                 $model
@@ -245,28 +245,28 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
             }
 
             $connection = Codeception\Util\Stub::construct('\pwf\components\dbconnection\PDOConnection',
-                    [],
-                    [
-                    'exec' => function($query, $params = [])use($insertQuery) {
+                [],
+                [
+                    'exec' => function ($query, $params = []) use ($insertQuery) {
 
-                    $this->assertEquals($query, $insertQuery);
+                        $this->assertEquals($query, $insertQuery);
 
-                    return new PDOStatement();
-                }
-            ]);
+                        return new PDOStatement();
+                    }
+                ]);
 
-            $model = Codeception\Util\Stub::construct('\pwf\basic\db\DBModel',
-                    [
+            $model1 = Codeception\Util\Stub::construct('\pwf\basic\db\DBModel',
+                [
                     'connection' => $connection
-                    ],
-                    [
-                    'getId' => function() {
+                ],
+                [
+                    'getId' => function () {
                         return null;
                     }
-            ]);
+                ]);
 
             try {
-                $model
+                $model1
                     ->table('test_table')
                     ->setAttribute('name', 'asdasd')
                     ->setPK('id')
@@ -281,15 +281,18 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
 
     public function testGenerate()
     {
+        $connection = Codeception\Util\Stub::construct('\pwf\components\dbconnection\PDOConnection',
+            []);
+
         $model = Codeception\Util\Stub::construct('\pwf\basic\db\DBModel',
-                [
-                'connection' => null
-                ],
-                [
-                'getId' => function() {
+            [
+                'connection' => $connection
+            ],
+            [
+                'getId' => function () {
                     return 1;
                 }
-        ]);
+            ]);
 
         try {
             $model->generate();

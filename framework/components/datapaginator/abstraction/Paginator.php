@@ -37,7 +37,7 @@ abstract class Paginator implements \pwf\components\datapaginator\interfaces\Pag
      */
     public function setPage(int $page): IPaginator
     {
-        $this->page = (int)$page;
+        $this->page = $page;
         return $this;
     }
 
@@ -49,7 +49,7 @@ abstract class Paginator implements \pwf\components\datapaginator\interfaces\Pag
     public function getPage(): int
     {
         if (empty($this->page) && ($paramName = $this->getParamName()) != '') {
-            $this->setPage(\pwf\basic\Application::$instance->getRequest()->get($paramName));
+            $this->setPage((int)\pwf\basic\Application::$instance->getRequest()->get($paramName));
         }
 
         return $this->page;

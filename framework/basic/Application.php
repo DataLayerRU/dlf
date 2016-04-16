@@ -121,7 +121,7 @@ class Application extends Object implements \pwf\basic\interfaces\Application
      */
     public function getComponentConfig(string $componentName): array
     {
-        $result = null;
+        $result = [];
         $config = $this->getConfiguration();
         if (isset($config[$componentName])) {
             $result = $config[$componentName];
@@ -228,13 +228,16 @@ class Application extends Object implements \pwf\basic\interfaces\Application
 
         $config = $this->getComponentConfig($name);
 
-        if ($config !== null && isset($config['class'])) {
+        if (isset($config['class'])) {
             $result = new $config['class'];
             if (!($result instanceof \pwf\basic\interfaces\Component)) {
                 throw new \Exception('Component must implement \'Component\' interface',
                     500);
             }
             $result->loadConfiguration($config);
+        } else {
+            throw new \Exception('Component must have \'class\' param',
+                500);
         }
 
         return $result;

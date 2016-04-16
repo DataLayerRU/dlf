@@ -52,6 +52,6 @@ class ResponseTest extends \PHPUnit_Framework_TestCase
             ->setBody($body)
             ->send();
         $result = ob_get_clean();
-        $this->assertEquals($result, json_encode($body));
+        $this->assertEquals(json_encode($body), $result);
     }
 }
