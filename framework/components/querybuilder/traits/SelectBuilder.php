@@ -23,14 +23,14 @@ trait SelectBuilder
      *
      * @var int
      */
-    private $limit;
+    private $limit = 0;
 
     /**
      * Offset
      *
      * @var int
      */
-    private $offset;
+    private $offset = 0;
 
     /**
      * Having condition
@@ -58,7 +58,7 @@ trait SelectBuilder
      *
      * @var array
      */
-    private $group;
+    private $group = [];
 
     /**
      *
