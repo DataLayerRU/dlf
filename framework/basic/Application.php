@@ -224,13 +224,16 @@ class Application extends Object implements \pwf\basic\interfaces\Application
 
         $config = $this->getComponentConfig($name);
 
-        if ($config !== null && isset($config['class'])) {
+        if (isset($config['class'])) {
             $result = new $config['class'];
             if (!($result instanceof \pwf\basic\interfaces\Component)) {
                 throw new \Exception('Component must implement \'Component\' interface',
-                500);
+                    500);
             }
             $result->loadConfiguration($config);
+        } else {
+            throw new \Exception('Component must have \'class\' param',
+                500);
         }
 
         return $result;

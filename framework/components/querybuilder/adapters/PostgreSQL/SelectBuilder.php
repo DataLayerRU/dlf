@@ -17,7 +17,7 @@ class SelectBuilder extends \pwf\components\querybuilder\adapters\MySQL\SelectBu
         if (($limit = $this->getLimit()) > 0) {
             $result.='LIMIT '.$limit;
         }
-        if (($offset = $this->getOffset()) !== null) {
+        if (($offset = $this->getOffset()) > 0) {
             $result.=' ';
             $result.='OFFSET '.$offset;
         }

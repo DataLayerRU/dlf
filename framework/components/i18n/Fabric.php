@@ -58,7 +58,7 @@ class Fabric
                 $result->setTableName($params['table']);
                 $result->setLanguageFieldName($params['languageFieldName']);
                 $result->setQueryBuilder(\pwf\basic\db\QueryBuilder::select()
-                        ->setConditionBuilder(\Codeception\Util\Stub::construct('\pwf\components\querybuilder\adapters\SQL\ConditionBuilder')));
+                        ->setConditionBuilder(\pwf\basic\db\QueryBuilder::getConditionBuilder()));
                 $result->setConnection(is_string($params['connection']) ? \pwf\basic\Application::$instance->getComponent($params['connection'])
                             : $params['connection']);
                 $result->setLanguage($params['language']);

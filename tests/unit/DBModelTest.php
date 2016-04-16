@@ -22,7 +22,7 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
                     [
                     'query' => function($query, $params = []) use($countQuery) {
 
-                    $this->assertEquals($query, $countQuery);
+                    $this->assertEquals($countQuery, $query);
 
                     return new PDOStatement();
                 }

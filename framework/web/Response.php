@@ -260,7 +260,7 @@ class Response
         $cookies = $this->getCookies();
 
         foreach ($cookies as $name => $cookie) {
-            setcookie($name, $cookie['value'], $cookie['expire'],
+            setcookie($name, $cookie['value'], (int)$cookie['expire'],
                 $cookie['path']);
         }
 

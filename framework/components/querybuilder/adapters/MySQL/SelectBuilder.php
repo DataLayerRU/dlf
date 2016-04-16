@@ -84,12 +84,12 @@ class SelectBuilder extends \pwf\components\querybuilder\abstraction\SelectBuild
     {
         $result = '';
 
-        $limit  = $this->getLimit();
-        $offset = $this->getOffset();
-        if (!empty($offset)) {
+        if (($offset = $this->getOffset()) > 0) {
             $result.=$offset.', ';
         }
-        $result.=$limit;
+        if (($limit = $this->getLimit()) > 0) {
+            $result.=$limit;
+        }
         if ($result != '') {
             $result = 'LIMIT '.$result;
         }
