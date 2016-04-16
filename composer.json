@@ -31,8 +31,8 @@
     },
     "require-dev": {
         "codeception/codeception": "*",
-        "codeclimate/php-test-reporter": "*",
-        "satooshi/php-coveralls": "*"
+        "satooshi/php-coveralls": "*",
+        "codeclimate/php-test-reporter": "*"
     },
     "config": {
         "process-timeout": 1800
