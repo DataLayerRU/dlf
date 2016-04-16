@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\activerecord\abstraction;
 
 abstract class Model extends \pwf\components\datamapper\abstraction\Model implements \pwf\components\activerecord\interfaces\Model
@@ -24,7 +26,7 @@ abstract class Model extends \pwf\components\datamapper\abstraction\Model implem
      * @param mixed $connection
      * @return \pwf\components\activerecord\abstraction\Model
      */
-    public function setConnection($connection)
+    public function setConnection($connection): Model
     {
         $this->connection = $connection;
         return $this;

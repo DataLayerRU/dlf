@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\web;
 
 class Request
@@ -22,7 +24,7 @@ class Request
      * @param array $params
      * @return Request
      */
-    public function setRequestParams(array $params)
+    public function setRequestParams(array $params): Request
     {
         $this->requestParams = $params;
         return $this;
@@ -33,7 +35,7 @@ class Request
      *
      * @return array
      */
-    public function getRequestParams()
+    public function getRequestParams(): array
     {
         return $this->requestParams;
     }
@@ -43,7 +45,7 @@ class Request
      *
      * @return string
      */
-    public function getPath()
+    public function getPath(): string
     {
         return $this->get('path', '');
     }
@@ -53,9 +55,9 @@ class Request
      *
      * @param string $paramName
      * @param mixed $default
-     * @return mized
+     * @return mixed
      */
-    public function get($paramName = null, $default = null)
+    public function get(string $paramName = null, $default = null)
     {
         $result = $default;
 
@@ -75,7 +77,7 @@ class Request
      *
      * @return bool
      */
-    public function isPost()
+    public function isPost(): bool
     {
         return strtoupper($_SERVER['REQUEST_METHOD']) == 'POST';
     }
@@ -85,7 +87,7 @@ class Request
      *
      * @return bool
      */
-    public function isGet()
+    public function isGet(): bool
     {
         return strtoupper($_SERVER['REQUEST_METHOD']) == 'GET';
     }
@@ -97,7 +99,7 @@ class Request
      * @param string $default
      * @return string
      */
-    public function getCookie($name, $default = null)
+    public function getCookie(string $name, string $default = null): string
     {
         $result = $default;
 

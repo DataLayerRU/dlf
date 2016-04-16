@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\i18n;
 
 class DBTranslator extends \pwf\components\i18n\abstraction\DBTranslator
@@ -14,7 +16,7 @@ class DBTranslator extends \pwf\components\i18n\abstraction\DBTranslator
      * @param array $params
      * @return string
      */
-    public function translate($alias, array $params = [])
+    public function translate(string $alias, array $params = []): string
     {
         $result = '';
         $query  = $this->getQueryBuilder()

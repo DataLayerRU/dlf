@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\observer\traits;
 
 use \pwf\components\observer\interfaces\Observer;
+use \pwf\components\observer\interfaces\Subject as ISubject;
 
 trait Subject
 {
@@ -18,9 +21,9 @@ trait Subject
      *
      * @param \pwf\components\observer\interfaces\Observer $observer
      * @param string $type
-     * @return $this
+     * @return ISubject
      */
-    public function attach(Observer $observer, $type = 'default')
+    public function attach(Observer $observer, string $type = 'default'): ISubject
     {
         if (!isset($this->observers[$type])) {
             $this->observers[$type] = [];
@@ -34,9 +37,9 @@ trait Subject
      *
      * @param \pwf\components\observer\interfaces\Observer $observer
      * @param string $type
-     * @return $this
+     * @return ISubject
      */
-    public function detach(Observer $observer, $type = 'default')
+    public function detach(Observer $observer, string $type = 'default'): ISubject
     {
         if (isset($this->observers[$type])) {
             foreach ($this->observers[$type] as $key => $obs) {
@@ -52,8 +55,9 @@ trait Subject
      * Notify observers by type
      *
      * @param string $type
+     * @return ISubject
      */
-    public function notify($type = 'default')
+    public function notify(string $type = 'default'): ISubject
     {
         if (isset($this->observers[$type])) {
             foreach ($this->observers[$type] as $obs) {

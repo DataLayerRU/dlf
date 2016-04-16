@@ -1,6 +1,10 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\datapaginator\abstraction;
+
+use pwf\components\datapaginator\interfaces\Paginator as IPaginator;
 
 abstract class Paginator implements \pwf\components\datapaginator\interfaces\Paginator
 {
@@ -29,11 +33,11 @@ abstract class Paginator implements \pwf\components\datapaginator\interfaces\Pag
      * Set current page number
      *
      * @param int $page
-     * @return \pwf\components\datapaginator\abstraction\Paginator
+     * @return IPaginator
      */
-    public function setPage($page)
+    public function setPage(int $page): IPaginator
     {
-        $this->page = (int) $page;
+        $this->page = $page;
         return $this;
     }
 
@@ -42,10 +46,10 @@ abstract class Paginator implements \pwf\components\datapaginator\interfaces\Pag
      *
      * @return int
      */
-    public function getPage()
+    public function getPage(): int
     {
         if (empty($this->page) && ($paramName = $this->getParamName()) != '') {
-            $this->setPage(\pwf\basic\Application::$instance->getRequest()->get($paramName));
+            $this->setPage((int)\pwf\basic\Application::$instance->getRequest()->get($paramName));
         }
 
         return $this->page;
@@ -55,9 +59,9 @@ abstract class Paginator implements \pwf\components\datapaginator\interfaces\Pag
      * Set limit
      *
      * @param int $limit
-     * @return \pwf\components\datapaginator\abstraction\Paginator
+     * @return IPaginator
      */
-    public function setLimit($limit)
+    public function setLimit(int $limit): IPaginator
     {
         $this->limit = $limit;
         return $this;
@@ -68,7 +72,7 @@ abstract class Paginator implements \pwf\components\datapaginator\interfaces\Pag
      *
      * @return int
      */
-    public function getLimit()
+    public function getLimit(): int
     {
         return $this->limit;
     }
@@ -77,9 +81,9 @@ abstract class Paginator implements \pwf\components\datapaginator\interfaces\Pag
      * Set param name
      *
      * @param string $paramName
-     * @return \pwf\components\datapaginator\abstraction\Paginator
+     * @return IPaginator
      */
-    public function setParamName($paramName)
+    public function setParamName(string $paramName): IPaginator
     {
         $this->pageGetParam = $paramName;
         return $this;
@@ -90,7 +94,7 @@ abstract class Paginator implements \pwf\components\datapaginator\interfaces\Pag
      *
      * @return string
      */
-    public function getParamName()
+    public function getParamName(): string
     {
         return $this->pageGetParam;
     }

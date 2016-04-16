@@ -1,14 +1,16 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\querybuilder\interfaces;
 
-interface DeleteBuilder extends QueryBuilder
+interface Conditional
 {
-
     /**
      * Add condition
      *
      * @param array $condition
+     * @return Conditional
      */
-    public function where(array $condition);
+    public function where(array $condition): Conditional;
 }

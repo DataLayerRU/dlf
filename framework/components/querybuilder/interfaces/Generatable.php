@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\querybuilder\interfaces;
 
 interface Generatable
@@ -10,5 +12,5 @@ interface Generatable
      *
      * @return string
      */
-    public function generate();
+    public function generate(): string;
 }

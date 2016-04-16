@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\querybuilder\interfaces;
 
 interface ConditionBuilder extends Generatable
@@ -11,12 +13,12 @@ interface ConditionBuilder extends Generatable
      * @param array $condition
      * @return ConditionBuilder
      */
-    public function setCondition(array $condition);
+    public function setCondition(array $condition): ConditionBuilder;
 
     /**
      * Get params
      *
      * @return array
      */
-    public function getParams();
+    public function getParams(): array;
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\authorization\interfaces;
 
 interface Identity
@@ -17,7 +19,7 @@ interface Identity
      *
      * @return string
      */
-    public function getAuthToken();
+    public function getAuthToken(): string;
 
     /**
      * Get user by token
@@ -25,5 +27,5 @@ interface Identity
      * @param string $token
      * @return Identity
      */
-    public function getByAuthToken($token);
+    public function getByAuthToken(string $token): Identity;
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\exception\abstraction;
 
 use pwf\traits\HeadersTrait;
@@ -10,7 +12,7 @@ abstract class HttpExceptionAbstract extends \Exception implements HttpException
 
     use HeadersTrait;
 
-    public function __construct($message, $code, $previous)
+    public function __construct(string $message, int $code, \Exception $previous = null)
     {
         parent::__construct($message, $code, $previous);
 

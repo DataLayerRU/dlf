@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\basic\interfaces;
 
 interface View
@@ -10,6 +12,7 @@ interface View
      *
      * @param string $viewPath
      * @param array $params
+     * @return string
      */
-    public function render($viewPath, array $params = []);
+    public function render(string $viewPath, array $params = []): string;
 }

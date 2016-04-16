@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\i18n\interfaces;
 
 interface FileTranslator extends Translator
@@ -11,5 +13,5 @@ interface FileTranslator extends Translator
      * @param string $dir
      * @return FileTranslator
      */
-    public function setDir($dir);
+    public function setDir(string $dir): FileTranslator;
 }

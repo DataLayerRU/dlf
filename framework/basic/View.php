@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\basic;
 
 class View extends Object implements \pwf\basic\interfaces\View
@@ -12,12 +14,12 @@ class View extends Object implements \pwf\basic\interfaces\View
      * @param array $params
      * @return string
      */
-    public function render($viewPath, array $params = [])
+    public function render(string $viewPath, array $params = []): string
     {
         ob_start();
-        ob_implicit_flush(false);
+        ob_implicit_flush(0);
         extract($params, EXTR_OVERWRITE);
-        require(file_exists($viewPath) ? $viewPath : '../'.$viewPath);
+        require(file_exists($viewPath) ? $viewPath : '../' . $viewPath);
 
         return ob_get_clean();
     }

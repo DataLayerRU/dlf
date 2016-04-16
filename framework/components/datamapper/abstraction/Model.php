@@ -1,6 +1,10 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\datamapper\abstraction;
+
+use pwf\components\datamapper\interfaces\Model as IModel;
 
 abstract class Model implements \pwf\components\datamapper\interfaces\Model
 {
@@ -20,9 +24,9 @@ abstract class Model implements \pwf\components\datamapper\interfaces\Model
      * Set attributes
      *
      * @param array $attributes
-     * @return \pwf\components\datamapper\abstraction\Model
+     * @return IModel
      */
-    public function setAttributes(array $attributes)
+    public function setAttributes(array $attributes): IModel
     {
         $this->attributes = $attributes;
         return $this;
@@ -33,7 +37,7 @@ abstract class Model implements \pwf\components\datamapper\interfaces\Model
      *
      * @return array
      */
-    public function getAttributes()
+    public function getAttributes(): array
     {
         return $this->attributes;
     }
@@ -42,10 +46,10 @@ abstract class Model implements \pwf\components\datamapper\interfaces\Model
      * Set attribute
      *
      * @param string $name
-     * @param string $value
-     * @return \pwf\components\datamapper\abstraction\Model
+     * @param mixed $value
+     * @return IModel
      */
-    public function setAttribute($name, $value)
+    public function setAttribute(string $name, $value): IModel
     {
         $this->attributes[$name] = $value;
         return $this;
@@ -55,9 +59,9 @@ abstract class Model implements \pwf\components\datamapper\interfaces\Model
      * Get attribute by name
      *
      * @param string $name
-     * @return string
+     * @return mixed
      */
-    public function getAttribute($name)
+    public function getAttribute(string $name)
     {
         $result = null;
 
@@ -74,7 +78,7 @@ abstract class Model implements \pwf\components\datamapper\interfaces\Model
      * @param string $name
      * @return bool
      */
-    public function attributeExists($name)
+    public function attributeExists(string $name): bool
     {
         return isset($this->attributes[$name]);
     }
@@ -85,7 +89,7 @@ abstract class Model implements \pwf\components\datamapper\interfaces\Model
      * @param string $name
      * @return mixed
      */
-    public function __get($name)
+    public function __get(string $name)
     {
         if ($this->attributeExists($name)) {
             return $this->getAttribute($name);
@@ -99,7 +103,7 @@ abstract class Model implements \pwf\components\datamapper\interfaces\Model
      * @param string $name
      * @param mixed $value
      */
-    public function __set($name, $value)
+    public function __set(string $name, $value)
     {
         $this->setAttribute($name, $value);
     }
@@ -110,7 +114,7 @@ abstract class Model implements \pwf\components\datamapper\interfaces\Model
      * @param string $name
      * @return bool
      */
-    public function __isset($name)
+    public function __isset(string $name): bool
     {
         return $this->attributeExists($name);
     }
@@ -120,7 +124,7 @@ abstract class Model implements \pwf\components\datamapper\interfaces\Model
      *
      * @param string $name
      */
-    public function __unset($name)
+    public function __unset(string $name)
     {
         $this->setAttribute($name, null);
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\querybuilder\adapters\MySQL;
 
 class InsertBuilder extends \pwf\components\querybuilder\abstraction\InsertBuilder
@@ -11,7 +13,7 @@ class InsertBuilder extends \pwf\components\querybuilder\abstraction\InsertBuild
     /**
      * @inheritdoc
      */
-    protected function buildFields()
+    protected function buildFields(): string
     {
         $fields       = array_keys($this->getParams());
         $placeholders = $fields;
@@ -26,7 +28,7 @@ class InsertBuilder extends \pwf\components\querybuilder\abstraction\InsertBuild
     /**
      * @inheritdoc
      */
-    protected function buildTable()
+    protected function buildTable(): string
     {
         return $this->getTable();
     }

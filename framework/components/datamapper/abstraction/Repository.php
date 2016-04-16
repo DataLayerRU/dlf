@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\datamapper\abstraction;
 
 abstract class Repository implements \pwf\components\datamapper\interfaces\Repository
@@ -12,7 +14,7 @@ abstract class Repository implements \pwf\components\datamapper\interfaces\Repos
      * @param mixed $connection
      * @return \pwf\components\datamapper\abstraction\Repository
      */
-    public function setConnection($connection)
+    public function setConnection($connection): Repository
     {
         $this->connection = $connection;
         return $this;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\querybuilder\adapters\MySQL;
 
 class SelectBuilder extends \pwf\components\querybuilder\abstraction\SelectBuilder
@@ -21,20 +23,20 @@ class SelectBuilder extends \pwf\components\querybuilder\abstraction\SelectBuild
 
     public function __construct()
     {
-        self::$joinTypes[self::JOIN_LEFT | self::JOIN_OUTER]  = 'LEFT OUTER JOIN';
+        self::$joinTypes[self::JOIN_LEFT | self::JOIN_OUTER] = 'LEFT OUTER JOIN';
         self::$joinTypes[self::JOIN_RIGHT | self::JOIN_OUTER] = 'RIGHT OUTER JOIN';
     }
 
     /**
      * @inheritdoc
      */
-    protected function buildGroup()
+    protected function buildGroup(): string
     {
         $result = '';
 
         $group = $this->getGroup();
         if (count($group) > 0) {
-            $result.='GROUP BY '.implode(', ', $group);
+            $result .= 'GROUP BY ' . implode(', ', $group);
         }
 
         return $result;
@@ -43,7 +45,7 @@ class SelectBuilder extends \pwf\components\querybuilder\abstraction\SelectBuild
     /**
      * @inheritdoc
      */
-    protected function buildHaving()
+    protected function buildHaving(): string
     {
         $result = '';
 
@@ -52,7 +54,7 @@ class SelectBuilder extends \pwf\components\querybuilder\abstraction\SelectBuild
             ->generate();
 
         if ($having != '') {
-            $result.='HAVING '.$having;
+            $result .= 'HAVING ' . $having;
         }
 
         return $result;
@@ -61,7 +63,7 @@ class SelectBuilder extends \pwf\components\querybuilder\abstraction\SelectBuild
     /**
      * @inheritdoc
      */
-    protected function buildJoin()
+    protected function buildJoin(): string
     {
         $result = '';
 
@@ -69,9 +71,9 @@ class SelectBuilder extends \pwf\components\querybuilder\abstraction\SelectBuild
 
         foreach ($joins as $joinInfo) {
             if ($result != '') {
-                $result.=' ';
+                $result .= ' ';
             }
-            $result.=self::$joinTypes[$joinInfo['jointType']].' '.$joinInfo['table'].' ON '.$joinInfo['condition'];
+            $result .= self::$joinTypes[$joinInfo['jointType']] . ' ' . $joinInfo['table'] . ' ON ' . $joinInfo['condition'];
         }
 
         return $result;
@@ -80,16 +82,16 @@ class SelectBuilder extends \pwf\components\querybuilder\abstraction\SelectBuild
     /**
      * @inheritdoc
      */
-    protected function buildLimit()
+    protected function buildLimit(): string
     {
         $result = '';
 
-        $limit  = $this->getLimit();
-        $offset = $this->getOffset();
-        if (!empty($offset)) {
+        if (($offset = $this->getOffset()) > 0) {
             $result.=$offset.', ';
         }
-        $result.=$limit;
+        if (($limit = $this->getLimit()) > 0) {
+            $result.=$limit;
+        }
         if ($result != '') {
             $result = 'LIMIT '.$result;
         }
@@ -100,22 +102,22 @@ class SelectBuilder extends \pwf\components\querybuilder\abstraction\SelectBuild
     /**
      * @inheritdoc
      */
-    protected function buildSelectFields()
+    protected function buildSelectFields(): string
     {
-        $fields = (array) $this->getSelect();
+        $fields = (array)$this->getSelect();
         array_walk($fields,
-            function(&$value, $key) {
-            if (is_string($key)) {
-                $value = $key.' AS '.$value;
-            }
-        });
+            function (&$value, $key) {
+                if (is_string($key)) {
+                    $value = $key . ' AS ' . $value;
+                }
+            });
         return implode(',', $fields);
     }
 
     /**
      * @inheritdoc
      */
-    protected function buildTable()
+    protected function buildTable(): string
     {
         return $this->getTable();
     }
@@ -123,14 +125,14 @@ class SelectBuilder extends \pwf\components\querybuilder\abstraction\SelectBuild
     /**
      * @inheritdoc
      */
-    protected function buildUnion()
+    protected function buildUnion(): string
     {
         $result = '';
 
         $union = $this->getUnion();
 
         foreach ($union as $query) {
-            $result.=' UNION ('.$query->generate().')';
+            $result .= ' UNION (' . $query->generate() . ')';
         }
 
         return $result;
@@ -139,7 +141,7 @@ class SelectBuilder extends \pwf\components\querybuilder\abstraction\SelectBuild
     /**
      * @inheritdoc
      */
-    protected function buildWhere()
+    protected function buildWhere(): string
     {
         $result = '';
 
@@ -148,7 +150,7 @@ class SelectBuilder extends \pwf\components\querybuilder\abstraction\SelectBuild
             ->generate();
 
         if ($having != '') {
-            $result.='WHERE '.$having;
+            $result .= 'WHERE ' . $having;
         }
 
         return $result;
@@ -159,7 +161,7 @@ class SelectBuilder extends \pwf\components\querybuilder\abstraction\SelectBuild
      *
      * @return array
      */
-    public function getParams()
+    public function getParams(): array
     {
         return $this->getConditionBuilder()->getParams();
     }

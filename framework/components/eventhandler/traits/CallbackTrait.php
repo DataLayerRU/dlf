@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\eventhandler\traits;
 
 trait CallbackTrait
@@ -43,10 +45,10 @@ trait CallbackTrait
     public function prepareCallback($callback)
     {
         $result = $callback;
-        if (is_string($callback)) {
+        if (is_string($callback) && !empty($callback)) {
             $callbackInfo = $this->parseHandlerStr($callback);
-            $class        = new $callbackInfo['class'];
-            $result       = [$class, $callbackInfo['method']];
+            $class = new $callbackInfo['class'];
+            $result = [$class, $callbackInfo['method']];
         } elseif (!is_callable($callback)) {
             throw new \pwf\exception\HttpNotFoundException();
         }
@@ -59,13 +61,13 @@ trait CallbackTrait
      * @param string $handler
      * @return array
      */
-    protected function parseHandlerStr($handler)
+    protected function parseHandlerStr(string $handler): array
     {
         $result = [];
 
         $parts = explode('::', $handler);
 
-        $result['class']  = isset($parts[0]) ? $parts[0] : null;
+        $result['class'] = isset($parts[0]) ? $parts[0] : null;
         $result['method'] = isset($parts[1]) ? $parts[1] : null;
 
         return $result;

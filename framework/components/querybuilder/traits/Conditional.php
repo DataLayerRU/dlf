@@ -1,13 +1,19 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\querybuilder\traits;
+
+use pwf\components\querybuilder\interfaces\{
+    Conditional as IConditional, ConditionBuilder as IConditionBuilder
+};
 
 trait Conditional
 {
     /**
      * Condition builder
      *
-     * @var \pwf\components\querybuilder\interfaces\ConditionBuilder
+     * @var IConditionBuilder
      */
     private $conditionBuilder;
 
@@ -21,10 +27,10 @@ trait Conditional
     /**
      * Set condition builder
      *
-     * @param \pwf\components\querybuilder\interfaces\ConditionBuilder $builder
-     * @return $this
+     * @param IConditionBuilder $builder
+     * @return IConditional
      */
-    public function setConditionBuilder(\pwf\components\querybuilder\interfaces\ConditionBuilder $builder)
+    public function setConditionBuilder(IConditionBuilder $builder): IConditional
     {
         $this->conditionBuilder = $builder;
         return $this;
@@ -33,9 +39,9 @@ trait Conditional
     /**
      * Get condition builder
      *
-     * @return \pwf\components\querybuilder\interfaces\ConditionBuilder
+     * @return IConditionBuilder
      */
-    public function getConditionBuilder()
+    public function getConditionBuilder(): IConditionBuilder
     {
         return $this->conditionBuilder;
     }
@@ -44,11 +50,11 @@ trait Conditional
      * Set where condition
      *
      * @param array $condition
-     * @return \pwf\components\querybuilder\interfaces\ConditionBuilder
+     * @return IConditional
      */
-    public function where(array $condition)
+    public function where(array $condition): IConditional
     {
-        $this->where = array_merge($this->where, (array) $condition);
+        $this->where = array_merge($this->where, (array)$condition);
         return $this;
     }
 
@@ -57,7 +63,7 @@ trait Conditional
      *
      * @return array
      */
-    public function getWhere()
+    public function getWhere(): array
     {
         return $this->where;
     }

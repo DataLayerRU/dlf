@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace pwf\basic;
 
 class Object
@@ -12,7 +14,7 @@ class Object
      * @param mixed $value
      * @throws \Exception
      */
-    public function __set($name, $value)
+    public function __set(string $name, $value)
     {
         $methodName = 'set'.ucfirst($name);
         if (method_exists($this, $methodName)) {
@@ -29,7 +31,7 @@ class Object
      * @return mixed
      * @throws \Exception
      */
-    public function __get($name)
+    public function __get(string $name)
     {
         $methodName = 'get'.ucfirst($name);
         if (method_exists($this, $methodName)) {

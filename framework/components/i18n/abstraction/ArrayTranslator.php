@@ -1,8 +1,12 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\i18n\abstraction;
 
-abstract class ArrayTranslator extends Translator implements \pwf\components\i18n\interfaces\ArrayTranslator
+use pwf\components\i18n\interfaces\ArrayTranslator as IArrayTranslator;
+
+abstract class ArrayTranslator extends Translator implements IArrayTranslator
 {
     /**
      * Values
@@ -15,9 +19,9 @@ abstract class ArrayTranslator extends Translator implements \pwf\components\i18
      * Set map [language=>[alias => message]]
      *
      * @param array $map
-     * @return ArrayTranslator
+     * @return IArrayTranslator
      */
-    public function setMap(array $map)
+    public function setMap(array $map): IArrayTranslator
     {
         $this->values = $map;
         return $this;
@@ -28,7 +32,7 @@ abstract class ArrayTranslator extends Translator implements \pwf\components\i18
      *
      * @return array
      */
-    public function getMap()
+    public function getMap(): array
     {
         return $this->values;
     }

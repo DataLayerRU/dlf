@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\querybuilder\adapters\SQL;
 
 class ConditionBuilder extends \pwf\components\querybuilder\abstraction\ConditionBuilder
@@ -12,8 +14,9 @@ class ConditionBuilder extends \pwf\components\querybuilder\abstraction\Conditio
      *
      * @param array $conditions
      * @return string
+     * @throws \Exception
      */
-    protected function prepareArray(array $conditions)
+    protected function prepareArray(array $conditions): string
     {
         $result = '';
 
@@ -39,7 +42,14 @@ class ConditionBuilder extends \pwf\components\querybuilder\abstraction\Conditio
         return $result;
     }
 
-    protected function prepareConditions(array $conditions)
+    /**
+     * Prepare conditions
+     *
+     * @param array $conditions
+     * @return string
+     * @throws \Exception
+     */
+    protected function prepareConditions(array $conditions): string
     {
         $result = '';
 
@@ -61,7 +71,7 @@ class ConditionBuilder extends \pwf\components\querybuilder\abstraction\Conditio
     /**
      * @inheritdoc
      */
-    public function generate()
+    public function generate(): string
     {
         return $this->prepareConditions($this->getCondition());
     }

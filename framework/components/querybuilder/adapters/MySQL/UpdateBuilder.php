@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\querybuilder\adapters\MySQL;
 
 class UpdateBuilder extends \pwf\components\querybuilder\abstraction\UpdateBuilder
@@ -14,7 +16,7 @@ class UpdateBuilder extends \pwf\components\querybuilder\abstraction\UpdateBuild
     /**
      * @inheritdoc
      */
-    protected function buildWhere()
+    protected function buildWhere(): string
     {
         $result = '';
 
@@ -23,7 +25,7 @@ class UpdateBuilder extends \pwf\components\querybuilder\abstraction\UpdateBuild
             ->generate();
 
         if ($where != '') {
-            $result.='WHERE '.$where;
+            $result .= 'WHERE ' . $where;
         }
 
         return $result;
@@ -32,16 +34,16 @@ class UpdateBuilder extends \pwf\components\querybuilder\abstraction\UpdateBuild
     /**
      * @inheritdoc
      */
-    protected function buildFields()
+    protected function buildFields(): string
     {
         $result = '';
 
         $fields = array_keys($this->getParams());
         foreach ($fields as $value) {
             if ($result != '') {
-                $result.=', ';
+                $result .= ', ';
             }
-            $result.=$value.'=:'.$value;
+            $result .= $value . '=:' . $value;
         }
 
         return $result;
@@ -50,7 +52,7 @@ class UpdateBuilder extends \pwf\components\querybuilder\abstraction\UpdateBuild
     /**
      * @inheritdoc
      */
-    protected function buildTable()
+    protected function buildTable(): string
     {
         return $this->getTable();
     }
@@ -58,7 +60,7 @@ class UpdateBuilder extends \pwf\components\querybuilder\abstraction\UpdateBuild
     /**
      * @inheritdoc
      */
-    public function getParams()
+    public function getParams(): array
     {
         return array_merge($this->parentGetParams(),
             $this->getConditionBuilder()->getParams());

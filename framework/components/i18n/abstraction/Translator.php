@@ -1,8 +1,12 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\i18n\abstraction;
 
-abstract class Translator implements \pwf\components\i18n\interfaces\Translator
+use pwf\components\i18n\interfaces\Translator as ITranslator;
+
+abstract class Translator implements ITranslator
 {
     /**
      * Current system language
@@ -15,9 +19,9 @@ abstract class Translator implements \pwf\components\i18n\interfaces\Translator
      * Set current language
      *
      * @param string $lang
-     * @return \pwf\components\i18n\abstraction\Translator
+     * @return ITranslator
      */
-    public function setLanguage($lang)
+    public function setLanguage(string $lang): ITranslator
     {
         $this->currentLanguage = $lang;
         return $this;
@@ -26,9 +30,9 @@ abstract class Translator implements \pwf\components\i18n\interfaces\Translator
     /**
      * Get current language
      *
-     * @return \pwf\components\i18n\abstraction\Translator
+     * @return string
      */
-    public function getLanguage()
+    public function getLanguage(): string
     {
         return $this->currentLanguage;
     }

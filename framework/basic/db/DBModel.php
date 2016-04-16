@@ -1,25 +1,35 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\basic\db;
 
-abstract class DBModel extends \pwf\components\activerecord\Model implements \pwf\components\querybuilder\interfaces\SelectBuilder,
-    \pwf\components\querybuilder\interfaces\InsertBuilder, \pwf\components\querybuilder\interfaces\UpdateBuilder,
-    \pwf\components\querybuilder\interfaces\DeleteBuilder
+use pwf\components\datamapper\interfaces\Getter;
+use pwf\components\dbconnection\interfaces\Connection;
+use \pwf\components\querybuilder\traits\{
+    Conditional, Parameterized, SelectBuilder
+};
+use pwf\components\querybuilder\interfaces\{
+    SelectBuilder as ISelectBuilder, InsertBuilder, UpdateBuilder
+};
+
+abstract class DBModel extends \pwf\components\activerecord\Model implements ISelectBuilder,
+    InsertBuilder, UpdateBuilder
 {
 
-    use \pwf\components\querybuilder\traits\Conditional,
-        \pwf\components\querybuilder\traits\Parameterized,
-        \pwf\components\querybuilder\traits\SelectBuilder {
-        \pwf\components\querybuilder\traits\Parameterized::getParams as parentGetParams;
+    use Conditional,
+        Parameterized,
+        SelectBuilder {
+        Parameterized::getParams as parentGetParams;
     }
 
     /**
-     * COnstruct
-     * 
+     * Construct
+     *
      * @param \pwf\components\dbconnection\interfaces\Connection $connection
      * @param array $attributes
      */
-    public function __construct($connection, array $attributes = array())
+    public function __construct(Connection $connection, array $attributes = array())
     {
         parent::__construct($connection, $attributes);
 
@@ -27,91 +37,93 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
     }
 
     /**
-     * 
-     * @return type
+     * Count records
+     *
+     * @return int
      */
-    public function count()
+    public function count(): int
     {
-        return (int) $this->getConnection()
-                ->query(QueryBuilder::select()
-                    ->select(['COUNT('.$this->getPK().') AS CNT'])
-                    ->table($this->getTable())
-                    ->setConditionBuilder($this->getConditionBuilder())
-                    ->where($this->getWhere())
-                    ->generate(), $this->getParams())
-                ->fetchColumn();
+        return (int)$this->getConnection()
+            ->query(QueryBuilder::select()
+                ->select(['COUNT(' . $this->getPK() . ') AS CNT'])
+                ->table($this->getTable())
+                ->setConditionBuilder($this->getConditionBuilder())
+                ->where($this->getWhere())
+                ->generate(), $this->getParams())
+            ->fetchColumn();
     }
 
     /**
      * @inheritdoc
      */
-    public function delete()
+    public function delete(): bool
     {
         return $this->getConnection()->exec(QueryBuilder::delete()
-                    ->table($this->getTable())
-                    ->setConditionBuilder($this->getConditionBuilder())
-                    ->where($this->getWhere())
-                    ->generate(), $this->getParams());
+            ->table($this->getTable())
+            ->setConditionBuilder($this->getConditionBuilder())
+            ->where($this->getWhere())
+            ->generate(), $this->getParams())->rowCount() > 0;
     }
 
     /**
      * @inheritdoc
      */
-    public function getAll()
+    public function getAll(): array
     {
         return $this->getConnection()->query(QueryBuilder::select()
-                    ->table($this->getTable())
-                    ->setConditionBuilder($this->getConditionBuilder())
-                    ->where($this->getWhere())
-                    ->limit($this->getLimit())
-                    ->offset($this->getOffset())
-                    ->generate(), $this->getParams());
+            ->table($this->getTable())
+            ->setConditionBuilder($this->getConditionBuilder())
+            ->where($this->getWhere())
+            ->limit($this->getLimit())
+            ->offset($this->getOffset())
+            ->generate(), $this->getParams())->fetchAll(\PDO::FETCH_ASSOC) ?: [];
     }
 
     /**
      * @inheritdoc
      */
-    public function getOne()
+    public function getOne(): array
     {
         return $this->getConnection()->query(
-                QueryBuilder::select()
-                    ->table($this->getTable())
-                    ->setConditionBuilder($this->getConditionBuilder())
-                    ->where($this->getWhere())
-                    ->limit(1)
-                    ->generate(), $this->getParams());
+            QueryBuilder::select()
+                ->table($this->getTable())
+                ->setConditionBuilder($this->getConditionBuilder())
+                ->where($this->getWhere())
+                ->limit(1)
+                ->generate(), $this->getParams())->fetchAll(\PDO::FETCH_ASSOC) ?: [];
     }
 
     /**
      * @inheritdoc
      */
-    public function save()
+    public function save(): bool
     {
         $result = null;
-        $id     = $this->getId();
+        $id = $this->getId();
+
         if (!empty($id)) {
             $result = $this->getConnection()->exec(QueryBuilder::update()
-                    ->table($this->getTable())
-                    ->setConditionBuilder($this->getConditionBuilder())
-                    ->where([
-                        $this->getPK() => $this->getId()
-                    ])
-                    ->setParams($this->getAttributes())
-                    ->generate(), $this->getParams());
+                ->table($this->getTable())
+                ->setConditionBuilder($this->getConditionBuilder())
+                ->where([
+                    $this->getPK() => $this->getId()
+                ])
+                ->setParams($this->getAttributes())
+                ->generate(), $this->getParams());
         } else {
             $result = $this->getConnection()->exec(QueryBuilder::insert()
-                    ->table($this->getTable())
-                    ->setParams($this->getAttributes())
-                    ->generate(), $this->getParams());
+                ->table($this->getTable())
+                ->setParams($this->getAttributes())
+                ->generate(), $this->getParams());
         }
-        return $result;
+        return $result->rowCount() > 0;
     }
 
     /**
      * @inheritdoc
-     * @throws Exception
+     * @throws \Exception
      */
-    public function generate()
+    public function generate(): string
     {
         throw new \Exception('Not implemented');
     }
@@ -119,7 +131,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
     /**
      * @inheritdoc
      */
-    public function getParams()
+    public function getParams(): array
     {
         return array_merge($this->parentGetParams(),
             $this->getConditionBuilder()->getParams());

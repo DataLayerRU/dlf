@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\i18n\interfaces;
 
 interface DBTranslator extends Translator
@@ -11,14 +13,15 @@ interface DBTranslator extends Translator
      * @param \pwf\components\dbconnection\interfaces\Connection $connection
      * @return DBTranslator
      */
-    public function setConnection(\pwf\components\dbconnection\interfaces\Connection $connection);
+    public function setConnection(\pwf\components\dbconnection\interfaces\Connection $connection): DBTranslator;
 
     /**
      * Set query builder
      *
      * @param \pwf\components\querybuilder\interfaces\SelectBuilder $builder
+     * @return DBTranslator
      */
-    public function setQueryBuilder(\pwf\components\querybuilder\interfaces\SelectBuilder $builder);
+    public function setQueryBuilder(\pwf\components\querybuilder\interfaces\SelectBuilder $builder): DBTranslator;
 
     /**
      * Set table name
@@ -26,7 +29,7 @@ interface DBTranslator extends Translator
      * @param string $tableName
      * @return DBTranslator
      */
-    public function setTableName($tableName);
+    public function setTableName(string $tableName): DBTranslator;
 
     /**
      * Set alias field name
@@ -34,7 +37,7 @@ interface DBTranslator extends Translator
      * @param string $fieldName
      * @return DBTranslator
      */
-    public function setAliasFieldName($fieldName);
+    public function setAliasFieldName(string $fieldName): DBTranslator;
 
     /**
      * Set result field name
@@ -42,7 +45,7 @@ interface DBTranslator extends Translator
      * @param string $fieldName
      * @return DBTranslator
      */
-    public function setResultFieldName($fieldName);
+    public function setResultFieldName(string $fieldName): DBTranslator;
 
     /**
      * Set language field name
@@ -50,5 +53,5 @@ interface DBTranslator extends Translator
      * @param string $fieldName
      * @return DBTranslator
      */
-    public function setLanguageFieldName($fieldName);
+    public function setLanguageFieldName(string $fieldName): DBTranslator;
 }

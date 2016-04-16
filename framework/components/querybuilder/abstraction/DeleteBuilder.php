@@ -1,8 +1,13 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\querybuilder\abstraction;
 
-abstract class DeleteBuilder implements \pwf\components\querybuilder\interfaces\DeleteBuilder
+use pwf\components\querybuilder\interfaces\Conditional;
+use pwf\components\querybuilder\interfaces\QueryBuilder;
+
+abstract class DeleteBuilder implements Conditional, QueryBuilder
 {
 
     /**
@@ -10,31 +15,31 @@ abstract class DeleteBuilder implements \pwf\components\querybuilder\interfaces\
      *
      * @return string
      */
-    protected abstract function buildTable();
+    protected abstract function buildTable(): string;
 
     /**
      * Build where part
      *
      * @return string
      */
-    protected abstract function buildWhere();
+    protected abstract function buildWhere(): string;
 
     /**
      * Generate query
      *
      * @return string
      */
-    public function generate()
+    public function generate(): string
     {
         $result = '';
 
         $table = $this->buildTable();
         $where = $this->buildWhere();
 
-        $result.='DELETE FROM '.$table;
+        $result .= 'DELETE FROM ' . $table;
 
         if ($where != '') {
-            $result.=' '.$where;
+            $result .= ' ' . $where;
         }
 
         return $result;

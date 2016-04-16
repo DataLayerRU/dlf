@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\observer\interfaces;
 
 interface Observer
@@ -9,6 +11,7 @@ interface Observer
      * Handle notification
      *
      * @param \pwf\components\observer\interfaces\Subject $subject
+     * @return Observer
      */
-    public function update(Subject $subject);
+    public function update(Subject $subject): Observer;
 }

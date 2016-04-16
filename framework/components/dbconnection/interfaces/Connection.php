@@ -1,15 +1,42 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\dbconnection\interfaces;
 
 interface Connection
 {
 
-    public function connect(array $params = []);
+    /**
+     * Connect
+     *
+     * @param array $params
+     * @return Connection
+     */
+    public function connect(array $params = []): Connection;
 
-    public function disconnect();
+    /**
+     * Disconnect
+     *
+     * @return Connection
+     */
+    public function disconnect(): Connection;
 
-    public function query($query, array $params = []);
+    /**
+     * Select query
+     *
+     * @param $query
+     * @param array $params
+     * @return \PDOStatement
+     */
+    public function query(string $query, array $params = []): \PDOStatement;
 
-    public function exec($query, array $params = []);
+    /**
+     * Execute query
+     *
+     * @param $query
+     * @param array $params
+     * @return \PDOStatement
+     */
+    public function exec(string $query, array $params = []): \PDOStatement;
 }

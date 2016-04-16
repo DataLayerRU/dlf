@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\basic\controller;
 
 use pwf\basic\View;
@@ -29,10 +31,10 @@ class WebController extends Controller
     /**
      * Set view
      *
-     * @param pwf\basic\View $view
+     * @param View $view
      * @return WebController
      */
-    public function setView(View $view)
+    public function setView(View $view): WebController
     {
         $this->view = $view;
         return $this;
@@ -41,9 +43,9 @@ class WebController extends Controller
     /**
      * Get view object
      *
-     * @return pwf\basic\View
+     * @return View
      */
-    public function getView()
+    public function getView(): View
     {
         return $this->view;
     }
@@ -55,7 +57,7 @@ class WebController extends Controller
      * @param array $params
      * @return string
      */
-    protected function render($viewPath, array $params = [])
+    protected function render(string $viewPath, array $params = []): string
     {
         if (!isset($params['title'])) {
             $params['title'] = $this->title;

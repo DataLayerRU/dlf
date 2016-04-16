@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\querybuilder\interfaces;
 
 /**
  * @method SelectBuilder table(string $table) Set table name
  */
-interface SelectBuilder extends QueryBuilder
+interface SelectBuilder extends QueryBuilder, Conditional
 {
     /**
      * Left join
@@ -38,15 +40,7 @@ interface SelectBuilder extends QueryBuilder
      * @param array $fields
      * @return SelectBuilder
      */
-    public function select(array $fields);
-
-    /**
-     * Add condition
-     *
-     * @param array $condition
-     * @return SelectBuilder
-     */
-    public function where(array $condition);
+    public function select(array $fields): SelectBuilder;
 
     /**
      * Set limit
@@ -54,7 +48,7 @@ interface SelectBuilder extends QueryBuilder
      * @param int $limit
      * @return SelectBuilder
      */
-    public function limit($limit);
+    public function limit(int $limit): SelectBuilder;
 
     /**
      * Set offset
@@ -62,7 +56,7 @@ interface SelectBuilder extends QueryBuilder
      * @param int $offset
      * @return SelectBuilder
      */
-    public function offset($offset);
+    public function offset(int $offset): SelectBuilder;
 
     /**
      * Set grouping
@@ -70,15 +64,15 @@ interface SelectBuilder extends QueryBuilder
      * @param array $group
      * @return SelectBuilder
      */
-    public function group($group);
+    public function group(array $group): SelectBuilder;
 
     /**
      * Add having condition
      *
-     * @param array $condition
+     * @param mixed $condition
      * @return SelectBuilder
      */
-    public function having($condition);
+    public function having($condition): SelectBuilder;
 
     /**
      * Join table
@@ -88,7 +82,7 @@ interface SelectBuilder extends QueryBuilder
      * @param int $joinType
      * @return SelectBuilder
      */
-    public function join($table, $condition, $joinType = self::JOIN_LEFT);
+    public function join(string $table, $condition, int $joinType = self::JOIN_LEFT): SelectBuilder;
 
     /**
      * Union
@@ -96,5 +90,5 @@ interface SelectBuilder extends QueryBuilder
      * @param \pwf\components\querybuilder\interfaces\QueryBuilder $query
      * @return SelectBuilder
      */
-    public function union(QueryBuilder $query);
+    public function union(QueryBuilder $query): SelectBuilder;
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\components\datapaginator\interfaces;
 
 interface Paginator
@@ -9,22 +11,22 @@ interface Paginator
      * Set current page number
      *
      * @param int $page
-     * @return $this
+     * @return Paginator
      */
-    public function setPage($page);
+    public function setPage(int $page): Paginator;
 
     /**
      * Set items per page
      *
      * @param int $limit
-     * @return $this
+     * @return Paginator
      */
-    public function setLimit($limit);
+    public function setLimit(int $limit): Paginator;
 
     /**
      * Get data
      *
      * @return array
      */
-    public function getData();
+    public function getData(): array;
 }

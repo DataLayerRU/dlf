@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace pwf\helpers;
 
 class SystemHelpers
@@ -30,12 +32,13 @@ class SystemHelpers
      * @param \Closure $callback
      * @return mixed
      */
-    public static function functionDI(\Closure $function,
-                                      \Closure $callback = null)
-    {
-        $reflection     = new \ReflectionFunction($function);
+    public static function functionDI(
+        \Closure $function,
+        \Closure $callback = null
+    ) {
+        $reflection = new \ReflectionFunction($function);
         $functionParams = $reflection->getParameters();
-        $inputParams    = [];
+        $inputParams = [];
         if ($callback !== null) {
             foreach ($functionParams as $functionParam) {
                 $param = $callback($functionParam->name);
@@ -56,9 +59,9 @@ class SystemHelpers
      */
     public static function methodDI(array $objectInfo, \Closure $callback = null)
     {
-        $reflection     = new \ReflectionObject($objectInfo[0]);
-        $methods        = $reflection->getMethods();
-        $inputParams    = [];
+        $reflection = new \ReflectionObject($objectInfo[0]);
+        $methods = $reflection->getMethods();
+        $inputParams = [];
         $functionParams = [];
         foreach ($methods as $method) {
             if ($objectInfo[1] == $method->name) {
@@ -76,15 +79,16 @@ class SystemHelpers
     }
 
     /**
-     * Create object byclass name and arguments for constructor
+     * Create object by class name and arguments for constructor
      *
      * @param string $className
      * @param array $constructorArguments
      * @return object
      */
-    public static function constructObject($className,
-                                           array $constructorArguments = [])
-    {
+    public static function constructObject(
+        $className,
+        array $constructorArguments = []
+    ) {
         $ref = new \ReflectionClass($className);
         return $ref->newInstanceArgs($constructorArguments);
     }
@@ -96,11 +100,11 @@ class SystemHelpers
      * @param array $params
      * @return \pwf\helpers\className
      */
-    public static function createObject($className, array $params = [])
+    public static function createObject(string $className, array $params = [])
     {
         $result = new $className;
         foreach ($params as $key => $val) {
-            $methodName = 'set'.ucfirst($key);
+            $methodName = 'set' . ucfirst($key);
             if (method_exists($result, $methodName)) {
                 $result->$methodName($val);
             }
