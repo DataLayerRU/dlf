@@ -1,14 +1,15 @@
 {
-  "name": "professionalweb/pwf",
+  "name": "professionalweb/pwf7",
   "version": "0.4",
-  "description": "Professional web framework",
+  "description": "Professional web framework for PHP 7",
   "homepage": "http://pwf.web-development.pw/",
   "keywords": [
     "pwf",
     "professional web",
     "web-development.pw",
     "mvc",
-    "composer"
+    "composer",
+    "php7"
   ],
   "minimum-stability": "stable",
   "type": "library",
@@ -40,6 +41,12 @@
   "autoload": {
     "psr-4": {
       "pwf\\": "framework/"
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-php7": "dev-php7",
+      "master-php7": "master-php7"
     }
   }
 }
