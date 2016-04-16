@@ -17,7 +17,7 @@ class View extends Object implements \pwf\basic\interfaces\View
     public function render(string $viewPath, array $params = []): string
     {
         ob_start();
-        ob_implicit_flush(false);
+        ob_implicit_flush(0);
         extract($params, EXTR_OVERWRITE);
         require(file_exists($viewPath) ? $viewPath : '../' . $viewPath);
 
