@@ -1,45 +1,45 @@
 {
-    "name": "professionalweb/pwf",
-    "version": "0.4",
-    "description": "Professional web framework",
-    "homepage": "http://pwf.web-development.pw/",
-    "keywords": [
-        "pwf",
-        "professional web",
-        "web-development.pw",
-        "mvc",
-        "composer"
-    ],
-    "minimum-stability": "stable",
-    "type": "library",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Zinchenko Sergey",
-            "email": "zinchenko@web-development.pw"
-        }
-    ],
-    "support": {
-        "email": "info@web-development.pw",
-        "issues": "https://github.com/SergioMadness/pwf/issues",
-        "wiki": "https://github.com/SergioMadness/pwf/wiki",
-        "source": "https://github.com/SergioMadness/pwf/releases"
-    },
-    "require": {
-        "php": ">=5.4.0",
-        "monolog/monolog": ">=1.18,<2.0"
-    },
-    "require-dev": {
-        "codeception/codeception": "*",
-        "codeclimate/php-test-reporter": "*",
-        "satooshi/php-coveralls": ">=1.0"
-    },
-    "config": {
-        "process-timeout": 1800
-    },
-    "autoload": {
-        "psr-4": {
-            "pwf\\": "framework/"
-        }
+  "name": "professionalweb/pwf",
+  "version": "0.4",
+  "description": "Professional web framework",
+  "homepage": "http://pwf.web-development.pw/",
+  "keywords": [
+    "pwf",
+    "professional web",
+    "web-development.pw",
+    "mvc",
+    "composer"
+  ],
+  "minimum-stability": "stable",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Zinchenko Sergey",
+      "email": "zinchenko@web-development.pw"
     }
+  ],
+  "support": {
+    "email": "info@web-development.pw",
+    "issues": "https://github.com/SergioMadness/pwf/issues",
+    "wiki": "https://github.com/SergioMadness/pwf/wiki",
+    "source": "https://github.com/SergioMadness/pwf/releases"
+  },
+  "require": {
+    "php": ">=7.0",
+    "monolog/monolog": ">=1.18,<2.0"
+  },
+  "require-dev": {
+    "codeception/codeception": "*",
+    "codeclimate/php-test-reporter": "*",
+    "satooshi/php-coveralls": ">=1.0"
+  },
+  "config": {
+    "process-timeout": 1800
+  },
+  "autoload": {
+    "psr-4": {
+      "pwf\\": "framework/"
+    }
+  }
 }

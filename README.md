@@ -1,12 +1,12 @@
-PWF - framework for proffessional web development
+PWF - framework for proffessional web development on PHP7
 ====
 
 [http://pwf.web-development.pw/](http://pwf.web-development.pw/)
 
 [![Latest Stable Version](https://poser.pugx.org/professionalweb/pwf/v/stable)](https://packagist.org/packages/professionalweb/pwf)
-[![Build Status](https://travis-ci.org/SergioMadness/framework.svg?branch=dev)](https://travis-ci.org/SergioMadness/framework)
+[![Build Status](https://travis-ci.org/SergioMadness/framework.svg?branch=dev-php7)](https://travis-ci.org/SergioMadness/framework)
 [![Code Climate](https://codeclimate.com/github/SergioMadness/pwf/badges/gpa.svg)](https://codeclimate.com/github/SergioMadness/pwf)
-[![Coverage Status](https://coveralls.io/repos/github/SergioMadness/framework/badge.svg?branch=dev)](https://coveralls.io/github/SergioMadness/framework?branch=dev)
+[![Coverage Status](https://coveralls.io/repos/github/SergioMadness/framework/badge.svg?branch=dev-php7)](https://coveralls.io/github/SergioMadness/framework?branch=dev-php7)
 [![Dependency Status](https://www.versioneye.com/user/projects/56b53a8e0a0ff5003b975815/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56b53a8e0a0ff5003b975815)
 [![License](https://poser.pugx.org/professionalweb/pwf/license)](https://packagist.org/packages/professionalweb/pwf)
 [![Latest Unstable Version](https://poser.pugx.org/professionalweb/pwf/v/unstable)](https://packagist.org/packages/professionalweb/pwf)
@@ -39,7 +39,7 @@ web/                 web/net objects
 
 Requirements
 ------------
- - PHP 5.4+
+ - PHP 7.0+
 
 Dependencies
 ------------
