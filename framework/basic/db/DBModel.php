@@ -32,13 +32,15 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
      */
     public function count()
     {
+        $builder = QueryBuilder::select()
+            ->select(['COUNT('.($this->getPK()? : '*').') AS CNT'])
+            ->table($this->getTable())
+            ->setConditionBuilder($this->getConditionBuilder())
+            ->where($this->getWhere());
         return (int) $this->getConnection()
-                ->query(QueryBuilder::select()
-                    ->select(['COUNT('.$this->getPK().') AS CNT'])
-                    ->table($this->getTable())
-                    ->setConditionBuilder($this->getConditionBuilder())
-                    ->where($this->getWhere())
-                    ->generate(), $this->getParams())
+                ->query(
+                    $builder->generate(),
+                    array_merge($builder->getParams(), $this->getParams()))
                 ->fetchColumn();
     }
 
@@ -47,11 +49,13 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
      */
     public function delete()
     {
-        return $this->getConnection()->exec(QueryBuilder::delete()
-                    ->table($this->getTable())
-                    ->setConditionBuilder($this->getConditionBuilder())
-                    ->where($this->getWhere())
-                    ->generate(), $this->getParams());
+        $builder = QueryBuilder::delete()
+            ->table($this->getTable())
+            ->setConditionBuilder($this->getConditionBuilder())
+            ->where($this->getWhere());
+        return $this->getConnection()->exec(
+                $builder->generate(),
+                array_merge($builder->getParams(), $this->getParams()));
     }
 
     /**
@@ -59,13 +63,16 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
      */
     public function getAll()
     {
-        return $this->getConnection()->query(QueryBuilder::select()
-                    ->table($this->getTable())
-                    ->setConditionBuilder($this->getConditionBuilder())
-                    ->where($this->getWhere())
-                    ->limit($this->getLimit())
-                    ->offset($this->getOffset())
-                    ->generate(), $this->getParams());
+        $builder = QueryBuilder::select()
+            ->table($this->getTable())
+            ->setConditionBuilder($this->getConditionBuilder())
+            ->where($this->getWhere())
+            ->limit($this->getLimit())
+            ->offset($this->getOffset());
+        return $this->getConnection()->query(
+                    $builder->generate(),
+                    array_merge($builder->getParams(), $this->getParams()))
+                ->fetchAll(\PDO::FETCH_ASSOC) ? : [];
     }
 
     /**
@@ -73,13 +80,16 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
      */
     public function getOne()
     {
+        $builder = QueryBuilder::select()
+            ->table($this->getTable())
+            ->setConditionBuilder($this->getConditionBuilder())
+            ->where($this->getWhere())
+            ->limit(1);
         return $this->getConnection()->query(
-                QueryBuilder::select()
-                    ->table($this->getTable())
-                    ->setConditionBuilder($this->getConditionBuilder())
-                    ->where($this->getWhere())
-                    ->limit(1)
-                    ->generate(), $this->getParams());
+                    $builder
+                    ->generate(),
+                    array_merge($builder->getParams(), $this->getParams()))
+                ->fetch(\PDO::FETCH_ASSOC) ? : [];
     }
 
     /**
@@ -87,22 +97,26 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
      */
     public function save()
     {
-        $result = null;
-        $id     = $this->getId();
+        $result     = null;
+        $id         = $this->getId();
+        $attributes = $this->getAttributes();
+        unset($attributes[$this->getPK()]);
         if (!empty($id)) {
-            $result = $this->getConnection()->exec(QueryBuilder::update()
-                    ->table($this->getTable())
-                    ->setConditionBuilder($this->getConditionBuilder())
-                    ->where([
-                        $this->getPK() => $this->getId()
-                    ])
-                    ->setParams($this->getAttributes())
-                    ->generate(), $this->getParams());
+            $builder = QueryBuilder::update()
+                ->table($this->getTable())
+                ->setConditionBuilder($this->getConditionBuilder())
+                ->where([
+                    $this->getPK() => $this->getId()
+                ])
+                ->setParams($attributes);
+
+            $result = $this->getConnection()->exec($builder->generate(),
+                array_merge($builder->getParams(), $this->getParams()));
         } else {
             $result = $this->getConnection()->exec(QueryBuilder::insert()
                     ->table($this->getTable())
-                    ->setParams($this->getAttributes())
-                    ->generate(), $this->getParams());
+                    ->setParams($attributes)
+                    ->generate(), $builder->getParams());
         }
         return $result;
     }

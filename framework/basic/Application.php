@@ -148,7 +148,8 @@ class Application extends Object implements \pwf\basic\interfaces\Application
 
             $this->response->setBody(\pwf\helpers\SystemHelpers::call($callback,
                     function($paramName) {
-                    if (($component = $this->getComponent($paramName)) !== null) {
+                    if ($this->componentExists($paramName) && ($component = $this->getComponent($paramName))
+                        !== null) {
                         return $component;
                     }
                     if (isset($_GET[$paramName])) {
@@ -196,6 +197,18 @@ class Application extends Object implements \pwf\basic\interfaces\Application
     }
 
     /**
+     * Check is component exists
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function componentExists($name)
+    {
+        return isset($this->componentCache[$name]) || $this->getComponentConfig($name)
+            !== null;
+    }
+
+    /**
      * Get component by name
      *
      * @param string $name
@@ -228,12 +241,11 @@ class Application extends Object implements \pwf\basic\interfaces\Application
             $result = new $config['class'];
             if (!($result instanceof \pwf\basic\interfaces\Component)) {
                 throw new \Exception('Component must implement \'Component\' interface',
-                    500);
+                500);
             }
             $result->loadConfiguration($config);
         } else {
-            throw new \Exception('Component must have \'class\' param',
-                500);
+            throw new \Exception('Component must have \'class\' param', 500);
         }
 
         return $result;
@@ -281,7 +293,8 @@ class Application extends Object implements \pwf\basic\interfaces\Application
 
     public function __get($name)
     {
-        if (($component = $this->getComponent($name)) !== null) {
+        if ($this->componentExists($name) && ($component = $this->getComponent($name))
+            !== null) {
             return $component;
         }
 
