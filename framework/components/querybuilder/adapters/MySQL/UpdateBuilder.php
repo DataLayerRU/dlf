@@ -36,7 +36,7 @@ class UpdateBuilder extends \pwf\components\querybuilder\abstraction\UpdateBuild
     {
         $result = '';
 
-        $fields = array_keys($this->getParams());
+        $fields = array_keys($this->parentGetParams());
         foreach ($fields as $value) {
             if ($result != '') {
                 $result.=', ';
@@ -58,9 +58,9 @@ class UpdateBuilder extends \pwf\components\querybuilder\abstraction\UpdateBuild
     /**
      * @inheritdoc
      */
-//    public function getParams()
-//    {
-//        return array_merge($this->parentGetParams(),
-//            $this->getConditionBuilder()->getParams());
-//    }
+    public function getParams()
+    {
+        return array_merge($this->parentGetParams(),
+            $this->getConditionBuilder()->getParams());
+    }
 }

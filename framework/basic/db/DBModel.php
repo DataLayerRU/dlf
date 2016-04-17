@@ -112,10 +112,11 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
             $result = $this->getConnection()->exec($builder->generate(),
                 array_merge($builder->getParams(), $this->getParams()));
         } else {
-            $result = $this->getConnection()->exec(QueryBuilder::insert()
-                    ->table($this->getTable())
-                    ->setParams($attributes)
-                    ->generate(), $builder->getParams());
+            $builder = QueryBuilder::insert()
+                ->table($this->getTable())
+                ->setParams($attributes);
+            $result  = $this->getConnection()->exec(
+                $builder->generate(), $builder->getParams());
         }
         return $result;
     }

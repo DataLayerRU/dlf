@@ -5,7 +5,7 @@ class DeleteBuilderTest extends \PHPUnit_Framework_TestCase
 
     public function testBuilder()
     {
-        $expected = 'DELETE FROM test_table WHERE ID=:ID';
+        $expected = 'DELETE FROM "test_table" WHERE ID=:ID';
 
         $builder = \Codeception\Util\Stub::construct('\pwf\components\querybuilder\adapters\PostgreSQL\DeleteBuilder');
 
