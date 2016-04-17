@@ -25,7 +25,7 @@ abstract class UpdateBuilder extends InsertBuilder implements \pwf\components\qu
         $fields = $this->buildFields();
         $where  = $this->buildWhere();
 
-        $result.='UPDATE '.$table.' SET '.$fields;
+        $result.='UPDATE "'.$table.'" SET '.$fields;
 
         if ($where != '') {
             $result.=' '.$where;

@@ -86,8 +86,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
             ->where($this->getWhere())
             ->limit(1);
         return $this->getConnection()->query(
-                    $builder
-                    ->generate(),
+                    $builder->generate(),
                     array_merge($builder->getParams(), $this->getParams()))
                 ->fetch(\PDO::FETCH_ASSOC) ? : [];
     }
