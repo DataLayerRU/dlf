@@ -33,7 +33,7 @@ abstract class InsertBuilder implements \pwf\components\querybuilder\interfaces\
         $table  = $this->buildTable();
         $fields = $this->buildFields();
 
-        $result.='INSERT INTO '.$table.' '.$fields;
+        $result.='INSERT INTO "'.$table.'" '.$fields;
 
         return $result;
     }

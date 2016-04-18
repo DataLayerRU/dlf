@@ -28,7 +28,7 @@ class MySQLUpdateBuilderTest extends \PHPUnit_Framework_TestCase
         $conditions = [
             'condition1' => 1
         ];
-        $expected   = 'UPDATE table_test SET PARAM1=:PARAM1, PARAM2=:PARAM2, PARAM3=:PARAM3 WHERE condition1=:condition1';
+        $expected   = 'UPDATE "table_test" SET PARAM1=:PARAM1, PARAM2=:PARAM2, PARAM3=:PARAM3 WHERE condition1=:condition1';
 
         self::$stubBuilder->table('table_test')->setParams($params)->where($conditions);
 

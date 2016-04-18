@@ -12,7 +12,7 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
 
     public function testCount()
     {
-        $countQuery = 'SELECT COUNT(id) AS CNT FROM test_table WHERE field1=:field1 AND field2=:field2';
+        $countQuery = 'SELECT COUNT(id) AS CNT FROM "test_table" WHERE field1=:field1 AND field2=:field2';
 
         foreach ($this->drivers as $driver) {
             QueryBuilder::setDriver($driver);
@@ -21,7 +21,6 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
                 [],
                 [
                     'query' => function ($query, $params = []) use ($countQuery) {
-
                         $this->assertEquals($query, $countQuery);
 
                         return new PDOStatement();
@@ -56,7 +55,7 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
 
     public function testDelete()
     {
-        $countQuery = 'DELETE FROM test_table WHERE field1=:field1 AND field2=:field2';
+        $countQuery = 'DELETE FROM "test_table" WHERE field1=:field1 AND field2=:field2';
 
         foreach ($this->drivers as $driver) {
             QueryBuilder::setDriver($driver);
@@ -99,7 +98,7 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
 
     public function testGetAll()
     {
-        $countQuery = 'SELECT * FROM test_table WHERE field1=:field1 AND field2=:field2';
+        $countQuery = 'SELECT * FROM "test_table" WHERE field1=:field1 AND field2=:field2';
 
         foreach ($this->drivers as $driver) {
             QueryBuilder::setDriver($driver);
@@ -142,7 +141,7 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
 
     public function testGetOne()
     {
-        $countQuery = 'SELECT * FROM test_table WHERE field1=:field1 AND field2=:field2 LIMIT 1';
+        $countQuery = 'SELECT * FROM "test_table" WHERE field1=:field1 AND field2=:field2 LIMIT 1';
 
         foreach ($this->drivers as $driver) {
             QueryBuilder::setDriver($driver);
@@ -205,9 +204,9 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
 
     public function testSave()
     {
-        $updateQuery = 'UPDATE test_table SET name=:name WHERE id=:id';
+        $updateQuery = 'UPDATE "test_table" SET name=:name WHERE id=:id';
 
-        $insertQuery = 'INSERT INTO test_table (name) VALUES (:name)';
+        $insertQuery = 'INSERT INTO "test_table" (name) VALUES (:name)';
 
         foreach ($this->drivers as $driver) {
             QueryBuilder::setDriver($driver);

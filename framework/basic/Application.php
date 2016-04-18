@@ -220,7 +220,7 @@ class Application extends Object implements \pwf\basic\interfaces\Application
      */
     public function getComponent(string $name): IComponent
     {
-        if (isset($this->componentCache[$name]) && ($this->componentCache[$name]
+        if (!isset($this->componentCache[$name]) && ($this->componentCache[$name]
                 = $this->createComponent($name)) !== null
         ) {
             $this->componentCache[$name]->init();
@@ -308,7 +308,9 @@ class Application extends Object implements \pwf\basic\interfaces\Application
      */
     public function __get(string $name)
     {
-        if (($component = $this->getComponent($name)) !== null) {
+        if ($this->componentExists($name) && ($component = $this->getComponent($name))
+            !== null
+        ) {
             return $component;
         }
 

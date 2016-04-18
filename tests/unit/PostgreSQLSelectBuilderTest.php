@@ -21,7 +21,7 @@ class PostgreSQLSelectBuilderTest extends \PHPUnit_Framework_TestCase
     {
         self::$stubBuilder->setConditionBuilder(self::$stubConditionBuilder);
 
-        $expected = 'SELECT ID AS testId FROM test_table LIMIT 1 OFFSET 2';
+        $expected = 'SELECT ID AS testId FROM "test_table" LIMIT 1 OFFSET 2';
 
         self::$stubBuilder
             ->table('test_table')

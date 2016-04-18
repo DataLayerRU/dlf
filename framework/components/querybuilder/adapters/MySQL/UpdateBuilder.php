@@ -38,7 +38,7 @@ class UpdateBuilder extends \pwf\components\querybuilder\abstraction\UpdateBuild
     {
         $result = '';
 
-        $fields = array_keys($this->getParams());
+        $fields = array_keys($this->parentGetParams());
         foreach ($fields as $value) {
             if ($result != '') {
                 $result .= ', ';

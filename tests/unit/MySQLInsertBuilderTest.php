@@ -21,7 +21,7 @@ class MySQLInsertBuilderTest extends \PHPUnit_Framework_TestCase
             'PARAM2' => 2,
             'PARAM3' => 3,
         ];
-        $expected = 'INSERT INTO table_test (PARAM1, PARAM2, PARAM3) VALUES (:PARAM1, :PARAM2, :PARAM3)';
+        $expected = 'INSERT INTO "table_test" (PARAM1, PARAM2, PARAM3) VALUES (:PARAM1, :PARAM2, :PARAM3)';
 
         self::$stubBuilder->table('table_test')->setParams($params);
 

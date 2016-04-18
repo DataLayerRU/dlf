@@ -55,10 +55,10 @@ class MySQLQueryBuilderTest extends \PHPUnit_Framework_TestCase
             ->join('join_table', 'test_table.ID=join_table.ID_PARENT')
             ->union($subQuery);
 
-        $expected = '(SELECT ID AS testId FROM test_table '
+        $expected = '(SELECT ID AS testId FROM "test_table" '
             .'LEFT JOIN join_table ON test_table.ID=join_table.ID_PARENT '
             .'WHERE TEST_FIELD = 1 AND ID=:ID AND ID1=:ID1 AND TEST_FIELD = 2 '
-            .'GROUP BY ID, NAME LIMIT 2, 1 HAVING NAME=:NAME) UNION (SELECT * FROM union_table)';
+            .'GROUP BY ID, NAME LIMIT 2, 1 HAVING NAME=:NAME) UNION (SELECT * FROM "union_table")';
 
         $testParams = [
             'test' => 1

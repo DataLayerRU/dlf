@@ -29,7 +29,7 @@ abstract class UpdateBuilder extends InsertBuilder implements IUpdateBuilder
         $fields = $this->buildFields();
         $where = $this->buildWhere();
 
-        $result .= 'UPDATE ' . $table . ' SET ' . $fields;
+        $result .= 'UPDATE "' . $table . '" SET ' . $fields;
 
         if ($where != '') {
             $result .= ' ' . $where;

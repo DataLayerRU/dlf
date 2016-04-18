@@ -114,7 +114,8 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
     public function exec(string $query, array $params = []): \PDOStatement
     {
         $this->lastStatement = $this->getPDO()->prepare($query);
-        return $this->lastStatement->execute($params);
+        $this->lastStatement->execute($this->prepareParams($params));
+        return $this->lastStatement;
     }
 
     /**
@@ -127,7 +128,7 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
     public function query(string $query, array $params = []): \PDOStatement
     {
         $this->lastStatement = $this->getPDO()->prepare($query);
-        $this->lastStatement->execute($params);
+        $this->lastStatement->execute($this->prepareParams($params));
         return $this->lastStatement;
     }
 
@@ -139,5 +140,25 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
     public function insertId(): int
     {
         return (int)$this->getPDO()->lastInsertId();
+    }
+
+    /**
+     * Prepare params
+     *
+     * @param array $params
+     * @return array
+     */
+    protected function prepareParams(array $params)
+    {
+        $result = $params;
+
+        foreach ($result as $key => $val) {
+            if ($key[0] != ':') {
+                $result[':'.$key] = $val;
+                unset($result[$key]);
+            }
+        }
+
+        return $result;
     }
 }

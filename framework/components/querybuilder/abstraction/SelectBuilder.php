@@ -81,7 +81,7 @@ abstract class SelectBuilder implements \pwf\components\querybuilder\interfaces\
         $group  = $this->buildGroup();
         $union  = $this->buildUnion();
 
-        $result.='SELECT '.$select.' FROM '.$table;
+        $result.='SELECT '.$select.' FROM "'.$table.'"';
         if ($join != '') {
             $result.=' '.$join;
         }

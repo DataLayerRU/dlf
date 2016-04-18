@@ -36,7 +36,7 @@ abstract class DeleteBuilder implements Conditional, QueryBuilder
         $table = $this->buildTable();
         $where = $this->buildWhere();
 
-        $result .= 'DELETE FROM ' . $table;
+        $result .= 'DELETE FROM "' . $table . '"';
 
         if ($where != '') {
             $result .= ' ' . $where;
