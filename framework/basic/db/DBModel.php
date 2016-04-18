@@ -45,7 +45,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements ISe
     {
         return (int)$this->getConnection()
             ->query(QueryBuilder::select()
-                ->select(['COUNT(' . $this->getPK() . ') AS CNT'])
+                ->select(['COUNT('.($this->getPK()? : '*').') AS CNT'])
                 ->table($this->getTable())
                 ->setConditionBuilder($this->getConditionBuilder())
                 ->where($this->getWhere())
@@ -90,7 +90,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements ISe
                 ->setConditionBuilder($this->getConditionBuilder())
                 ->where($this->getWhere())
                 ->limit(1)
-                ->generate(), $this->getParams())->fetchAll(\PDO::FETCH_ASSOC) ?: [];
+                ->generate(), $this->getParams())->fetch(\PDO::FETCH_ASSOC) ?: [];
     }
 
     /**

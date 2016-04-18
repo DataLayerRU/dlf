@@ -151,7 +151,9 @@ class Application extends Object implements \pwf\basic\interfaces\Application
 
             $this->response->setBody(\pwf\helpers\SystemHelpers::call($callback,
                 function ($paramName) {
-                    if (($component = $this->getComponent($paramName)) !== null) {
+                    if ($this->componentExists($paramName) && ($component = $this->getComponent($paramName))
+                        !== null
+                    ) {
                         return $component;
                     }
                     if (isset($_GET[$paramName])) {
@@ -199,6 +201,18 @@ class Application extends Object implements \pwf\basic\interfaces\Application
     }
 
     /**
+     * Check is component exists
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function componentExists(string $name): bool
+    {
+        return isset($this->componentCache[$name]) || $this->getComponentConfig($name)
+        !== null;
+    }
+
+    /**
      * Get component by name
      *
      * @param string $name
@@ -206,7 +220,7 @@ class Application extends Object implements \pwf\basic\interfaces\Application
      */
     public function getComponent(string $name): IComponent
     {
-        if (!isset($this->componentCache[$name]) && ($this->componentCache[$name]
+        if (isset($this->componentCache[$name]) && ($this->componentCache[$name]
                 = $this->createComponent($name)) !== null
         ) {
             $this->componentCache[$name]->init();
