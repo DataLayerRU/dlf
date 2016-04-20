@@ -85,7 +85,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
     {
         $result = [];
         foreach ($data as $item) {
-            $result[] = (new self())->setAttributes($item);
+            $result[] = (new static())->setAttributes($item);
         }
         return $result;
     }
