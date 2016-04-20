@@ -69,10 +69,25 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
             ->where($this->getWhere())
             ->limit($this->getLimit())
             ->offset($this->getOffset());
-        return $this->getConnection()->query(
-                    $builder->generate(),
-                    array_merge($builder->getParams(), $this->getParams()))
-                ->fetchAll(\PDO::FETCH_ASSOC) ? : [];
+        return $this->fillObjects($this->getConnection()->query(
+                        $builder->generate(),
+                        array_merge($builder->getParams(), $this->getParams()))
+                    ->fetchAll(\PDO::FETCH_ASSOC) ? : []);
+    }
+
+    /**
+     * Prepare objects
+     *
+     * @param array $data
+     * @return array
+     */
+    protected function fillObjects(array $data)
+    {
+        $result = [];
+        foreach ($data as $item) {
+            $result[] = (new self())->setAttributes($item);
+        }
+        return $result;
     }
 
     /**
@@ -85,10 +100,10 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
             ->setConditionBuilder($this->getConditionBuilder())
             ->where($this->getWhere())
             ->limit(1);
-        return $this->getConnection()->query(
-                    $builder->generate(),
-                    array_merge($builder->getParams(), $this->getParams()))
-                ->fetch(\PDO::FETCH_ASSOC) ? : [];
+        return $this->setAttributes($this->getConnection()->query(
+                        $builder->generate(),
+                        array_merge($builder->getParams(), $this->getParams()))
+                    ->fetch(\PDO::FETCH_ASSOC) ? : []);
     }
 
     /**
