@@ -80,10 +80,26 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements ISe
             ->where($this->getWhere())
             ->limit($this->getLimit())
             ->offset($this->getOffset());
-        return $this->getConnection()->query(
+
+        return $this->fillObjects($this->getConnection()->query(
             $builder->generate(),
             array_merge($builder->getParams(), $this->getParams()))
-            ->fetchAll(\PDO::FETCH_ASSOC) ?: [];
+            ->fetchAll(\PDO::FETCH_ASSOC) ?: []);
+    }
+
+    /**
+     * Prepare objects
+     *
+     * @param array $data
+     * @return array
+     */
+    protected function fillObjects(array $data): array
+    {
+        $result = [];
+        foreach ($data as $item) {
+            $result[] = (new static())->setAttributes($item);
+        }
+        return $result;
     }
 
     /**
@@ -96,10 +112,11 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements ISe
             ->setConditionBuilder($this->getConditionBuilder())
             ->where($this->getWhere())
             ->limit(1);
-        return $this->getConnection()->query(
+
+        return $this->setAttributes($this->getConnection()->query(
             $builder->generate(),
             array_merge($builder->getParams(), $this->getParams()))
-            ->fetch(\PDO::FETCH_ASSOC) ?: [];
+            ->fetch(\PDO::FETCH_ASSOC) ?: []);
     }
 
     /**
