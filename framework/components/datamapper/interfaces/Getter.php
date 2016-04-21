@@ -10,9 +10,9 @@ interface Getter
     /**
      * Get single model
      *
-     * @return array
+     * @return Getter
      */
-    public function getOne(): array;
+    public function getOne(): Getter;
 
     /**
      * Get all models

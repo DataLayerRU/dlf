@@ -105,7 +105,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements ISe
     /**
      * @inheritdoc
      */
-    public function getOne(): array
+    public function getOne(): Getter
     {
         $builder = QueryBuilder::select()
             ->table($this->getTable())
