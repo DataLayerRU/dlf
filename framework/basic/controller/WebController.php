@@ -60,7 +60,8 @@ class WebController extends Controller
         if (!isset($params['title'])) {
             $params['title'] = $this->title;
         }
+        $views = \pwf\basic\Application::$instance->getConfigParam('views');
 
-        return $this->getView()->render($viewPath, $params);
+        return $this->getView()->render($views.$viewPath, $params);
     }
 }

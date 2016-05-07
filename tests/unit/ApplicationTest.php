@@ -32,26 +32,32 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
     public function testSetConfiguration()
     {
         $testConfig = [
-            'db' => [
-                'class' => 'pwf\components\dbconnection\PDOConnection'
+            'components' => [
+                'db' => [
+                    'class' => 'pwf\components\dbconnection\PDOConnection'
+                ]
             ]
         ];
 
         $configForAppend = [
-            'db' => [
-                'dsn' => 'dsn: mysql'
+            'components' => [
+                'db' => [
+                    'dsn' => 'dsn: mysql'
+                ]
             ]
         ];
-        $this->assertArrayHasKey('db',
+        $this->assertArrayHasKey('components',
             self::$stubApplication->setConfiguration($testConfig)->appendConfiguration($configForAppend)->getConfiguration());
     }
 
     public function testRun()
     {
         self::$stubApplication->setConfiguration([
-            'db' => [
-                'class' => 'pwf\components\dbconnection\PDOConnection',
-                'force' => true
+            'components' => [
+                'db' => [
+                    'class' => 'pwf\components\dbconnection\PDOConnection',
+                    'force' => true
+                ]
             ]
         ]);
 
@@ -92,8 +98,10 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         $_GET['testParam2'] = '';
 
         self::$stubApplication->setConfiguration([
-            'db' => [
-                'class' => 'pwf\components\dbconnection\PDOConnection'
+            'components' => [
+                'db' => [
+                    'class' => 'pwf\components\dbconnection\PDOConnection'
+                ]
             ]
         ]);
 
@@ -118,8 +126,10 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
     {
         $this->assertInstanceOf('pwf\components\dbconnection\PDOConnection',
             self::$stubApplication->setConfiguration([
-                'db' => [
-                    'class' => 'pwf\components\dbconnection\PDOConnection'
+                'components' => [
+                    'db' => [
+                        'class' => 'pwf\components\dbconnection\PDOConnection'
+                    ]
                 ]
             ])->getComponent('db'));
     }
@@ -128,8 +138,10 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
     {
         try {
             self::$stubApplication->setConfiguration([
-                'db' => [
-                    'class' => '\stdClass'
+                'components' => [
+                    'db' => [
+                        'class' => '\stdClass'
+                    ]
                 ]
             ])->getComponent('db');
             $this->fail();

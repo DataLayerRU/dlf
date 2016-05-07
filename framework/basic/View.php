@@ -2,7 +2,7 @@
 
 namespace pwf\basic;
 
-class View extends Object implements \pwf\basic\interfaces\View
+class View implements \pwf\basic\interfaces\View
 {
 
     /**
@@ -10,12 +10,12 @@ class View extends Object implements \pwf\basic\interfaces\View
      *
      * @param string $viewPath
      * @param array $params
-     * @return string
+     * @return mixed
      */
     public function render($viewPath, array $params = [])
     {
         ob_start();
-        ob_implicit_flush(0);
+        ob_implicit_flush(false);
         extract($params, EXTR_OVERWRITE);
         require(file_exists($viewPath) ? $viewPath : '../'.$viewPath);
 
