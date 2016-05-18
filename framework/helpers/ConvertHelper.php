@@ -28,19 +28,23 @@ class ConvertHelper
      * Convert array to XML object
      *
      * @param array $haystack
+     * @param string $rootElementName
      * @return DOMDocument
      */
-    public static function array2XML($haystack)
+    public static function array2XML($haystack, $rootElementName = '')
     {
         $args   = func_get_args();
-        $root   = isset($args[2]) ? $args[2] : new \DOMDocument("1.0", "utf-8");
-        $parent = isset($args[1]) ? $args[1] : null;
-        $isRoot = $parent === null;
+        $isRoot = !isset($args[2]);
+        $root   = isset($args[3]) ? $args[3] : new \DOMDocument('1.0', 'utf-8');
+        $parent = isset($args[2]) ? $args[2] : ($rootElementName !== '' ? $root->createElement($rootElementName)
+                    : null);
 
         foreach ($haystack as $key => $val) {
             if (is_array($val)) {
                 $parent = $root->createElement($key);
-                self::array2xml($val, $parent, $root);
+                self::array2xml($val, $rootElementName, $parent, $root);
+            } elseif ($parent === null) {
+                $parent = $root->createElement($key, $val);
             } else {
                 $parent->appendChild($root->createElement($key, $val));
             }

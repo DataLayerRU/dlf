@@ -27,6 +27,44 @@ class ArrayHelper
     /**
      * Groupping elements by field
      *
+     * Example:
+     * $arr = [
+     *  [
+     *      'groupId' => 1,
+     *      'name' => 'name11'
+     *  ],
+     *  [
+     *      'groupId' => 1,
+     *      'name' => 'name12'
+     *  ],
+     *  [
+     *      'groupId' => 2,
+     *      'name' => 'name21'
+     *  ]
+     * ];
+     *
+     * $result = ArrayHelper::groupArray($arr, 'groupId');
+     *
+     * $result:
+     * [
+     *      '1' => [
+     *          [
+     *              'groupId' => 1,
+     *              'name' => 'name11'
+     *          ],
+     *          [
+     *              'groupId' => 1,
+     *              'name' => 'name12'
+     *          ]
+     *      ],
+     *      '2' => [
+     *          [
+     *              'groupId' => 2,
+     *              'name' => 'name21'
+     *          ]
+     *      ]
+     * ]
+     *
      * @param array $arr
      * @param string $groupField
      */
@@ -48,20 +86,20 @@ class ArrayHelper
     /**
      * $haystask:
      * [
-     *  1=>[
-     *      ID=>1,
+     *  [
+     *      ID=>5,
      *      NAME=>'Name'
      *  ],
-     *  2=>[
-     *      ID=>2,
+     *  [
+     *      ID=>6,
      *      NAME=>'Name2'
      *  ]
      * ]
      *
      * map($haystack, 'ID', 'NAME'):
      * [
-     *  1=>'Name',
-     *  2=>'Name2
+     *  'Name' => 5,
+     *  'Name2' => 6
      * ]
      *
      * map($haystack, 'NAME'):
@@ -71,12 +109,12 @@ class ArrayHelper
      *
      * map($haystack, null, 'ID'):
      * [
-     *  1=> [
-     *      ID => 1,
+     *  5=> [
+     *      ID => 5,
      *      NAME => 'Name'
      *  ],
-     *  2=> [
-     *      ID => 2,
+     *  6=> [
+     *      ID => 6,
      *      NAME => 'Name2'
      *  ]
      * ]
@@ -117,7 +155,7 @@ class ArrayHelper
             $currentKey = $key;
 
             if (($currentKey == $needleKey && ($needleValue === null || $needleValue
-                == $value)) || ( is_array($value) && recursiveArraySearch($needleKey,
+                == $value)) || ( is_array($value) && self::recursiveArraySearch($needleKey,
                     $needleValue, $value) !== false)) {
                 return $currentKey;
             }
