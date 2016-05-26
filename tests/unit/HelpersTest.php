@@ -79,4 +79,129 @@ class HelpersTest extends \PHPUnit_Framework_TestCase
             ]);
             $this->assertEquals('11', $o->getTestField());
         }
+
+        public function testGroupArray()
+        {
+            $arr = [
+                [
+                    'groupId' => 1,
+                    'name' => 'name11'
+                ],
+                [
+                    'groupId' => 1,
+                    'name' => 'name12'
+                ],
+                [
+                    'groupId' => 2,
+                    'name' => 'name21'
+                ]
+            ];
+
+            $result = [
+                '1' => [
+                    [
+                        'groupId' => 1,
+                        'name' => 'name11'
+                    ],
+                    [
+                        'groupId' => 1,
+                        'name' => 'name12'
+                    ]
+                ],
+                '2' => [
+                    [
+                        'groupId' => 2,
+                        'name' => 'name21'
+                    ]
+                ]
+            ];
+
+            $this->assertEquals($result,
+                \pwf\helpers\ArrayHelper::groupArray($arr, 'groupId'));
+        }
+
+        public function testArrayMap()
+        {
+            $arr = [
+                [
+                    'ID' => 5,
+                    'NAME' => 'Name'
+                ],
+                [
+                    'ID' => 6,
+                    'NAME' => 'Name2'
+                ]
+            ];
+
+            $this->assertEquals([
+                'Name' => 5,
+                'Name2' => 6
+                ], \pwf\helpers\ArrayHelper::map($arr, 'ID', 'NAME'));
+            $this->assertEquals(['Name', 'Name2'],
+                \pwf\helpers\ArrayHelper::map($arr, 'NAME'));
+            $this->assertEquals([
+                5 => [
+                    'ID' => 5,
+                    'NAME' => 'Name'
+                ],
+                6 => [
+                    'ID' => 6,
+                    'NAME' => 'Name2'
+                ]
+                ], \pwf\helpers\ArrayHelper::map($arr, null, 'ID'));
+        }
+
+        public function testRecursiveArraySearch()
+        {
+            $arr = [
+                'test',
+                [
+                    'test2',
+                    'test3'
+                ],
+                'test4'
+            ];
+
+            $this->assertEquals(1,
+                \pwf\helpers\ArrayHelper::recursiveArraySearch(null, 'test3',
+                    $arr));
+        }
+
+        public function testRecursivelySetValue()
+        {
+            $arr    = [
+                'key1' => 'test',
+                [
+                    'key12' => 'test2',
+                    'key13' => 'test3'
+                ],
+                'key14' => 'test4'
+            ];
+            $result = [
+                'key1' => 'test',
+                [
+                    'key12' => 'test2',
+                    'key13' => 'newValue'
+                ],
+                'key14' => 'test4'
+            ];
+            \pwf\helpers\ArrayHelper::recursivelySetValue('key13', 'newValue',
+                $arr);
+            $this->assertEquals($result, $arr);
+            $this->assertEquals('test2',
+                \pwf\helpers\ArrayHelper::recursivelyGetValue('key12', $arr));
+        }
+
+        public function testXml2Array()
+        {
+            $xml    = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<root><key1>value1</key1><key2>value2</key2></root>\n";
+            $result = [
+                'key1' => 'value1',
+                'key2' => 'value2'
+            ];
+            $this->assertEquals($result,
+                \pwf\helpers\ConvertHelper::XML2Array($xml));
+            $this->assertEquals($xml,
+                \pwf\helpers\ConvertHelper::array2XML($result, 'root')->saveXML());
+        }
     }
