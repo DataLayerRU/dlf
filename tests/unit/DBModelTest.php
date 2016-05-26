@@ -91,7 +91,7 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
                     ])->delete();
             } catch (Exception $ex) {
                 if ($driver != -1) {
-                    $this->assertTrue(false);
+                    $this->fail($ex->getMessage());
                 }
             }
         }
@@ -134,7 +134,7 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
                     ])->getAll();
             } catch (Exception $ex) {
                 if ($driver != -1) {
-                    $this->assertTrue(false);
+                    $this->fail($ex->getMessage());
                 }
             }
         }
@@ -177,31 +177,11 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
                     ])->getOne();
             } catch (Exception $ex) {
                 if ($driver != -1) {
-                    $this->assertTrue(false);
+                    $this->fail($ex->getMessage());
                 }
             }
         }
     }
-
-//    public function testGenerate()
-//    {
-//        $model = Codeception\Util\Stub::construct('\pwf\basic\db\DBModel',
-//                [
-//                'connection' => null
-//                ],
-//                [
-//                'getId' => function() {
-//                    return 1;
-//                }
-//        ]);
-//
-//        try {
-//            $model->generate();
-//            $this->assertTrue(false);
-//        } catch (\Exception $ex) {
-//
-//        }
-//    }
 
     public function testSave()
     {
@@ -219,6 +199,9 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
                     $this->assertEquals($query, $updateQuery);
 
                     return new PDOStatement();
+                },
+                    'insertId' => function($sequenceName = null) {
+                    return 1;
                 }
             ]);
 
@@ -240,7 +223,7 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
                     ->save();
             } catch (Exception $ex) {
                 if ($driver != -1) {
-                    $this->assertTrue(false);
+                    $this->fail($ex->getMessage());
                 }
             }
 
@@ -252,6 +235,9 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
                     $this->assertEquals($query, $insertQuery);
 
                     return new PDOStatement();
+                },
+                    'insertId' => function($sequenceName = null) {
+                    return 1;
                 }
             ]);
 
@@ -273,7 +259,7 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
                     ->save();
             } catch (Exception $ex) {
                 if ($driver != -1) {
-                    $this->assertTrue(false);
+                    $this->fail($ex->getTraceAsString());
                 }
             }
         }

@@ -6,6 +6,12 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
     \pwf\components\querybuilder\interfaces\InsertBuilder, \pwf\components\querybuilder\interfaces\UpdateBuilder,
     \pwf\components\querybuilder\interfaces\DeleteBuilder
 {
+    /**
+     * Sequence name
+     *
+     * @var string
+     */
+    private $sequenceName;
 
     use \pwf\components\querybuilder\traits\Conditional,
         \pwf\components\querybuilder\traits\Parameterized,
@@ -130,8 +136,11 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
             $builder = QueryBuilder::insert()
                 ->table($this->getTable())
                 ->setParams($attributes);
-            $result  = $this->getConnection()->exec(
-                $builder->generate(), $builder->getParams());
+            if (($result  = $this->getConnection()->exec(
+                $builder->generate(), $builder->getParams()))) {
+                $this->setAttribute($this->getPK(),
+                    $this->getConnection()->insertId());
+            }
         }
         return $result;
     }
@@ -152,5 +161,27 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
     {
         return array_merge($this->parentGetParams(),
             $this->getConditionBuilder()->getParams());
+    }
+
+    /**
+     * Set sequence name
+     *
+     * @param string $name
+     * @return \pwf\basic\db\DBModel
+     */
+    public function setSequenceName($name)
+    {
+        $this->sequenceName = $name;
+        return $this;
+    }
+
+    /**
+     * Get sequence name
+     *
+     * @return string
+     */
+    public function getSequenceName()
+    {
+        return $this->sequenceName;
     }
 }

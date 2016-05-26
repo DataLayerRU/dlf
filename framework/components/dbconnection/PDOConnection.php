@@ -130,11 +130,12 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
     /**
      * Get last insert id
      *
+     * @param string $sequenceName
      * @return string
      */
-    public function insertId()
+    public function insertId($sequenceName = null)
     {
-        return $this->getPDO()->lastInsertId();
+        return $this->getPDO()->lastInsertId($sequenceName);
     }
 
     /**
