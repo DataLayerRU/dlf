@@ -1,6 +1,7 @@
 <?php
 
 use pwf\basic\db\QueryBuilder;
+use pwf\helpers\Validator;
 
 class DBModelTest extends \PHPUnit_Framework_TestCase
 {
@@ -283,5 +284,92 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
         } catch (\Exception $ex) {
 
         }
+    }
+
+    public function testValidation()
+    {
+        $dataValid = [
+            'email' => 'test@test.com',
+            'equalParam1' => 'test',
+            'equalParam2' => 'test',
+            'param6' => '123456',
+            'param1' => '1'
+        ];
+
+        $dataInvalid = [
+            'email' => '123qwe',
+            'equalParam1' => 'test',
+            'equalParam2' => 'test3',
+        ];
+
+        $rules = [
+            'email' => [
+                'required' => false,
+                [
+                    Validator::VALIDATOR_EMAIL
+                ]
+            ],
+            'equalParam1' => [
+                'required' => false,
+                [
+                    [
+                        Validator::VALIDATOR_EQUAL,
+                        'equalTo' => 'equalParam2'
+                    ],
+                    [
+                        Validator::VALIDATOR_LENGTH,
+                        'max' => 5,
+                        'min' => 1
+                    ]
+                ]
+            ],
+            'equalParam2' => [
+                'required' => false,
+                [
+                    [
+                        Validator::VALIDATOR_LENGTH,
+                        'max' => 7,
+                        'min' => 1
+                    ]
+                ]
+            ],
+            'param6' => [
+                'required' => false,
+                [
+                    [
+                        Validator::VALIDATOR_LENGTH,
+                        'max' => 7,
+                        'min' => 1
+                    ]
+                ]
+            ],
+            'param1' => ['required' => true],
+            'missedField' => [
+                'required' => false,
+                [
+                    Validator::VALIDATOR_EMAIL
+                ]
+            ]
+        ];
+
+        $model = Codeception\Util\Stub::construct('\pwf\basic\db\DBModel',
+                [
+                'connection' => null
+                ],
+                [
+                'getId' => function() {
+                    return 1;
+                }
+        ]);
+
+        if (!$model->setRules($rules)->setAttributes($dataValid)->validate()) {
+            $this->fail(print_r($model->getErrors(), true));
+        }
+        if ($model->setRules($rules)->setAttributes($dataInvalid)->validate()) {
+            $this->fail('Must be false');
+        }
+
+//        $this->assertTrue($model->setRules($rules)->setAttributes($dataValid)->validate());
+//        $this->assertFalse($model->setRules($rules)->setAttributes($dataInvalid)->validate());
     }
 }
