@@ -34,6 +34,13 @@ class SwiftMailer implements \pwf\basic\interfaces\Component
     private $mailer = null;
 
     /**
+     * Messages to send
+     *
+     * @var array
+     */
+    private $messages = [];
+
+    /**
      * Component initialization
      *
      * @return \pwf\components\swiftmailer\SwiftMailer
@@ -73,6 +80,41 @@ class SwiftMailer implements \pwf\basic\interfaces\Component
             $config['transport'] = 'mail';
         }
         $this->config = $config;
+        return $this;
+    }
+
+    /**
+     * Create mail
+     *
+     * @return \Swift_Message
+     */
+    public function createMail()
+    {
+        return \Swift_Message::newInstance();
+    }
+
+    /**
+     * Add mail
+     * 
+     * @param \Swift_Message $mail
+     * @return \pwf\components\swiftmailer\SwiftMailer
+     */
+    public function addMail(\Swift_Message $mail)
+    {
+        $this->messages[] = $mail;
+        return $this;
+    }
+
+    /**
+     * Send all messages
+     *
+     * @return \pwf\components\swiftmailer\SwiftMailer
+     */
+    public function send()
+    {
+        foreach ($this->messages as $mail) {
+            $this->mailer->send($mail);
+        }
         return $this;
     }
 
