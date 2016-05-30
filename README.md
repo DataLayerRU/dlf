@@ -31,7 +31,6 @@ components/          modules
 exception/           exception classes
     abstraction/     abstract classes
     interfaces/      interfaces
-helpers/             helpers
 traits/              traits
 web/                 web/net objects
 ```
@@ -44,6 +43,7 @@ Requirements
 Dependencies
 ------------
  - [Seldaek/monolog](https://github.com/Seldaek/monolog)
+ - [SergioMadness/pwf-helpers](https://github.com/SergioMadness/pwf-helpers)
 
 
 Installation

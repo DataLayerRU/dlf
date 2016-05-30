@@ -5,6 +5,7 @@ PWF
  - Query builder
  - i18n
  - logger (adapter for [Seldaek/monolog](https://github.com/Seldaek/monolog))
+ - helpers as dependency
 
 ## v0.3 07.02.2016
 

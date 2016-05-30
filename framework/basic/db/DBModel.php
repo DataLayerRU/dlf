@@ -15,8 +15,10 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
 
     use \pwf\components\querybuilder\traits\Conditional,
         \pwf\components\querybuilder\traits\Parameterized,
+        \pwf\traits\Validatable,
         \pwf\components\querybuilder\traits\SelectBuilder {
         \pwf\components\querybuilder\traits\Parameterized::getParams as parentGetParams;
+        \pwf\traits\Validatable::validate as parentValidate;
     }
 
     /**
@@ -183,5 +185,15 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
     public function getSequenceName()
     {
         return $this->sequenceName;
+    }
+
+    /**
+     * Validate model
+     *
+     * @return bool
+     */
+    public function validate()
+    {
+        return $this->parentValidate($this->getAttributes());
     }
 }

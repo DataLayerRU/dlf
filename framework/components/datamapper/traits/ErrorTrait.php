@@ -37,6 +37,16 @@ trait ErrorTrait
     }
 
     /**
+     * Get error list
+     *
+     * @return array
+     */
+    public function getErrors()
+    {
+        return $this->errors;
+    }
+
+    /**
      * Check is error exists
      *
      * @param string $attribute
