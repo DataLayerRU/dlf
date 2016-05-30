@@ -1,4 +1,4 @@
-PWF - framework for proffessional web development
+PWF - framework for professional web development
 ====
 
 [http://pwf.web-development.pw/](http://pwf.web-development.pw/)

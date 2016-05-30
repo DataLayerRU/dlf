@@ -8,6 +8,7 @@ namespace pwf\basic;
 class RouteHandler
 {
     const DEFAULT_CONTROLLER = 'Main';
+    const DEFAULT_ACTION     = 'index';
 
     /**
      * Registered paths
@@ -74,8 +75,8 @@ class RouteHandler
         $parts = explode('/', $url);
         if (count($parts) === 2) {
             $action   = $parts[1];
-            $parts[1] = self::DEFAULT_CONTROLLER;
-            $parts[2] = $action;
+            $parts[1] = $action;
+            $parts[2] = self::DEFAULT_ACTION;
         }
 
         $action                   = static::preparePart(array_pop($parts), true);
