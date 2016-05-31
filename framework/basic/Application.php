@@ -217,6 +217,17 @@ class Application implements \pwf\basic\interfaces\Application
     }
 
     /**
+     * Check is component exists
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function componentExists($name)
+    {
+        return isset($this->getConfiguration()[self::COMPONENT_CONFIG_BLOCK][$name]);
+    }
+
+    /**
      * Create component/module by name
      *
      * @param string $name
@@ -239,5 +250,13 @@ class Application implements \pwf\basic\interfaces\Application
         }
 
         return $result;
+    }
+
+    public function __get($name)
+    {
+        if ($this->componentExists($name)) {
+            return $this->getComponent($name);
+        }
+        return null;
     }
 }

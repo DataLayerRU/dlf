@@ -141,7 +141,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
             if (($result  = $this->getConnection()->exec(
                 $builder->generate(), $builder->getParams()))) {
                 $this->setAttribute($this->getPK(),
-                    $this->getConnection()->insertId());
+                    $this->getConnection()->insertId($this->getSequenceName()));
             }
         }
         return $result;
