@@ -50,21 +50,25 @@ class SwiftMailer implements \pwf\basic\interfaces\Component
         if (!class_exists('Swift_MailTransport')) {
             throw new Exception('SwiftMailer need to be installed');
         }
+        $transport = null;
         switch ($this->config['transport']) {
             case self::TRANSPORT_SENDMAIL:
-                $this->mailer = \Swift_SendmailTransport::newInstance();
+                $transport = \Swift_SendmailTransport::newInstance();
                 break;
             case self::TRANSPORT_SMTP:
-                $this->mailer = \Swift_SmtpTransport::newInstance(isset($this->config['host'])
+                $transport = \Swift_SmtpTransport::newInstance(isset($this->config['host'])
                                 ? $this->config['host'] : 'localhost',
                         isset($this->config['port']) ? $this->config['port'] : 25,
                         isset($this->config['security']) ? $this->config['security']
-                                : '');
+                                : '')
+                    ->setUsername($this->config['username'])
+                    ->setPassword($this->config['password']);
                 break;
             case self::TRANSPORT_MAIL:
             default:
-                $this->mailer = \Swift_MailTransport::newInstance();
+                $transport = \Swift_MailTransport::newInstance();
         }
+        $this->mailer = \Swift_Mailer::newInstance($transport);
         return $this;
     }
 
