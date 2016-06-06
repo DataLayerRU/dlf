@@ -24,6 +24,12 @@ class ConditionBuilder extends \pwf\components\querybuilder\abstraction\Conditio
             case 2:
                 if (is_array($conditions[1])) {
                     $result = $conditions[0].' IN ('.implode(',', $conditions[1]).')';
+                } elseif (is_null($conditions[1])) {
+                    $result = $conditions[0].' IS NULL';
+                } elseif ($conditions[1] instanceof \pwf\components\querybuilder\interfaces\SelectBuilder) {
+                    $result = $conditions[0].' IN ('.$conditions[1]->generate().')';
+                    $this->setParams(array_merge($this->getParams(),
+                            $conditions[1]->getParams()));
                 } else {
                     $result = $conditions[0].'=:'.$conditions[0];
                     $this->addParam($conditions[0], $conditions[1]);

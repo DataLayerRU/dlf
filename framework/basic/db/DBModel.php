@@ -76,7 +76,8 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
             ->setConditionBuilder($this->getConditionBuilder())
             ->where($this->getWhere())
             ->limit($this->getLimit())
-            ->offset($this->getOffset());
+            ->offset($this->getOffset())
+            ->order($this->getOrder());
         return $this->fillObjects($this->getConnection()->query(
                         $builder->generate(),
                         array_merge($builder->getParams(), $this->getParams()))

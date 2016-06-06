@@ -62,6 +62,13 @@ abstract class SelectBuilder implements \pwf\components\querybuilder\interfaces\
     protected abstract function buildGroup();
 
     /**
+     * Build order by part
+     *
+     * @return string
+     */
+    protected abstract function buildOrder();
+
+    /**
      * Generate query
      *
      * @return string
@@ -78,6 +85,7 @@ abstract class SelectBuilder implements \pwf\components\querybuilder\interfaces\
         $limit  = $this->buildLimit();
         $group  = $this->buildGroup();
         $union  = $this->buildUnion();
+        $order  = $this->buildOrder();
 
         $result.='SELECT '.$select.' FROM "'.$table.'"';
         if ($join != '') {
@@ -97,6 +105,9 @@ abstract class SelectBuilder implements \pwf\components\querybuilder\interfaces\
         }
         if ($union != '') {
             $result = '('.$result.')'.$union;
+        }
+        if ($order != '') {
+            $result.=' '.$order;
         }
 
         return $result;

@@ -97,4 +97,12 @@ interface SelectBuilder extends QueryBuilder
      * @return SelectBuilder
      */
     public function union(QueryBuilder $query);
+
+    /**
+     * Set order
+     *
+     * @param array $order
+     * @return SelectBuilder
+     */
+    public function order($order);
 }
