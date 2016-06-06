@@ -36,7 +36,11 @@ class ConditionBuilder extends \pwf\components\querybuilder\abstraction\Conditio
                 }
                 break;
             case 3:
-                $result = ' '.$conditions[0].' '.$this->prepareConditions([$conditions[1] => $conditions[2]]);
+                $left   = is_array($conditions[1]) ? $this->prepareConditions($conditions[1])
+                        : $conditions[1];
+                $right  = is_array($conditions[2]) ? $this->prepareConditions($conditions[2])
+                        : $conditions[2];
+                $result = '(('.$left.') '.$conditions[0].' ('.$right.'))';
                 break;
             default:
                 throw new \Exception('Wrong condition configuration');
@@ -55,7 +59,7 @@ class ConditionBuilder extends \pwf\components\querybuilder\abstraction\Conditio
             }
             $condition = $this->prepareArray((array) $value);
 
-            if ($result != '' && count($value) < 3) {
+            if ($result != '') {
                 $result.=' AND ';
             }
             $result.=$condition;
