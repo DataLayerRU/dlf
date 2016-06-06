@@ -17,17 +17,20 @@ Project structure
 autoloader/          autoloader
 basic/               basic classes
     controller/      basic controllers
+    db/              classes for working with DB
     interfaces/      basic interfaces
 components/          modules
     activerecord/    AR pattern
     authorization/   authorization/identity module
     datamapper/      data mapper pattern
+    datapaginator/   pagination
     dbconnection/    database connection module
     eventhandler/    event handler
     i18n/            internationalization module
     monologadapter/  adapter for Seldaek/monolog
     observer/        obserber pattern
     querybuilder/    query builder
+    swiftmailer/     swiftmailer adapter
 exception/           exception classes
     abstraction/     abstract classes
     interfaces/      interfaces
