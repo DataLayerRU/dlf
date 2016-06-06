@@ -110,7 +110,9 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
     public function exec($query, array $params = [])
     {
         $this->lastStatement = $this->getPDO()->prepare($query);
-        return $this->lastStatement->execute($this->prepareParams($params));
+        $res                 = $this->lastStatement->execute($this->prepareParams($params));
+        $this->lastStatement->errorInfo();
+        return $res;
     }
 
     /**
@@ -152,6 +154,9 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
             if ($key[0] != ':') {
                 $result[':'.$key] = $val;
                 unset($result[$key]);
+            }
+            if (is_bool($val)) {
+                $result[$key] = $val ? 1 : 0;
             }
         }
 

@@ -22,15 +22,15 @@ class ConditionBuilder extends \pwf\components\querybuilder\abstraction\Conditio
                 $result = $conditions[0];
                 break;
             case 2:
-                $result = $conditions[0].'=:'.$conditions[0];
-                $this->addParam($conditions[0], $conditions[1]);
+                if (is_array($conditions[1])) {
+                    $result = $conditions[0].' IN ('.implode(',', $conditions[1]).')';
+                } else {
+                    $result = $conditions[0].'=:'.$conditions[0];
+                    $this->addParam($conditions[0], $conditions[1]);
+                }
                 break;
             case 3:
-                $left   = is_array($conditions[1]) ? $this->prepareConditions($conditions[1])
-                        : $conditions[1];
-                $right  = is_array($conditions[2]) ? $this->prepareConditions($conditions[2])
-                        : $conditions[2];
-                $result = $left.' '.$conditions[0].' '.$right;
+                $result = $conditions[0].' '.$this->prepareConditions([$conditions[1] => $conditions[2]]);
                 break;
             default:
                 throw new \Exception('Wrong condition configuration');
@@ -47,9 +47,9 @@ class ConditionBuilder extends \pwf\components\querybuilder\abstraction\Conditio
             if (is_string($key)) {
                 $value = [$key, $value];
             }
-            $condition = $this->prepareArray((array) $value);
+            $condition = ' '.$this->prepareArray((array) $value);
 
-            if ($result != '') {
+            if ($result != '' && count($value) < 3) {
                 $result.=' AND ';
             }
             $result.=$condition;
