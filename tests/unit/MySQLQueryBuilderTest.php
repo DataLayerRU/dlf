@@ -37,7 +37,7 @@ class MySQLQueryBuilderTest extends \PHPUnit_Framework_TestCase
             ->where([
                 'TEST_FIELD = 1',
                 'ID' => 1,
-                ['AND', 'ID1', 2]
+                ['AND', ['ID1' => 1], 'TEST_FIELD = 2']
             ])
             ->limit(1)
             ->offset(2)
@@ -57,7 +57,7 @@ class MySQLQueryBuilderTest extends \PHPUnit_Framework_TestCase
 
         $expected = '(SELECT ID AS testId FROM "test_table" '
             .'LEFT JOIN join_table ON test_table.ID=join_table.ID_PARENT '
-            .'WHERE TEST_FIELD = 1 AND ID=:ID AND ID1=:ID1 '
+            .'WHERE TEST_FIELD = 1 AND ID=:ID AND ((ID1=:ID1) AND (TEST_FIELD = 2)) '
             .'GROUP BY ID, NAME LIMIT 2, 1 HAVING NAME=:NAME) UNION (SELECT * FROM "union_table")';
 
         $testParams = [
@@ -72,7 +72,7 @@ class MySQLQueryBuilderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals([
             'ID' => 1,
             'NAME' => 'fake',
-            'ID1' => 2
+            'ID1' => 1
             ], self::$stubBuilder->getParams());
     }
 

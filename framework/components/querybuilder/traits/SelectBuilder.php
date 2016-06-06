@@ -56,6 +56,13 @@ trait SelectBuilder
     private $group;
 
     /**
+     * Order
+     *
+     * @var array
+     */
+    private $order;
+
+    /**
      *
      * @param mixed $group
      * @return \pwf\components\querybuilder\interfaces\SelectBuilder
@@ -212,5 +219,27 @@ trait SelectBuilder
     public function getJoin()
     {
         return $this->join;
+    }
+
+    /**
+     * Set order
+     *
+     * @param array $order
+     * @return SelectBuilder
+     */
+    public function order($order)
+    {
+        $this->order = $order;
+        return $this;
+    }
+
+    /**
+     * Get order
+     *
+     * @return array
+     */
+    public function getOrder()
+    {
+        return $this->order;
     }
 }

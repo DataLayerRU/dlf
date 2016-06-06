@@ -163,4 +163,27 @@ class SelectBuilder extends \pwf\components\querybuilder\abstraction\SelectBuild
     {
         return $this->getConditionBuilder()->getParams();
     }
+
+    /**
+     * Build order
+     * 
+     * @return string
+     */
+    protected function buildOrder()
+    {
+        $result = '';
+
+        $orders = (array) $this->getOrder();
+        foreach ($orders as $field => $direction) {
+            if ($result != '') {
+                $result.=',';
+            }
+            $result.=$field.' '.($direction === SORT_DESC ? 'DESC' : 'ASC');
+        }
+        if ($result != '') {
+            $result = 'ORDER BY '.$result;
+        }
+
+        return $result;
+    }
 }

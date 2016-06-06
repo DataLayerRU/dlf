@@ -24,13 +24,23 @@ class ConditionBuilder extends \pwf\components\querybuilder\abstraction\Conditio
             case 2:
                 if (is_array($conditions[1])) {
                     $result = $conditions[0].' IN ('.implode(',', $conditions[1]).')';
+                } elseif (is_null($conditions[1])) {
+                    $result = $conditions[0].' IS NULL';
+                } elseif ($conditions[1] instanceof \pwf\components\querybuilder\interfaces\SelectBuilder) {
+                    $result = $conditions[0].' IN ('.$conditions[1]->generate().')';
+                    $this->setParams(array_merge($this->getParams(),
+                            $conditions[1]->getParams()));
                 } else {
                     $result = $conditions[0].'=:'.$conditions[0];
                     $this->addParam($conditions[0], $conditions[1]);
                 }
                 break;
             case 3:
-                $result = ' '.$conditions[0].' '.$this->prepareConditions([$conditions[1] => $conditions[2]]);
+                $left   = is_array($conditions[1]) ? $this->prepareConditions($conditions[1])
+                        : $conditions[1];
+                $right  = is_array($conditions[2]) ? $this->prepareConditions($conditions[2])
+                        : $conditions[2];
+                $result = '(('.$left.') '.$conditions[0].' ('.$right.'))';
                 break;
             default:
                 throw new \Exception('Wrong condition configuration');
@@ -49,7 +59,7 @@ class ConditionBuilder extends \pwf\components\querybuilder\abstraction\Conditio
             }
             $condition = $this->prepareArray((array) $value);
 
-            if ($result != '' && count($value) < 3) {
+            if ($result != '') {
                 $result.=' AND ';
             }
             $result.=$condition;
