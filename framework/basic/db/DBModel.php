@@ -153,7 +153,14 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
      */
     public function generate()
     {
-        throw new \Exception('Not implemented');
+        return QueryBuilder::select()
+                ->select($this->getSelect())
+                ->table($this->getTable())
+                ->setConditionBuilder($this->getConditionBuilder())
+                ->where($this->getWhere())
+                ->limit($this->getLimit())
+                ->offset($this->getOffset())
+                ->generate();
     }
 
     /**
