@@ -74,7 +74,7 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
             })->trigger('testEvent');
             $this->assertTrue(true);
         } catch (Exception $ex) {
-            $this->fail();
+            $this->fail($ex->getMessage()."\n".$ex->getTraceAsString());
         }
     }
 }

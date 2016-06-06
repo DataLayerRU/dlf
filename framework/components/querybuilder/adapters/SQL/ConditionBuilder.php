@@ -30,7 +30,7 @@ class ConditionBuilder extends \pwf\components\querybuilder\abstraction\Conditio
                 }
                 break;
             case 3:
-                $result = $conditions[0].' '.$this->prepareConditions([$conditions[1] => $conditions[2]]);
+                $result = ' '.$conditions[0].' '.$this->prepareConditions([$conditions[1] => $conditions[2]]);
                 break;
             default:
                 throw new \Exception('Wrong condition configuration');
@@ -47,7 +47,7 @@ class ConditionBuilder extends \pwf\components\querybuilder\abstraction\Conditio
             if (is_string($key)) {
                 $value = [$key, $value];
             }
-            $condition = ' '.$this->prepareArray((array) $value);
+            $condition = $this->prepareArray((array) $value);
 
             if ($result != '' && count($value) < 3) {
                 $result.=' AND ';

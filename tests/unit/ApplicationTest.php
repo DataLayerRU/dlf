@@ -55,7 +55,7 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         self::$stubApplication->setConfiguration([
             'components' => [
                 'db' => [
-                    'class' => 'pwf\components\dbconnection\PDOConnection',
+                    'class' => '\pwf\components\dbconnection\PDOConnection',
                     'force' => true
                 ]
             ]

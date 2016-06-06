@@ -33,7 +33,8 @@
     "require-dev": {
         "codeception/codeception": "*",
         "satooshi/php-coveralls": "*",
-        "codeclimate/php-test-reporter": "*"
+        "codeclimate/php-test-reporter": "*",
+        "swiftmailer/swiftmailer": "*"
     },
     "config": {
         "process-timeout": 1800

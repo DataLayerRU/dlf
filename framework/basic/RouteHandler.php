@@ -74,8 +74,7 @@ class RouteHandler
 
         $parts = explode('/', $url);
         if (count($parts) === 2) {
-            $action   = $parts[1];
-            $parts[1] = $action;
+            $parts[1] = $parts[1] === '' ? self::DEFAULT_CONTROLLER : $parts[1];
             $parts[2] = self::DEFAULT_ACTION;
         }
 

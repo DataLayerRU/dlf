@@ -48,7 +48,7 @@ class SwiftMailer implements \pwf\basic\interfaces\Component
     public function init()
     {
         if (!class_exists('Swift_MailTransport')) {
-            throw new Exception('SwiftMailer need to be installed');
+            throw new \Exception('SwiftMailer need to be installed');
         }
         $transport = null;
         switch ($this->config['transport']) {
