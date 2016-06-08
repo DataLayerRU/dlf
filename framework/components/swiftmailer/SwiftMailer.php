@@ -131,6 +131,6 @@ class SwiftMailer implements \pwf\basic\interfaces\Component
      */
     public function __call($name, $arguments)
     {
-        return call_user_method_array($name, $this->mailer, $arguments);
+        return call_user_func_array([$this->mailer, $name], $arguments);
     }
 }

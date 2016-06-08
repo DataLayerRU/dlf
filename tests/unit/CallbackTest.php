@@ -77,4 +77,20 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
             $this->fail($ex->getMessage()."\n".$ex->getTraceAsString());
         }
     }
+
+    public function testDecorator()
+    {
+        $obj      = \Codeception\Util\Stub::makeEmpty('\pwf\basic\controller\WebController',
+                [
+                'getView' => function() {
+                    return true;
+                },
+                'setView' => function(\pwf\basic\interfaces\View $view) {
+                    return true;
+                }
+        ]);
+        $decorated = new \pwf\components\eventhandler\ObjectDecorator();
+        $this->assertEquals($obj, $decorated->setObject($obj)->getObject());
+        $this->assertTrue($decorated->getView());
+    }
 }

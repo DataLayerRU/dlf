@@ -4,13 +4,41 @@ namespace pwf\basic;
 
 use pwf\web\Request;
 use pwf\web\Response;
+use pwf\basic\interfaces\Plugin;
 use pwf\exception\interfaces\HttpException;
 
-class Application implements \pwf\basic\interfaces\Application
+class Application implements \pwf\basic\interfaces\Application, \pwf\components\eventhandler\interfaces\EventHandler
 {
+    //<editor-fold desc="Constants" defaultstate="collapsed">
+    /**
+     * Name of component block
+     */
     const COMPONENT_CONFIG_BLOCK = 'components';
 
-    use \pwf\components\eventhandler\traits\CallbackTrait;
+    /**
+     * Event name on application is started
+     */
+    const EVENT_APPLICATION_RUN = 'run';
+
+    /**
+     * Event name on application is stopped
+     */
+    const EVENT_APPLICATION_FINISH = 'finish';
+
+    /**
+     * Event name on before handler started
+     */
+    const EVENT_BEFORE_HANDLER = 'beforeHandler';
+
+    /**
+     * Event name on after handler started
+     */
+    const EVENT_AFTER_HANDLER = 'afterHandler';
+
+    //</editor-fold>
+
+    use \pwf\components\eventhandler\traits\EventTrait;
+    //<editor-fold desc="Variables" defaultstate="collapsed">
     /**
      * Current application
      *
@@ -24,6 +52,13 @@ class Application implements \pwf\basic\interfaces\Application
      * @var array
      */
     private $componentCache = [];
+
+    /**
+     * PlugIn list
+     *
+     * @var array
+     */
+    private $plugins = [];
 
     /**
      * Current configuration
@@ -45,6 +80,8 @@ class Application implements \pwf\basic\interfaces\Application
      * @var pwf\web\Response
      */
     private $response;
+
+    //</editor-fold>
 
     public function __construct($config = [])
     {
@@ -147,9 +184,13 @@ class Application implements \pwf\basic\interfaces\Application
     public function run()
     {
         try {
+            $this->trigger(self::EVENT_APPLICATION_RUN);
+
             $this->forceComponentLoading();
 
             $callback = $this->prepareCallback(RouteHandler::getHandler($this->request->getPath()));
+
+            $this->trigger(self::EVENT_BEFORE_HANDLER);
 
             if (is_array($callback) && $callback[0] instanceof \pwf\basic\interfaces\Controller) {
                 $callback[0]->setRequest($this->getRequest())->setResponse($this->getResponse());
@@ -168,6 +209,7 @@ class Application implements \pwf\basic\interfaces\Application
                     }
                 })
             );
+            $this->trigger(self::EVENT_AFTER_HANDLER);
         } catch (HttpException $ex) {
             $this->response->setHeaders($ex->getHeaders());
             $this->response->setBody($ex->getContent());
@@ -182,6 +224,7 @@ class Application implements \pwf\basic\interfaces\Application
                 .'</pre>');
         }
         $this->response->send();
+        $this->trigger(self::EVENT_APPLICATION_RUN);
     }
 
     /**
@@ -194,7 +237,10 @@ class Application implements \pwf\basic\interfaces\Application
         $config = $this->getConfiguration();
         foreach ($config[self::COMPONENT_CONFIG_BLOCK] as $key => $params) {
             if (isset($params['class']) && isset($params['force'])) {
-                $this->getComponent($key);
+                $component = $this->getComponent($key);
+                if ($component instanceof Plugin) {
+                    $this->attachPlugin($key, $component);
+                }
             }
         }
         return $this;
@@ -258,5 +304,32 @@ class Application implements \pwf\basic\interfaces\Application
             return $this->getComponent($name);
         }
         return null;
+    }
+
+    /**
+     * Attach plugin to application
+     *
+     * @param string $name
+     * @param Plugin $plugin
+     * @return \pwf\basic\Application
+     */
+    public function attachPlugin($name, Plugin $plugin)
+    {
+        $plugin->register($this);
+        $this->plugins[$name] = $plugin;
+        return $this;
+    }
+
+    /**
+     * Remove plugin
+     *
+     * @param string $name
+     * @return \pwf\basic\Application
+     */
+    public function detachPlugin($name)
+    {
+        $this->plugins[$name]->unregister();
+        unset($this->plugins[$name]);
+        return $this;
     }
 }

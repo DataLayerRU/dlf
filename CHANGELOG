@@ -3,6 +3,8 @@ PWF
 
 ## v0.5 In dev
  - Query builder as dependency
+ - Plugins
+ - Application events
 
 ## v0.4 08.06.2016
  - Query builder
