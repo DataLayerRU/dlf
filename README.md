@@ -29,7 +29,6 @@ components/          modules
     i18n/            internationalization module
     monologadapter/  adapter for Seldaek/monolog
     observer/        obserber pattern
-    querybuilder/    query builder
     swiftmailer/     swiftmailer adapter
 exception/           exception classes
     abstraction/     abstract classes
@@ -45,8 +44,9 @@ Requirements
 
 Dependencies
 ------------
- - [Seldaek/monolog](https://github.com/Seldaek/monolog)
- - [SergioMadness/pwf-helpers](https://github.com/SergioMadness/pwf-helpers)
+ - [monolog/monolog](https://github.com/Seldaek/monolog)
+ - [professionalweb/pwf-helpers](https://github.com/SergioMadness/pwf-helpers)
+ - [professionalweb/query-builder](https://github.com/SergioMadness/query-builder)
 
 
 Installation

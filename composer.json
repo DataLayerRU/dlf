@@ -28,7 +28,8 @@
     "require": {
         "php": ">=5.4.0",
         "professionalweb/helpers": "*",
-        "monolog/monolog": ">=1.18,<2.0"
+        "monolog/monolog": ">=1.18,<2.0",
+        "professionalweb/query-builder": "*"
     },
     "require-dev": {
         "codeception/codeception": "*",
