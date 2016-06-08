@@ -21,4 +21,20 @@ class SwiftMailerTest extends \PHPUnit_Framework_TestCase
             ->addMail($this->component->createMail()->addTo('test@test.ru')->setBody('Test'))
             ->send();
     }
+
+    public function testTransport()
+    {
+        try {
+            $this->component->loadConfiguration([
+                'transport' => 'smtp',
+                'username' => 'test',
+                'password' => 'test'
+            ])->init();
+            $this->component->loadConfiguration([
+                'transport' => 'sendmail'
+            ])->init()->getTransport();
+        } catch (Exception $ex) {
+            $this->fail($ex->getMessage());
+        }
+    }
 }

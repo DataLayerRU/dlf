@@ -2,7 +2,7 @@
 
 namespace pwf\components\eventhandler;
 
-class ObjectDecorator extends Object implements interfaces\EventHandler
+class ObjectDecorator extends \pwf\basic\Object implements interfaces\EventHandler
 {
 
     use traits\EventTrait;
@@ -52,23 +52,7 @@ class ObjectDecorator extends Object implements interfaces\EventHandler
     public function invoke($methodName, array $arguments = [])
     {
         $this->trigger(self::EVENT_BEFORE_METHOD);
-        $result = call_user_method_array($methodName, $this->o, $arguments);
-        $this->trigger(self::EVENT_AFTER_METHOD);
-        return $result;
-    }
-
-    /**
-     * Invoke static method in decorated object
-     *
-     * @param string $methodName
-     * @param array $arguments
-     * @return mixed
-     */
-    public function invokeStatic($methodName, array $arguments = [])
-    {
-        $this->trigger(self::EVENT_BEFORE_METHOD);
-        $result = forward_static_call([$methodName, get_class($this->o)],
-            $arguments);
+        $result = call_user_func_array([$this->o, $methodName], $arguments);
         $this->trigger(self::EVENT_AFTER_METHOD);
         return $result;
     }
@@ -81,16 +65,5 @@ class ObjectDecorator extends Object implements interfaces\EventHandler
     public function __call($name, $arguments)
     {
         return $this->invoke($name, $arguments);
-    }
-
-    /**
-     *
-     * @param string $name
-     * @param array $arguments
-     * @return mixed
-     */
-    public function __callStatic($name, $arguments)
-    {
-        return $this->invokeStatic($name, $arguments);
     }
 }

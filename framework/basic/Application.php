@@ -328,6 +328,7 @@ class Application implements \pwf\basic\interfaces\Application, \pwf\components\
      */
     public function detachPlugin($name)
     {
+        $this->plugins[$name]->unregister();
         unset($this->plugins[$name]);
         return $this;
     }
