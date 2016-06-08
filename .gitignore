@@ -23,7 +23,12 @@ phpunit.phar
 # local phpunit config
 /phpunit.xml
 
+codecept.phar
+
 # logs
 *.log
 
 tests/_output
+tests/_output/*
+tests/_output/*
+tests/_output/*

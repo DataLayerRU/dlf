@@ -17,7 +17,7 @@ trait Subject
      * Attach observer
      *
      * @param \pwf\components\observer\interfaces\Observer $observer
-     * @param mixed $type
+     * @param string $type
      * @return $this
      */
     public function attach(Observer $observer, $type = 'default')
@@ -33,7 +33,7 @@ trait Subject
      * Detach observer
      *
      * @param \pwf\components\observer\interfaces\Observer $observer
-     * @param mixed $type
+     * @param string $type
      * @return $this
      */
     public function detach(Observer $observer, $type = 'default')
@@ -51,7 +51,7 @@ trait Subject
     /**
      * Notify observers by type
      *
-     * @param mixed $type
+     * @param string $type
      */
     public function notify($type = 'default')
     {

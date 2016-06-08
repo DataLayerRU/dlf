@@ -45,11 +45,11 @@ class Response
     /**
      * Request body
      *
-     * @var mixed
+     * @var string
      */
     private $body;
 
-    public function __construct($headers = [], $cookies = [])
+    public function __construct(array $headers = [], array $cookies = [])
     {
         $this->setHeaders($headers);
         $this->setCookies($cookies);
@@ -61,7 +61,7 @@ class Response
      * @param array $headers
      * @return Response
      */
-    public function setHeaders($headers)
+    public function setHeaders(array $headers)
     {
         $this->headers = $headers;
         return $this;
@@ -133,7 +133,7 @@ class Response
     /**
      * Set body
      *
-     * @param mixed $body
+     * @param string $body
      * @return Response
      */
     public function setBody($body)
@@ -145,7 +145,7 @@ class Response
     /**
      * Set body
      *
-     * @return mixed
+     * @return string
      */
     public function getBody()
     {
@@ -260,7 +260,7 @@ class Response
         $cookies = $this->getCookies();
 
         foreach ($cookies as $name => $cookie) {
-            setcookie($name, $cookie['value'], $cookie['expire'],
+            setcookie($name, $cookie['value'], (int)$cookie['expire'],
                 $cookie['path']);
         }
 

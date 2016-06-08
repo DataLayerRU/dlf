@@ -11,7 +11,7 @@ class Request
      */
     private $requestParams;
 
-    public function __construct($requestParams)
+    public function __construct(array $requestParams = [])
     {
         $this->requestParams = $requestParams;
     }
@@ -22,7 +22,7 @@ class Request
      * @param array $params
      * @return Request
      */
-    public function setRequestParams($params)
+    public function setRequestParams(array $params)
     {
         $this->requestParams = $params;
         return $this;
@@ -45,7 +45,7 @@ class Request
      */
     public function getPath()
     {
-        return $this->get('path');
+        return $this->get('path', '');
     }
 
     /**
@@ -94,7 +94,7 @@ class Request
      * Get cookie's value by name
      *
      * @param string $name
-     * @param mixed $default
+     * @param string $default
      * @return string
      */
     public function getCookie($name, $default = null)

@@ -3,13 +3,13 @@
 class PaginatorTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @var \pwf\components\activerecord\Paginator
+     * @var \pwf\basic\db\Paginator
      */
     public static $paginator;
 
     protected function setUp()
     {
-        self::$paginator = \Codeception\Util\Stub::construct('\pwf\components\activerecord\Paginator');
+        self::$paginator = \Codeception\Util\Stub::construct('\pwf\basic\db\Paginator');
     }
 
     protected function tearDown()
@@ -37,7 +37,15 @@ class PaginatorTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('p',
             self::$paginator->setParamName('p')->getParamName());
 
-        $datasource = \Codeception\Util\Stub::construct('\pwf\components\activerecord\abstraction\Model',
+        $datasource = \Codeception\Util\Stub::make('pwf\basic\db\DBModel',
+                [
+                'connection' => new \stdClass()
+        ]);
+
+        $this->assertEquals($datasource,
+            self::$paginator->setDataSource($datasource)->getDataSource());
+
+        $datasource1 = \Codeception\Util\Stub::construct('pwf\basic\db\DBModel',
                 [
                 'connection' => new \stdClass()
                 ],
@@ -54,11 +62,9 @@ class PaginatorTest extends \PHPUnit_Framework_TestCase
                 'getOne' => function($condition) {
                     return new \stdClass();
                 },
-                'getAll' => function($condition, $limit = null, $offset = null) use ($items) {
-                    $result = [];
-                    for ($i = 0; $i < $limit; $i++) {
-                        $result[] = new \stdClass();
-                    }
+                'getAll' => function() use ($items, $datasource) {
+                    $result   = [];
+                    $result[] = new \stdClass();
                     return $result;
                 },
                     'count' => function() {
@@ -66,18 +72,69 @@ class PaginatorTest extends \PHPUnit_Framework_TestCase
                 }
             ]);
 
-            $this->assertEquals($condition,
-                self::$paginator->setCondition($condition)->getCondition());
-
-            $this->assertEquals($datasource,
-                self::$paginator->setDataSource($datasource)->getDataSource());
+            self::$paginator->setDataSource($datasource1);
 
             $this->assertEquals([
                 new \stdClass()
                 ], self::$paginator->setLimit(1)->getData());
 
+            $datasource1 = \Codeception\Util\Stub::construct('pwf\basic\db\DBModel',
+                    [
+                    'connection' => new \stdClass()
+                    ],
+                    [
+                    'save' => function() {
+                        return true;
+                    },
+                    'delete' => function() {
+                        return true;
+                    },
+                    'getId' => function() {
+                        return 1;
+                    },
+                    'getOne' => function($condition) {
+                        return new \stdClass();
+                    },
+                    'getAll' => function() use ($items1) {
+                        return $items1;
+                    },
+                    'count' => function() {
+                        return 2;
+                    }
+            ]);
+
+            self::$paginator->setDataSource($datasource1);
+
             $this->assertEquals($items1, self::$paginator->setPage(2)->getData());
-            $this->assertEquals([],
-                self::$paginator->setLimit(0)->setPage(0)->getData());
+
+            $datasource1 = \Codeception\Util\Stub::construct('pwf\basic\db\DBModel',
+                    [
+                    'connection' => new \stdClass()
+                    ],
+                    [
+                    'save' => function() {
+                        return true;
+                    },
+                    'delete' => function() {
+                        return true;
+                    },
+                    'getId' => function() {
+                        return 1;
+                    },
+                    'getOne' => function($condition) {
+                        return new \stdClass();
+                    },
+                    'getAll' => function() {
+                        return [];
+                    },
+                        'count' => function() {
+                        return 2;
+                    }
+                ]);
+
+                self::$paginator->setDataSource($datasource1);
+
+                $this->assertEquals([],
+                    self::$paginator->setLimit(0)->setPage(0)->getData());
+            }
         }
-    }

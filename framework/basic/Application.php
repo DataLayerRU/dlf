@@ -8,6 +8,7 @@ use pwf\exception\interfaces\HttpException;
 
 class Application implements \pwf\basic\interfaces\Application
 {
+    const COMPONENT_CONFIG_BLOCK = 'components';
 
     use \pwf\components\eventhandler\traits\CallbackTrait;
     /**
@@ -97,6 +98,22 @@ class Application implements \pwf\basic\interfaces\Application
     }
 
     /**
+     * Get configuration parameter
+     *
+     * @param string $name
+     * @return mixed
+     */
+    public function getConfigParam($name)
+    {
+        $result = null;
+        $config = $this->getConfiguration();
+        if (isset($config[$name])) {
+            $result = $config[$name];
+        }
+        return $result;
+    }
+
+    /**
      * Append configuration
      *
      * @param array $config
@@ -118,8 +135,8 @@ class Application implements \pwf\basic\interfaces\Application
     {
         $result = null;
         $config = $this->getConfiguration();
-        if (isset($config[$componentName])) {
-            $result = $config[$componentName];
+        if (isset($config[self::COMPONENT_CONFIG_BLOCK][$componentName])) {
+            $result = $config[self::COMPONENT_CONFIG_BLOCK][$componentName];
         }
         return $result;
     }
@@ -175,7 +192,7 @@ class Application implements \pwf\basic\interfaces\Application
     protected function forceComponentLoading()
     {
         $config = $this->getConfiguration();
-        foreach ($config as $key => $params) {
+        foreach ($config[self::COMPONENT_CONFIG_BLOCK] as $key => $params) {
             if (isset($params['class']) && isset($params['force'])) {
                 $this->getComponent($key);
             }
@@ -197,6 +214,17 @@ class Application implements \pwf\basic\interfaces\Application
         }
 
         return $this->componentCache[$name];
+    }
+
+    /**
+     * Check is component exists
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function componentExists($name)
+    {
+        return isset($this->getConfiguration()[self::COMPONENT_CONFIG_BLOCK][$name]);
     }
 
     /**
@@ -222,5 +250,13 @@ class Application implements \pwf\basic\interfaces\Application
         }
 
         return $result;
+    }
+
+    public function __get($name)
+    {
+        if ($this->componentExists($name)) {
+            return $this->getComponent($name);
+        }
+        return null;
     }
 }

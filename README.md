@@ -1,12 +1,15 @@
-PWF - framework for proffessional web development
+PWF - framework for professional web development
 ====
 
 [http://pwf.web-development.pw/](http://pwf.web-development.pw/)
 
-[![Build Status](https://travis-ci.org/SergioMadness/pwf.svg?branch=dev)](https://travis-ci.org/SergioMadness/pwf)
+[![Latest Stable Version](https://poser.pugx.org/professionalweb/pwf/v/stable)](https://packagist.org/packages/professionalweb/pwf)
+[![Build Status](https://travis-ci.org/SergioMadness/framework.svg?branch=dev)](https://travis-ci.org/SergioMadness/framework)
 [![Code Climate](https://codeclimate.com/github/SergioMadness/pwf/badges/gpa.svg)](https://codeclimate.com/github/SergioMadness/pwf)
-[![Test Coverage](https://codeclimate.com/github/SergioMadness/pwf/badges/coverage.svg)](https://codeclimate.com/github/SergioMadness/pwf/coverage)
+[![Coverage Status](https://coveralls.io/repos/github/SergioMadness/framework/badge.svg?branch=dev)](https://coveralls.io/github/SergioMadness/framework?branch=dev)
 [![Dependency Status](https://www.versioneye.com/user/projects/56b53a8e0a0ff5003b975815/badge.svg?style=flat)](https://www.versioneye.com/user/projects/56b53a8e0a0ff5003b975815)
+[![License](https://poser.pugx.org/professionalweb/pwf/license)](https://packagist.org/packages/professionalweb/pwf)
+[![Latest Unstable Version](https://poser.pugx.org/professionalweb/pwf/v/unstable)](https://packagist.org/packages/professionalweb/pwf)
 
 Project structure
 -------------------
@@ -14,18 +17,23 @@ Project structure
 autoloader/          autoloader
 basic/               basic classes
     controller/      basic controllers
+    db/              classes for working with DB
     interfaces/      basic interfaces
 components/          modules
     activerecord/    AR pattern
     authorization/   authorization/identity module
     datamapper/      data mapper pattern
+    datapaginator/   pagination
     dbconnection/    database connection module
     eventhandler/    event handler
+    i18n/            internationalization module
+    monologadapter/  adapter for Seldaek/monolog
     observer/        obserber pattern
+    querybuilder/    query builder
+    swiftmailer/     swiftmailer adapter
 exception/           exception classes
     abstraction/     abstract classes
     interfaces/      interfaces
-helpers/             helpers
 traits/              traits
 web/                 web/net objects
 ```
@@ -34,6 +42,12 @@ web/                 web/net objects
 Requirements
 ------------
  - PHP 5.4+
+
+Dependencies
+------------
+ - [Seldaek/monolog](https://github.com/Seldaek/monolog)
+ - [SergioMadness/pwf-helpers](https://github.com/SergioMadness/pwf-helpers)
+
 
 Installation
 ------------
@@ -94,7 +108,7 @@ Controllers
 
 namespace project\controllers;
 
-class MainController extends \pwf\basic\Controller
+class MainController extends \pwf\basic\WebController
 {
 
     public function index()
@@ -139,30 +153,10 @@ Models
 class PostModel extends \pwf\basic\DBModel
 {
 
-    /**
-     * @inheritdoc
-     */
-    public function getOne($primaryKeyValue)
+    public function __construct(array $attributes = [])
     {
-        $this->setAttrubutes($this->getConnection()->query('SELECT * FROM post WHERE id=:id',
-                [
-                'id' => $primaryKeyValue
-            ])->fetch(PDO::FETCH_ASSOC));
-
-        return $this;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function save()
-    {
-
-    }
-
-    public function validate($attributes = array())
-    {
-        return true;
+        parent::__construct(attributes);
+        $this->table('post');
     }
 }
 ```
@@ -172,7 +166,7 @@ class PostModel extends \pwf\basic\DBModel
 The MIT License (MIT)
 ---------------------
 
-Copyright (c) 2016 Sergey Zinchenko, [Professional web](http://web-developmwnt.pw)
+Copyright (c) 2016 Sergey Zinchenko, [Professional web](http://web-development.pw)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

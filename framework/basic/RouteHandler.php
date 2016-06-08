@@ -7,6 +7,9 @@ namespace pwf\basic;
  */
 class RouteHandler
 {
+    const DEFAULT_CONTROLLER = 'Main';
+    const DEFAULT_ACTION     = 'index';
+
     /**
      * Registered paths
      * string: controllers\namespace\Controller::action
@@ -70,6 +73,10 @@ class RouteHandler
         $result = null;
 
         $parts = explode('/', $url);
+        if (count($parts) === 2) {
+            $parts[1] = $parts[1] === '' ? self::DEFAULT_CONTROLLER : $parts[1];
+            $parts[2] = self::DEFAULT_ACTION;
+        }
 
         $action                   = static::preparePart(array_pop($parts), true);
         $parts[count($parts) - 1] = static::preparePart($parts[count($parts) - 1]).'Controller';

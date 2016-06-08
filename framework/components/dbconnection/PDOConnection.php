@@ -61,7 +61,7 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
      * @param array $params
      * @return $this
      */
-    public function connect($params = [])
+    public function connect(array $params = [])
     {
         $this->setPDO(new PDO($this->getDSN(), $this->getLogin(),
             $this->getPassword(), $params));
@@ -86,7 +86,7 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
      * @param array $config
      * @return \pwf\components\dbconnection\PDOConnection
      */
-    public function loadConfiguration($config = array())
+    public function loadConfiguration(array $config = [])
     {
         if (isset($config['login'])) {
             $this->setLogin($config['login']);
@@ -107,10 +107,12 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
      * @param array $params
      * @return PDOStatement
      */
-    public function exec($query, $params = [])
+    public function exec($query, array $params = [])
     {
         $this->lastStatement = $this->getPDO()->prepare($query);
-        return $this->lastStatement->execute($params);
+        $res                 = $this->lastStatement->execute($this->prepareParams($params));
+        $this->lastStatement->errorInfo();
+        return $res;
     }
 
     /**
@@ -120,20 +122,44 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
      * @param array $params
      * @return PDOStatement
      */
-    public function query($query, $params = [])
+    public function query($query, array $params = [])
     {
         $this->lastStatement = $this->getPDO()->prepare($query);
-        $this->lastStatement->execute($params);
+        $this->lastStatement->execute($this->prepareParams($params));
         return $this->lastStatement;
     }
 
     /**
      * Get last insert id
      *
+     * @param string $sequenceName
      * @return string
      */
-    public function insertId()
+    public function insertId($sequenceName = null)
     {
-        return $this->getPDO()->lastInsertId();
+        return $this->getPDO()->lastInsertId($sequenceName);
+    }
+
+    /**
+     * Prepare params
+     *
+     * @param array $params
+     * @return array
+     */
+    protected function prepareParams(array $params)
+    {
+        $result = $params;
+
+        foreach ($result as $key => $val) {
+            if ($key[0] != ':') {
+                $result[':'.$key] = $val;
+                unset($result[$key]);
+            }
+            if (is_bool($val)) {
+                $result[$key] = $val ? 1 : 0;
+            }
+        }
+
+        return $result;
     }
 }

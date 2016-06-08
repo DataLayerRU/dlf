@@ -32,7 +32,7 @@ class Authorization extends Component
     /**
      * Set identity class name
      *
-     * @param mixed $className
+     * @param string $className
      * @return \pwf\components\authorization\Authorization
      */
     public function setIdentityClass($className)
@@ -44,7 +44,7 @@ class Authorization extends Component
     /**
      * Get identity class name
      *
-     * @return mixed
+     * @return string
      */
     public function getIdentityClass()
     {
@@ -125,7 +125,7 @@ class Authorization extends Component
      *
      * @param array $config
      */
-    public function loadConfiguration($config = [])
+    public function loadConfiguration(array $config = [])
     {
         parent::loadConfiguration($config);
         if (isset($config['auto'])) {

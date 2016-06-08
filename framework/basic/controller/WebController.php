@@ -55,12 +55,13 @@ class WebController extends Controller
      * @param array $params
      * @return string
      */
-    protected function render($viewPath, $params = [])
+    protected function render($viewPath, array $params = [])
     {
         if (!isset($params['title'])) {
             $params['title'] = $this->title;
         }
+        $views = \pwf\basic\Application::$instance->getConfigParam('views');
 
-        return $this->getView()->render($viewPath, $params);
+        return $this->getView()->render($views.$viewPath, $params);
     }
 }

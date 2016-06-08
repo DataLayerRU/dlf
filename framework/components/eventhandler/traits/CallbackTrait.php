@@ -42,8 +42,9 @@ trait CallbackTrait
      */
     public function prepareCallback($callback)
     {
-        $result = $callback;
-        if (is_string($callback)) {
+        $result       = $callback;
+        if (is_string($callback) && ($callbackInfo = $this->parseHandlerStr($callback))
+            && class_exists($callbackInfo['class'])) {
             $callbackInfo = $this->parseHandlerStr($callback);
             $class        = new $callbackInfo['class'];
             $result       = [$class, $callbackInfo['method']];

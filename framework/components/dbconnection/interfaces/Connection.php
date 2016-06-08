@@ -5,11 +5,11 @@ namespace pwf\components\dbconnection\interfaces;
 interface Connection
 {
 
-    public function connect($params = []);
+    public function connect(array $params = []);
 
     public function disconnect();
 
-    public function query($query, $params = []);
+    public function query($query, array $params = []);
 
-    public function exec($query, $params = []);
+    public function exec($query, array $params = []);
 }
