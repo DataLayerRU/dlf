@@ -1,11 +1,11 @@
 <?php
 
-namespace pwf\basic;
+namespace pwf\components\eventhandler;
 
-class ObjectDecorator extends Object implements \pwf\components\eventhandler\interfaces\EventHandler
+class ObjectDecorator extends Object implements interfaces\EventHandler
 {
 
-    use \pwf\components\eventhandler\traits\EventTrait;
+    use traits\EventTrait;
     /**
      * Event names
      */
@@ -54,7 +54,7 @@ class ObjectDecorator extends Object implements \pwf\components\eventhandler\int
         $this->trigger(self::EVENT_BEFORE_METHOD);
         $result = call_user_method_array($methodName, $this->o, $arguments);
         $this->trigger(self::EVENT_AFTER_METHOD);
-        return $result
+        return $result;
     }
 
     /**
