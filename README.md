@@ -108,7 +108,7 @@ Controllers
 
 namespace project\controllers;
 
-class MainController extends \pwf\basic\Controller
+class MainController extends \pwf\basic\WebController
 {
 
     public function index()
@@ -153,30 +153,10 @@ Models
 class PostModel extends \pwf\basic\DBModel
 {
 
-    /**
-     * @inheritdoc
-     */
-    public function getOne($primaryKeyValue)
+    public function __construct(array $attributes = [])
     {
-        $this->setAttrubutes($this->getConnection()->query('SELECT * FROM post WHERE id=:id',
-                [
-                'id' => $primaryKeyValue
-            ])->fetch(PDO::FETCH_ASSOC));
-
-        return $this;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function save()
-    {
-
-    }
-
-    public function validate($attributes = array())
-    {
-        return true;
+        parent::__construct(attributes);
+        $this->table('post');
     }
 }
 ```
