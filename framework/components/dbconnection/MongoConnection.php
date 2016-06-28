@@ -26,7 +26,7 @@ class MongoConnection extends \pwf\components\dbconnection\abstraction\Connectio
      */
     public function connect(array $params = [])
     {
-        $this->setConnection((new \MongoDB\Client($params['dsn']))->{$this->getName()});
+        $this->setConnection((new \MongoDB\Client($this->getDSN()))->{$this->getName()});
         return $this;
     }
 
@@ -99,7 +99,7 @@ class MongoConnection extends \pwf\components\dbconnection\abstraction\Connectio
      * @param \MongoDB\Database $connection
      * @return \pwf\components\dbconnection\MongoConnection
      */
-    public function setConnection(\MongoDB\Client $connection)
+    public function setConnection(\MongoDB\Database $connection)
     {
         $this->connection = $connection;
         return $this;
