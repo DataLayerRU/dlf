@@ -60,6 +60,7 @@ class MongoConnection extends \pwf\components\dbconnection\abstraction\Connectio
      */
     public function init()
     {
+        $this->connect();
         return $this;
     }
 
