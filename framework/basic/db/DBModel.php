@@ -72,6 +72,8 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
     public function getAll()
     {
         $builder = QueryBuilder::select()
+            ->forUpdate($this->is)
+            ->setJoins($this->getJoin())
             ->table($this->getTable())
             ->setConditionBuilder($this->getConditionBuilder())
             ->where($this->getWhere())
