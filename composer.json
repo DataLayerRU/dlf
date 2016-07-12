@@ -29,7 +29,7 @@
         "php": ">=5.4.0",
         "professionalweb/helpers": "*",
         "monolog/monolog": ">=1.18,<2.0",
-        "professionalweb/query-builder": "*"
+        "professionalweb/query-builder": "dev-dev"
     },
     "require-dev": {
         "codeception/codeception": "*",
