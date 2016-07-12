@@ -111,7 +111,7 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
     {
         $this->lastStatement = $this->getPDO()->prepare($query);
         $res                 = $this->lastStatement->execute($this->prepareParams($params));
-        $this->lastStatement->errorInfo();
+        $errors              = $this->lastStatement->errorInfo();
         return $res;
     }
 
@@ -161,5 +161,35 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
         }
 
         return $result;
+    }
+
+    /**
+     * Begin transaction
+     *
+     * @return bool
+     */
+    public function beginTransaction()
+    {
+        return $this->getPDO()->beginTransaction();
+    }
+
+    /**
+     * Commit
+     *
+     * @return bool
+     */
+    public function commitTransaction()
+    {
+        return $this->getPDO()->commit();
+    }
+
+    /**
+     * Rollback
+     *
+     * @return bool
+     */
+    public function rollbackTransaction()
+    {
+        return $this->getPDO()->rollBack();
     }
 }
