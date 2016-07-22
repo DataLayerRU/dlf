@@ -53,22 +53,22 @@ class SwiftMailer implements \pwf\basic\interfaces\Component
         $transport = null;
         switch ($this->config['transport']) {
             case self::TRANSPORT_SENDMAIL:
-                $transport = \Swift_SendmailTransport::newInstance();
+                $transport = new \Swift_SendmailTransport();
                 break;
             case self::TRANSPORT_SMTP:
-                $transport = \Swift_SmtpTransport::newInstance(isset($this->config['host'])
-                                ? $this->config['host'] : 'localhost',
-                        isset($this->config['port']) ? $this->config['port'] : 25,
-                        isset($this->config['security']) ? $this->config['security']
-                                : '')
+                $transport = (new \Swift_SmtpTransport(isset($this->config['host'])
+                            ? $this->config['host'] : 'localhost',
+                    isset($this->config['port']) ? $this->config['port'] : 25,
+                    isset($this->config['security']) ? $this->config['security']
+                            : ''))
                     ->setUsername($this->config['username'])
                     ->setPassword($this->config['password']);
                 break;
             case self::TRANSPORT_MAIL:
             default:
-                $transport = \Swift_MailTransport::newInstance();
+                $transport = new \Swift_MailTransport();
         }
-        $this->mailer = \Swift_Mailer::newInstance($transport);
+        $this->mailer = new \Swift_Mailer($transport);
         return $this;
     }
 
@@ -94,7 +94,7 @@ class SwiftMailer implements \pwf\basic\interfaces\Component
      */
     public function createMail()
     {
-        return \Swift_Message::newInstance();
+        return new \Swift_Message();
     }
 
     /**
