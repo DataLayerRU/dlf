@@ -16,8 +16,6 @@ coverage:
     enabled: true
     include:
         - framework/*
-    exclude:
-        - framework/autoloader/*
 modules:
     config:
         
