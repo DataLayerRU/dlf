@@ -67,11 +67,7 @@ Initialization
 --------------
 ##index.php
 ```php
-require_once("../vendor/autoload.php");
-require_once("../vendor/professionalweb/pwf/autoloader/Autoloader.php");
-
-\pwf\autoloader\Autoloader::Register(new \pwf\autoloader\Basic());
-
+require(__DIR__ . '/../vendor/autoload.php'); 
 
 $app = new \project\Application();
 $app->run();
