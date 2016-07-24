@@ -15,12 +15,12 @@ class SwiftMailerTest extends \PHPUnit_Framework_TestCase
         $this->component = null;
     }
 
-//    public function testIt()
-//    {
-//        $this->component
-//            ->addMail($this->component->createMail()->addTo('test@test.ru')->setBody('Test'))
-//            ->send();
-//    }
+    public function testIt()
+    {
+        $this->component
+            ->addMail($this->component->createMail()->addTo('test@test.ru')->setBody('Test'))
+            ->send();
+    }
 
     public function testTransport()
     {
