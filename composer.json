@@ -1,6 +1,6 @@
 {
     "name": "professionalweb/pwf",
-    "version": "0.4",
+    "version": "0.5",
     "description": "Professional web framework",
     "homepage": "http://pwf.web-development.pw/",
     "keywords": [
@@ -28,7 +28,8 @@
     "require": {
         "php": ">=5.4.0",
         "professionalweb/helpers": "*",
-        "monolog/monolog": ">=1.18,<2.0"
+        "monolog/monolog": ">=1.18,<2.0",
+        "professionalweb/query-builder": "*"
     },
     "require-dev": {
         "codeception/codeception": "*",

@@ -40,7 +40,7 @@ class RouteHandler
     {
         $result = null;
 
-        $path = '/'.rtrim($path, " /");
+        $path = '/'.trim($path, " /");
 
         foreach (static::$routes as $key => $handler) {
             $matches = [];

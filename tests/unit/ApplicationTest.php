@@ -149,4 +149,28 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
             return true;
         }
     }
+
+    public function testPlugins()
+    {
+        $plugin      = \Codeception\Util\Stub::makeEmpty('\pwf\basic\interfaces\Plugin',
+                [
+                'register' => function (\pwf\basic\interfaces\Application $app) {
+                    return null;
+                },
+                'unregister' => function() {
+                    return true;
+                },
+                'loadConfiguration' => function (array $config = []) {
+                return null;
+            },
+                'init' => function() {
+                return true;
+            }
+        ]);
+        try {
+            self::$stubApplication->attachPlugin('test', $plugin)->detachPlugin('test');
+        } catch (Exception $ex) {
+            $this->fail($ex->getMessage());
+        }
+    }
 }
