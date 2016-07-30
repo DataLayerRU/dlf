@@ -29,6 +29,7 @@ components/          modules
     i18n/            internationalization module
     monologadapter/  adapter for Seldaek/monolog
     observer/        obserber pattern
+    socialite/       socialite adapter
     swiftmailer/     swiftmailer adapter
 exception/           exception classes
     abstraction/     abstract classes

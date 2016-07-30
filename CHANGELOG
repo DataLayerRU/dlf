@@ -1,7 +1,8 @@
 PWF
 ====
 
-## v0.5 In dev
+## v0.5 30.07.2016
+ - Socialite component
  - Query builder as dependency
  - Plugins
  - Application events
