@@ -42,7 +42,6 @@ trait CallbackTrait
      */
     public function prepareCallback($callback)
     {
-        echo "asdasd\n";
         $result       = $callback;
         if (is_string($callback) && ($callbackInfo = $this->parseHandlerStr($callback))
             && class_exists($callbackInfo['class'])) {
