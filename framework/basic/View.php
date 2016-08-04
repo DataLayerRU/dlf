@@ -29,6 +29,13 @@ class View implements \pwf\basic\interfaces\View
     private $currentBlock = '';
 
     /**
+     * Params
+     *
+     * @var array
+     */
+    private $params = [];
+
+    /**
      * Render view file
      *
      * @param string $viewPath
@@ -39,6 +46,7 @@ class View implements \pwf\basic\interfaces\View
     {
         ob_start();
         ob_implicit_flush(false);
+        $this->params = $params;
         extract(array_merge($params, $this->getBlocks()), EXTR_OVERWRITE);
         require(file_exists($viewPath) ? $viewPath : '../'.$viewPath);
 
@@ -56,7 +64,7 @@ class View implements \pwf\basic\interfaces\View
             $content = ob_get_clean();
             ob_clean();
             echo (new static())->render($this->parentLayout,
-                array_merge($this->getBlocks(), ['content' => $content])
+                array_merge($this->getBlocks(), $this->params, ['content' => $content])
             );
         } else {
             $this->parentLayout = $parentView;
