@@ -8,6 +8,8 @@ use pwf\components\authorization\interfaces\Identity;
 
 class Authorization extends Component
 {
+    const TOKEN_NAME = 'access-token';
+
     /**
      * Current user
      *
@@ -79,12 +81,13 @@ class Authorization extends Component
      * @param Identity $user
      * @return Authorization
      */
-    public function setIdentity(Identity $user)
+    public function setIdentity(Identity $user, $remember = false)
     {
         $this->identity = $user;
 
-        Application::$instance->getResponse()->addCookie('accessToken',
-            $user->getAuthToken());
+        Application::$instance->getResponse()->addCookie(self::TOKEN_NAME,
+            $user->getAuthToken(),
+            $remember ? time() + 365 * 24 * 60 * 60 : null, '/');
         return $this;
     }
 
@@ -106,7 +109,7 @@ class Authorization extends Component
     public function clearIdentity()
     {
         $this->identity = null;
-        Application::$instance->getResponse()->removeCookie('accessToken');
+        Application::$instance->getResponse()->removeCookie(self::TOKEN_NAME);
         return $this;
     }
 
@@ -154,14 +157,14 @@ class Authorization extends Component
      */
     protected function autoLogin()
     {
-        $token = Application::$instance->getRequest()->get('access-token');
+        $token = Application::$instance->getRequest()->get(self::TOKEN_NAME);
         if ($token === null) {
-            $token = Application::$instance->getRequest()->getCookie('accessToken');
+            $token = Application::$instance->getRequest()->getCookie(self::TOKEN_NAME);
         }
         if ($token !== null) {
             $className = $this->getIdentityClass();
-            $user      = new $className;
-            $this->setIdentity($user->getByAuthToken($token));
+            $user      = (new $className)->getByAuthToken($token);
+            $user->getId() > 0 ? $this->setIdentity($user) : $this->clearIdentity();
         }
     }
 }
