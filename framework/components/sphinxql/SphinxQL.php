@@ -2,92 +2,66 @@
 
 namespace pwf\components\sphinxql;
 
-use Foolz\SphinxQL\SphinxQL;
-use Foolz\SphinxQL\Connection;
-
-/**
- * SphinxQL query builder adapter
- */
-class SphinxQL implements \pwf\basic\interfaces\Component
+class SphinxQL extends \Foolz\SphinxQL\SphinxQL implements \pwf\components\datapaginator\interfaces\Paginatable
 {
-    /**
-     * Connection config
-     *
-     * @var array
-     */
-    private $connectionConfig = [];
 
     /**
-     * Sphinx connection
+     * Count results
      *
-     * @var \Foolz\SphinxQL\Connection
+     * @return int
      */
-    private $connection;
-
-    public function init()
+    public function count()
     {
-        $conn = new Connection();
-        $conn->setParams($this->getConfig());
-        $this->setConnection($conn);
-    }
-
-    public function create()
-    {
-        return SphinxQL::create($this->getConnection());
+        $self         = clone $this;
+        $self->type   = 'select';
+        $self->select = ['COUNT(*) AS cnt'];
+        $result       = $self->execute();
+        return count($result[0]) > 0 ? (int) $result[0]['cnt'] : 0;
     }
 
     /**
-     * Set connection
-     *
-     * @param Connection $connection
-     * @return \pwf\components\sphinxql\SphinxQL
-     */
-    public function setConnection(Connection $connection)
-    {
-        $this->connection = $connection;
-        return $this;
-    }
-
-    /**
-     * Get connection
-     *
-     * @return Connection
-     */
-    public function getConnection()
-    {
-        return $this->connection;
-    }
-
-    /**
-     * Load configuration
-     *
-     * @param array $config
-     * @return \pwf\components\sphinxql\SphinxQL
-     */
-    public function loadConfiguration(array $config = array())
-    {
-        return $this->setConfig($config);
-    }
-
-    /**
-     * Set config
-     *
-     * @param array $config
-     * @return \pwf\components\sphinxql\SphinxQL
-     */
-    private function setConfig(array $config = [])
-    {
-        $this->connectionConfig = $config;
-        return $this;
-    }
-
-    /**
-     * Get configuration
+     * Get results
      *
      * @return array
      */
-    public function getConfig()
+    public function getAll()
     {
-        return $this->connectionConfig;
+        return $this->execute();
+    }
+
+    /**
+     * Get single item
+     *
+     * @return mixed
+     */
+    public function getOne()
+    {
+        return $this->limit(1)->execute();
+    }
+
+    /**
+     * Set limit
+     *
+     * @param int $limit
+     */
+    public function limit($limit)
+    {
+        if ($limit > 0) {
+            parent::limit($limit);
+        }
+        return $this;
+    }
+
+    /**
+     * Set offset
+     *
+     * @param int $offset
+     */
+    public function offset($offset)
+    {
+        if ($offset > 0) {
+            parent::offset($offset);
+        }
+        return $this;
     }
 }
