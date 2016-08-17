@@ -70,8 +70,7 @@ Initialization
 ```php
 require(__DIR__ . '/../vendor/autoload.php'); 
 
-$app = new \project\Application();
-$app->run();
+(new \project\Application())->run();
 ```
 ##Application.php
 ```php
