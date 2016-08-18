@@ -9,33 +9,6 @@ use pwf\exception\interfaces\HttpException;
 
 class Application implements \pwf\basic\interfaces\Application, \pwf\components\eventhandler\interfaces\EventHandler
 {
-    //<editor-fold desc="Constants" defaultstate="collapsed">
-    /**
-     * Name of component block
-     */
-    const COMPONENT_CONFIG_BLOCK = 'components';
-
-    /**
-     * Event name on application is started
-     */
-    const EVENT_APPLICATION_RUN = 'run';
-
-    /**
-     * Event name on application is stopped
-     */
-    const EVENT_APPLICATION_FINISH = 'finish';
-
-    /**
-     * Event name on before handler started
-     */
-    const EVENT_BEFORE_HANDLER = 'beforeHandler';
-
-    /**
-     * Event name on after handler started
-     */
-    const EVENT_AFTER_HANDLER = 'afterHandler';
-
-    //</editor-fold>
 
     use \pwf\components\eventhandler\traits\EventTrait;
     //<editor-fold desc="Variables" defaultstate="collapsed">
@@ -224,7 +197,7 @@ class Application implements \pwf\basic\interfaces\Application, \pwf\components\
                 .'</pre>');
         }
         $this->response->send();
-        $this->trigger(self::EVENT_APPLICATION_RUN);
+        $this->trigger(self::EVENT_APPLICATION_FINISH);
     }
 
     /**

@@ -73,6 +73,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
     public function getAll()
     {
         $builder = QueryBuilder::select()
+            ->select($this->getSelect())
             ->setJoins($this->getJoin())
             ->table($this->getTable())
             ->setConditionBuilder($this->getConditionBuilder())
@@ -107,6 +108,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
     public function getOne()
     {
         $builder = QueryBuilder::select()
+            ->select($this->getSelect())
             ->table($this->getTable())
             ->setConditionBuilder($this->getConditionBuilder())
             ->where($this->getWhere())
