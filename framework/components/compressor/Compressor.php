@@ -32,7 +32,10 @@ class Compressor implements \pwf\basic\interfaces\Plugin
 
     public function compress()
     {
-        $this->app->getResponse()->setBody(\pwf\helpers\StringHelpers::minify($this->app->getResponse()->getBody()));
+        $body = $this->app->getResponse()->getBody();
+        if (is_string($body)) {
+            $this->app->getResponse()->setBody(\pwf\helpers\StringHelpers::minify($body));
+        }
     }
 
     public function unregister()
