@@ -11,9 +11,10 @@ abstract class Model extends \pwf\components\datamapper\abstraction\Model implem
      */
     private $connection;
 
-    public function __construct($connection, array $attributes = array())
+    public function __construct($connection, array $attributes = [],
+                                array $properties = [])
     {
-        parent::__construct($attributes);
+        parent::__construct($attributes, $properties);
 
         $this->setConnection($connection);
     }
