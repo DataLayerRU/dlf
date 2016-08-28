@@ -4,6 +4,7 @@ namespace pwf\basic;
 
 use pwf\web\Request;
 use pwf\web\Response;
+use pwf\helpers\SystemHelpers;
 use pwf\basic\interfaces\Plugin;
 use pwf\exception\interfaces\HttpException;
 
@@ -169,35 +170,52 @@ class Application implements \pwf\basic\interfaces\Application, \pwf\components\
                 $callback[0]->setRequest($this->getRequest())->setResponse($this->getResponse());
             }
 
-            $this->response->setBody(\pwf\helpers\SystemHelpers::call($callback,
-                    function($paramName) {
-                    if (($component = $this->getComponent($paramName)) !== null) {
-                        return $component;
-                    }
-                    if (isset($_GET[$paramName])) {
-                        return $_GET[$paramName];
-                    }
-                    if (isset($_POST[$paramName])) {
-                        return $_POST[$paramName];
-                    }
-                })
-            );
+            $this->response->setBody($this->runController($callback));
             $this->trigger(self::EVENT_AFTER_HANDLER);
         } catch (HttpException $ex) {
             $this->response->setHeaders($ex->getHeaders());
-            $this->response->setBody($ex->getContent());
+            $this->response->setBody(
+                $this->runController($this->getConfigParam('error'),
+                    ['error' => $ex])
+            );
         } catch (\Exception $ex) {
             $this->response->setHeaders([
                 'HTTP/1.1 500 Internal Server Error'
             ]);
-            $this->response->setBody('<h2>Handled exception</h2>'
-                .'<h3>'.$ex->getMessage().'</h3>'
-                .'<pre>'
-                .$ex->getTraceAsString()
-                .'</pre>');
+            $this->response->setBody(
+                $this->runController($this->getConfigParam('error'),
+                    ['error' => $ex])
+            );
         }
         $this->response->send();
         $this->trigger(self::EVENT_APPLICATION_FINISH);
+    }
+
+    /**
+     * Run by handler name
+     *
+     * @param Closure|string|Callable $handler
+     * @param array $params
+     * @return string
+     */
+    public function runController($handler, array $params = [])
+    {
+        return SystemHelpers::call(
+                $this->prepareCallback($handler),
+                function($paramName) use ($params) {
+                if (($component = $this->getComponent($paramName)) !== null) {
+                    return $component;
+                }
+                if (isset($_GET[$paramName])) {
+                    return $_GET[$paramName];
+                }
+                if (isset($_POST[$paramName])) {
+                    return $_POST[$paramName];
+                }
+                if (isset($params[$paramName])) {
+                    return $params[$paramName];
+                }
+            });
     }
 
     /**
