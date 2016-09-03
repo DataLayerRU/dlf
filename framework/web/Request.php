@@ -107,4 +107,21 @@ class Request
 
         return $result;
     }
+
+    /**
+     * Get file by name
+     *
+     * @param string $fileName
+     * @return array|false
+     */
+    public function getFile($fileName)
+    {
+        $result = false;
+
+        if (isset($_FILES[$fileName])) {
+            $result = $_FILES[$fileName];
+        }
+
+        return $result;
+    }
 }
