@@ -27,10 +27,9 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
      * @param \pwf\components\dbconnection\interfaces\Connection $connection
      * @param array $attributes
      */
-    public function __construct($connection, array $attributes = [],
-                                array $properties = [])
+    public function __construct($connection, array $attributes = array())
     {
-        parent::__construct($connection, $attributes, $properties);
+        parent::__construct($connection, $attributes);
 
         $this->setConditionBuilder(QueryBuilder::getConditionBuilder());
     }
@@ -74,6 +73,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
     {
         $builder = QueryBuilder::select()
             ->select($this->getSelect())
+            ->forUpdate($this->is)
             ->setJoins($this->getJoin())
             ->table($this->getTable())
             ->setConditionBuilder($this->getConditionBuilder())
@@ -109,7 +109,6 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
     {
         $builder = QueryBuilder::select()
             ->select($this->getSelect())
-            ->setJoins($this->getJoin())
             ->table($this->getTable())
             ->setConditionBuilder($this->getConditionBuilder())
             ->where($this->getWhere())
