@@ -27,9 +27,10 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
      * @param \pwf\components\dbconnection\interfaces\Connection $connection
      * @param array $attributes
      */
-    public function __construct($connection, array $attributes = array())
+    public function __construct($connection, array $attributes = [],
+                                $properties = [])
     {
-        parent::__construct($connection, $attributes);
+        parent::__construct($connection, $attributes, $properties);
 
         $this->setConditionBuilder(QueryBuilder::getConditionBuilder());
     }
