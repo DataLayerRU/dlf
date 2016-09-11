@@ -6,12 +6,26 @@ use pwf\components\datapaginator\interfaces\Paginatable;
 
 class Paginator extends \pwf\components\datapaginator\abstraction\Paginator
 {
+    const LIMIT = 10;
+
     /**
      * Data source
      *
      * @var Paginatable
      */
     private $dataSource;
+
+    /**
+     * Total quantity
+     *
+     * @var int
+     */
+    private $cnt;
+
+    public function __construct($limit = self::LIMIT)
+    {
+        $this->setLimit($limit);
+    }
 
     /**
      * Set data source
@@ -58,19 +72,37 @@ class Paginator extends \pwf\components\datapaginator\abstraction\Paginator
      */
     protected function setHeaders()
     {
-        $cnt   = $this->getDataSource()->count();
-        $limit = $this->getLimit();
-        if ($limit == 0) {
-            $limit = 1;
-        }
         \pwf\basic\Application::$instance
             ->getResponse()
             ->setHeaders([
                 'x-pagination-current-page: '.$this->getPage(),
-                'x-pagination-page-count: '.ceil($cnt / $limit),
-                'x-pagination-per-page: '.$limit,
-                'x-pagination-total-count: '.$cnt
+                'x-pagination-page-count: '.$this->getPageQty(),
+                'x-pagination-per-page: '.max($this->getLimit(), 1),
+                'x-pagination-total-count: '.$this->count()
         ]);
         return $this;
+    }
+
+    /**
+     * Count records
+     *
+     * @return int
+     */
+    public function count()
+    {
+        if ($this->cnt === null) {
+            $this->cnt = $this->getDataSource()->count();
+        }
+        return $this->cnt;
+    }
+
+    /**
+     * Get pages quantity
+     *
+     * @return int
+     */
+    public function getPageQty()
+    {
+        return ceil($this->count() / max($this->getLimit(), 1));
     }
 }
