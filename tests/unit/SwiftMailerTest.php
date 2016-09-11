@@ -6,7 +6,12 @@ class SwiftMailerTest extends \PHPUnit_Framework_TestCase
 
     protected function setUp()
     {
-        $this->component = new \pwf\components\swiftmailer\SwiftMailer();
+        $this->component = Codeception\Util\Stub::construct('\pwf\components\swiftmailer\SwiftMailer',
+                [], [
+                'send' => function() {
+
+                }
+        ]);
         $this->component->loadConfiguration([])->init();
     }
 

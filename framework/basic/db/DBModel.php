@@ -4,7 +4,7 @@ namespace pwf\basic\db;
 
 abstract class DBModel extends \pwf\components\activerecord\Model implements \pwf\components\querybuilder\interfaces\SelectBuilder,
     \pwf\components\querybuilder\interfaces\InsertBuilder, \pwf\components\querybuilder\interfaces\UpdateBuilder,
-    \pwf\components\querybuilder\interfaces\DeleteBuilder
+    \pwf\components\querybuilder\interfaces\DeleteBuilder, \pwf\components\datapaginator\interfaces\Paginatable
 {
     /**
      * Sequence name
