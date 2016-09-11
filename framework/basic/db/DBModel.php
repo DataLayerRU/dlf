@@ -109,6 +109,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
     {
         $builder = QueryBuilder::select()
             ->select($this->getSelect())
+            ->setJoins($this->getJoin())
             ->table($this->getTable())
             ->setConditionBuilder($this->getConditionBuilder())
             ->where($this->getWhere())
