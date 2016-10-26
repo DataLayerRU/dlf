@@ -11,9 +11,25 @@ abstract class Model implements \pwf\components\datamapper\interfaces\Model
      */
     private $attributes;
 
-    public function __construct(array $attributes = [])
+    /**
+     * All other attributes
+     *
+     * @var array
+     */
+    private $dirtyAttributes;
+
+    /**
+     * Available properties
+     *
+     * @var array
+     */
+    private $properties = [];
+
+    public function __construct(array $attributes = [], array $properties = [])
     {
-        $this->setAttributes($attributes);
+        $this
+            ->setProperties($properties)
+            ->setAttributes($attributes);
     }
 
     /**
@@ -24,7 +40,9 @@ abstract class Model implements \pwf\components\datamapper\interfaces\Model
      */
     public function setAttributes(array $attributes)
     {
-        $this->attributes = $attributes;
+        foreach ($attributes as $key => $value) {
+            $this->setAttribute($key, $value);
+        }
         return $this;
     }
 
@@ -39,6 +57,16 @@ abstract class Model implements \pwf\components\datamapper\interfaces\Model
     }
 
     /**
+     * Get all dirty attributes
+     *
+     * @return array
+     */
+    public function getDirtyAttributes()
+    {
+        return $this->dirtyAttributes;
+    }
+
+    /**
      * Set attribute
      *
      * @param string $name
@@ -47,7 +75,11 @@ abstract class Model implements \pwf\components\datamapper\interfaces\Model
      */
     public function setAttribute($name, $value)
     {
-        $this->attributes[$name] = $value;
+        if ($this->propertyExists($name)) {
+            $this->attributes[$name] = $value;
+        } else {
+            $this->setDirtyAttribute($name, $value);
+        }
         return $this;
     }
 
@@ -69,6 +101,36 @@ abstract class Model implements \pwf\components\datamapper\interfaces\Model
     }
 
     /**
+     * Set dorty attribute
+     *
+     * @param string $name
+     * @param mixed $value
+     * @return \pwf\components\datamapper\abstraction\Model
+     */
+    public function setDirtyAttribute($name, $value)
+    {
+        $this->dirtyAttributes[$name] = $value;
+        return $this;
+    }
+
+    /**
+     * Get dirty attribute
+     *
+     * @param string $name
+     * @return mixed
+     */
+    public function getDirtyAttribute($name)
+    {
+        $result = null;
+
+        if ($this->dirtyAttributeExists($name)) {
+            $result = $this->dirtyAttributes[$name];
+        }
+
+        return $result;
+    }
+
+    /**
      * Is attribute exists
      *
      * @param string $name
@@ -77,6 +139,51 @@ abstract class Model implements \pwf\components\datamapper\interfaces\Model
     public function attributeExists($name)
     {
         return isset($this->attributes[$name]);
+    }
+
+    /**
+     * Is dirty attribute exists
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function dirtyAttributeExists($name)
+    {
+        return isset($this->dirtyAttributes[$name]);
+    }
+
+    /**
+     * Set available properties
+     *
+     * @param array $properties
+     * @return \pwf\components\datamapper\abstraction\Model
+     */
+    public function setProperties(array $properties)
+    {
+        $this->properties = $properties;
+        return $this;
+    }
+
+    /**
+     * Get available properties
+     *
+     * @return array
+     */
+    public function getProperties()
+    {
+        return $this->properties;
+    }
+
+    /**
+     * Check property exists
+     *
+     * @param string $name
+     * @return bool
+     */
+    public function propertyExists($name)
+    {
+        $properties = $this->getProperties();
+        return empty($properties) || in_array($name, $properties);
     }
 
     /**
@@ -89,6 +196,9 @@ abstract class Model implements \pwf\components\datamapper\interfaces\Model
     {
         if ($this->attributeExists($name)) {
             return $this->getAttribute($name);
+        }
+        if ($this->dirtyAttributeExists($name)) {
+            return $this->getDirtyAttribute($name);
         }
         return null;
     }
@@ -112,7 +222,8 @@ abstract class Model implements \pwf\components\datamapper\interfaces\Model
      */
     public function __isset($name)
     {
-        return $this->attributeExists($name);
+        return $this->dirtyAttributeExists($name) || ($this->propertyExists($name)
+            && $this->attributeExists($name));
     }
 
     /**
@@ -122,6 +233,13 @@ abstract class Model implements \pwf\components\datamapper\interfaces\Model
      */
     public function __unset($name)
     {
-        $this->setAttribute($name, null);
+        if ($this->propertyExists($name)) {
+            $this->setAttribute($name, null);
+            return;
+        }
+        if ($this->dirtyAttributeExists($name)) {
+            $this->setDirtyAttribute($name, null);
+            return;
+        }
     }
 }

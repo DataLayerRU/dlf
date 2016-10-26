@@ -4,7 +4,7 @@ namespace pwf\basic\db;
 
 abstract class DBModel extends \pwf\components\activerecord\Model implements \pwf\components\querybuilder\interfaces\SelectBuilder,
     \pwf\components\querybuilder\interfaces\InsertBuilder, \pwf\components\querybuilder\interfaces\UpdateBuilder,
-    \pwf\components\querybuilder\interfaces\DeleteBuilder
+    \pwf\components\querybuilder\interfaces\DeleteBuilder, \pwf\components\datapaginator\interfaces\Paginatable
 {
     /**
      * Sequence name
@@ -27,9 +27,10 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
      * @param \pwf\components\dbconnection\interfaces\Connection $connection
      * @param array $attributes
      */
-    public function __construct($connection, array $attributes = array())
+    public function __construct($connection, array $attributes = [],
+                                $properties = [])
     {
-        parent::__construct($connection, $attributes);
+        parent::__construct($connection, $attributes, $properties);
 
         $this->setConditionBuilder(QueryBuilder::getConditionBuilder());
     }
@@ -72,7 +73,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
     public function getAll()
     {
         $builder = QueryBuilder::select()
-            ->select($this->getSelect())
+            ->select($this->getSelect())            
             ->setJoins($this->getJoin())
             ->table($this->getTable())
             ->setConditionBuilder($this->getConditionBuilder())
@@ -107,6 +108,8 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
     public function getOne()
     {
         $builder = QueryBuilder::select()
+            ->select($this->getSelect())
+            ->setJoins($this->getJoin())
             ->table($this->getTable())
             ->setConditionBuilder($this->getConditionBuilder())
             ->where($this->getWhere())

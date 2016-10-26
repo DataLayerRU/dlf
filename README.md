@@ -22,14 +22,16 @@ basic/               basic classes
 components/          modules
     activerecord/    AR pattern
     authorization/   authorization/identity module
+    compressor/      response minifier
     datamapper/      data mapper pattern
     datapaginator/   pagination
     dbconnection/    database connection module
     eventhandler/    event handler
     i18n/            internationalization module
-    monologadapter/  adapter for Seldaek/monolog
+    monologadapter/  adapter for [Seldaek/monolog](https://github.com/Seldaek/monolog)
     observer/        obserber pattern
     socialite/       socialite adapter
+    sphinxql/        adapter for [foolz/sphinxql-query-builder](https://github.com/FoolCode/SphinxQL-Query-Builder)
     swiftmailer/     swiftmailer adapter
 exception/           exception classes
     abstraction/     abstract classes
@@ -70,8 +72,7 @@ Initialization
 ```php
 require(__DIR__ . '/../vendor/autoload.php'); 
 
-$app = new \project\Application();
-$app->run();
+(new \project\Application())->run();
 ```
 ##Application.php
 ```php

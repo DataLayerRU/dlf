@@ -44,8 +44,9 @@ trait CallbackTrait
     {
         $result       = $callback;
         if (is_string($callback) && ($callbackInfo = $this->parseHandlerStr($callback))
-            && class_exists($callbackInfo['class'])) {
-            $result = [new $callbackInfo['class'], $callbackInfo['method']];
+            && class_exists($callbackInfo['class']) && method_exists(($controller
+                = new $callbackInfo['class']), $callbackInfo['method'])) {
+            $result = [$controller, $callbackInfo['method']];
         } elseif (!is_callable($callback)) {
             throw new \pwf\exception\HttpNotFoundException();
         }

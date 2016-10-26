@@ -2,6 +2,9 @@
 
 namespace pwf\components\socialite;
 
+/**
+ * Socialite adapter
+ */
 class Socialite extends \Overtrue\Socialite\SocialiteManager implements \pwf\basic\interfaces\Component
 {
 
