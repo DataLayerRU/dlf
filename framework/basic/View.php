@@ -36,6 +36,20 @@ class View implements \pwf\basic\interfaces\View
     private $params = [];
 
     /**
+     * Scripts
+     *
+     * @var array
+     */
+    private $scripts = [];
+
+    /**
+     * CSS
+     *
+     * @var array
+     */
+    private $styles = [];
+
+    /**
      * Render view file
      *
      * @param string $viewPath
@@ -61,10 +75,13 @@ class View implements \pwf\basic\interfaces\View
     public function content($parentView = null)
     {
         if ($parentView === null) {
-            $content = ob_get_clean();
+            $content                 = ob_get_clean();
             ob_clean();
-            echo (new static())->render($this->parentLayout,
-                array_merge($this->getBlocks(), $this->params, ['content' => $content])
+            $this->params['scripts'] = $this->generateScripts();
+            $this->params['css']     = $this->generateCSS();
+            echo $this->render($this->parentLayout,
+                array_merge($this->getBlocks(), $this->params,
+                    ['content' => $content])
             );
         } else {
             $this->parentLayout = $parentView;
@@ -121,5 +138,81 @@ class View implements \pwf\basic\interfaces\View
     public function getBlocks()
     {
         return $this->blocks;
+    }
+
+    /**
+     * Add script
+     *
+     * @param string $pathOrScript
+     * @param bool $raw
+     * @param string $type
+     * @return \pwf\basic\View
+     */
+    public function addScript($pathOrScript, $raw = false,
+                              $type = 'text/javascript')
+    {
+        $this->scripts[] = [$pathOrScript, $type, $raw];
+        return $this;
+    }
+
+    /**
+     * Add CSS files
+     *
+     * @param string $css
+     * @param bool $raw
+     * @return \pwf\basic\View
+     */
+    public function addCSS($css, $raw = false)
+    {
+        $this->styles[] = [$css, $raw];
+        return $this;
+    }
+
+    /**
+     * Generate script tags
+     *
+     * @return string
+     */
+    public function generateScripts()
+    {
+        $result = '';
+
+        $rawScript     = [];
+        $this->scripts = array_unique($this->scripts, SORT_REGULAR);
+        foreach ($this->scripts as $scriptInfo) {
+            if (!$scriptInfo[2]) {
+                $result.= '<script src="'.$scriptInfo[0].'" type="'.$scriptInfo[1].'"></script>';
+            } else {
+                $rawScript[$scriptInfo[1]] .= $scriptInfo[0];
+            }
+        }
+        foreach ($rawScript as $type => $script) {
+            $result.= '<script type="'.$type.'">'.$script.'</script>';
+        }
+
+        return $result;
+    }
+
+    /**
+     * Generate CSS tags
+     *
+     * @return string
+     */
+    public function generateCSS()
+    {
+        $result = '';
+
+        $cssRaw       = '';
+        $this->styles = array_unique($this->styles);
+        foreach ($this->styles as $style) {
+            if ($style[1]) {
+                $cssRaw.=$style[0];
+            } else {
+                $result.='<link href="'.$style[0].'" rel="stylesheet" type="text/css" />';
+            }
+        }
+        $result.=$cssRaw != '' ? '<style>'.$cssRaw.'</style>' : '';
+
+        return $result;
     }
 }
