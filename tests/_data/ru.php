@@ -1,4 +1,4 @@
 <?php
 return [
-    'test' => 'Тест {placeholder}'
+    'test' => 'РўРµСЃС‚ {placeholder}'
 ];
