@@ -97,7 +97,7 @@ class View implements \pwf\basic\interfaces\View
     public function block($name = null)
     {
         if ($name === null) {
-            $this->addBlock($this->currentBlock, ob_get_clean());
+            $this->addBlock($this->currentBlock, ob_get_contents());
             $this->currentBlock = '';
             ob_clean();
         } else {
@@ -183,8 +183,7 @@ class View implements \pwf\basic\interfaces\View
             if (!$scriptInfo[2]) {
                 $result.= '<script src="'.$scriptInfo[0].'" type="'.$scriptInfo[1].'"></script>';
             } else {
-                $rawScript[$scriptInfo[1]] = (isset($rawScript[$scriptInfo[1]]) ? $rawScript[$scriptInfo[1]]
-                            : '').$scriptInfo[0];
+                $rawScript[$scriptInfo[1]] .= $scriptInfo[0];
             }
         }
         foreach ($rawScript as $type => $script) {
@@ -204,7 +203,7 @@ class View implements \pwf\basic\interfaces\View
         $result = '';
 
         $cssRaw       = '';
-        $this->styles = array_unique($this->styles, SORT_REGULAR);
+        $this->styles = array_unique($this->styles);
         foreach ($this->styles as $style) {
             if ($style[1]) {
                 $cssRaw.=$style[0];

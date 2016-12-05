@@ -12,6 +12,7 @@ class Application implements \pwf\basic\interfaces\Application, \pwf\components\
 {
 
     use \pwf\components\eventhandler\traits\EventTrait;
+    //
     //<editor-fold desc="Variables" defaultstate="collapsed">
     /**
      * Current application
