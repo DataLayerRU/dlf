@@ -42,7 +42,8 @@
     },
     "autoload": {
         "psr-4": {
-            "pwf\\": "framework/"
+            "pwf\\": "framework/",
+            "": "framework/facades"
         }
     }
 }
