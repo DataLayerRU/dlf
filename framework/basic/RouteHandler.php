@@ -131,7 +131,7 @@ class RouteHandler
     protected static function prepareRoute($route)
     {
         foreach (self::$preprocessors as $preprocessor) {
-            $route = $preprocessor($route);
+            $preprocessor($route);
         }
         return $route;
     }
