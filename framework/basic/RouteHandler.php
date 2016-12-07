@@ -20,6 +20,13 @@ class RouteHandler
     private static $routes = [];
 
     /**
+     * \Closures for route preprocessing
+     *
+     * @var array
+     */
+    private static $preprocessors = [];
+
+    /**
      * Register handler
      *
      * @param string $path
@@ -40,7 +47,7 @@ class RouteHandler
     {
         $result = null;
 
-        $path = '/'.trim($path, " /");
+        $path = self::prepareRoute('/'.trim($path, " /"));
 
         foreach (static::$routes as $key => $handler) {
             $matches = [];
@@ -103,5 +110,29 @@ class RouteHandler
             $result[0] = mb_strtolower($result[0]);
         }
         return $result;
+    }
+
+    /**
+     * Add route preprocessor
+     *
+     * @param \Closure $preprocessor
+     */
+    public static function addPreprocessor(\Closure $preprocessor)
+    {
+        self::$preprocessors[] = $preprocessor;
+    }
+
+    /**
+     * Prepare route
+     *
+     * @param string $route
+     * @return string
+     */
+    protected static function prepareRoute($route)
+    {
+        foreach (self::$preprocessors as $preprocessor) {
+            $preprocessor($route);
+        }
+        return $route;
     }
 }

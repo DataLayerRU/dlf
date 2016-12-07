@@ -37,7 +37,7 @@ class i18nTest extends \PHPUnit_Framework_TestCase
 
     public function testExceptions()
     {
-        $translatedWord = 'Тест';
+        $translatedWord = 'РўРµСЃС‚';
 
         try {
             $translation = $this->translator->loadConfiguration([
@@ -180,7 +180,7 @@ class i18nTest extends \PHPUnit_Framework_TestCase
 
     public function testIt()
     {
-        $translatedWord = 'Тест ok';
+        $translatedWord = 'РўРµСЃС‚ ok';
         \pwf\basic\db\QueryBuilder::setDriver(\pwf\basic\db\QueryBuilder::DRIVER_MYSQL);
         $connection     = Codeception\Util\Stub::construct('\pwf\components\dbconnection\PDOConnection',
                 [],
@@ -197,7 +197,7 @@ class i18nTest extends \PHPUnit_Framework_TestCase
                         'language' => 'ru',
                         'map' => [
                             'ru' => [
-                                'test' => 'Тест {placeholder}'
+                                'test' => 'РўРµСЃС‚ {placeholder}'
                             ]
                         ]
                     ],
@@ -224,7 +224,7 @@ class i18nTest extends \PHPUnit_Framework_TestCase
                         [],
                         [
                         'fetchColumn' => function($field) {
-                            return 'Тест {placeholder}';
+                            return 'РўРµСЃС‚ {placeholder}';
                         }
                 ]);
             }

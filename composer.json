@@ -1,6 +1,6 @@
 {
     "name": "professionalweb/pwf",
-    "version": "0.6",
+    "version": "0.7",
     "description": "Professional web framework",
     "homepage": "http://pwf.web-development.pw/",
     "keywords": [
@@ -42,7 +42,8 @@
     },
     "autoload": {
         "psr-4": {
-            "pwf\\": "framework/"
+            "pwf\\": "framework/",
+            "": "framework/facades"
         }
     }
 }

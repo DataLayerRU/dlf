@@ -34,9 +34,10 @@ class WebControllerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(file_get_contents(__DIR__.'/../_data/testViewResult.html'),
             $method->invokeArgs(self::$controller,
                 [
-                __DIR__.'/../_data/testView.html',
+                __DIR__.'/../_data/nestedView.php',
                 [
-                    'body' => 'Hello, World!'
+                    'body' => 'Hello, World!',
+                    'testBlock' => 'blockValue'
                 ]
         ]));
     }
