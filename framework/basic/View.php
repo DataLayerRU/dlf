@@ -183,8 +183,8 @@ class View implements \pwf\basic\interfaces\View
             if (!$scriptInfo[2]) {
                 $result.= '<script src="'.$scriptInfo[0].'" type="'.$scriptInfo[1].'"></script>';
             } else {
-                $rawScript[$scriptInfo[1]] = (isset($rawScript[$scriptInfo[1]]) ? $rawScript[$scriptInfo[1]]
-                            : '').$scriptInfo[0];
+                $rawScript[$scriptInfo[1]] = isset($rawScript[$scriptInfo[1]]) ? $rawScript[$scriptInfo[1]] .= $scriptInfo[0]
+                        : $scriptInfo[0];
             }
         }
         foreach ($rawScript as $type => $script) {

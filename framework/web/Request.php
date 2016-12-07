@@ -11,9 +11,17 @@ class Request
      */
     private $requestParams;
 
+    /**
+     * URL segments
+     *
+     * @var array
+     */
+    private $urlParts;
+
     public function __construct(array $requestParams = [])
     {
         $this->requestParams = $requestParams;
+        $this->urlParts      = $this->devideUrl();
     }
 
     /**
@@ -123,5 +131,33 @@ class Request
         }
 
         return $result;
+    }
+
+    /**
+     * Get URL segment
+     *
+     * @param int $index
+     * @param string $default
+     * @return string
+     */
+    public function getSegment($index, $default = null)
+    {
+        return $index > 0 && count($this->urlParts) - 1 <= $index ? $this->urlParts[$index]
+                : $default;
+    }
+
+    /**
+     * Devide url on segments
+     *
+     * @return array
+     */
+    protected function devideUrl()
+    {
+        $parts = explode('/', $this->getPath());
+        $cnt   = count($parts);
+        for ($i = 0; $i < $cnt; $i++) {
+            $parts[$i] = trim($parts[$i]);
+        }
+        return $parts;
     }
 }
