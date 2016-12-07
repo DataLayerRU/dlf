@@ -119,8 +119,14 @@ class Application implements \pwf\basic\interfaces\Application, \pwf\components\
     {
         $result = null;
         $config = $this->getConfiguration();
-        if (isset($config[$name])) {
-            $result = $config[$name];
+        $parts  = explode('.', $name);
+        foreach ($parts as $key) {
+            if (isset($config[$name])) {
+                $result = $config = $config[$key];
+            } else {
+                $result = null;
+                break;
+            }
         }
         return $result;
     }
