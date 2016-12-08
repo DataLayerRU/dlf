@@ -19,6 +19,16 @@ class Translation extends Config
     }
 
     /**
+     * Get language
+     *
+     * @return string
+     */
+    public static function getLanguage()
+    {
+        return self::get('i18n.language');
+    }
+
+    /**
      * Get translation
      *
      * @param string $key
