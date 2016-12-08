@@ -121,7 +121,7 @@ class Application implements \pwf\basic\interfaces\Application, \pwf\components\
         $config = $this->getConfiguration();
         $parts  = explode('.', $name);
         foreach ($parts as $key) {
-            if (isset($config[$name])) {
+            if (isset($config[$key])) {
                 $result = $config = $config[$key];
             } else {
                 $result = null;
