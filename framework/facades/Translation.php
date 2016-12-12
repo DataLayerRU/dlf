@@ -33,11 +33,14 @@ class Translation extends Config
      *
      * @param string $key
      * @param array $params
+     * @param string $default
      * @return string
      */
-    public static function translate($key, array $params = [])
+    public static function translate($key, array $params = [], $default = '')
     {
-        return Application::$instance->getComponent('i18n')->translate($key,
-                $params);
+        $result = Application::$instance->getComponent('i18n')->translate($key,
+            $params);
+
+        return empty($result) ? $default : $result;
     }
 }
