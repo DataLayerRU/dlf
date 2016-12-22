@@ -5,7 +5,7 @@ use pwf\basic\Application;
 /**
  * Working with translations
  */
-class Translation extends Config
+class Translation
 {
 
     /**
@@ -15,7 +15,28 @@ class Translation extends Config
      */
     public static function setLanguage($lang)
     {
-        self::set('i18n.language', $lang);
+        Application::$instance->i18n->setLanguage($lang);
+        \Config::set('i18n.language', $lang);
+    }
+
+    /**
+     * Get default language
+     *
+     * @return string
+     */
+    public static function getDefaultLanguage()
+    {
+        return Application::$instance->i18n->getDefaultLanguage();
+    }
+
+    /**
+     * Get language
+     *
+     * @return string
+     */
+    public static function getLanguage()
+    {
+        return \Config::get('i18n.language');
     }
 
     /**
@@ -23,11 +44,14 @@ class Translation extends Config
      *
      * @param string $key
      * @param array $params
+     * @param string $default
      * @return string
      */
-    public static function translate($key, array $params = [])
+    public static function translate($key, array $params = [], $default = '')
     {
-        return Application::$instance->getComponent('i18n')->translate($key,
-                $params);
+        $result = Application::$instance->getComponent('i18n')->translate($key,
+            $params);
+
+        return empty($result) ? $default : $result;
     }
 }

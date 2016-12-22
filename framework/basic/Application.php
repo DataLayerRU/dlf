@@ -62,6 +62,9 @@ class Application implements \pwf\basic\interfaces\Application, \pwf\components\
     {
         $this->request  = new Request($_REQUEST);
         $this->response = new Response();
+        if (!isset($config[self::COMPONENT_CONFIG_BLOCK])) {
+            $config[self::COMPONENT_CONFIG_BLOCK] = [];
+        }
         $this->setConfiguration($config);
 
         static::$instance = $this;
@@ -121,7 +124,7 @@ class Application implements \pwf\basic\interfaces\Application, \pwf\components\
         $config = $this->getConfiguration();
         $parts  = explode('.', $name);
         foreach ($parts as $key) {
-            if (isset($config[$name])) {
+            if (isset($config[$key])) {
                 $result = $config = $config[$key];
             } else {
                 $result = null;

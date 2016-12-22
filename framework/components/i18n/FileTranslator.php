@@ -39,8 +39,8 @@ class FileTranslator extends \pwf\components\i18n\abstraction\FileTranslator
     {
         $result = $this->values;
 
-        if ($result === null && file_exists($this->getDir().$this->getLanguage().'.php')) {
-            $result       = $this->values = include $this->getDir().$this->getLanguage().'.php';
+        if ($result === null && file_exists($this->getDir().'/'.$this->getLanguage().'.php')) {
+            $result       = $this->values = include $this->getDir().'/'.$this->getLanguage().'.php';
         }
 
         return $result;

@@ -27,8 +27,14 @@ class Config
      */
     public static function set($key, $value)
     {
-        Application::$instance->appendConfiguration([
-            $key => $value
-        ]);
+        $parts   = explode('.', $key);
+        $config  = [];
+        $current = &$config;
+        foreach ($parts as $part) {
+            $current[$part] = [];
+            $current        = &$current[$part];
+        }
+        $current = $value;
+        Application::$instance->appendConfiguration($config);
     }
 }
