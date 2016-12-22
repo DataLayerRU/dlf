@@ -53,7 +53,7 @@ class Request
      */
     public function getPath()
     {
-        return $this->get('path', '');
+        return $this->get('path', '/');
     }
 
     /**

@@ -62,6 +62,9 @@ class Application implements \pwf\basic\interfaces\Application, \pwf\components\
     {
         $this->request  = new Request($_REQUEST);
         $this->response = new Response();
+        if (!isset($config[self::COMPONENT_CONFIG_BLOCK])) {
+            $config[self::COMPONENT_CONFIG_BLOCK] = [];
+        }
         $this->setConfiguration($config);
 
         static::$instance = $this;

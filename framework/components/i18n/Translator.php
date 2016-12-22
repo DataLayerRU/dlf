@@ -40,6 +40,9 @@ class Translator extends abstraction\Translator implements \pwf\basic\interfaces
         if (isset($config['language'])) {
             $this->setLanguage($config['language']);
         }
+        if (isset($config['defaultLanguage'])) {
+            $this->setDefaultLanguage($config['defaultLanguage']);
+        }
         return $this;
     }
 

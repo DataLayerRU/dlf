@@ -12,6 +12,13 @@ abstract class Translator implements \pwf\components\i18n\interfaces\Translator
     private $currentLanguage;
 
     /**
+     * Default language
+     *
+     * @var string
+     */
+    private $defaultLanguage;
+
+    /**
      * Set current language
      *
      * @param string $lang
@@ -31,5 +38,27 @@ abstract class Translator implements \pwf\components\i18n\interfaces\Translator
     public function getLanguage()
     {
         return $this->currentLanguage;
+    }
+
+    /**
+     * Set default language
+     *
+     * @param string $lang
+     * @return \pwf\components\i18n\abstraction\Translator
+     */
+    public function setDefaultLanguage($lang)
+    {
+        $this->defaultLanguage = $lang;
+        return $this;
+    }
+
+    /**
+     * Get default language
+     *
+     * @return string
+     */
+    public function getDefaultLanguage()
+    {
+        return $this->defaultLanguage;
     }
 }

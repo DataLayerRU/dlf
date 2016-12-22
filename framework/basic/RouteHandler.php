@@ -20,6 +20,13 @@ class RouteHandler
     private static $routes = [];
 
     /**
+     * Named routes
+     *
+     * @var array
+     */
+    private static $namedRoutes = [];
+
+    /**
      * \Closures for route preprocessing
      *
      * @var array
@@ -32,9 +39,16 @@ class RouteHandler
      * @param string $path
      * @param mixed $handler
      */
-    public static function registerHandler($path, $handler)
+    public static function registerHandler($path, $handler, $name = null)
     {
-        static::$routes[$path] = $handler;
+        $routeInfo             = [
+            $path,
+            $handler
+        ];
+        static::$routes[$path] = $routeInfo;
+        if (!empty($name)) {
+            self::$namedRoutes[$name] = $routeInfo;
+        }
     }
 
     /**
@@ -45,9 +59,40 @@ class RouteHandler
      */
     public static function getHandler($path)
     {
-        $result = null;
+        $result = static::getHandlerByName($path);
 
-        $path = self::prepareRoute('/'.trim($path, " /"));
+        if ($result === null) {
+            $result = static::getHandlerByPath($path);
+        }
+
+        if ($result === null) {
+            $result = static::parseRoute($path);
+        }
+
+        return $result;
+    }
+
+    /**
+     * Get handler by name
+     *
+     * @param string $name
+     * @return string
+     */
+    public static function getHandlerByName($name)
+    {
+        return isset(self::$namedRoutes[$name]) ? self::$namedRoutes[$name][1] : null;
+    }
+
+    /**
+     * Get handler by path
+     *
+     * @param string $path
+     * @return string
+     */
+    public static function getHandlerByPath($path)
+    {
+        $result = null;
+        $path   = self::prepareRoute('/'.trim($path, " /"));
 
         foreach (static::$routes as $key => $handler) {
             $matches = [];
@@ -57,15 +102,10 @@ class RouteHandler
                         $_GET[$key] = $val;
                     }
                 }
-                $result = $handler;
+                $result = $handler[1];
                 break;
             }
         }
-
-        if ($result === null) {
-            $result = self::parseRoute($path);
-        }
-
         return $result;
     }
 
@@ -134,5 +174,16 @@ class RouteHandler
             $preprocessor($route);
         }
         return $route;
+    }
+
+    /**
+     * Get route by name
+     * 
+     * @param string $routeName
+     * @return array
+     */
+    public static function getByName($routeName)
+    {
+        return self::$namedRoutes[$routeName];
     }
 }
