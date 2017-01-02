@@ -119,15 +119,15 @@ class RouteHandler
     {
         $result = null;
 
-        $parts = explode('/', $url);
-        if (count($parts) === 2) {
-            $parts[1] = $parts[1] === '' ? self::DEFAULT_CONTROLLER : $parts[1];
-            $parts[2] = self::DEFAULT_ACTION;
+        $parts = explode('/', trim($url, '/'));
+        if (count($parts) === 1) {
+            $parts[0] = $parts[0] === '' ? self::DEFAULT_CONTROLLER : $parts[0];
+            $parts[1] = self::DEFAULT_ACTION;
         }
 
         $action                   = static::preparePart(array_pop($parts), true);
         $parts[count($parts) - 1] = static::preparePart($parts[count($parts) - 1]).'Controller';
-        $controller               = '\\project\\controllers'.implode('\\',
+        $controller               = '\\project\\controllers\\'.implode('\\',
                 $parts);
 
         if ($action != '' && $controller != '') {
