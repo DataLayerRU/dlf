@@ -1,6 +1,9 @@
 PWF
 ====
 
+## v0.8.1 02.01.2017
+ - RouteHandler fix
+
 ## v0.8 23.12.2016
  - Different fixes
  - Router improvement
