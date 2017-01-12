@@ -29,7 +29,7 @@ class DBTranslator extends \pwf\components\i18n\abstraction\DBTranslator
             $this->getQueryBuilder()->getParams());
 
         if ($res !== false) {
-            $result = $this->prepareValue($res->fetchColumn($this->getResultFieldName()), $params);
+            $result = $res->fetchColumn($this->getResultFieldName());
         }
         return $result;
     }

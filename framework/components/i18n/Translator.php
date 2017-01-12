@@ -5,6 +5,8 @@ namespace pwf\components\i18n;
 class Translator extends abstraction\Translator implements \pwf\basic\interfaces\Component,
     interfaces\Translator
 {
+
+    use traits\ParamReplace;
     /**
      * Translators
      *
@@ -62,7 +64,7 @@ class Translator extends abstraction\Translator implements \pwf\basic\interfaces
                 }
             }
         }
-        return $result;
+        return $this->prepareValue($result, $params);
     }
 
     /**
