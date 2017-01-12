@@ -8,6 +8,8 @@ use pwf\basic\Application;
 class Translation
 {
 
+    use \pwf\components\i18n\traits\ParamReplace;
+
     /**
      * Set current language
      *
@@ -52,6 +54,6 @@ class Translation
         $result = Application::$instance->getComponent('i18n')->translate($key,
             $params);
 
-        return empty($result) ? $default : $result;
+        return empty($result) ? self::prepareValue($default, $params) : $result;
     }
 }
