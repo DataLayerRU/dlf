@@ -54,6 +54,6 @@ class Translation
         $result = Application::$instance->getComponent('i18n')->translate($key,
             $params);
 
-        return empty($result) ? self::prepareValue($default, $params) : $result;
+        return empty($result) ? self::prepareValueS($default, $params) : $result;
     }
 }
