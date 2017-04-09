@@ -13,6 +13,20 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
      */
     private $sequenceName;
 
+    /**
+     * Map
+     *
+     * @var array
+     */
+    private $map;
+
+    /**
+     * Set hidden attributes
+     *
+     * @var array
+     */
+    private $hidden;
+
     use \pwf\components\querybuilder\traits\Conditional,
         \pwf\components\querybuilder\traits\Parameterized,
         \pwf\traits\Validatable,
@@ -26,13 +40,15 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
      * 
      * @param \pwf\components\dbconnection\interfaces\Connection $connection
      * @param array $attributes
+     * @param array $properties
+     * @param array $map
      */
     public function __construct($connection, array $attributes = [],
-                                $properties = [])
+                                array $properties = [], array $map = [])
     {
         parent::__construct($connection, $attributes, $properties);
 
-        $this->setConditionBuilder(QueryBuilder::getConditionBuilder());
+        $this->setConditionBuilder(QueryBuilder::getConditionBuilder())->setMap($map);
     }
 
     /**
@@ -42,7 +58,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
     public function count()
     {
         $builder = QueryBuilder::select()
-            ->select(['COUNT('.($this->getPK()? : '*').') AS CNT'])
+            ->select(['COUNT('.($this->getPK() ?: '*').') AS CNT'])
             ->table($this->getTable())
             ->setConditionBuilder($this->getConditionBuilder())
             ->where($this->getWhere());
@@ -73,7 +89,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
     public function getAll()
     {
         $builder = QueryBuilder::select()
-            ->select($this->getSelect())            
+            ->select($this->getSelect())
             ->setJoins($this->getJoin())
             ->table($this->getTable())
             ->setConditionBuilder($this->getConditionBuilder())
@@ -84,7 +100,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
         return $this->fillObjects($this->getConnection()->query(
                         $builder->generate(),
                         array_merge($builder->getParams(), $this->getParams()))
-                    ->fetchAll(\PDO::FETCH_ASSOC) ? : []);
+                    ->fetchAll(\PDO::FETCH_ASSOC) ?: []);
     }
 
     /**
@@ -117,7 +133,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
         return $this->setAttributes($this->getConnection()->query(
                         $builder->generate(),
                         array_merge($builder->getParams(), $this->getParams()))
-                    ->fetch(\PDO::FETCH_ASSOC) ? : []);
+                    ->fetch(\PDO::FETCH_ASSOC) ?: []);
     }
 
     /**
@@ -208,5 +224,83 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
     public function validate()
     {
         return $this->parentValidate($this->getAttributes());
+    }
+
+    /**
+     * Get map
+     *
+     * @return array
+     */
+    public function getMap()
+    {
+        return $this->map;
+    }
+
+    /**
+     * Set map
+     *
+     * @param array $map
+     * @return $this
+     */
+    public function setMap($map)
+    {
+        $this->map = $map;
+        return $this;
+    }
+
+    /**
+     * Get hidden attributes
+     *
+     *
+     * @return array
+     */
+    public function getHidden()
+    {
+        return $this->hidden;
+    }
+
+    /**
+     * Set hidden attributes
+     *
+     * @param array $hidden
+     * @return $this
+     */
+    public function setHidden($hidden)
+    {
+        $this->hidden = $hidden;
+        return $this;
+    }
+
+    /**
+     * Object to array
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        $result = $this->getVisibleAttributes();
+        $map    = $this->getMap();
+        foreach ($map as $from => $to) {
+            $result[$to] = $result[$from];
+            unset($result[$from]);
+        }
+
+        return $result;
+    }
+
+    /**
+     * Get visible attributes
+     *
+     * @return array
+     */
+    public function getVisibleAttributes()
+    {
+        $result = $this->getAttributes();
+        $hidden = $this->getHidden();
+        foreach ($hidden as $forHide) {
+            unset($result[$forHide]);
+        }
+
+        return $result;
     }
 }
