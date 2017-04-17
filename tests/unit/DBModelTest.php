@@ -13,20 +13,23 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
 
     public function testCount()
     {
-        $countQuery = 'SELECT COUNT(id) AS CNT FROM "test_table" WHERE field1=:field1 AND field2=:field2';
-
+        $query = [
+            QueryBuilder::DRIVER_MYSQL => 'SELECT COUNT(id) AS CNT FROM test_table WHERE field1=:field1 AND field2=:field2',
+            QueryBuilder::DRIVER_PG => 'SELECT COUNT(id) AS CNT FROM "test_table" WHERE field1=:field1 AND field2=:field2',
+            -1 => ''
+        ];
         foreach ($this->drivers as $driver) {
+            $countQuery = $query[$driver];
             QueryBuilder::setDriver($driver);
 
             $connection = Codeception\Util\Stub::construct('\pwf\components\dbconnection\PDOConnection',
                     [],
                     [
                     'query' => function($query, $params = []) use($countQuery) {
+                        $this->assertEquals($countQuery, $query);
 
-                    $this->assertEquals($countQuery, $query);
-
-                    return new PDOStatement();
-                }
+                        return new PDOStatement();
+                    }
             ]);
 
             $model = Codeception\Util\Stub::construct('\pwf\basic\db\DBModel',
@@ -57,19 +60,24 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
 
     public function testDelete()
     {
-        $countQuery = 'DELETE FROM "test_table" WHERE field1=:field1 AND field2=:field2';
+        $query = [
+            QueryBuilder::DRIVER_MYSQL => 'DELETE FROM test_table WHERE field1=:field1 AND field2=:field2',
+            QueryBuilder::DRIVER_PG => 'DELETE FROM "test_table" WHERE field1=:field1 AND field2=:field2',
+            -1 => ''
+        ];
 
         foreach ($this->drivers as $driver) {
+            $countQuery = $query[$driver];
             QueryBuilder::setDriver($driver);
             $connection = Codeception\Util\Stub::construct('\pwf\components\dbconnection\PDOConnection',
                     [],
                     [
                     'exec' => function($query, $params = [])use($countQuery) {
 
-                    $this->assertEquals($query, $countQuery);
+                        $this->assertEquals($query, $countQuery);
 
-                    return new PDOStatement();
-                }
+                        return new PDOStatement();
+                    }
             ]);
 
             $model = Codeception\Util\Stub::construct('\pwf\basic\db\DBModel',
@@ -100,19 +108,24 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
 
     public function testGetAll()
     {
-        $countQuery = 'SELECT * FROM "test_table" WHERE field1=:field1 AND field2=:field2';
+        $query = [
+            QueryBuilder::DRIVER_MYSQL => 'SELECT * FROM test_table WHERE field1=:field1 AND field2=:field2',
+            QueryBuilder::DRIVER_PG => 'SELECT * FROM "test_table" WHERE field1=:field1 AND field2=:field2',
+            -1 => ''
+        ];
 
         foreach ($this->drivers as $driver) {
+            $countQuery = $query[$driver];
             QueryBuilder::setDriver($driver);
             $connection = Codeception\Util\Stub::construct('\pwf\components\dbconnection\PDOConnection',
                     [],
                     [
                     'query' => function($query, $params = []) use($countQuery) {
 
-                    $this->assertEquals($query, $countQuery);
+                        $this->assertEquals($query, $countQuery);
 
-                    return new PDOStatement();
-                }
+                        return new PDOStatement();
+                    }
             ]);
 
             $model = Codeception\Util\Stub::construct('\pwf\basic\db\DBModel',
@@ -143,19 +156,24 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
 
     public function testGetOne()
     {
-        $countQuery = 'SELECT * FROM "test_table" WHERE field1=:field1 AND field2=:field2 LIMIT 1';
+        $query = [
+            QueryBuilder::DRIVER_MYSQL => 'SELECT * FROM test_table WHERE field1=:field1 AND field2=:field2 LIMIT 1',
+            QueryBuilder::DRIVER_PG => 'SELECT * FROM "test_table" WHERE field1=:field1 AND field2=:field2 LIMIT 1',
+            -1 => ''
+        ];
 
         foreach ($this->drivers as $driver) {
+            $countQuery = $query[$driver];
             QueryBuilder::setDriver($driver);
             $connection = Codeception\Util\Stub::construct('\pwf\components\dbconnection\PDOConnection',
                     [],
                     [
                     'query' => function($query, $params = []) use($countQuery) {
 
-                    $this->assertEquals($query, $countQuery);
+                        $this->assertEquals($query, $countQuery);
 
-                    return new PDOStatement();
-                }
+                        return new PDOStatement();
+                    }
             ]);
 
             $model = Codeception\Util\Stub::construct('\pwf\basic\db\DBModel',
@@ -186,24 +204,35 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
 
     public function testSave()
     {
-        $updateQuery = 'UPDATE "test_table" SET name=:name WHERE id=:id';
+        $query = [
+            QueryBuilder::DRIVER_MYSQL => 'UPDATE test_table SET name=:name WHERE id=:id',
+            QueryBuilder::DRIVER_PG => 'UPDATE "test_table" SET name=:name WHERE id=:id',
+            -1 => ''
+        ];
 
-        $insertQuery = 'INSERT INTO "test_table" (name) VALUES (:name)';
+        $query2 = [
+            QueryBuilder::DRIVER_MYSQL => 'INSERT INTO test_table (name) VALUES (:name)',
+            QueryBuilder::DRIVER_PG => 'INSERT INTO "test_table" (name) VALUES (:name)',
+            -1 => ''
+        ];
 
         foreach ($this->drivers as $driver) {
+            $updateQuery = $query[$driver];
+
+            $insertQuery = $query2[$driver];
             QueryBuilder::setDriver($driver);
-            $connection = Codeception\Util\Stub::construct('\pwf\components\dbconnection\PDOConnection',
+            $connection  = Codeception\Util\Stub::construct('\pwf\components\dbconnection\PDOConnection',
                     [],
                     [
                     'exec' => function($query, $params = [])use($updateQuery) {
 
-                    $this->assertEquals($query, $updateQuery);
+                        $this->assertEquals($query, $updateQuery);
 
-                    return new PDOStatement();
-                },
+                        return new PDOStatement();
+                    },
                     'insertId' => function($sequenceName = null) {
-                    return 1;
-                }
+                        return 1;
+                    }
             ]);
 
             $model = Codeception\Util\Stub::construct('\pwf\basic\db\DBModel',
@@ -233,13 +262,13 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
                     [
                     'exec' => function($query, $params = [])use($insertQuery) {
 
-                    $this->assertEquals($query, $insertQuery);
+                        $this->assertEquals($query, $insertQuery);
 
-                    return new PDOStatement();
-                },
+                        return new PDOStatement();
+                    },
                     'insertId' => function($sequenceName = null) {
-                    return 1;
-                }
+                        return 1;
+                    }
             ]);
 
             $model = Codeception\Util\Stub::construct('\pwf\basic\db\DBModel',

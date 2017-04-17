@@ -35,7 +35,7 @@
         "codeception/codeception": "*",
         "satooshi/php-coveralls": "*",
         "codeclimate/php-test-reporter": "*",
-        "swiftmailer/swiftmailer": "*"
+        "swiftmailer/swiftmailer": "5.3.*"
     },
     "config": {
         "process-timeout": 1800
