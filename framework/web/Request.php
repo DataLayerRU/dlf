@@ -18,10 +18,18 @@ class Request
      */
     private $urlParts;
 
+    /**
+     * Headers
+     *
+     * @var array
+     */
+    private $headers;
+
     public function __construct(array $requestParams = [])
     {
         $this->requestParams = $requestParams;
         $this->urlParts      = $this->devideUrl();
+        $this->parseHeaders($_SERVER);
     }
 
     /**
@@ -159,5 +167,45 @@ class Request
             $parts[$i] = trim($parts[$i]);
         }
         return $parts;
+    }
+
+    /**
+     * Get header
+     *
+     * @param array $headers
+     * @return string
+     */
+    public function parseHeaders(array $headers)
+    {
+        foreach ($headers as $key => $value) {
+            if (strpos($key, 'HTTP_') !== false) {
+                $newKey                 = str_replace(['http_', '_'], ['', '-'],
+                    mb_strtolower($key));
+                $this->headers[$newKey] = $value;
+            }
+        }
+        return $this->headers;
+    }
+
+    /**
+     * Get headers
+     *
+     * @return array
+     */
+    public function getHeaders()
+    {
+        return $this->headers;
+    }
+
+    /**
+     * Get header by name
+     *
+     * @param string $name
+     * @return string
+     */
+    public function getHeader($name)
+    {
+        $name = mb_strtolower($name);
+        return isset($this->headers[$name]) ? $this->headers[$name] : null;
     }
 }
