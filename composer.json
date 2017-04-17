@@ -1,6 +1,6 @@
 {
     "name": "professionalweb/pwf",
-    "version": "0.8.3",
+    "version": "0.9",
     "description": "Professional web framework",
     "homepage": "http://pwf.web-development.pw/",
     "keywords": [
@@ -35,7 +35,7 @@
         "codeception/codeception": "*",
         "satooshi/php-coveralls": "*",
         "codeclimate/php-test-reporter": "*",
-        "swiftmailer/swiftmailer": "*"
+        "swiftmailer/swiftmailer": "5.3.*"
     },
     "config": {
         "process-timeout": 1800
