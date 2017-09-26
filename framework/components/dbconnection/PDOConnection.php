@@ -151,10 +151,6 @@ class PDOConnection extends \pwf\components\dbconnection\abstraction\Connection 
         $result = $params;
 
         foreach ($result as $key => $val) {
-            if ($key[0] != ':') {
-                $result[':'.$key] = $val;
-                unset($result[$key]);
-            }
             if (is_bool($val)) {
                 $result[$key] = $val ? 1 : 0;
             }

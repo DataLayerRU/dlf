@@ -1,6 +1,9 @@
 PWF
 ====
 
+## v0.9.1 27.09.2017
+ - Improve DBModel
+
 ## v0.8.1 02.01.2017
  - RouteHandler fix
 
