@@ -63,9 +63,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
             ->setConditionBuilder($this->getConditionBuilder())
             ->where($this->getWhere());
         return (int) $this->getConnection()
-                ->query(
-                    $builder->generate(),
-                    array_merge($builder->getParams(), $this->getParams()))
+                ->query($builder->generate(), $builder->getParams())
                 ->fetchColumn();
     }
 
@@ -78,9 +76,8 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
             ->table($this->getTable())
             ->setConditionBuilder($this->getConditionBuilder())
             ->where($this->getWhere());
-        return $this->getConnection()->exec(
-                $builder->generate(),
-                array_merge($builder->getParams(), $this->getParams()));
+        return $this->getConnection()->exec($builder->generate(),
+                $builder->getParams());
     }
 
     /**
@@ -98,8 +95,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
             ->offset($this->getOffset())
             ->order($this->getOrder());
         return $this->fillObjects($this->getConnection()->query(
-                        $builder->generate(),
-                        array_merge($builder->getParams(), $this->getParams()))
+                        $builder->generate(), $builder->getParams())
                     ->fetchAll(\PDO::FETCH_ASSOC) ?: []);
     }
 
@@ -131,8 +127,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
             ->where($this->getWhere())
             ->limit(1);
         return $this->setAttributes($this->getConnection()->query(
-                        $builder->generate(),
-                        array_merge($builder->getParams(), $this->getParams()))
+                        $builder->generate(), $builder->getParams())
                     ->fetch(\PDO::FETCH_ASSOC) ?: []);
     }
 
@@ -155,7 +150,7 @@ abstract class DBModel extends \pwf\components\activerecord\Model implements \pw
                 ->setParams($attributes);
 
             $result = $this->getConnection()->exec($builder->generate(),
-                array_merge($builder->getParams(), $this->getParams()));
+                $builder->getParams());
         } else {
             $builder = QueryBuilder::insert()
                 ->table($this->getTable())
