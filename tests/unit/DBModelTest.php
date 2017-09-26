@@ -14,8 +14,8 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
     public function testCount()
     {
         $query = [
-            QueryBuilder::DRIVER_MYSQL => 'SELECT COUNT(id) AS CNT FROM test_table WHERE field1=:field1 AND field2=:field2',
-            QueryBuilder::DRIVER_PG => 'SELECT COUNT(id) AS CNT FROM "test_table" WHERE field1=:field1 AND field2=:field2',
+            QueryBuilder::DRIVER_MYSQL => 'SELECT COUNT(id) AS CNT FROM test_table WHERE field1=? AND field2=?',
+            QueryBuilder::DRIVER_PG => 'SELECT COUNT(id) AS CNT FROM "test_table" WHERE field1=? AND field2=?',
             -1 => ''
         ];
         foreach ($this->drivers as $driver) {
@@ -61,8 +61,8 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
     public function testDelete()
     {
         $query = [
-            QueryBuilder::DRIVER_MYSQL => 'DELETE FROM test_table WHERE field1=:field1 AND field2=:field2',
-            QueryBuilder::DRIVER_PG => 'DELETE FROM "test_table" WHERE field1=:field1 AND field2=:field2',
+            QueryBuilder::DRIVER_MYSQL => 'DELETE FROM test_table WHERE field1=? AND field2=?',
+            QueryBuilder::DRIVER_PG => 'DELETE FROM "test_table" WHERE field1=? AND field2=?',
             -1 => ''
         ];
 
@@ -109,8 +109,8 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
     public function testGetAll()
     {
         $query = [
-            QueryBuilder::DRIVER_MYSQL => 'SELECT * FROM test_table WHERE field1=:field1 AND field2=:field2',
-            QueryBuilder::DRIVER_PG => 'SELECT * FROM "test_table" WHERE field1=:field1 AND field2=:field2',
+            QueryBuilder::DRIVER_MYSQL => 'SELECT * FROM test_table WHERE field1=? AND field2=?',
+            QueryBuilder::DRIVER_PG => 'SELECT * FROM "test_table" WHERE field1=? AND field2=?',
             -1 => ''
         ];
 
@@ -157,8 +157,8 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
     public function testGetOne()
     {
         $query = [
-            QueryBuilder::DRIVER_MYSQL => 'SELECT * FROM test_table WHERE field1=:field1 AND field2=:field2 LIMIT 1',
-            QueryBuilder::DRIVER_PG => 'SELECT * FROM "test_table" WHERE field1=:field1 AND field2=:field2 LIMIT 1',
+            QueryBuilder::DRIVER_MYSQL => 'SELECT * FROM test_table WHERE field1=? AND field2=? LIMIT 1',
+            QueryBuilder::DRIVER_PG => 'SELECT * FROM "test_table" WHERE field1=? AND field2=? LIMIT 1',
             -1 => ''
         ];
 
@@ -205,14 +205,14 @@ class DBModelTest extends \PHPUnit_Framework_TestCase
     public function testSave()
     {
         $query = [
-            QueryBuilder::DRIVER_MYSQL => 'UPDATE test_table SET name=:name WHERE id=:id',
-            QueryBuilder::DRIVER_PG => 'UPDATE "test_table" SET name=:name WHERE id=:id',
+            QueryBuilder::DRIVER_MYSQL => 'UPDATE test_table SET name=? WHERE id=?',
+            QueryBuilder::DRIVER_PG => 'UPDATE "test_table" SET name=? WHERE id=?',
             -1 => ''
         ];
 
         $query2 = [
-            QueryBuilder::DRIVER_MYSQL => 'INSERT INTO test_table (name) VALUES (:name)',
-            QueryBuilder::DRIVER_PG => 'INSERT INTO "test_table" (name) VALUES (:name)',
+            QueryBuilder::DRIVER_MYSQL => 'INSERT INTO test_table (name) VALUES (?)',
+            QueryBuilder::DRIVER_PG => 'INSERT INTO "test_table" (name) VALUES (?)',
             -1 => ''
         ];
 
