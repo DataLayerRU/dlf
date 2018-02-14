@@ -2,7 +2,7 @@
 
 namespace pwf\basic;
 
-abstract class Component extends Object implements \pwf\basic\interfaces\Component
+abstract class Component extends BasicObject implements \pwf\basic\interfaces\Component
 {
     /**
      * Force initialization
