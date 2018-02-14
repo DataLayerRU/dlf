@@ -2,7 +2,7 @@
 
 namespace pwf\components\eventhandler;
 
-class ObjectDecorator extends \pwf\basic\Object implements interfaces\EventHandler
+class BasicObjectDecorator extends \pwf\basic\BasicObject implements interfaces\EventHandler
 {
 
     use traits\EventTrait;

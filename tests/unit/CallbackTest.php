@@ -89,7 +89,7 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
                     return true;
                 }
         ]);
-        $decorated = new \pwf\components\eventhandler\ObjectDecorator();
+        $decorated = new \pwf\components\eventhandler\BasicObjectDecorator();
         $this->assertEquals($obj, $decorated->setObject($obj)->getObject());
         $this->assertTrue($decorated->getView());
     }

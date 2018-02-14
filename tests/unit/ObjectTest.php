@@ -1,6 +1,6 @@
 <?php
 
-class ObjectTestClass extends pwf\basic\Object
+class BasicObjectTestClass extends pwf\basic\BasicObject
 {
     private $field;
 
@@ -20,7 +20,7 @@ class ObjectTest extends \PHPUnit_Framework_TestCase
 
     public function testObject()
     {
-        $o        = new ObjectTestClass();
+        $o        = new BasicObjectTestClass();
         $o->field = 'test';
         $this->assertEquals('testtest1', $o->field);
 

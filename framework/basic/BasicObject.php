@@ -2,7 +2,7 @@
 
 namespace pwf\basic;
 
-class Object
+class BasicObject
 {
 
     /**
