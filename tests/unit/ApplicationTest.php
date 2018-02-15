@@ -103,7 +103,7 @@ class ApplicationTest extends \PHPUnit_Framework_TestCase
         ]);
 
         \pwf\basic\RouteHandler::registerHandler('/test/(?P<id>\d+)/test',
-            function($testParam2, $testParam, $db) {
+            function() {
             return true;
         });
 
